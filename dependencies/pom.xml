@@ -12,6 +12,8 @@
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
         <spring.version>5.0.8.RELEASE</spring.version>
+        <disruptor.version>3.4.2</disruptor.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +54,18 @@
                 <groupId>com.jufan.creed</groupId>
                 <artifactId>creed-bom</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <!--Third Party-->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
