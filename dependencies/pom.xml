@@ -15,15 +15,16 @@
     </properties>
 
     <dependencyManagement>
+        <!--Immutable Dependencies-->
         <dependencies>
             <!-- bom dependencies at the bottom so they can be overridden above -->
             <dependency>
-                <!-- Import dependency management from Spring Cloud -->
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
+                <!-- Import dependency management from Spring Framework -->
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
                 <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <dependency>
                 <!-- Import dependency management from Spring Boot -->
@@ -34,12 +35,23 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <!-- Import dependency management from Spring Framework -->
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
-                <scope>import</scope>
+                <!-- Import dependency management from Spring Cloud -->
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Creed Dependencies-->
+            <dependency>
+                <groupId>com.jufan.creed</groupId>
+                <artifactId>spring-supports-bom</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jufan.creed</groupId>
+                <artifactId>creed-bom</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

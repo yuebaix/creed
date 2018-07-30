@@ -2,10 +2,24 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>creed-parent</artifactId>
+        <groupId>com.jufan.creed</groupId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>/creed-parent</relativePath>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jufan.creed</groupId>
     <artifactId>creed-projects</artifactId>
+    <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
+    <modules>
+        <module>creed-core</module>
+        <module>creed-bom</module>
+        <module>creed-parent</module>
+        <module>creed-starters</module>
+    </modules>
 
 </project>
