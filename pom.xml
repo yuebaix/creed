@@ -14,5 +14,99 @@
         <module>samples</module>
     </modules>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
+    <developers>
+        <developer>
+            <name>Jerry</name>
+            <email>huifumanlove@gmail.com</email>
+            <organization>Yimei Corp</organization>
+            <roles>
+                <role>Project Cloud Master</role>
+                <role>Senior Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>jufan-group-public</name>
+            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>jufan-group-public</name>
+            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>jufan-hosted-release</id>
+            <name>jufan-hosted-release</name>
+            <url>http://svn.jufandev.com:8087/nexus/content/repositories/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>jufan-hosted-snapshots</id>
+            <name>jufan-hosted-snapshots</name>
+            <url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--<version>3.0.1</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
