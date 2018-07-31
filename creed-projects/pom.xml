@@ -15,6 +15,9 @@
     <artifactId>creed-projects</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
+
+    <name>Creed Projects Build</name>
+
     <modules>
         <module>creed-core</module>
         <module>creed-bom</module>

@@ -13,6 +13,7 @@
     <groupId>com.jufan.creed</groupId>
     <artifactId>spring-supports</artifactId>
     <packaging>pom</packaging>
+    <name>Spring Support Build</name>
     <modules>
         <module>spring-utils</module>
         <module>spring-supports-bom</module>
