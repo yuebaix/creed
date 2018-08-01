@@ -41,9 +41,10 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <maven.version>3.3.9</maven.version>
         <!--workflow plugin-->
         <!--timeformat-->
-        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <!--copyfile encoding-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -55,7 +56,7 @@
 
         <!--main materials version-->
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-        <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
         <spring.version>5.0.8.RELEASE</spring.version>
         <disruptor.version>3.4.2</disruptor.version>
         <lombok.version>1.18.2</lombok.version>
@@ -127,6 +128,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <parameters>true</parameters>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -160,121 +166,21 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <!--<version>3.0.0-M2</version>-->
-                    <executions>
-                        <execution>
-                            <id>enforce</id>
-                            <configuration>
-                                <rules>
-                                    <dependencyConvergence/>
-                                </rules>
-                            </configuration>
-                            <goals>
-                                <goal>enforce</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <!--check classpath&classname-->
                 <plugin>
                     <groupId>org.basepom.maven</groupId>
                     <artifactId>duplicate-finder-maven-plugin</artifactId>
-                    <!--<version>1.1.0</version>-->
-                    <configuration>
-                        <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <!--check code style-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <configuration>
-                        <configLocation>google_checks.xml</configLocation>
-                        <encoding>UTF-8</encoding>
-                        <failOnViolation>true</failOnViolation>
-                        <linkXRef>false</linkXRef>
-                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        <maxAllowedViolations>0</maxAllowedViolations>
-                        <violationSeverity>warning</violationSeverity>
-                        <skip>true</skip>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>checkstyle</id>
-                            <phase>validate</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.11</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
                 <!--flatten pom-->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
-                    <!--<version>1.0.1</version>-->
-                    <inherited>false</inherited>
-                    <executions>
-                        <execution>
-                            <!-- Create an effective POM (with versions expanded) for the CLI and
-                                documentation -->
-                            <id>flatten-effective-pom</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>flatten</goal>
-                            </goals>
-                            <configuration>
-                                <updatePomFile>false</updatePomFile>
-                                <outputDirectory>${project.build.directory}/effective-pom</outputDirectory>
-                                <flattenedPomFilename>spring-boot-dependencies.xml</flattenedPomFilename>
-                                <flattenMode>oss</flattenMode>
-                                <pomElements>
-                                    <dependencyManagement>expand</dependencyManagement>
-                                    <pluginManagement>expand</pluginManagement>
-                                    <properties>remove</properties>
-                                    <repositories>remove</repositories>
-                                </pomElements>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <!-- Flatten and simplify our own POM for install/deploy -->
-                            <id>flatten</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>flatten</goal>
-                            </goals>
-                            <configuration>
-                                <updatePomFile>true</updatePomFile>
-                                <flattenMode>bom</flattenMode>
-                                <pomElements>
-                                    <pluginManagement>keep</pluginManagement>
-                                    <repositories>remove</repositories>
-                                </pomElements>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>flatten-clean</id>
-                            <phase>clean</phase>
-                            <goals>
-                                <goal>clean</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -282,7 +188,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.0.1</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
@@ -296,7 +201,7 @@
                         <configuration>
                             <updatePomFile>false</updatePomFile>
                             <outputDirectory>${project.build.directory}/effective-pom</outputDirectory>
-                            <flattenedPomFilename>spring-boot-dependencies.xml</flattenedPomFilename>
+                            <flattenedPomFilename>creed-dependencies.xml</flattenedPomFilename>
                             <flattenMode>oss</flattenMode>
                             <pomElements>
                                 <dependencyManagement>expand</dependencyManagement>
@@ -388,7 +293,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <!--<inherited>false</inherited>-->
+                <inherited>false</inherited>
                 <executions>
                     <execution>
                         <!-- Attach effective POM -->
@@ -400,7 +305,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${project.build.directory}/effective-pom/spring-boot-dependencies.xml</file>
+                                    <file>${project.build.directory}/effective-pom/creed-dependencies.xml</file>
                                     <type>effective-pom</type>
                                 </artifact>
                             </artifacts>
@@ -410,20 +315,4 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.0.0</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>checkstyle</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
 </project>

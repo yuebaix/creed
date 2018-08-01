@@ -3,10 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>creed-parent</artifactId>
+        <artifactId>build</artifactId>
         <groupId>com.jufan.creed</groupId>
         <version>0.1-SNAPSHOT</version>
-        <relativePath>/creed-parent</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -17,6 +16,7 @@
     <version>0.1-SNAPSHOT</version>
 
     <name>Creed Projects Build</name>
+    <description>Creed Projects Build</description>
 
     <modules>
         <module>creed-core</module>

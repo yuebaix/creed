@@ -1,4 +1,4 @@
-package com.jufan.creed.sample;
+package com.jufan.creed.core;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
