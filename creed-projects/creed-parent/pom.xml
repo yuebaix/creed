@@ -67,10 +67,10 @@
                                     <version>[${maven.version},)</version>
                                 </requireMavenVersion>
                                 <requireProperty>
-                                <property>project.name</property>
+                                    <property>project.name</property>
                                 </requireProperty>
                                 <requireProperty>
-                                <property>project.description</property>
+                                    <property>project.description</property>
                                 </requireProperty>
                                 <banDistributionManagement/>
                                 <bannedDependencies/>

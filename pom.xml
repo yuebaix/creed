@@ -11,38 +11,38 @@
 
     <name>Build</name>
 
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>jufan-group-public</name>
-            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>jufan-group-public</name>
-            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>nexus</id>-->
+            <!--<name>jufan-group-public</name>-->
+            <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+                <!--<updatePolicy>always</updatePolicy>-->
+                <!--<checksumPolicy>warn</checksumPolicy>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>nexus</id>-->
+            <!--<name>jufan-group-public</name>-->
+            <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
 
-    <distributionManagement>
-        <repository>
-            <id>jufan-hosted-release</id>
-            <name>jufan-hosted-release</name>
-            <url>http://svn.jufandev.com:8087/nexus/content/repositories/release</url>
-        </repository>
-        <snapshotRepository>
-            <id>jufan-hosted-snapshots</id>
-            <name>jufan-hosted-snapshots</name>
-            <url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>jufan-hosted-release</id>-->
+            <!--<name>jufan-hosted-release</name>-->
+            <!--<url>http://svn.jufandev.com:8087/nexus/content/repositories/release</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>jufan-hosted-snapshots</id>-->
+            <!--<name>jufan-hosted-snapshots</name>-->
+            <!--<url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots/</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
     <modules>
         <module>dependencies</module>
