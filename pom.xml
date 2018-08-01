@@ -8,8 +8,35 @@
     <artifactId>build</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
-
     <name>Build</name>
+    <description>root build</description>
+
+    <url>https://github.com/JerryNiu/creed</url>
+    <inceptionYear>2018</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/JerryNiu/creed.git</connection>
+        <developerConnection>scm:git:https://github.com/JerryNiu/creed.git</developerConnection>
+        <url>https://github.com/JerryNiu/creed</url>
+        <tag>v${project.version}</tag>
+    </scm>
+    <developers>
+        <developer>
+            <name>Jerry</name>
+            <email>huifumanlove@gmail.com</email>
+            <organization>Yimei Corp</organization>
+            <organizationUrl>https://www.juxiangfen.com</organizationUrl>
+            <roles>
+                <role>Project Creed Master</role>
+                <role>Senior Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <!--<repositories>-->
         <!--<repository>-->
@@ -43,6 +70,106 @@
             <!--<url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots/</url>-->
         <!--</snapshotRepository>-->
     <!--</distributionManagement>-->
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <java.version>1.8</java.version>
+                <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+                <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+                <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+                <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+                <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+                <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+            </properties>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${maven-javadoc-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>${maven-release-plugin.version}</version>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <modules>
         <module>dependencies</module>

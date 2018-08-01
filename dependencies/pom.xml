@@ -15,29 +15,6 @@
 
     <name>Creed Dependencies</name>
     <description>Creed Dependencies</description>
-    <url>https://github.com/JerryNiu/creed</url>
-    <inceptionYear>2018</inceptionYear>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-    <scm>
-        <url>https://github.com/JerryNiu/creed</url>
-    </scm>
-    <developers>
-        <developer>
-            <name>Jerry</name>
-            <email>huifumanlove@gmail.com</email>
-            <organization>Yimei Corp</organization>
-            <organizationUrl>https://www.juxiangfen.com</organizationUrl>
-            <roles>
-                <role>Project Creed Master</role>
-                <role>Senior Developer</role>
-            </roles>
-        </developer>
-    </developers>
 
     <properties>
         <java.version>1.8</java.version>
@@ -131,7 +108,6 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
-                        <parameters>true</parameters>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -139,9 +115,8 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <executions>
                         <execution>
-                            <phase>package</phase>
                             <goals>
-                                <goal>jar-no-fork</goal>
+                                <goal>jar</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -151,7 +126,6 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <executions>
                         <execution>
-                            <phase>package</phase>
                             <goals>
                                 <goal>jar</goal>
                             </goals>
