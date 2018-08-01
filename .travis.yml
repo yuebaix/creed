@@ -1,0 +1,13 @@
+language: java
+
+jdk:
+- oraclejdk8
+
+install:
+- mvn clean install -B -V
+
+script:
+- echo script
+
+after_success:
+- echo after_success
