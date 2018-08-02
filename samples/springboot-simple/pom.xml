@@ -11,8 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
-    <artifactId>spring-boot-simple</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <artifactId>springboot-simple</artifactId>
+    <name>SpringBoot示例 简单web</name>
 
     <dependencies>
         <dependency>

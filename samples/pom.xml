@@ -12,9 +12,19 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>samples</artifactId>
     <packaging>pom</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <name>Samples Build</name>
     <modules>
-        <module>spring-boot-simple</module>
+        <module>springboot-simple</module>
+        <module>springcloud-center</module>
+        <module>springcloud-config</module>
+        <module>springcloud-uaa</module>
+        <module>springcloud-gate</module>
+        <module>springcloud-mcenter</module>
+        <module>sc-client</module>
+        <module>sc-facade</module>
+        <module>sc-service</module>
+        <module>sc-aggregator</module>
+        <module>sc-app</module>
     </modules>
 
 </project>

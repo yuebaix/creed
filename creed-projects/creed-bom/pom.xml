@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>build</artifactId>
-        <groupId>com.geercode.creed</groupId>
-        <version>0.1-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
@@ -20,6 +14,11 @@
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>creed-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-starters</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
