@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>dependencies</artifactId>
-        <groupId>com.jufan.creed</groupId>
+        <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../../dependencies</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jufan.creed</groupId>
+    <groupId>com.geercode.creed</groupId>
     <artifactId>creed-parent</artifactId>
     <packaging>pom</packaging>
 

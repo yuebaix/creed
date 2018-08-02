@@ -1,4 +1,4 @@
-package com.jufan.creed.core;
+package com.geercode.creed.samples;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

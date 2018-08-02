@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jufan.creed</groupId>
+    <groupId>com.geercode.creed</groupId>
     <artifactId>build</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
     <name>Build</name>
     <description>root build</description>
 
-    <url>https://github.com/JerryNiu/creed</url>
+    <url>https://github.com/geercode/creed</url>
     <inceptionYear>2018</inceptionYear>
     <licenses>
         <license>
@@ -20,14 +20,14 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:https://github.com/JerryNiu/creed.git</connection>
-        <developerConnection>scm:git:https://github.com/JerryNiu/creed.git</developerConnection>
-        <url>https://github.com/JerryNiu/creed</url>
+        <connection>scm:git:https://github.com/geercode/creed.git</connection>
+        <developerConnection>scm:git:https://github.com/geercode/creed.git</developerConnection>
+        <url>https://github.com/geercode/creed</url>
         <tag>v${project.version}</tag>
     </scm>
     <developers>
         <developer>
-            <name>Jerry</name>
+            <name>jerryniu</name>
             <email>huifumanlove@gmail.com</email>
             <organization>Yimei Corp</organization>
             <organizationUrl>https://www.juxiangfen.com</organizationUrl>
