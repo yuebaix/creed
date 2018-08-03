@@ -72,8 +72,8 @@
                                 <requireProperty>
                                     <property>project.description</property>
                                 </requireProperty>
+                                <requireNoRepositories/>
                                 <banDistributionManagement/>
-                                <bannedDependencies/>
                                 <dependencyConvergence/>
                                 <requireReleaseDeps>
                                     <onlyWhenRelease>true</onlyWhenRelease>
@@ -113,7 +113,7 @@
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <maxAllowedViolations>0</maxAllowedViolations>
                     <violationSeverity>warning</violationSeverity>
-                    <skip>true</skip>
+                    <!--<skip>true</skip>-->
                 </configuration>
                 <executions>
                     <execution>
