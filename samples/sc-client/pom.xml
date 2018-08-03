@@ -11,6 +11,6 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>sc-client</artifactId>
-    <name>SC客户端示例</name>
+    <name>SC示例 客户端</name>
 
 </project>

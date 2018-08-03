@@ -67,23 +67,46 @@
             </resource>
         </resources>
         <plugins>
+            <!--validate-->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation></configLocation>
+                    <configLocation>google_checks.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <failOnViolation>true</failOnViolation>
+                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                    <maxAllowedViolations>0</maxAllowedViolations>
+                    <violationSeverity>warning</violationSeverity>
+                    <skip>true</skip>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>checkstyle-validate</id>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>repackage</goal>
-                            <goal>build-info</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.11</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>enforcer-validate</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>enforce</goal>
                         </goals>
@@ -103,50 +126,37 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <configLocation>google_checks.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <failOnViolation>true</failOnViolation>
-                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                    <linkXRef>false</linkXRef>
-                    <maxAllowedViolations>0</maxAllowedViolations>
-                    <violationSeverity>warning</violationSeverity>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>checkstyle</id>
+                        <id>duplicate-validate</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>8.11</version>
-                    </dependency>
-                </dependencies>
             </plugin>
+            <!--package-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--verify-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.8</version>
                 <configuration>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                    <targetJdk>${java.version}</targetJdk>
+                    <printFailingErrors>true</printFailingErrors>
+                    <!-- 代码检查规则 -->
                     <rulesets>
                         <ruleset>rulesets/java/ali-comment.xml</ruleset>
                         <ruleset>rulesets/java/ali-concurrent.xml</ruleset>
@@ -159,30 +169,48 @@
                         <ruleset>rulesets/java/ali-other.xml</ruleset>
                         <ruleset>rulesets/java/ali-set.xml</ruleset>
                     </rulesets>
-                    <printFailingErrors>true</printFailingErrors>
                 </configuration>
                 <executions>
+                    <!-- 绑定pmd:check到verify生命周期 -->
                     <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
+                        <id>pmd-check-verify</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
+                    <!-- 绑定pmd:pmd到site生命周期 -->
+                    <execution>
+                        <id>pmd-pmd-site</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>pmd</goal>
+                        </goals>
+                    </execution>
                 </executions>
+                <!-- p3c依赖 -->
                 <dependencies>
-                    <!-- 需要使用阿里的一些xml文件，因此需要这里增加p3c的依赖 -->
                     <dependency>
                         <groupId>com.alibaba.p3c</groupId>
                         <artifactId>p3c-pmd</artifactId>
-                        <version>1.3.0</version>
+                        <version>1.3.5</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
             </plugin>
         </plugins>
     </build>
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>

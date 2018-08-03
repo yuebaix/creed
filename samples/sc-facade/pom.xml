@@ -11,6 +11,6 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>sc-facade</artifactId>
-    <name>SC服务层存根示例</name>
+    <name>SC示例 服务层存根</name>
 
 </project>

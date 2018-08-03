@@ -11,6 +11,6 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>sc-service</artifactId>
-    <name>SC服务层示例</name>
+    <name>SC示例 服务层</name>
 
 </project>

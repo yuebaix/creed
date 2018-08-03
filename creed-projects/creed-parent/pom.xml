@@ -66,12 +66,6 @@
                                 <requireMavenVersion>
                                     <version>[${maven.version},)</version>
                                 </requireMavenVersion>
-                                <requireProperty>
-                                    <property>project.name</property>
-                                </requireProperty>
-                                <requireProperty>
-                                    <property>project.description</property>
-                                </requireProperty>
                                 <requireNoRepositories/>
                                 <banDistributionManagement/>
                                 <dependencyConvergence/>
@@ -93,7 +87,6 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -117,8 +110,6 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>checkstyle</id>
-                        <phase>validate</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>

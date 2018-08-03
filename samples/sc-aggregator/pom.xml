@@ -11,7 +11,7 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>sc-aggregator</artifactId>
-    <name>SC服务聚合层示例</name>
+    <name>SC示例 服务聚合层</name>
 
 
 </project>
