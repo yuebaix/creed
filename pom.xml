@@ -58,7 +58,7 @@
         <profile>
             <id>fast</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>samples</module>
@@ -67,7 +67,7 @@
         <profile>
             <id>jufan</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <!--<repositories>-->
                 <!--<repository>-->
@@ -126,10 +126,13 @@
                         <groupId>org.projectlombok</groupId>
                         <artifactId>lombok-maven-plugin</artifactId>
                         <version>${lombok-maven-plugin.version}</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
                         <executions>
                             <execution>
-                                <id>lombok-generate-sources</id>
-                                <phase>generate-sources</phase>
+                                <id>lombok-package</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>delombok</goal>
                                 </goals>
@@ -187,6 +190,23 @@
                                 <phase>package</phase>
                                 <goals>
                                     <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok-maven-plugin</artifactId>
+                        <version>${lombok-maven-plugin.version}</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>lombok-package</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>delombok</goal>
                                 </goals>
                             </execution>
                         </executions>
