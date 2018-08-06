@@ -19,9 +19,9 @@
     <description>Creed Projects Build</description>
 
     <modules>
-        <module>creed-core</module>
-        <module>creed-bom</module>
         <module>creed-parent</module>
+        <module>creed-bom</module>
+        <module>creed-core</module>
         <module>creed-starters</module>
     </modules>
 

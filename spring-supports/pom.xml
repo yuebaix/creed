@@ -14,9 +14,9 @@
     <packaging>pom</packaging>
     <name>Spring Support Build</name>
     <modules>
-        <module>spring-utils</module>
-        <module>spring-supports-bom</module>
         <module>spring-supports-parent</module>
+        <module>spring-supports-bom</module>
+        <module>spring-utils</module>
     </modules>
 
 
