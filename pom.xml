@@ -24,7 +24,6 @@
         <connection>scm:git:https://github.com/geercode/creed.git</connection>
         <developerConnection>scm:git:https://github.com/geercode/creed.git</developerConnection>
         <url>https://github.com/geercode/creed</url>
-        <tag>v${project.version}</tag>
     </scm>
     <developers>
         <developer>
@@ -88,6 +87,7 @@
                 <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
                 <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
                 <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+                <maven-flatten-plugin.version>1.0.1</maven-flatten-plugin.version>
                 <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
                 <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
                 <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -95,12 +95,12 @@
             <distributionManagement>
                 <repository>
                     <id>ossrh</id>
-                    <name>oss-stages</name>
+                    <name>oss-release</name>
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
                 <snapshotRepository>
                     <id>ossrh</id>
-                    <name>oss-release</name>
+                    <name>oss-snapshots</name>
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
@@ -121,6 +121,8 @@
                         <version>${maven-source-plugin.version}</version>
                         <executions>
                             <execution>
+                                <id>source-package</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
@@ -133,12 +135,46 @@
                         <version>${maven-javadoc-plugin.version}</version>
                         <executions>
                             <execution>
+                                <id>javadoc-package</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>flatten-maven-plugin</artifactId>
+                        <version>${maven-flatten-plugin.version}</version>
+                        <inherited>false</inherited>
+                        <executions>
+                            <execution>
+                                <id>flatten</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>flatten</goal>
+                                </goals>
+                                <configuration>
+                                    <updatePomFile>true</updatePomFile>
+                                    <flattenMode>bom</flattenMode>
+                                    <pomElements>
+                                        <distributionManagement>remove</distributionManagement>
+                                        <repositories>remove</repositories>
+                                    </pomElements>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>flatten-clean</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>

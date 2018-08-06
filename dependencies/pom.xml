@@ -115,8 +115,10 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <executions>
                         <execution>
+                            <id>source-package</id>
+                            <phase>package</phase>
                             <goals>
-                                <goal>jar</goal>
+                                <goal>jar-no-fork</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -126,6 +128,8 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <executions>
                         <execution>
+                            <id>javadoc-package</id>
+                            <phase>package</phase>
                             <goals>
                                 <goal>jar</goal>
                             </goals>
