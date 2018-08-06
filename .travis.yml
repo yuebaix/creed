@@ -10,4 +10,4 @@ script:
 - echo script
 
 after_success:
-- echo after_success
+- mvn clean cobertura:cobertura coveralls:report

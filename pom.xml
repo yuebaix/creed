@@ -50,13 +50,14 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
     </properties>
 
     <profiles>
         <profile>
             <id>fast</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
                 <module>samples</module>
@@ -65,27 +66,27 @@
         <profile>
             <id>jufan</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
-            <repositories>
-                <repository>
-                    <id>nexus</id>
-                    <name>jufan-group-public</name>
-                    <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                        <checksumPolicy>warn</checksumPolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>nexus</id>
-                    <name>jufan-group-public</name>
-                    <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
-                </pluginRepository>
-            </pluginRepositories>
+            <!--<repositories>-->
+                <!--<repository>-->
+                    <!--<id>nexus</id>-->
+                    <!--<name>jufan-group-public</name>-->
+                    <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
+                    <!--<snapshots>-->
+                        <!--<enabled>true</enabled>-->
+                        <!--<updatePolicy>always</updatePolicy>-->
+                        <!--<checksumPolicy>warn</checksumPolicy>-->
+                    <!--</snapshots>-->
+                <!--</repository>-->
+            <!--</repositories>-->
+            <!--<pluginRepositories>-->
+                <!--<pluginRepository>-->
+                    <!--<id>nexus</id>-->
+                    <!--<name>jufan-group-public</name>-->
+                    <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
+                <!--</pluginRepository>-->
+            <!--</pluginRepositories>-->
             <distributionManagement>
                 <repository>
                     <id>jufan-hosted-release</id>
@@ -262,6 +263,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls-maven-plugin.version}</version>
+                <configuration>
+                    <sourceEncoding>UTF-8</sourceEncoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
