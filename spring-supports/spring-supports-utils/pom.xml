@@ -2,16 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <artifactId>spring-supports-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../spring-supports-parent</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
-    <artifactId>spring-utils</artifactId>
+    <artifactId>spring-supports-utils</artifactId>
 
-
+    <name>Spring Supports Utils</name>
+    <description>Spring Supports Utils</description>
 </project>

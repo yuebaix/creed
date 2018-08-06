@@ -10,7 +10,7 @@
     <version>0.1-SNAPSHOT</version>
 
     <name>Build</name>
-    <description>root build</description>
+    <description>Root Build</description>
 
     <url>https://github.com/geercode/creed</url>
     <inceptionYear>2018</inceptionYear>
@@ -48,7 +48,7 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
-        <maven-flatten-plugin.version>1.0.1</maven-flatten-plugin.version>
+        <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -92,9 +92,16 @@
                     <url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
+
+            <modules>
+                <module>dependencies</module>
+                <module>creed-projects</module>
+                <module>samples</module>
+                <module>spring-supports</module>
+            </modules>
         </profile>
         <profile>
-            <id>release</id>
+            <id>ossrh</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -110,6 +117,13 @@
                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
+
+            <modules>
+                <module>dependencies</module>
+                <module>creed-projects</module>
+                <module>spring-supports</module>
+            </modules>
+
             <build>
                 <plugins>
                     <plugin>
@@ -195,7 +209,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>${maven-flatten-plugin.version}</version>
+                <version>${flatten-maven-plugin.version}</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
@@ -225,11 +239,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>dependencies</module>
-        <module>creed-projects</module>
-        <module>samples</module>
-        <module>spring-supports</module>
-    </modules>
 </project>

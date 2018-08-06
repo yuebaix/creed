@@ -2,17 +2,21 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>samples</artifactId>
     <packaging>pom</packaging>
+
     <name>Samples Build</name>
+    <description>Samples Build</description>
+
     <modules>
         <module>springboot-simple</module>
         <module>springcloud-center</module>
@@ -26,5 +30,4 @@
         <module>sc-aggregator</module>
         <module>sc-app</module>
     </modules>
-
 </project>

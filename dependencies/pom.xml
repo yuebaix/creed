@@ -2,19 +2,20 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
     <groupId>com.geercode.creed</groupId>
     <artifactId>dependencies</artifactId>
     <packaging>pom</packaging>
 
-    <name>Creed Dependencies</name>
-    <description>Creed Dependencies</description>
+    <name>Dependencies</name>
+    <description>Dependencies</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -211,83 +212,6 @@
                         <goals>
                             <goal>clean</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>xml-maven-plugin</artifactId>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <!-- Cleanup the effective POM -->
-                        <id>post-process-effective-pom</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>transform</goal>
-                        </goals>
-                        <configuration>
-                            <transformationSets>
-                                <transformationSet>
-                                    <dir>${project.build.directory}/effective-pom</dir>
-                                    <outputDir>${project.build.directory}/effective-pom</outputDir>
-                                    <stylesheet>src/main/xslt/post-process-flattened-pom.xsl</stylesheet>
-                                    <outputProperties>
-                                        <outputProperty>
-                                            <name>indent</name>
-                                            <value>yes</value>
-                                        </outputProperty>
-                                    </outputProperties>
-                                </transformationSet>
-                            </transformationSets>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <!-- Cleanup the flattened project POM -->
-                        <id>post-process-flattened-pom</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>transform</goal>
-                        </goals>
-                        <configuration>
-                            <transformationSets>
-                                <transformationSet>
-                                    <dir>${project.basedir}</dir>
-                                    <outputDir>${project.basedir}</outputDir>
-                                    <includes>.flattened-pom.xml</includes>
-                                    <stylesheet>src/main/xslt/post-process-flattened-pom.xsl</stylesheet>
-                                    <outputProperties>
-                                        <outputProperty>
-                                            <name>indent</name>
-                                            <value>yes</value>
-                                        </outputProperty>
-                                    </outputProperties>
-                                </transformationSet>
-                            </transformationSets>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <!-- Attach effective POM -->
-                        <id>attach-artifacts</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>${project.build.directory}/effective-pom/creed-dependencies.xml</file>
-                                    <type>effective-pom</type>
-                                </artifact>
-                            </artifacts>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
