@@ -8,6 +8,7 @@
     <artifactId>build</artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
+
     <name>Build</name>
     <description>root build</description>
 
@@ -38,40 +39,45 @@
         </developer>
     </developers>
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>nexus</id>-->
-            <!--<name>jufan-group-public</name>-->
-            <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-                <!--<updatePolicy>always</updatePolicy>-->
-                <!--<checksumPolicy>warn</checksumPolicy>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-    <!--<pluginRepositories>-->
-        <!--<pluginRepository>-->
-            <!--<id>nexus</id>-->
-            <!--<name>jufan-group-public</name>-->
-            <!--<url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>-->
-        <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
-
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>jufan-hosted-release</id>-->
-            <!--<name>jufan-hosted-release</name>-->
-            <!--<url>http://svn.jufandev.com:8087/nexus/content/repositories/release</url>-->
-        <!--</repository>-->
-        <!--<snapshotRepository>-->
-            <!--<id>jufan-hosted-snapshots</id>-->
-            <!--<name>jufan-hosted-snapshots</name>-->
-            <!--<url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots/</url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
-
     <profiles>
+        <profile>
+            <id>jufan</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <name>jufan-group-public</name>
+                    <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus</id>
+                    <name>jufan-group-public</name>
+                    <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+
+            <distributionManagement>
+                <repository>
+                    <id>jufan-hosted-release</id>
+                    <name>jufan-hosted-release</name>
+                    <url>http://svn.jufandev.com:8087/nexus/content/repositories/release</url>
+                </repository>
+                <snapshotRepository>
+                    <id>jufan-hosted-snapshots</id>
+                    <name>jufan-hosted-snapshots</name>
+                    <url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
         <profile>
             <id>release</id>
             <activation>
@@ -87,14 +93,16 @@
                 <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
             </properties>
             <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-                </snapshotRepository>
                 <repository>
                     <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <name>oss-stages</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <name>oss-release</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
             </distributionManagement>
             <build>
                 <plugins>
