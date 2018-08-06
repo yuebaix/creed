@@ -12,7 +12,7 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>springboot-simple</artifactId>
-    <name>SpringBoot示例 简单web</name>
+    <name>SpringBoot示例 简单网站</name>
 
     <dependencies>
         <dependency>
@@ -79,10 +79,10 @@
                     <includeTestSourceDirectory>false</includeTestSourceDirectory>
                     <linkXRef>false</linkXRef>
 
-                    <failOnViolation>true</failOnViolation>
-                    <maxAllowedViolations>0</maxAllowedViolations>
-                    <violationSeverity>warning</violationSeverity>
-                    <skip>true</skip>
+                    <!--<failOnViolation>true</failOnViolation>-->
+                    <!--<maxAllowedViolations>0</maxAllowedViolations>-->
+                    <!--<violationSeverity>warning</violationSeverity>-->
+                    <!--<skip>true</skip>-->
                 </configuration>
                 <executions>
                     <execution>

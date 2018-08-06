@@ -38,6 +38,9 @@
         <spring.version>5.0.8.RELEASE</spring.version>
         <disruptor.version>3.4.2</disruptor.version>
         <lombok.version>1.18.2</lombok.version>
+
+        <!--plugins version-->
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -141,6 +144,14 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <configuration>
+                        <locales>zh_CN,en</locales>
+                    </configuration>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
                 <!--check dependencies-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -160,6 +171,11 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
+                </plugin>
+                <!--site linkXRef-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>
