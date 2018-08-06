@@ -1,0 +1,5 @@
+gpg --gen-key
+jerryniu
+creed
+Mutt
+huifumanlove@hotmail.com
