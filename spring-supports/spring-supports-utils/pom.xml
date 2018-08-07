@@ -16,4 +16,8 @@
 
     <name>Spring Supports Utils</name>
     <description>Spring Supports Utils</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
 </project>

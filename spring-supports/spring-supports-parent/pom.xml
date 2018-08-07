@@ -17,4 +17,8 @@
 
     <name>Spring Supports Parent</name>
     <description>Spring Supports Parent</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
 </project>

@@ -17,6 +17,10 @@
     <name>Spring Support Build</name>
     <description>Spring Support Build</description>
 
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+    </properties>
+
     <modules>
         <module>spring-supports-parent</module>
         <module>spring-supports-bom</module>

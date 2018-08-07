@@ -17,6 +17,10 @@
     <name>Samples Build</name>
     <description>Samples Build</description>
 
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+    </properties>
+
     <modules>
         <module>springboot-simple</module>
         <module>springcloud-center</module>

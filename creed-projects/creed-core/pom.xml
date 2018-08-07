@@ -16,4 +16,8 @@
 
     <name>Creed Core</name>
     <description>Creed Core</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
 </project>

@@ -16,4 +16,8 @@
 
     <name>Creed Starters</name>
     <description>Creed Starters</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
 </project>

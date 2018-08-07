@@ -42,6 +42,7 @@
 
         <!--plugins version-->
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -131,6 +132,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <charset>${build.encoding}</charset>
+                        <docencoding>${build.encoding}</docencoding>
+                        <encoding>${build.encoding}</encoding>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>javadoc-package</id>

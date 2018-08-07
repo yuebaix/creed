@@ -44,7 +44,10 @@
     </issueManagement>
 
     <properties>
+        <main.basedir>${basedir}</main.basedir>
         <build.encoding>UTF-8</build.encoding>
+        <disable.checks>true</disable.checks>
+        <spring-javaformat.version>0.0.6</spring-javaformat.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
@@ -53,7 +56,6 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
-        <lombok-maven-plugin.version>1.16.22.0</lombok-maven-plugin.version>
     </properties>
 
     <profiles>
@@ -127,23 +129,6 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.projectlombok</groupId>
-                        <artifactId>lombok-maven-plugin</artifactId>
-                        <version>${lombok-maven-plugin.version}</version>
-                        <configuration>
-                            <encoding>${build.encoding}</encoding>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>lombok-package</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>delombok</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>${maven-javadoc-plugin.version}</version>
@@ -151,6 +136,9 @@
                             <execution>
                                 <id>javadoc-package</id>
                                 <phase>package</phase>
+                                <configuration>
+                                    <encoding>${build.encoding}</encoding>
+                                </configuration>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
@@ -195,23 +183,6 @@
                                 <phase>package</phase>
                                 <goals>
                                     <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.projectlombok</groupId>
-                        <artifactId>lombok-maven-plugin</artifactId>
-                        <version>${lombok-maven-plugin.version}</version>
-                        <configuration>
-                            <encoding>${build.encoding}</encoding>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>lombok-package</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>delombok</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -273,6 +244,39 @@
 
     <build>
         <plugins>
+            <!--checkstyle-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.11</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.spring.javaformat</groupId>
+                        <artifactId>spring-javaformat-checkstyle</artifactId>
+                        <version>${spring-javaformat.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>checkstyle-validation</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <skip>${disable.checks}</skip>
+                            <configLocation>src/checkstyle/checkstyle.xml</configLocation>
+                            <suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <!--flatten pom-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
