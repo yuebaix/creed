@@ -51,6 +51,7 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <lombok-maven-plugin.version>1.16.22.0</lombok-maven-plugin.version>
     </properties>
 
@@ -305,6 +306,19 @@
                 <version>${coveralls-maven-plugin.version}</version>
                 <configuration>
                     <sourceEncoding>UTF-8</sourceEncoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura-maven-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                    <formats>
+                        <format>xml</format>
+                        <format>html</format>
+                    </formats>
                 </configuration>
             </plugin>
         </plugins>
