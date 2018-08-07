@@ -44,6 +44,7 @@
     </issueManagement>
 
     <properties>
+        <build.encoding>UTF-8</build.encoding>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
@@ -57,6 +58,7 @@
 
     <profiles>
         <profile>
+            <!--only for convenience-->
             <id>fast</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -66,6 +68,7 @@
             </modules>
         </profile>
         <profile>
+            <!--deploy to jufan hosted proxy server-->
             <id>jufan</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -104,8 +107,8 @@
             <modules>
                 <module>dependencies</module>
                 <module>creed-projects</module>
-                <module>samples</module>
                 <module>spring-supports</module>
+                <module>samples</module>
             </modules>
             <build>
                 <plugins>
@@ -128,7 +131,7 @@
                         <artifactId>lombok-maven-plugin</artifactId>
                         <version>${lombok-maven-plugin.version}</version>
                         <configuration>
-                            <encoding>UTF-8</encoding>
+                            <encoding>${build.encoding}</encoding>
                         </configuration>
                         <executions>
                             <execution>
@@ -158,6 +161,7 @@
             </build>
         </profile>
         <profile>
+            <!--deploy to maven central-->
             <id>ossrh</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -200,7 +204,7 @@
                         <artifactId>lombok-maven-plugin</artifactId>
                         <version>${lombok-maven-plugin.version}</version>
                         <configuration>
-                            <encoding>UTF-8</encoding>
+                            <encoding>${build.encoding}</encoding>
                         </configuration>
                         <executions>
                             <execution>
@@ -269,6 +273,7 @@
 
     <build>
         <plugins>
+            <!--flatten pom-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
@@ -300,20 +305,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--coveralls-->
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>${coveralls-maven-plugin.version}</version>
                 <configuration>
-                    <sourceEncoding>UTF-8</sourceEncoding>
+                    <sourceEncoding>${build.encoding}</sourceEncoding>
                 </configuration>
             </plugin>
+            <!--coveralls report-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>${cobertura-maven-plugin.version}</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${build.encoding}</encoding>
                     <aggregate>true</aggregate>
                     <formats>
                         <format>xml</format>
