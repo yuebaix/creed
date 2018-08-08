@@ -74,15 +74,29 @@
                 <scope>import</scope>
             </dependency>
             <!--Creed Dependencies-->
+            <!--<dependency>-->
+                <!--<groupId>com.geercode.creed</groupId>-->
+                <!--<artifactId>spring-supports-bom</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>spring-supports-bom</artifactId>
                 <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.geercode.creed</groupId>-->
+                <!--<artifactId>creed-bom</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>creed-bom</artifactId>
                 <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!--Third Party-->
             <dependency>

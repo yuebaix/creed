@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>dependencies</artifactId>
+        <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
-        <relativePath>../../dependencies</relativePath>
+        <relativePath>../..</relativePath>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
@@ -28,6 +28,11 @@
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>creed-starters</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-checkstyle</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

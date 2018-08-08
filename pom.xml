@@ -45,17 +45,7 @@
 
     <properties>
         <main.basedir>${basedir}</main.basedir>
-        <build.encoding>UTF-8</build.encoding>
-        <disable.checks>true</disable.checks>
-        <spring-javaformat.version>0.0.6</spring-javaformat.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
-        <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
+        <disable.checks>false</disable.checks>
     </properties>
 
     <profiles>
@@ -117,7 +107,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>source-package</id>
@@ -131,13 +121,13 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-javadoc-plugin.version}</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>javadoc-package</id>
                                 <phase>package</phase>
                                 <configuration>
-                                    <encoding>${build.encoding}</encoding>
+                                    <encoding>UTF-8</encoding>
                                 </configuration>
                                 <goals>
                                     <goal>jar</goal>
@@ -176,7 +166,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>source-package</id>
@@ -190,7 +180,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-javadoc-plugin.version}</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>javadoc-package</id>
@@ -204,7 +194,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>gpg-verify</id>
@@ -218,7 +208,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <version>1.6.8</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
@@ -229,7 +219,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-release-plugin</artifactId>
-                        <version>${maven-release-plugin.version}</version>
+                        <version>2.5.3</version>
                         <configuration>
                             <autoVersionSubmodules>true</autoVersionSubmodules>
                             <useReleaseProfile>false</useReleaseProfile>
@@ -244,44 +234,11 @@
 
     <build>
         <plugins>
-            <!--checkstyle-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.0.0</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>8.11</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>io.spring.javaformat</groupId>
-                        <artifactId>spring-javaformat-checkstyle</artifactId>
-                        <version>${spring-javaformat.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle-validation</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <skip>${disable.checks}</skip>
-                            <configLocation>src/checkstyle/checkstyle.xml</configLocation>
-                            <suppressionsLocation>src/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <!--flatten pom-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>${flatten-maven-plugin.version}</version>
+                <version>1.0.1</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
@@ -292,6 +249,7 @@
                         </goals>
                         <configuration>
                             <flattenMode>oss</flattenMode>
+                            <!--<updatePomFile>true</updatePomFile>-->
                             <pomElements>
                                 <profiles>remove</profiles>
                                 <properties>remove</properties>
@@ -313,18 +271,18 @@
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-maven-plugin.version}</version>
+                <version>4.3.0</version>
                 <configuration>
-                    <sourceEncoding>${build.encoding}</sourceEncoding>
+                    <sourceEncoding>UTF-8</sourceEncoding>
                 </configuration>
             </plugin>
             <!--coveralls report-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>${cobertura-maven-plugin.version}</version>
+                <version>2.7</version>
                 <configuration>
-                    <encoding>${build.encoding}</encoding>
+                    <encoding>UTF-8</encoding>
                     <aggregate>true</aggregate>
                     <formats>
                         <format>xml</format>

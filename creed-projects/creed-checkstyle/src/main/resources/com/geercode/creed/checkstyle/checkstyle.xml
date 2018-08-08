@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+    <!-- Root Checks -->
+    <module name="RegexpHeaderCheck">
+        <property name="headerFile" value="${checkstyle.header.file}" />
+        <property name="fileExtensions" value="java" />
+    </module>
+    <module name="NewlineAtEndOfFileCheck">
+        <property name="lineSeparator" value="lf"/>
+    </module>
+
+    <!--<module name="ImportControl">-->
+        <!--<property name="file" value="import-control.xml"/>-->
+    <!--</module>-->
+
+</module>

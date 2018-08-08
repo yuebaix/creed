@@ -22,9 +22,10 @@
     </properties>
 
     <modules>
-        <module>creed-parent</module>
         <module>creed-bom</module>
+        <module>creed-parent</module>
         <module>creed-core</module>
         <module>creed-starters</module>
+        <module>creed-checkstyle</module>
     </modules>
 </project>

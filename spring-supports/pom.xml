@@ -22,8 +22,8 @@
     </properties>
 
     <modules>
-        <module>spring-supports-parent</module>
         <module>spring-supports-bom</module>
+        <module>spring-supports-parent</module>
         <module>spring-supports-utils</module>
     </modules>
 </project>
