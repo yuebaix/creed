@@ -44,18 +44,55 @@
     </issueManagement>
 
     <properties>
-        <main.basedir>${basedir}</main.basedir>
         <disable.checks>false</disable.checks>
     </properties>
 
     <profiles>
         <profile>
             <!--only for convenience-->
-            <id>fast</id>
+            <id>custom</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
+                <!--build dependencies-->
+                <module>build-neat</module>
+                <module>dependencies</module>
+                <!--bom dependencies-->
+                <module>spring-supports/spring-supports-bom</module>
+                <module>creed-projects/creed-bom</module>
+                <!--checkstyle dependencies-->
+                <module>creed-projects/creed-checkstyle</module>
+                <!--your won module-->
+                <module>samples/springboot-simple</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>fast</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <disable.checks>true</disable.checks>
+            </properties>
+            <modules>
+                <module>build-neat</module>
+                <module>dependencies</module>
+                <module>creed-projects</module>
+                <module>spring-supports</module>
+                <module>samples</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>all</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>build-neat</module>
+                <module>dependencies</module>
+                <module>creed-projects</module>
+                <module>spring-supports</module>
                 <module>samples</module>
             </modules>
         </profile>
@@ -97,12 +134,13 @@
                 </snapshotRepository>
             </distributionManagement>
             <modules>
+                <module>build-neat</module>
                 <module>dependencies</module>
                 <module>creed-projects</module>
                 <module>spring-supports</module>
                 <module>samples</module>
             </modules>
-            <build>
+<!--            <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -136,7 +174,7 @@
                         </executions>
                     </plugin>
                 </plugins>
-            </build>
+            </build>-->
         </profile>
         <profile>
             <!--deploy to maven central-->
@@ -157,13 +195,14 @@
                 </snapshotRepository>
             </distributionManagement>
             <modules>
+                <module>build-neat</module>
                 <module>dependencies</module>
                 <module>creed-projects</module>
                 <module>spring-supports</module>
             </modules>
             <build>
                 <plugins>
-                    <plugin>
+<!--                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>3.0.1</version>
@@ -190,7 +229,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -249,11 +288,9 @@
                         </goals>
                         <configuration>
                             <flattenMode>oss</flattenMode>
-                            <!--<updatePomFile>true</updatePomFile>-->
                             <pomElements>
                                 <profiles>remove</profiles>
                                 <properties>remove</properties>
-                                <repositories>remove</repositories>
                                 <distributionManagement>remove</distributionManagement>
                             </pomElements>
                         </configuration>

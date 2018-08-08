@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>build</artifactId>
+        <artifactId>build-neat</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.1-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>../../build-neat</relativePath>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
