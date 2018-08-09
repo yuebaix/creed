@@ -1,7 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE import-control PUBLIC "-//Puppy Crawl//DTD Import Control 1.1//EN" "http://www.puppycrawl.com/dtds/import_control_1_1.dtd">
-<import-control pkg="org.springframework.boot">
+<import-control pkg="com.geercode.creed">
 	<allow pkg=".*" regex="true" />
+
+	<subpackage name="samples">
+		<subpackage name="web">
+			<disallow pkg="org.springframework.boot.web" />
+			<allow pkg="org.springframework.boot.web.servlet.server" />
+		</subpackage>
+	</subpackage>
 
 	<subpackage name="autoconfigure">
 		<subpackage name="web">

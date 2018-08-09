@@ -10,6 +10,10 @@
     </module>
 
     <!--<module name="ImportControl">-->
+        <!--<property name="file" value="config/com/geercode/creed/codecheck/import-control.xml"/>-->
+    <!--</module>-->
+
+    <!--<module name="ImportControl">-->
         <!--<property name="file" value="import-control.xml"/>-->
     <!--</module>-->
 

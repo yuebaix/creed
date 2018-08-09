@@ -97,6 +97,60 @@
             </modules>
         </profile>
         <profile>
+            <id>site</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>build-neat</module>
+                <module>dependencies</module>
+                <module>creed-projects</module>
+                <module>spring-supports</module>
+            </modules>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <configuration>
+                            <locales>zh_CN</locales>
+                        </configuration>
+                        <version>3.7.1</version>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-project-info-reports-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>index</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                        <version>2.5</version>
+                        <reportSets>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <reports>
+                                    <report>aggregate</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+        <profile>
             <!--deploy to jufan hosted proxy server-->
             <id>jufan</id>
             <activation>

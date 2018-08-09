@@ -209,12 +209,27 @@
                         <configuration>
                             <failOnError>true</failOnError>
                             <includeTests>true</includeTests>
+                            <!-- 设置分析工作的等级，可以为Min、Default和Max -->
+                            <effort>Max</effort>
+                            <!-- Low、Medium和High (Low最严格) -->
+                            <threshold>Low</threshold>
+                            <!--findbugs需要检测的错误的配置文件-->
+                            <!--<includeFilterFile>com/geercode/creed/codecheck/findbugs-include.xml</includeFilterFile>-->
+                            <!--findbugs需要忽略的错误的配置文件-->
+                            <!--<excludeFilterFile>com/geercode/creed/codecheck/findbugs-exclude.xml</excludeFilterFile>-->
                         </configuration>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.geercode.creed</groupId>
+                        <artifactId>creed-codecheck</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <!--site-->
             <plugin>
@@ -261,6 +276,10 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </reporting>

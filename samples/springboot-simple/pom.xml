@@ -13,6 +13,7 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>springboot-simple</artifactId>
     <name>SpringBoot示例 简单网站</name>
+    <description>SpringBoot示例 简单网站</description>
 
     <properties>
         <build.encoding>UTF-8</build.encoding>
@@ -232,27 +233,41 @@
                             <failOnError>true</failOnError>
                             <includeTests>true</includeTests>
                             <!-- 设置分析工作的等级，可以为Min、Default和Max -->
-                            <!--<effort>Low</effort>-->
+                            <effort>Max</effort>
                             <!-- Low、Medium和High (Low最严格) -->
-                            <!--<threshold>Medium</threshold>-->
+                            <threshold>Low</threshold>
+                            <!--findbugs需要检测的错误的配置文件-->
+                            <!--<includeFilterFile>com/geercode/creed/codecheck/findbugs-include.xml</includeFilterFile>-->
                             <!--findbugs需要忽略的错误的配置文件-->
-                            <!--<excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>-->
-                            <!--<includeFilterFile>findbugs-include.xml</includeFilterFile>-->
-                            <xmlOutput>true</xmlOutput>
-                            <!-- Optional directory to put findbugs xdoc xml report -->
-                            <!--<xmlOutputDirectory>target/site</xmlOutputDirectory>-->
+                            <!--<excludeFilterFile>com/geercode/creed/codecheck/findbugs-exclude.xml</excludeFilterFile>-->
                         </configuration>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.geercode.creed</groupId>
+                        <artifactId>creed-codecheck</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <!--site-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>maven</groupId>-->
+                <!--<artifactId>maven-simian-plugin</artifactId>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>jdepend-maven-plugin</artifactId>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <reporting>
@@ -260,6 +275,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -282,10 +304,6 @@
                 </reportSets>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven-pmd-plugin.version}</version>
@@ -297,6 +315,26 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <tags>
+                        <tag>fixme</tag>
+                        <tag>FixMe</tag>
+                        <tag>FIXME</tag>
+                        <tag>@todo</tag>
+                        <tag>todo</tag>
+                        <tag>TODO</tag>
+                        <tag>@deprecated</tag>
+                    </tags>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
