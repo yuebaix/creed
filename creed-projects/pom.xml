@@ -27,6 +27,6 @@
         <module>creed-parent</module>
         <module>creed-core</module>
         <module>creed-starters</module>
-        <module>creed-checkstyle</module>
+        <module>creed-codecheck</module>
     </modules>
 </project>

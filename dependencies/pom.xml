@@ -41,6 +41,7 @@
         <lombok.version>1.18.2</lombok.version>
 
         <!--plugins version-->
+        <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
     </properties>
@@ -177,6 +178,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
+                </plugin>
+                <!--findbugs-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${findbugs-maven-plugin.version}</version>
                 </plugin>
                 <!--flatten pom-->
                 <plugin>

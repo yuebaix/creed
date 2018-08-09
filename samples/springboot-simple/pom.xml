@@ -90,9 +90,9 @@
                             <skip>${disable.checks}</skip>
                             <consoleOutput>true</consoleOutput>
                             <logViolationsToConsole>true</logViolationsToConsole>
-                            <configLocation>com/geercode/creed/checkstyle/checkstyle.xml</configLocation>
-                            <headerLocation>com/geercode/creed/checkstyle/checkstyle-header.txt</headerLocation>
-                            <suppressionsLocation>com/geercode/creed/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                            <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
+                            <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
+                            <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                         </configuration>
                         <goals>
@@ -108,7 +108,7 @@
                     </dependency>
                     <dependency>
                         <groupId>com.geercode.creed</groupId>
-                        <artifactId>creed-checkstyle</artifactId>
+                        <artifactId>creed-codecheck</artifactId>
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
@@ -152,24 +152,24 @@
             </plugin>
             <!--package-->
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                            <goal>build-info</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <!--verify-->
             <plugin>
@@ -221,6 +221,33 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>findbugs-verify</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <failOnError>true</failOnError>
+                            <includeTests>true</includeTests>
+                            <!-- 设置分析工作的等级，可以为Min、Default和Max -->
+                            <!--<effort>Low</effort>-->
+                            <!-- Low、Medium和High (Low最严格) -->
+                            <!--<threshold>Medium</threshold>-->
+                            <!--findbugs需要忽略的错误的配置文件-->
+                            <!--<excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>-->
+                            <!--<includeFilterFile>findbugs-include.xml</includeFilterFile>-->
+                            <xmlOutput>true</xmlOutput>
+                            <!-- Optional directory to put findbugs xdoc xml report -->
+                            <!--<xmlOutputDirectory>target/site</xmlOutputDirectory>-->
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <!--site-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -242,9 +269,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
-                    <configLocation>com/geercode/creed/checkstyle/checkstyle.xml</configLocation>
-                    <headerLocation>com/geercode/creed/checkstyle/checkstyle-header.txt</headerLocation>
-                    <suppressionsLocation>com/geercode/creed/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                    <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
+                    <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
+                    <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -253,6 +280,10 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

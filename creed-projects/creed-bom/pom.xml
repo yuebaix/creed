@@ -32,7 +32,7 @@
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>creed-checkstyle</artifactId>
+                <artifactId>creed-codecheck</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
