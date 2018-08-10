@@ -23,6 +23,8 @@ public class SimpleApp {
 	 * @author: jerryniu
 	 */
 	public static void main(String[] args) {
+//		String str = null;
+//		System.out.println(str.split("1"));
 		SpringApplication.run(SimpleApp.class, args);
 	}
 }

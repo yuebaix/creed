@@ -42,7 +42,6 @@
 
         <!--plugins version-->
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
-        <maven-simian-plugin.version>1.6.1</maven-simian-plugin.version>
         <jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
@@ -186,12 +185,6 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${findbugs-maven-plugin.version}</version>
-                </plugin>
-                <!--simian-->
-                <plugin>
-                    <groupId>maven</groupId>
-                    <artifactId>maven-simian-plugin</artifactId>
-                    <version>${maven-simian-plugin.version}</version>
                 </plugin>
                 <!--jdepend-->
                 <plugin>
