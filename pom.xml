@@ -62,7 +62,7 @@
                 <module>spring-supports/spring-supports-bom</module>
                 <module>creed-projects/creed-bom</module>
                 <!--checkstyle dependencies-->
-                <module>creed-projects/creed-checkstyle</module>
+                <module>creed-projects/creed-codecheck</module>
                 <!--your won module-->
                 <module>samples/springboot-simple</module>
             </modules>

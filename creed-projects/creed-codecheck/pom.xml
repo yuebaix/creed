@@ -14,8 +14,8 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>creed-codecheck</artifactId>
 
-    <name>Creed Checkstyle</name>
-    <description>Creed Checkstyle</description>
+    <name>Creed Codecheck</name>
+    <description>Creed Codecheck</description>
 
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>
