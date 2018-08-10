@@ -39,6 +39,7 @@
                                 <properties>remove</properties>
                                 <distributionManagement>remove</distributionManagement>
                                 <dependencyManagement>keep</dependencyManagement>
+                                <pluginManagement>keep</pluginManagement>
                             </pomElements>
                         </configuration>
                     </execution>
