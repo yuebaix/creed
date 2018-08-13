@@ -182,6 +182,7 @@
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <printFailingErrors>true</printFailingErrors>
+                    <failOnViolation>true</failOnViolation>
                     <!-- 代码检查规则 -->
                     <rulesets>
                         <ruleset>rulesets/java/ali-comment.xml</ruleset>
@@ -272,6 +273,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
             </plugin>
+            <!--todo等 标签统计报告-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
@@ -288,6 +290,7 @@
                     </tags>
                 </configuration>
             </plugin>
+            <!--jdepend 格式化统计报告-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jdepend-maven-plugin</artifactId>
