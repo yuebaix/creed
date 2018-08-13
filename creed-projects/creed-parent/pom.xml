@@ -174,12 +174,20 @@
                     </rulesets>
                 </configuration>
                 <executions>
-                    <!-- 绑定pmd-p3c:check到verify生命周期 -->
+                    <!-- 绑定pmd:check到verify生命周期 -->
                     <execution>
-                        <id>pmd-p3c-verify</id>
+                        <id>pmd-check-verify</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
+                        </goals>
+                    </execution>
+                    <!-- 绑定pmd:pmd到site生命周期 -->
+                    <execution>
+                        <id>pmd-pmd-site</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>pmd</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -241,6 +249,39 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
+                    <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
+                    <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                            <report>cpd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
