@@ -178,6 +178,7 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven-pmd-plugin.version}</version>
                 <configuration>
+                    <skip>${disable.checks}</skip>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <printFailingErrors>true</printFailingErrors>
@@ -218,6 +219,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <configuration>
+                    <skip>${disable.checks}</skip>
                     <failOnError>true</failOnError>
                     <includeTests>true</includeTests>
                     <!-- 设置分析工作的等级，可以为Min、Default和Max -->

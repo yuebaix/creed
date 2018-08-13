@@ -155,6 +155,7 @@
                 <version>${maven-pmd-plugin.version}</version>
                 <inherited>true</inherited>
                 <configuration>
+                    <skip>${disable.checks}</skip>
                     <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
                     <targetJdk>${java.version}</targetJdk>
                     <printFailingErrors>true</printFailingErrors>
@@ -199,6 +200,7 @@
                         <id>findbugs-verify</id>
                         <phase>verify</phase>
                         <configuration>
+                            <skip>${disable.checks}</skip>
                             <failOnError>true</failOnError>
                             <includeTests>true</includeTests>
                             <!-- 设置分析工作的等级，可以为Min、Default和Max -->
