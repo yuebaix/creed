@@ -243,7 +243,7 @@
     </build>
     <reporting>
         <plugins>
-            <!--集成项目报告-->
+            <!--project info 集成项目报告-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -262,42 +262,42 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <!--为项目报告添加跳转链接-->
+            <!--xref 为项目报告添加跳转链接-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
             </plugin>
-            <!--集成测试报告-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-            </plugin>
-            <!--集成javadoc-->
+            <!--javadoc-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
-            <!--编码风格静态检查-->
+            <!--Integration test report 集成测试报告-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+            <!--static codes inspectation 编码风格静态检查-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <consoleOutput>true</consoleOutput>
-                    <logViolationsToConsole>true</logViolationsToConsole>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
-                    <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
-                    <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
-                </configuration>
                 <reportSets>
                     <reportSet>
+                        <configuration>
+                            <consoleOutput>true</consoleOutput>
+                            <logViolationsToConsole>true</logViolationsToConsole>
+                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                            <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
+                            <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
+                            <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                        </configuration>
                         <reports>
                             <report>checkstyle</report>
                         </reports>
                     </reportSet>
                 </reportSets>
             </plugin>
-            <!--pmd与阿里编码规约检测报告-->
+            <!--pmd & pmd-p3c pmd与阿里编码规约检测报告-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -311,12 +311,12 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <!--bug模式检测 报告-->
+            <!--bug pattern inspectations 八阿哥模式检测报告-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
             </plugin>
-            <!--todo等 标签统计报告-->
+            <!--todo等 tag statistics 标签统计报告-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
@@ -330,12 +330,17 @@
                     </tags>
                 </configuration>
             </plugin>
-            <!--jdepend 格式化统计报告-->
+            <!--jdepend Abstract & Instability & cyclic dependencies 聚合耦合循环依赖报告-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jdepend-maven-plugin</artifactId>
             </plugin>
-            <!--cobertura test cover rate-->
+            <!--javancss Cyclomatic Complexity Number (CCN) 代码循环判断复杂度(圈复杂度)报告-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javancss-maven-plugin</artifactId>
+            </plugin>
+            <!--cobertura test cover rate 测试代码覆盖率-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>

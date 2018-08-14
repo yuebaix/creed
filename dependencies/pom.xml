@@ -46,6 +46,7 @@
         <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
         <jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
+        <javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
@@ -231,6 +232,12 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jdepend-maven-plugin</artifactId>
                     <version>${jdepend-maven-plugin.version}</version>
+                </plugin>
+                <!--javancss-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>javancss-maven-plugin</artifactId>
+                    <version>${javancss-maven-plugin.version}</version>
                 </plugin>
                 <!--cobertura cover report-->
                 <plugin>
