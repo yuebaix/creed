@@ -269,6 +269,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
     <reporting>
@@ -281,13 +285,18 @@
                     <reportSet>
                         <reports>
                             <report>index</report>
-                            <report>ci-management</report>
-                            <report>mailing-lists</report>
-                            <report>team</report>
-                            <report>licenses</report>
-                            <report>issue-management</report>
-                            <report>scm</report>
                             <report>summary</report>
+                            <report>help</report>
+                            <report>modules</report>
+                            <report>team</report>
+                            <report>mailing-lists</report>
+                            <report>scm</report>
+                            <report>ci-management</report>
+                            <report>issue-management</report>
+                            <report>licenses</report>
+                            <report>dependencies</report>
+                            <report>dependency-info</report>
+                            <report>dependency-convergence</report>
                         </reports>
                     </reportSet>
                 </reportSets>

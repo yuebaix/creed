@@ -4,10 +4,10 @@ jdk:
 - oraclejdk8
 
 install:
-- mvn clean install -B -V
+- mvn clean install -B -V -Pall
 
 script:
 - echo script
 
 after_success:
-- mvn clean cobertura:cobertura coveralls:report
+- mvn clean cobertura:cobertura coveralls:report -Pall
