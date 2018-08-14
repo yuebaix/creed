@@ -1,1 +1,4 @@
 mvn clean test cobertura:cobertura coveralls:report
+
+[![Javadocs](http://www.javadoc.io/badge/com.geercode/creed.svg)](http://www.javadoc.io/doc/com.geercode/creed)
+
