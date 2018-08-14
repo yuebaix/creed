@@ -4,7 +4,7 @@ variables:
 ############ 预加载shell脚本 ############
 .script-template: &script-definition |
   #!/bin/bash
-  function getOrDefault() {
+  function sout() {
     echo 123
   }
   function revision() {
