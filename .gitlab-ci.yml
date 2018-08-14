@@ -80,3 +80,7 @@ deploy-other-branch:
     - branches
   except:
     - master
+
+after_script:
+  - echo "After script section"
+  - echo "For example you might do some cleanup here"
