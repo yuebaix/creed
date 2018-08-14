@@ -27,34 +27,34 @@ springboot springcloud ci docker financial architect archetype sample
 
 * build-neat
 
-`make child build clean except for dependencyManagement & pluginManagement`
+`make child builds clean except for dependencyManagement & pluginManagement`
 
 * dependencies
 
-`manage all dependencies for all chiled projects`
+`manage dependencies for all child projects`
 
 * creed-projects
 
-`custom all the main needs code`
+`mainten the codes with the aim of business website, simple use & general satisfying`
 
-name|description
----|---
-creed-bom      |
-creed-parent   |
-creed-codecheck|
-creed-core     |
-creed-starters |
+name|description|brief introduction
+---|---|---
+creed-bom      ||
+creed-parent   ||
+creed-codecheck||
+creed-core     ||
+creed-starters ||
 
 * spring-supports
 
-`define all the enchance utils for spring eco`
+`utils to enchance spring eco`
 
-name|description
----|---
-spring-supports-bom   |
-spring-supports-parent|
-spring-supports-utils |
+name|description|brief introduction
+---|---|---
+spring-supports-bom   ||
+spring-supports-parent||
+spring-supports-utils ||
 
 * samples
 
-`all sample project to mark how to use these codes`
+`all sample projects to explain how to use these codes`
