@@ -80,6 +80,7 @@
         </resources>
         <plugins>
             <!--validate-->
+            <!--check dependencies-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -123,6 +124,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
             <!--verify-->
+            <!--check classpath&classname-->
             <plugin>
                 <groupId>org.basepom.maven</groupId>
                 <artifactId>duplicate-finder-maven-plugin</artifactId>
@@ -139,6 +141,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--check code style-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -173,6 +176,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!--阿里编码规约-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -225,6 +229,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!--findbugs-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
