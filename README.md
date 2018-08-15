@@ -18,7 +18,7 @@ more information can be found [here](docs/instruction/index.md)
 > * maven-pmd-plugin(p3c-pmd)
 > * findbugs-maven-plugin
 > * maven-project-info-reports-plugin
-> * maven-jxr-pluginn
+> * maven-jxr-plugin
 > * maven-surefire-report-plugin
 > * taglist-maven-plugin
 > * jdepend-maven-plugin
