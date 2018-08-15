@@ -8,7 +8,7 @@
 
 springboot springcloud ci docker financial architect archetype sample
 
-more information can be found [here](https://github.com/geercode/creed/wiki)
+more information can be found [here](docs/instruction/index.md)
 
 ### maven plugin list
 > * flatten-maven-plugin

@@ -41,6 +41,7 @@
         <lombok.version>1.18.2</lombok.version>
 
         <!--plugins version-->
+        <dockerfile-maven-plugin.version>1.4.4</dockerfile-maven-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
@@ -181,6 +182,12 @@
                         <locales>zh_CN</locales>
                     </configuration>
                     <version>${maven-site-plugin.version}</version>
+                </plugin>
+                <!--docker-->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-maven-plugin.version}</version>
                 </plugin>
                 <!--check plugin-->
                 <!--check dependencies-->
