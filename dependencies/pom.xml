@@ -49,6 +49,7 @@
         <jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
         <javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
+        <sourceforge.cobertura.version>2.1.1</sourceforge.cobertura.version>
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
     </properties>
@@ -107,6 +108,23 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <!--去除cobertura插件的logback依赖-->
+            <dependency>
+                <groupId>net.sourceforge.cobertura</groupId>
+                <artifactId>cobertura</artifactId>
+                <version>${sourceforge.cobertura.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>tools</artifactId>
+                        <groupId>com.sun</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -253,11 +271,38 @@
                     <version>${cobertura-maven-plugin.version}</version>
                     <configuration>
                         <encoding>${build.encoding}</encoding>
+                        <quiet>true</quiet>
                         <formats>
                             <format>xml</format>
                             <format>html</format>
                         </formats>
                     </configuration>
+                    <!--去除cobertura插件的logback依赖-->
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.cobertura</groupId>
+                            <artifactId>cobertura-runtime</artifactId>
+                            <version>${sourceforge.cobertura.version}</version>
+                            <type>pom</type>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>ch.qos.logback</groupId>
+                                    <artifactId>logback-classic</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.cobertura</groupId>
+                            <artifactId>cobertura</artifactId>
+                            <version>${sourceforge.cobertura.version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>ch.qos.logback</groupId>
+                                    <artifactId>logback-classic</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
