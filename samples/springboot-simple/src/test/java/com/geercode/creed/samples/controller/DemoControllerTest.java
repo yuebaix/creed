@@ -1,8 +1,10 @@
 package com.geercode.creed.samples.controller;
 
+import com.geercode.creed.samples.buildtest.group.BuildTests;
 import com.geercode.creed.samples.buildtest.spring.SpringJ;
 import org.hamcrest.Matchers;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
@@ -21,6 +23,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
  * @version 1.0.0
  */
 @AutoConfigureMockMvc
+@Category(BuildTests.class)
 public class DemoControllerTest extends SpringJ {
 	@Autowired
 	private MockMvc mvc;
