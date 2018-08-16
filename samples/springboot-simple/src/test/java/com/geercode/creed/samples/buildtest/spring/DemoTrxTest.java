@@ -1,4 +1,4 @@
-package com.geercode.creed.samples.test;
+package com.geercode.creed.samples.buildtest.spring;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,10 +8,7 @@ import org.springframework.test.context.transaction.BeforeTransaction;
 
 public class DemoTrxTest extends SpringJ {
 	@Test
-//	@Transactional
-	public void doTest() {
-		
-	}
+//	@Transactional//需要本地提供事务管理
 	public void test() {
 		System.err.println("test");
 	}

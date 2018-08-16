@@ -1,17 +1,18 @@
-package com.geercode.creed.samples.test;
+package com.geercode.creed.samples.buildtest.spring;
 
+import com.geercode.creed.samples.buildtest.group.SlowTests;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-@Category(com.geercode.creed.samples.test.SpringJ.class)
-public class SpringJ01 extends SpringJ {
+@Category(SlowTests.class)
+public class SpringJ02 extends SpringJ {
 	@Test
 	public void test1() {
-		System.err.println("test1");
+		System.err.println("test3");
 	}
 	@Test
 	public void test2() {
-		System.err.println("test2");
+		System.err.println("test4");
 	}
 }
 

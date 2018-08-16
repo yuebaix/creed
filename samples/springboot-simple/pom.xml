@@ -58,6 +58,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -138,9 +143,10 @@
                 <configuration>
                     <!--定义测试套件入口-->
                     <includes>
-                        <include>com/geercode/creed/samples/SpringJEntry.java</include>
+                        <include>com/geercode/creed/samples/SpringJLocalEntry.java</include>
                     </includes>
-                    <!--<groups>com.geercode.creed.samples.test.SpringJ</groups>-->
+                    <!--测试分组-->
+                    <groups>com.geercode.creed.samples.buildtest.group.BuildTests</groups>
                     <!--同一次测试最多尝试两次-->
                     <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <!--返回失败一次则跳过测试过程-->
