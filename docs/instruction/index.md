@@ -1,1 +1,25 @@
-welcome to creed instruction pages
+## creed instruction page
+开发背景
+```
+    1.组织架构扩张
+    2.停机成本
+    3.代码复用
+    4.加法效应
+    5.CICD加快反馈回路
+    6.缺失集成测试
+    7.数据归集方案
+    8.安全
+```
+目标
+```
+    降低开发人员素质要求，节省成本。
+    归集敏感数据
+    提升持续构建发布中的质量
+    增加代码服用，发挥微服务的优势
+```
+##### 内容索引
+* [Get Started](getstarted.md) -开发入门
+* [编码规范](codeguide.md) -通用编码规范
+* [安装构建](build.md) -描述安装构建中的流程与问题
+* [设计](design.md) -设计理念
+* [计划](plan.md) -开发计划

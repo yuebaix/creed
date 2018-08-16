@@ -1,8 +1,6 @@
 package com.geercode.creed.samples.buildtest;
 
-import com.geercode.creed.samples.buildtest.spring.DemoTrxTest;
-import com.geercode.creed.samples.buildtest.spring.SpringJ01;
-import com.geercode.creed.samples.buildtest.spring.SpringJ02;
+import com.geercode.creed.samples.buildtest.spring.*;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -22,9 +20,11 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
 		/*******  所有需要测试的类 START  *******/
+		DemoParameterizedTest.class,
+		DemoTheoriesTest.class,
+		DemoTrxTest.class,
 		SpringJ01.class,
 		SpringJ02.class,
-		DemoTrxTest.class
 		/*******  所有需要测试的类 END  *******/
 })
 public class SpringJEntry_Jerry {}
