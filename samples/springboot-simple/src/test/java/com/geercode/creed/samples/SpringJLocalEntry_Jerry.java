@@ -1,6 +1,6 @@
 package com.geercode.creed.samples;
 
-import com.geercode.creed.samples.foo.CoverTest;
+import com.geercode.creed.samples.controller.DemoControllerTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -20,7 +20,7 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
 		/*******  所有需要测试的类 START  *******/
-		CoverTest.class
+		DemoControllerTest.class
 		/*******  所有需要测试的类 END  *******/
 })
 public class SpringJLocalEntry_Jerry {}

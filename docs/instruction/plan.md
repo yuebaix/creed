@@ -5,4 +5,11 @@
 4.通用MQ治理方案
 5.通用缓存方案
 6.通用nosql存储
+
+第一期：maven全生命周期构建落地
+第二期：springboot脚手架落地
+第三期：springcloud Finchley 全功能落地
+第四期：redis、kafka、hive方案落地
+
+全过程开发ddd与同步事件注册功能
 ```
