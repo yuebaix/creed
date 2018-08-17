@@ -43,6 +43,7 @@
         <!--plugins version-->
         <dockerfile-maven-plugin.version>1.4.4</dockerfile-maven-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+        <jmeter-maven-plugin.version>2.7.0</jmeter-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
@@ -228,6 +229,12 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${findbugs-maven-plugin.version}</version>
+                </plugin>
+                <!--jmeter-->
+                <plugin>
+                    <groupId>com.lazerycode.jmeter</groupId>
+                    <artifactId>jmeter-maven-plugin</artifactId>
+                    <version>${jmeter-maven-plugin.version}</version>
                 </plugin>
                 <!--info plugin-->
                 <!--project info-->

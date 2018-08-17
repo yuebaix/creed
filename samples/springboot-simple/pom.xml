@@ -317,6 +317,25 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!--jmeter-->
+            <!--<plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jmeter-check-results</id>
+                        <goals>
+                            <goal>results</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
             <!--site-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
