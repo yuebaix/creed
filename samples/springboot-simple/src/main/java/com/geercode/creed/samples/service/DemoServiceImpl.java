@@ -1,5 +1,6 @@
 package com.geercode.creed.samples.service;
 
+import com.geercode.creed.samples.domain.UserDomain;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +17,9 @@ import org.springframework.stereotype.Service;
 public class DemoServiceImpl implements DemoService {
 	@Override
 	public String hello() {
-		return "xoxo";
+		UserDomain user = new UserDomain();
+		user.setId(1);
+		user.setName("jerry");
+		return user.sayHi();
 	}
 }

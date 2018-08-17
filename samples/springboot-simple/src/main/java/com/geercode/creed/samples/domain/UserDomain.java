@@ -1,5 +1,7 @@
 package com.geercode.creed.samples.domain;
 
+import lombok.Data;
+
 /**
  * <p>Title       : UserDomain</p>
  * <p>Description : 用户领域对象</p>
@@ -10,5 +12,11 @@ package com.geercode.creed.samples.domain;
  * @author jerryniu
  * @version 1.0.0
  */
+@Data
 public class UserDomain {
+	private long id;
+	private String name;
+	public String sayHi() {
+		return "hi, I'm " + name;
+	}
 }

@@ -24,7 +24,7 @@ public class DemoServiceImplTest2 extends SpringJ {
 	@Test
 	public void helloTest() {
 		String hello = demoService.hello();
-		Assert.assertEquals("xoxo", hello);
+		Assert.assertEquals("hi, I'm jerry", hello);
 		System.out.println(4);
 	}
 }
