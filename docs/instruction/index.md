@@ -1,7 +1,4 @@
 ## creed instruction page
-
-<a id="1"/>
-
 开发背景
 ```
     1.组织架构扩张
@@ -25,6 +22,5 @@
 * [开发流程](procedure.md) -推荐开发流程
 * [编码规范](codeguide.md) -通用编码规范
 * [安装构建](build.md) -描述安装构建中的流程与问题
-  * [Q&A](#1)
 * [设计](design.md) -设计理念
 * [计划](plan.md) -开发计划
