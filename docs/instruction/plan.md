@@ -10,6 +10,7 @@
 第二期：springboot脚手架落地
 第三期：springcloud Finchley 全功能落地
 第四期：redis、kafka、hive方案落地
+第五期：流计算落地
 
 全过程开发ddd与同步事件注册功能
 ```

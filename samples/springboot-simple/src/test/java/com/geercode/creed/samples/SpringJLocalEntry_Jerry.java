@@ -1,6 +1,9 @@
 package com.geercode.creed.samples;
 
 import com.geercode.creed.samples.controller.DemoControllerTest;
+import com.geercode.creed.samples.controller.DemoControllerTest2;
+import com.geercode.creed.samples.service.DemoServiceImplTest;
+import com.geercode.creed.samples.service.DemoServiceImplTest2;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -20,7 +23,10 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
 		/*******  所有需要测试的类 START  *******/
-		DemoControllerTest.class
+		DemoControllerTest.class,
+		DemoControllerTest2.class,
+		DemoServiceImplTest.class,
+		DemoServiceImplTest2.class
 		/*******  所有需要测试的类 END  *******/
 })
 public class SpringJLocalEntry_Jerry {}
