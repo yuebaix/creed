@@ -11,5 +11,12 @@ package com.geercode.creed.samples.service;
  * @version 1.0.0
  */
 public interface DemoService {
+	/**
+	 * <p>description : 测试接口</p>
+	 * <p>create   on : 2018-08-20 18:33:32</p>
+	 * @author: jerryniu
+	 *
+	 * @return String 测试接口返回字符串
+	 */
 	String hello();
 }
