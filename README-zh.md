@@ -13,6 +13,7 @@ more information can be found [here](docs/instruction/index.md)
 ### maven plugin list
 > * flatten-maven-plugin
 > * maven-enforcer-plugin
+> * lombok-maven-plugin
 > * duplicate-finder-maven-plugin
 > * maven-checkstyle-plugin
 > * maven-pmd-plugin(p3c-pmd)
