@@ -26,7 +26,6 @@
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
                 <configuration>
-
                     <!--忽略失败结果-->
                     <ignoreResultFailures>true</ignoreResultFailures>
                     <!--输出jmeter日志-->
@@ -37,7 +36,6 @@
                     <resultsFileFormat>xml</resultsFileFormat>
                     <logsDirectory>../logs</logsDirectory>
                     <resultsDirectory>../logs</resultsDirectory>
-                    <reportDirectory>../logs</reportDirectory>
                     <testPlanLibraries>
                         <artifact>com.lmax:disruptor:3.4.2</artifact>
                     </testPlanLibraries>
@@ -53,10 +51,10 @@
                     <jMeterProcessJVMSettings>
                         <xms>1024</xms>
                         <xmx>1024</xmx>
-                        <arguments>
-                            <argument>-Xprof</argument>
-                            <argument>-Xfuture</argument>
-                        </arguments>
+                        <!--<arguments>-->
+                            <!--<argument>-Xprof</argument>-->
+                            <!--<argument>-Xfuture</argument>-->
+                        <!--</arguments>-->
                     </jMeterProcessJVMSettings>
                 </configuration>
                 <executions>
