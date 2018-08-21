@@ -79,9 +79,6 @@
 
     <build>
         <!--<finalName>${project.artifactId}</finalName>-->
-        <!--lombok相关-->
-        <sourceDirectory>target/generated-sources/delombok</sourceDirectory>
-        <testSourceDirectory>target/generated-test-sources/delombok</testSourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -143,35 +140,6 @@
                                 </requireProperty>
                                 <dependencyConvergence/>
                             </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--lombok-->
-            <plugin>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>delombok</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>delombok</goal>
-                        </goals>
-                        <configuration>
-                            <addOutputDirectory>false</addOutputDirectory>
-                            <sourceDirectory>src/main/java</sourceDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-delombok</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>testDelombok</goal>
-                        </goals>
-                        <configuration>
-                            <addOutputDirectory>false</addOutputDirectory>
-                            <sourceDirectory>src/test/java</sourceDirectory>
                         </configuration>
                     </execution>
                 </executions>
