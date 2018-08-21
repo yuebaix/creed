@@ -33,5 +33,6 @@
         <module>sc-service</module>
         <module>sc-aggregator</module>
         <module>sc-app</module>
+        <module>jmeter-test</module>
     </modules>
 </project>

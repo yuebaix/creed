@@ -5,9 +5,9 @@
 <Configuration status="WARN" monitorInterval="60">
     <Properties>
         <!-- 日志目录 -->
-        <Property name="LOG_DIR" value="../logs/"/>
+        <!--<Property name="LOG_DIR" value="../logs/"/>-->
         <!-- 日志文件前缀 -->
-        <Property name="APP_NAME" value="springboot-simple"/>
+        <!--<Property name="APP_NAME" value="jmeter-test"/>-->
         <!-- 日志格式 -->
         <Property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{1.} : %L#\t%m%n"/>
         <!-- 彩色日志格式(控制台) -->
@@ -20,7 +20,7 @@
             <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
         <!-- DEBUG日志文件 -->
-        <RollingRandomAccessFile  name="DEBUG-OUT" fileName="${LOG_DIR}${APP_NAME}_debug.log"
+        <RollingRandomAccessFile  name="DEBUG-OUT" fileName="${sys:jmeter.logfile:-jmeter.log}_debug.log"
                           filePattern="${LOG_DIR}${APP_NAME}_debug.%d{yyyy-MM-dd}.log"
                           immediateFlush="false" append="true">
             <PatternLayout pattern="${FILE_LOG_PATTERN}" />
@@ -28,7 +28,7 @@
             <TimeBasedTriggeringPolicy />
         </RollingRandomAccessFile >
         <!-- ERROR日志文件 -->
-        <RollingRandomAccessFile  name="ERROR-OUT" fileName="${LOG_DIR}${APP_NAME}_error.log"
+        <RollingRandomAccessFile  name="ERROR-OUT" fileName="${sys:jmeter.logfile:-jmeter.log}_error.log"
                           filePattern="${LOG_DIR}${APP_NAME}_error.%d{yyyy-MM-dd}.log"
                           immediateFlush="false" append="true">
             <PatternLayout pattern="${FILE_LOG_PATTERN}" />
@@ -37,18 +37,6 @@
         </RollingRandomAccessFile >
     </Appenders>
     <Loggers>
-        <!-- 去除日志 -->
-        <AsyncLogger name="org.springframework" level="INFO" />
-        <AsyncLogger name="org.apache" level="INFO" />
-        <AsyncLogger name="com.netflix" level="INFO" />
-        <AsyncLogger name="org.hibernate" level="INFO" />
-        <!--阿里MQ-->
-        <AsyncLogger name="RocketmqClient" level="ERROR" />
-        <AsyncLogger name="RocketmqCommon" level="WARN" />
-        <AsyncLogger name="RocketmqRemoting" level="WARN" />
-        <!--druid-->
-        <AsyncLogger name="druid.sql.Statement" level="WARN" />
-        <AsyncLogger name="druid.sql.ResultSet" level="WARN" />
         <!-- ROOT日志 -->
         <asyncRoot level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT" />

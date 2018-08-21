@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>dependencies</artifactId>
+        <groupId>com.geercode.creed</groupId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../../dependencies</relativePath>
+    </parent>
+
+    <groupId>com.geercode.creed</groupId>
+    <artifactId>jmeter-test</artifactId>
+    <name>Jmeter示例 集成</name>
+    <description>Jmeter示例 集成</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
+    <build>
+        <plugins>
+            <!--jmeter-->
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <configuration>
+
+                    <!--忽略失败结果-->
+                    <ignoreResultFailures>true</ignoreResultFailures>
+                    <!--输出jmeter日志-->
+                    <suppressJMeterOutput>false</suppressJMeterOutput>
+                    <!--日志与结果相关-->
+                    <testResultsTimestamp>true</testResultsTimestamp>
+                    <appendResultsTimestamp>true</appendResultsTimestamp>
+                    <resultsFileFormat>xml</resultsFileFormat>
+                    <logsDirectory>../logs</logsDirectory>
+                    <resultsDirectory>../logs</resultsDirectory>
+                    <reportDirectory>../logs</reportDirectory>
+                    <testPlanLibraries>
+                        <artifact>com.lmax:disruptor:3.4.2</artifact>
+                    </testPlanLibraries>
+                    <!--设置代理-->
+                    <proxyConfig>
+                        <host>127.0.0.1</host>
+                        <port>8080</port>
+                        <!--<username>foousername</username>-->
+                        <!--<password>foopwd</password>-->
+                        <!--<hostExclusions>localhost|*.lazerycode.com</hostExclusions>-->
+                    </proxyConfig>
+                    <!--设置jvm参数-->
+                    <jMeterProcessJVMSettings>
+                        <xms>1024</xms>
+                        <xmx>1024</xmx>
+                        <arguments>
+                            <argument>-Xprof</argument>
+                            <argument>-Xfuture</argument>
+                        </arguments>
+                    </jMeterProcessJVMSettings>
+                </configuration>
+                <executions>
+                    <!-- Run JMeter tests -->
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                    </execution>
+                     <!--Fail build on errors in test-->
+                    <execution>
+                        <id>jmeter-check-results</id>
+                        <goals>
+                            <goal>results</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
