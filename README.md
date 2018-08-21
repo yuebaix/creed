@@ -18,7 +18,6 @@ more information can be found [here](docs/instruction/index.md)
 > * maven-checkstyle-plugin
 > * maven-pmd-plugin(p3c-pmd)
 > * findbugs-maven-plugin
-> * jmeter-maven-plugin
 > * dockerfile-maven-plugin
 > * maven-project-info-reports-plugin
 > * maven-jxr-plugin
@@ -28,6 +27,7 @@ more information can be found [here](docs/instruction/index.md)
 > * javancss-maven-plugin
 > * cobertura-maven-plugin
 > * coveralls-maven-plugin
+> * jmeter-maven-plugin
 
 ### project design
 
