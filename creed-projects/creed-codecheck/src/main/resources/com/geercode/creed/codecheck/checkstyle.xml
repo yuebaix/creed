@@ -2,19 +2,20 @@
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 <!--<module name="com.puppycrawl.tools.checkstyle.Checker">-->
 <module name="Checker">
-    <!-- Root Checks -->
-    <!--<module name="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck">-->
-        <!--<property name="headerFile" value="${checkstyle.header.file}" />-->
-    <!--</module>-->
-    <!--<module name="com.puppycrawl.tools.checkstyle.checks.imports.ImportControlCheck">-->
-        <!--<property name="file" value="${checkstyle.importcontrol.file}"/>-->
-    <!--</module>-->
+    <!--checkstyle编码集-->
+    <property name="charset" value="UTF-8"/>
+    <!--触发violation的等级-->
+    <property name="severity" value="warning"/>
+    <!--tab为4空格-->
+    <property name="tabWidth" value="4"/>
+    <!--文件头检查-->
     <module name="RegexpHeader">
         <property name="headerFile" value="${checkstyle.header.file}" />
     </module>
     <module name="TreeWalker">
+        <!--管理包引入-->
         <module name="ImportControl">
-            <property name="file" value="${checkstyle.importcontrol.file}"/>
+            <property name="file" value="${com.geercode.importcontrol.file}"/>
             <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
         </module>
     </module>
