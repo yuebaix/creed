@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Don't forget to set system property
--DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
-     to make all loggers asynchronous. -->
 <Configuration status="WARN" monitorInterval="60">
     <Properties>
-        <!-- 日志目录 -->
-        <!--<Property name="LOG_DIR" value="../logs/"/>-->
-        <!-- 日志文件前缀 -->
-        <!--<Property name="APP_NAME" value="jmeter-test"/>-->
         <!-- 日志格式 -->
         <Property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{1.} : %L#\t%m%n"/>
-        <!-- 彩色日志格式(控制台) -->
-        <Property name="CONSOLE_LOG_PATTERN" value="%clr{%d{yyyy-MM-dd HH:mm:ss}}{magenta} %clr{${LOG_LEVEL_PATTERN:-%5p}} %clr{[%-15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %clr{%L#\t}{green}%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%xwEx}"/>
     </Properties>
     <Appenders>
         <!-- 控制台日志 -->
         <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}" />
+            <PatternLayout pattern="${FILE_LOG_PATTERN}" />
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
         <!-- DEBUG日志文件 -->

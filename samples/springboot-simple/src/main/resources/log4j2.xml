@@ -9,7 +9,7 @@
 <!-- Don't forget to set system property
 -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
      to make all loggers asynchronous. -->
-<Configuration status="TRACE" monitorInterval="60">
+<Configuration status="WARN" monitorInterval="60">
     <Properties>
         <!-- 日志文件前缀 -->
         <Property name="APP_NAME" value="springboot-simple"/>
@@ -33,6 +33,7 @@
             <PatternLayout pattern="${FILE_LOG_PATTERN}" />
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
+                <OnStartupTriggeringPolicy />
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
@@ -50,6 +51,7 @@
             <PatternLayout pattern="${FILE_LOG_PATTERN}" />
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
+                <OnStartupTriggeringPolicy />
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
@@ -63,22 +65,22 @@
     </Appenders>
     <Loggers>
         <!-- 去除日志 -->
-        <AsyncLogger name="org.springframework" level="INFO" />
-        <AsyncLogger name="org.apache" level="INFO" />
-        <AsyncLogger name="com.netflix" level="INFO" />
-        <AsyncLogger name="org.hibernate" level="INFO" />
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="org.apache" level="INFO" />
+        <Logger name="com.netflix" level="INFO" />
+        <Logger name="org.hibernate" level="INFO" />
         <!--阿里MQ-->
-        <AsyncLogger name="RocketmqClient" level="ERROR" />
-        <AsyncLogger name="RocketmqCommon" level="WARN" />
-        <AsyncLogger name="RocketmqRemoting" level="WARN" />
+        <Logger name="RocketmqClient" level="ERROR" />
+        <Logger name="RocketmqCommon" level="WARN" />
+        <Logger name="RocketmqRemoting" level="WARN" />
         <!--druid-->
-        <AsyncLogger name="druid.sql.Statement" level="WARN" />
-        <AsyncLogger name="druid.sql.ResultSet" level="WARN" />
+        <Logger name="druid.sql.Statement" level="WARN" />
+        <Logger name="druid.sql.ResultSet" level="WARN" />
         <!-- ROOT日志 -->
-        <asyncRoot level="ALL" includeLocation="true">
+        <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT" />
             <appender-ref ref="DEBUG-OUT" />
             <appender-ref ref="ERROR-OUT" />
-        </asyncRoot>
+        </Root>
     </Loggers>
 </Configuration>
