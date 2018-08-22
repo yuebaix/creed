@@ -3,7 +3,7 @@
 <import-control pkg="com.geercode.creed">
 	<allow pkg=".*" regex="true" />
 	<subpackage name="samples">
-		<disallow pkg="org.springframework.web.bind.annotation.RestController" />
+		<disallow pkg="org.springframework.web.bind.annotation" />
 		<allow pkg="org.springframework.boot.web.servlet.server" />
 	</subpackage>
 </import-control>

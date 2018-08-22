@@ -220,6 +220,8 @@
                             <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                             <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
                             <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                            <!--配置包控制文件路径-->
+                            <propertyExpansion>checkstyle.importcontrol.file=${basedir}/import-control.xml</propertyExpansion>
                         </configuration>
                         <goals>
                             <goal>check</goal>
@@ -397,6 +399,8 @@
                             <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                             <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
                             <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                            <!--配置包控制文件路径-->
+                            <propertyExpansion>checkstyle.importcontrol.file=${basedir}/import-control.xml</propertyExpansion>
                         </configuration>
                         <reports>
                             <report>checkstyle</report>

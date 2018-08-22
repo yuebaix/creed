@@ -1,11 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
-<module name="com.puppycrawl.tools.checkstyle.Checker">
+<!--<module name="com.puppycrawl.tools.checkstyle.Checker">-->
+<module name="Checker">
     <!-- Root Checks -->
-    <module name="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck">
-        <property name="headerFile" value="${checkstyle.header.file}" />
-    </module>
+    <!--<module name="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck">-->
+        <!--<property name="headerFile" value="${checkstyle.header.file}" />-->
+    <!--</module>-->
     <!--<module name="com.puppycrawl.tools.checkstyle.checks.imports.ImportControlCheck">-->
         <!--<property name="file" value="${checkstyle.importcontrol.file}"/>-->
     <!--</module>-->
+    <module name="RegexpHeader">
+        <property name="headerFile" value="${checkstyle.header.file}" />
+    </module>
+    <module name="TreeWalker">
+        <module name="ImportControl">
+            <property name="file" value="${checkstyle.importcontrol.file}"/>
+            <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
+        </module>
+    </module>
 </module>
