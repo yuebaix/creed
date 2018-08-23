@@ -158,7 +158,6 @@
                         <configuration>
                             <skip>${disable.checks}</skip>
                             <consoleOutput>true</consoleOutput>
-                            <logViolationsToConsole>true</logViolationsToConsole>
                             <failOnViolation>true</failOnViolation>
                             <violationSeverity>warning</violationSeverity>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
@@ -342,7 +341,6 @@
                     <reportSet>
                         <configuration>
                             <consoleOutput>true</consoleOutput>
-                            <logViolationsToConsole>true</logViolationsToConsole>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                             <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                             <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>

@@ -14,18 +14,18 @@
     </module>
 
     <!--######### Regexp #########-->
-    <!--空格无用行-->
+    <!--不允许行尾有空格-->
     <module name="RegexpSingleline">
         <property name="format" value="\s+$"/>
         <property name="minimum" value="0"/>
         <property name="maximum" value="0"/>
-        <property name="message" value="Line has trailing spaces."/>
+        <property name="message" value="行尾有空格"/>
     </module>
-    <!--无用行-->
+    <!--不允许连续空行-->
     <module name="RegexpMultiline">
         <property name="format" value="\r?\n[\t ]*\r?\n[\t ]*\r?\n"/>
         <property name="fileExtensions" value="java,xml,properties"/>
-        <property name="message" value="Unnecessary consecutive lines"/>
+        <property name="message" value="无用连续行"/>
     </module>
     <!--源文件中src/*/java目录只允许出现java代码-->
     <module name="RegexpOnFilename">
@@ -146,5 +146,60 @@
             <property name="format" value="System\.(out|err)\.println"/>
             <property name="ignoreComments" value="true"/>
         </module>
+        <!--######### Naming Conventions #########-->
+        <!--命名使用驼峰命名法,最多连续使用2个大写字母,static变量除外-->
+        <module name="AbbreviationAsWordInName">
+            <property name="ignoreFinal" value="false"/>
+            <property name="allowedAbbreviationLength" value="1"/>
+            <property name="allowedAbbreviations" value="AST,XML,URL"/>
+        </module>
+        <!--抽象类的名称符合 ^Abstract.+$ 正则-->
+        <module name="AbstractClassName"/>
+        <!--catch到的异常参数命名必须用ex开头-->
+        <module name="CatchParameterName">
+            <property name="format" value="^ex[a-zA-Z0-9]*$"/>
+        </module>
+        <!--类泛型参数名称要符合正则,例A、S1、NT、S2T、SzT-->
+        <module name="ClassTypeParameterName">
+            <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+        </module>
+        <!--接口泛型参数名称要符合正则,例A、S1、NT、S2T、SzT-->
+        <module name="InterfaceTypeParameterName">
+            <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+        </module>
+        <!--方法泛型参数名称要符合正则,例A、S1、NT、S2T、SzT-->
+        <module name="MethodTypeParameterName">
+            <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+        </module>
+        <!--常量(static final修饰)要全部用大写字母,中间用_相连,_后面可以出现数字-->
+        <module name="ConstantName"/>
+        <!--lambda参数要符合正则,例s、ssH、s2d-->
+        <module name="LambdaParameterName">
+            <property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>
+        </module>
+        <!--局部常量只有数字与字母,以小写字母开头-->
+        <module name="LocalFinalVariableName"/>
+        <!--局部变量只有数字与字母,以小写字母开头,允许for循环中变量为单个字母-->
+        <module name="LocalVariableName">
+            <property name="allowOneCharVarInForLoop" value="true"/>
+        </module>
+        <!--类变量只有数字与字母,以小写字母开头-->
+        <module name="MemberName"/>
+        <!--方法名只有数字与字母,以小写字母开头-->
+        <module name="MethodName"/>
+        <!--包名只有小写字母、数字与下划线_,以小写字母开头-->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z0-9_]*)*$"/>
+        </module>
+        <!--方法名只有数字与字母,以小写字母开头-->
+        <module name="ParameterName">
+            <property name="ignoreOverridden" value="true"/>
+        </module>
+        <!--static non-final 变量只有数字与字母,以小写字母开头-->
+        <module name="StaticVariableName"/>
+        <!--类、接口、枚举、注解只有数字与字母,以大写字母开头-->
+        <module name="TypeName"/>
+
+
     </module>
 </module>

@@ -19,7 +19,7 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
         /*******  所有需要测试的Entry START  *******/
-        SpringJEntry_Jerry.class
+        SpringJEntryJerry.class
         /*******  所有需要测试的Entry END  *******/
 })
 public class SpringJEntry {

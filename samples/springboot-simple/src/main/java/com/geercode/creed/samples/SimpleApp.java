@@ -25,6 +25,5 @@ public class SimpleApp {
      */
     public static void main(String[] args) {
         SpringApplication.run(SimpleApp.class, args);
-
     }
 }
