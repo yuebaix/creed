@@ -34,7 +34,6 @@
         <property name="match" value="false"/>
         <message key="regexp.filepath.mismatch"
                  value="Only java files should be located in the ''src/*/java'' folders."/>
-        <!--<property name="message" value="Line has trailing spaces."/>-->
     </module>
 
     <!--文件最大行数-->
