@@ -6,7 +6,7 @@
 <module name="Checker">
     <!--checkstyle编码集-->
     <property name="charset" value="UTF-8"/>
-    <!--触发violation的等级-->
+    <!--violation发生触发的等级-->
     <property name="severity" value="warning"/>
     <!--文件头检查-->
     <module name="RegexpHeader">
@@ -50,6 +50,7 @@
             <property name="file" value="${com.geercode.importcontrol.file}"/>
             <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
         </module>
+
         <!--######### Size Violations #########-->
         <!--每行字符数-->
         <module name="LineLength">
@@ -91,6 +92,7 @@
             <!--忽略三方继承方法-->
             <property name="ignoreOverriddenMethods" value="true"/>
         </module>
+
         <!--######### Whitespace #########-->
         <!--检查空的初始化位置的空白，比如for循环中的初始化-->
         <module name="EmptyForInitializerPad"/>
@@ -140,12 +142,14 @@
         <module name="WhitespaceAfter"/>
         <!--指定符号周围必须用whitespace-->
         <module name="WhitespaceAround"/>
+
         <!--######### Regexp #########-->
         <!--不允许出现System.(out|err).println-->
         <module name="RegexpSinglelineJava">
             <property name="format" value="System\.(out|err)\.println"/>
             <property name="ignoreComments" value="true"/>
         </module>
+
         <!--######### Naming Conventions #########-->
         <!--命名使用驼峰命名法,最多连续使用2个大写字母,static变量除外-->
         <module name="AbbreviationAsWordInName">
@@ -199,6 +203,16 @@
         <module name="StaticVariableName"/>
         <!--类、接口、枚举、注解只有数字与字母,以大写字母开头-->
         <module name="TypeName"/>
+
+        <!--######### Modifiers #########-->
+        <!--检查多余修饰符-->
+        <module name="RedundantModifier"/>
+
+        <!--######### Miscellaneous #########-->
+        <!--数组声名格式为 String[] args-->
+        <!--todo-->
+        <module name="ArrayTypeStyle"/>
+
 
 
     </module>
