@@ -1,3 +1,7 @@
+CheckStyle:
+
+[checkstyle doc](http://checkstyle.sourceforge.net)
+
 Spring:
 
 [Code Style](https://github.com/spring-projects/spring-framework/wiki/Code-Style)

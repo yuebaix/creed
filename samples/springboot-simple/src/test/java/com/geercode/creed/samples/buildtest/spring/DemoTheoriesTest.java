@@ -1,5 +1,6 @@
 package com.geercode.creed.samples.buildtest.spring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
@@ -15,14 +16,16 @@ import org.junit.runner.RunWith;
  * @author jerryniu
  * @version 1.0.0
  */
+@Slf4j
 @RunWith(Theories.class)
 public class DemoTheoriesTest {
-	@DataPoints
-	public static String[] names = {"Tony", "Jim"};
-	@DataPoints
-	public static int[] ageValue1 = {10, 20};
-	@Theory
-	public void testMethod(String name, int age){
-		System.out.println(String.format("%s's age is %s", name, age));
-	}
+    @DataPoints
+    public static String[] names = {"Tony", "Jim"};
+    @DataPoints
+    public static int[] ageValue1 = {10, 20};
+
+    @Theory
+    public void testMethod(String name, int age) {
+        log.debug(String.format("%s's age is %s", name, age));
+    }
 }

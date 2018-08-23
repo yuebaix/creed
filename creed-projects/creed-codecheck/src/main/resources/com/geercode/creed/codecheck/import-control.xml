@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<!DOCTYPE import-control PUBLIC "-//Puppy Crawl//DTD Import Control 1.2//EN" "http://www.puppycrawl.com/dtds/import_control_1_2.dtd">
+<!DOCTYPE import-control PUBLIC "-//Checkstyle//DTD ImportControl Configuration 1.4//EN"
+        "https://checkstyle.org/dtds/import_control_1_4.dtd">
 <import-control pkg="com.geercode.creed">
-	<allow pkg=".*" regex="true" />
-	<subpackage name="samples">
-		<disallow pkg="org.springframework.web.bind.annotation" />
-		<allow pkg="org.springframework.boot.web.servlet.server" />
-	</subpackage>
+    <allow pkg=".*" regex="true"/>
+    <subpackage name="samples">
+        <disallow pkg="org.springframework.web.bind.annotation"/>
+        <allow pkg="org.springframework.boot.web.servlet.server"/>
+    </subpackage>
 </import-control>

@@ -14,9 +14,10 @@ import lombok.Data;
  */
 @Data
 public class UserDomain {
-	private long id;
-	private String name;
-	public String sayHi() {
-		return "hi, I'm " + name;
-	}
+    private long id;
+    private String name;
+
+    public String sayHi() {
+        return "hi, I'm " + name;
+    }
 }

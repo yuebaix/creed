@@ -17,12 +17,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication
 public class SimpleApp {
-	/**
-	 * <p>description : 程序入口</p>
-	 * <p>create   on : 2018-08-07 18:32:40</p>
-	 * @author: jerryniu
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(SimpleApp.class, args);
-	}
+    /**
+     * <p>description : 程序入口</p>
+     * <p>create   on : 2018-08-07 18:32:40</p>
+     *
+     * @author: jerryniu
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(SimpleApp.class, args);
+    }
 }

@@ -19,12 +19,13 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.IncludeCategory({SlowTests.class, FastTests.class})
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
-		/*******  所有需要测试的类 START  *******/
-		DemoParameterizedTest.class,
-		DemoTheoriesTest.class,
-		DemoTrxTest.class,
-		SpringJ01.class,
-		SpringJ02.class,
-		/*******  所有需要测试的类 END  *******/
+        /*******  所有需要测试的类 START  *******/
+        DemoParameterizedTest.class,
+        DemoTheoriesTest.class,
+        DemoTrxTest.class,
+        SpringJ01.class,
+        SpringJ02.class,
+        /*******  所有需要测试的类 END  *******/
 })
-public class SpringJEntry_Jerry {}
+public class SpringJEntry_Jerry {
+}

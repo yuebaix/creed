@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -159,12 +159,18 @@
                             <skip>${disable.checks}</skip>
                             <consoleOutput>true</consoleOutput>
                             <logViolationsToConsole>true</logViolationsToConsole>
+                            <failOnViolation>true</failOnViolation>
+                            <violationSeverity>warning</violationSeverity>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                             <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                             <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
-                            <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                            <suppressionsLocation>
+                                com/geercode/creed/codecheck/checkstyle-suppressions.xml
+                            </suppressionsLocation>
                             <!--配置包控制文件路径-->
-                            <propertyExpansion>com.geercode.importcontrol.file=${main.basedir}/creed-projects/creed-codecheck/src/main/resources/com/geercode/creed/codecheck/import-control.xml</propertyExpansion>
+                            <propertyExpansion>
+                                com.geercode.importcontrol.file=${main.basedir}/creed-projects/creed-codecheck/src/main/resources/com/geercode/creed/codecheck/import-control.xml
+                            </propertyExpansion>
                         </configuration>
                         <goals>
                             <goal>check</goal>
@@ -340,9 +346,13 @@
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                             <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                             <headerLocation>com/geercode/creed/codecheck/checkstyle-header.txt</headerLocation>
-                            <suppressionsLocation>com/geercode/creed/codecheck/checkstyle-suppressions.xml</suppressionsLocation>
+                            <suppressionsLocation>
+                                com/geercode/creed/codecheck/checkstyle-suppressions.xml
+                            </suppressionsLocation>
                             <!--配置包控制文件路径-->
-                            <propertyExpansion>com.geercode.importcontrol.file=${main.basedir}/creed-projects/creed-codecheck/src/main/resources/com/geercode/creed/codecheck/import-control.xml</propertyExpansion>
+                            <propertyExpansion>
+                                com.geercode.importcontrol.file=${main.basedir}/creed-projects/creed-codecheck/src/main/resources/com/geercode/creed/codecheck/import-control.xml
+                            </propertyExpansion>
                         </configuration>
                         <reports>
                             <report>checkstyle</report>

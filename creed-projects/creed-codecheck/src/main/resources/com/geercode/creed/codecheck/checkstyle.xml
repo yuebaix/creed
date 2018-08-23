@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<!--chestyle文档地址: http://checkstyle.sourceforge.net -->
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
 <!--<module name="com.puppycrawl.tools.checkstyle.Checker">-->
 <module name="Checker">
     <!--checkstyle编码集-->
@@ -8,8 +10,39 @@
     <property name="severity" value="warning"/>
     <!--文件头检查-->
     <module name="RegexpHeader">
-        <property name="headerFile" value="${checkstyle.header.file}" />
+        <property name="headerFile" value="${checkstyle.header.file}"/>
     </module>
+
+    <!--######### Regexp #########-->
+    <!--空格无用行-->
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <property name="minimum" value="0"/>
+        <property name="maximum" value="0"/>
+        <property name="message" value="Line has trailing spaces."/>
+    </module>
+    <!--无用行-->
+    <module name="RegexpMultiline">
+        <property name="format" value="\r?\n[\t ]*\r?\n[\t ]*\r?\n"/>
+        <property name="fileExtensions" value="java,xml,properties"/>
+        <property name="message" value="Unnecessary consecutive lines"/>
+    </module>
+    <!--源文件中src/*/java目录只允许出现java代码-->
+    <module name="RegexpOnFilename">
+        <property name="folderPattern" value="[\\/]src[\\/]\w+[\\/]java[\\/]"/>
+        <property name="fileNamePattern" value="\.java$"/>
+        <property name="match" value="false"/>
+        <message key="regexp.filepath.mismatch"
+                 value="Only java files should be located in the ''src/*/java'' folders."/>
+        <!--<property name="message" value="Line has trailing spaces."/>-->
+    </module>
+
+    <!--文件最大行数-->
+    <module name="FileLength">
+        <property name="max" value="2000"/>
+    </module>
+    <!--不允许含有tab符(\t)-->
+    <module name="FileTabCharacter"/>
     <module name="TreeWalker">
         <!--tab为4空格-->
         <property name="tabWidth" value="4"/>
@@ -17,6 +50,102 @@
         <module name="ImportControl">
             <property name="file" value="${com.geercode.importcontrol.file}"/>
             <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
+        </module>
+        <!--######### Size Violations #########-->
+        <!--每行字符数-->
+        <module name="LineLength">
+            <property name="max" value="120"/>
+        </module>
+        <!--内部类最大行数-->
+        <module name="AnonInnerLength">
+            <property name="max" value="20"/>
+        </module>
+        <!--构造器、静态代码块、普通初始代码可执行代码片段长度-->
+        <module name="ExecutableStatementCount">
+            <property name="max" value="30"/>
+            <property name="tokens" value="CTOR_DEF,METHOD_DEF,STATIC_INIT,INSTANCE_INIT"/>
+        </module>
+        <!--普通方法体可执行代码片段长度-->
+        <module name="ExecutableStatementCount">
+            <property name="max" value="60"/>
+            <property name="tokens" value="METHOD_DEF"/>
+        </module>
+        <!--最多方法数-->
+        <module name="MethodCount">
+            <property name="maxTotal" value="34"/>
+        </module>
+        <!--构造器、普通方法体行数-->
+        <module name="MethodLength">
+            <property name="max" value="150"/>
+            <property name="tokens" value="CTOR_DEF,METHOD_DEF"/>
+            <!--不计入注释与空行-->
+            <property name="countEmpty" value="false"/>
+        </module>
+        <!--限制单个java文件最大class个数(内部类除外)-->
+        <module name="OuterTypeNumber">
+            <property name="max" value="1"/>
+        </module>
+        <!--构造器、普通方法参数数量-->
+        <module name="ParameterNumber">
+            <property name="max" value="5"/>
+            <property name="tokens" value="CTOR_DEF,METHOD_DEF"/>
+            <!--忽略三方继承方法-->
+            <property name="ignoreOverriddenMethods" value="true"/>
+        </module>
+        <!--######### Whitespace #########-->
+        <!--检查空的初始化位置的空白，比如for循环中的初始化-->
+        <module name="EmptyForInitializerPad"/>
+        <!--检查空的迭代位置的空白-->
+        <module name="EmptyForIteratorPad"/>
+        <!--检查全局变量中间的空行、类成员中的连续空行-->
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowMultipleEmptyLines" value="false"/>
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+        </module>
+        <!--检查 < 与 > 周围的空白,具体参见文档-->
+        <module name="GenericWhitespace"/>
+        <!--检查方法参数的格式-->
+        <module name="MethodParamPad"/>
+        <!--package与import包名类名不能换行-->
+        <module name="NoLineWrap"/>
+        <!--指定操作符之后不可有whitespace-->
+        <module name="NoWhitespaceAfter"/>
+        <!--指定操作符之前不可有whitespace-->
+        <module name="NoWhitespaceBefore"/>
+        <!--代码过长时,+等操作符必须换行-->
+        <module name="OperatorWrap"/>
+        <!--圆括号 ( 后, ) 前不能接空格-->
+        <module name="ParenPad"/>
+        <!-- . @ :: 符号在换行时必须在新一行-->
+        <module name="SeparatorWrap">
+            <property name="tokens" value="DOT"/>
+            <property name="tokens" value="AT"/>
+            <property name="tokens" value="METHOD_REF"/>
+            <property name="option" value="nl"/>
+        </module>
+        <!-- , ] 数组声明 ... ; 符号在换行时必须在行尾，不得另起一行-->
+        <module name="SeparatorWrap">
+            <property name="tokens" value="COMMA"/>
+            <property name="tokens" value="RBRACK"/>
+            <property name="tokens" value="ARRAY_DECLARATOR"/>
+            <property name="tokens" value="ELLIPSIS"/>
+            <property name="tokens" value="SEMI"/>
+            <property name="option" value="EOL"/>
+        </module>
+        <!--分割空格不能超过1个-->
+        <module name="SingleSpaceSeparator"/>
+        <!--强制类型转换()中间无空格-->
+        <module name="TypecastParenPad"/>
+        <!--指定符号之后必需使用whitespace-->
+        <module name="WhitespaceAfter"/>
+        <!--指定符号周围必须用whitespace-->
+        <module name="WhitespaceAround"/>
+        <!--######### Regexp #########-->
+        <!--不允许出现System.(out|err).println-->
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="System\.(out|err)\.println"/>
+            <property name="ignoreComments" value="true"/>
         </module>
     </module>
 </module>

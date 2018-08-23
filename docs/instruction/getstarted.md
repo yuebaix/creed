@@ -3,6 +3,8 @@
 * JDK: oracleJDK8
 * Maven: 3.3.9
 * IDE: IntelliJ IDEA
+* ContainerService: Docker for Windows
+* ContainerManagement: Kitematic
 ```
 插件：
 Maven Helper -调试maven依赖冲突

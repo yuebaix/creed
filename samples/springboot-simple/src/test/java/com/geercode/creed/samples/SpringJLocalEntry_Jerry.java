@@ -22,11 +22,12 @@ import org.junit.runners.Suite.SuiteClasses;
 //@Categories.IncludeCategory({SlowTests.class, FastTests.class})
 //@Categories.ExcludeCategory(FastTests.class)
 @SuiteClasses({
-		/*******  所有需要测试的类 START  *******/
-		DemoControllerTest.class,
-		DemoControllerTest2.class,
-		DemoServiceImplTest.class,
-		DemoServiceImplTest2.class
-		/*******  所有需要测试的类 END  *******/
+        /*******  所有需要测试的类 START  *******/
+        DemoControllerTest.class,
+        DemoControllerTest2.class,
+        DemoServiceImplTest.class,
+        DemoServiceImplTest2.class
+        /*******  所有需要测试的类 END  *******/
 })
-public class SpringJLocalEntry_Jerry {}
+public class SpringJLocalEntry_Jerry {
+}

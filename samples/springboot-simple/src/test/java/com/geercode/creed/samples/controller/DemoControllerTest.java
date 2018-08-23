@@ -3,6 +3,7 @@ package com.geercode.creed.samples.controller;
 import com.geercode.creed.samples.buildtest.group.BuildTests;
 import com.geercode.creed.samples.buildtest.spring.SpringJ;
 import com.geercode.creed.samples.service.DemoService;
+import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -25,23 +26,24 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
  * @author jerryniu
  * @version 1.0.0
  */
+@Slf4j
 @Category(BuildTests.class)
 public class DemoControllerTest extends SpringJ {
-	@Autowired
-	private MockMvc mvc;
+    @Autowired
+    private MockMvc mvc;
 
-	@MockBean
-	private DemoService demoService;
+    @MockBean
+    private DemoService demoService;
 
-	@Test
-	public void helloTest() throws Exception {
-		Mockito.when(demoService.hello()).thenReturn("hello");
+    @Test
+    public void helloTest() throws Exception {
+        Mockito.when(demoService.hello()).thenReturn("hello");
 
-		mvc.perform(MockMvcRequestBuilders.get("/demo/hello").accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("hello")))
-				.andDo(MockMvcResultHandlers.print());
-		System.out.println(1);
-	}
+        mvc.perform(MockMvcRequestBuilders.get("/demo/hello").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("hello")))
+                .andDo(MockMvcResultHandlers.print());
+        log.debug("1");
+    }
 }
 

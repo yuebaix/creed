@@ -19,17 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
-	@Autowired
-	private DemoService demoService;
-	/**
-	 * <p>description : 测试接口</p>
-	 * <p>create   on : 2018-08-07 18:31:22</p>
-	 * @author: jerryniu
-	 * todo
-	 * fixme
-	 */
-	@GetMapping("/hello")
-	public String hello() {
-		return demoService.hello();
-	}
+    @Autowired
+    private DemoService demoService;
+
+    /**
+     * <p>description : 测试接口</p>
+     * <p>create   on : 2018-08-07 18:31:22</p>
+     *
+     * @author: jerryniu
+     * todo
+     * fixme
+     */
+    @GetMapping("/hello")
+    public String hello() {
+        return demoService.hello();
+    }
 }
