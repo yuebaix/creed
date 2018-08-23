@@ -6,13 +6,13 @@
     <property name="charset" value="UTF-8"/>
     <!--触发violation的等级-->
     <property name="severity" value="warning"/>
-    <!--tab为4空格-->
-    <property name="tabWidth" value="4"/>
     <!--文件头检查-->
     <module name="RegexpHeader">
         <property name="headerFile" value="${checkstyle.header.file}" />
     </module>
     <module name="TreeWalker">
+        <!--tab为4空格-->
+        <property name="tabWidth" value="4"/>
         <!--管理包引入-->
         <module name="ImportControl">
             <property name="file" value="${com.geercode.importcontrol.file}"/>
