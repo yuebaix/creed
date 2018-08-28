@@ -39,6 +39,7 @@
         <spring.version>5.0.8.RELEASE</spring.version>
         <disruptor.version>3.4.2</disruptor.version>
         <lombok.version>1.18.2</lombok.version>
+        <swagger.version>2.9.2</swagger.version>
 
         <!--plugins version-->
         <dockerfile-maven-plugin.version>1.4.4</dockerfile-maven-plugin.version>
@@ -98,7 +99,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--Third Party-->
+            <!--##### Third Party #####-->
             <dependency>
                 <groupId>com.lmax</groupId>
                 <artifactId>disruptor</artifactId>
@@ -109,6 +110,17 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <!--swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
             <!--去除cobertura插件的logback依赖-->
             <dependency>

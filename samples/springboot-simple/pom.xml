@@ -77,6 +77,15 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -194,6 +203,29 @@
                 <artifactId>duplicate-finder-maven-plugin</artifactId>
                 <configuration>
                     <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
+                    <printEqualFiles>true</printEqualFiles>
+                    <exceptions>
+                        <exception>
+                            <conflictingDependencies>
+                                <dependency>
+                                    <groupId>io.springfox</groupId>
+                                    <artifactId>springfox-core</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>io.springfox</groupId>
+                                    <artifactId>springfox-spring-web</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>io.springfox</groupId>
+                                    <artifactId>springfox-schema</artifactId>
+                                </dependency>
+                            </conflictingDependencies>
+                            <resources>
+                                <!--swagger冲突文件-->
+                                <resource>.gitkeep</resource>
+                            </resources>
+                        </exception>
+                    </exceptions>
                 </configuration>
                 <executions>
                     <execution>
