@@ -1,6 +1,7 @@
 package com.geercode.creed.samples.controller;
 
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0.0
  */
 @Api(tags = "测试接口")
+@Slf4j
 @RestController
 @RequestMapping("/say")
 public class SayController {
@@ -24,6 +26,13 @@ public class SayController {
     private static final int NUMBVALUE2 = 2;
     private static final int NUMBVALUE5 = 5;
 
+    /**
+     * <p>description : 测试获取姓名</p>
+     * <p>create   on : 2018-08-30 18:08:15</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     @ApiOperation(value = "获取用户姓名", notes = "用用户ID获取用户姓名: 仅1和2有正确返回")
     @ApiImplicitParam(name = "userNumber", value = "用户ID # Integer", required = true)
     @GetMapping("/getUserName")
@@ -37,6 +46,13 @@ public class SayController {
         }
     }
 
+    /**
+     * <p>description : 测试修改用户密码</p>
+     * <p>create   on : 2018-08-30 18:08:26</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     @ApiOperation(value = "修改用户密码", notes = "根据用户id修改密码<br>新旧密码不能相同<br>用户ID必须在0与5之间")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户ID # Integer", required = true),

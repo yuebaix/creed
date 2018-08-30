@@ -17,6 +17,13 @@ public class UserDomain {
     private long id;
     private String name;
 
+    /**
+     * <p>description : 你好</p>
+     * <p>create   on : 2018-08-30 19:36:34</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     public String sayHi() {
         return "hi, I'm " + name;
     }

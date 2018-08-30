@@ -40,8 +40,9 @@
     <module name="FileLength">
         <property name="max" value="2000"/>
     </module>
-    <!--不允许含有tab符(\t)-->
+    <!--文件中不允许含有tab符(\t)-->
     <module name="FileTabCharacter"/>
+
     <module name="TreeWalker">
         <!--tab为4空格-->
         <property name="tabWidth" value="4"/>
@@ -217,13 +218,13 @@
         <module name="CommentsIndentation"/>
         <!--todo DescendantToken-->
         <!--
-        换行缩进规则:
-            1.代码体相对于所属的代码体的换行缩进量为4字符
-            2.大括号后换行缩进为0字符
-            3.case后换行缩进为4字符
-            4.throws子句换行缩进为8字符
-            5.数据初始化换行缩进为8字符
-            6.连续语句换行缩进为8字符
+            换行缩进规则:
+                1.代码体相对于所属的代码体的换行缩进量为4字符
+                2.大括号后换行缩进为0字符
+                3.case后换行缩进为4字符
+                4.throws子句换行缩进为8字符
+                5.数据初始化换行缩进为8字符
+                6.连续语句换行缩进为8字符
         -->
         <module name="Indentation">
             <property name="basicOffset" value="4"/>
@@ -251,18 +252,38 @@
             <property name="switchBlockAsSingleDecisionPoint" value="true"/>
         </module>
         <!--
-        有效代码行数限制:
-            1.方法上限50
-            2.类上限1500
-            3.文件上限2000
+            有效代码行数限制:
+                1.方法上限50
+                2.类上限1500
+                3.文件上限2000
         -->
         <module name="JavaNCSS"/>
         <!--Npath复杂度(计算条件语句与布尔表达式的复杂度)一个方法内不超过200-->
         <module name="NPathComplexity"/>
 
         <!--######### Javadoc Comments #########-->
-        <!---->
+        <!--限制javadoc标签的顺序(@author, @version, @param, @return, @throws, @exception,
+            @see, @since, @serial, @serialField, @serialData, @deprecated)-->
+        <module name="AtclauseOrder"/>
+        <!--
+            检查所有注解、方法、构造器的javadoc:
+            1.范围为所有public权限修饰符
+            2.允许没有@param @throws @return
+            3.被@Override、@Test注解标记的不会检查javadoc
+            4.@throws标签标示子异常类也可通过检查
+            5.可执行行数在两行以下的方法不写doc也不违反此规则(谷歌实践,可以节省一些配置的无聊注释)
+        -->
+        <module name="JavadocMethod">
+            <property name="scope" value="public"/>
+            <property name="allowMissingParamTags" value="true"/>
+            <property name="allowMissingThrowsTags" value="true"/>
+            <property name="allowMissingReturnTag" value="true"/>
+            <property name="allowedAnnotations" value="Override, Test"/>
+            <property name="allowThrowsTagsForSubclasses" value="true"/>
+            <property name="minLineCount" value="2"/>
+        </module>
 
+        <!--todo JavadocStyle-->
 
 
     </module>

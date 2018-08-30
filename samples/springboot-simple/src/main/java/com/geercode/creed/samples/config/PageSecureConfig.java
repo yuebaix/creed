@@ -53,10 +53,24 @@ public class PageSecureConfig {
     @Autowired(required = false)
     private List<ErrorViewResolver> errorViewResolvers;
 
+    /**
+     * <p>description : 注入服务器配置信息</p>
+     * <p>create   on : 2018-08-30 19:37:35</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     public PageSecureConfig(ServerProperties serverProperties) {
         this.serverProperties = serverProperties;
     }
 
+    /**
+     * <p>description : 注入错误信息</p>
+     * <p>create   on : 2018-08-30 19:38:29</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     @Bean
     public ErrorController basicErrorController(ErrorAttributes errorAttributes) {
         return new JufanErrController(errorAttributes, this.serverProperties.getError(),

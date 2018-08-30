@@ -2,5 +2,6 @@
 <!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN"
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 <suppressions>
-    <!--<suppress files="SpringApplicationTests\.java" checks="FinalClass" />-->
+    <!--关闭以Test结尾的文件报没有javadoc的错误-->
+    <suppress files=".+Test\.java" checks="JavadocMethod"/>
 </suppressions>

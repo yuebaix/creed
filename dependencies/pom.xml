@@ -196,6 +196,8 @@
                         <charset>${build.encoding}</charset>
                         <docencoding>${build.encoding}</docencoding>
                         <encoding>${build.encoding}</encoding>
+                        <quiet>true</quiet>
+                        <attach>false</attach>
                     </configuration>
                     <executions>
                         <execution>
