@@ -30,5 +30,8 @@ public class FooTest {
               ex) {
             log.debug("ex");
         }
+        if (true && true && true && true) {
+            log.debug("test through");
+        }
     }
 }

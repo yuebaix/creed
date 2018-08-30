@@ -218,12 +218,12 @@
         <!--todo DescendantToken-->
         <!--
         换行缩进规则:
-        1.代码体相对于所属的代码体的换行缩进量为4字符
-        2.大括号后换行缩进为0字符
-        3.case后换行缩进为4字符
-        4.throws子句换行缩进为8字符
-        5.数据初始化换行缩进为8字符
-        6.连续语句换行缩进为8字符
+            1.代码体相对于所属的代码体的换行缩进量为4字符
+            2.大括号后换行缩进为0字符
+            3.case后换行缩进为4字符
+            4.throws子句换行缩进为8字符
+            5.数据初始化换行缩进为8字符
+            6.连续语句换行缩进为8字符
         -->
         <module name="Indentation">
             <property name="basicOffset" value="4"/>
@@ -242,6 +242,27 @@
         </module>
         <!--长整形定义时用L结尾而不是l,l看起来像1-->
         <module name="UpperEll"/>
+
+        <!--######### Metrics #########-->
+        <!--&&, ||, &, | 和 ^ 在一句表达式里最多只允许出现3次(4条件综合)-->
+        <module name="BooleanExpressionComplexity"/>
+        <!--函数的分支复杂度最多为10,即各种流程控制语句与条件判断符造成的分支数量-->
+        <module name="CyclomaticComplexity">
+            <property name="switchBlockAsSingleDecisionPoint" value="true"/>
+        </module>
+        <!--
+        有效代码行数限制:
+            1.方法上限50
+            2.类上限1500
+            3.文件上限2000
+        -->
+        <module name="JavaNCSS"/>
+        <!--Npath复杂度(计算条件语句与布尔表达式的复杂度)一个方法内不超过200-->
+        <module name="NPathComplexity"/>
+
+        <!--######### Javadoc Comments #########-->
+        <!---->
+
 
 
     </module>
