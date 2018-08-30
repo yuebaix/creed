@@ -68,7 +68,7 @@ public class PageSecureConfig {
         private final ErrorProperties errorProperties;
 
         JufanErrController(ErrorAttributes errorAttributes,
-                                  ErrorProperties errorProperties, List<ErrorViewResolver> errorViewResolvers) {
+                ErrorProperties errorProperties, List<ErrorViewResolver> errorViewResolvers) {
             super(errorAttributes, errorViewResolvers);
             Assert.notNull(errorProperties, "ErrorProperties must not be null");
             this.errorProperties = errorProperties;

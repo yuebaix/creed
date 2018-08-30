@@ -210,9 +210,38 @@
 
         <!--######### Miscellaneous #########-->
         <!--数组声名格式为 String[] args-->
-        <!--todo-->
         <module name="ArrayTypeStyle"/>
-
+        <!--禁止使用unicode控制符-->
+        <module name="AvoidEscapedUnicodeCharacters"/>
+        <!--注释与代码行对齐-->
+        <module name="CommentsIndentation"/>
+        <!--todo DescendantToken-->
+        <!--
+        换行缩进规则:
+        1.代码体相对于所属的代码体的换行缩进量为4字符
+        2.大括号后换行缩进为0字符
+        3.case后换行缩进为4字符
+        4.throws子句换行缩进为8字符
+        5.数据初始化换行缩进为8字符
+        6.连续语句换行缩进为8字符
+        -->
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <!--<property name="throwsIndent" value="8"/> todo -->
+            <property name="arrayInitIndent" value="8"/>
+            <property name="lineWrappingIndentation" value="8"/>
+            <property name="forceStrictCondition" value="true"/>
+        </module>
+        <!--类名与文件名相同-->
+        <module name="OuterTypeFilename"/>
+        <!--不应该存在main方法,发布的时候需要注释掉,只允许命名以App或Application结尾的类中出现main方法-->
+        <module name="UncommentedMain">
+            <property name="excludedClasses" value="^(.*App|.*Application)$"/>
+        </module>
+        <!--长整形定义时用L结尾而不是l,l看起来像1-->
+        <module name="UpperEll"/>
 
 
     </module>
