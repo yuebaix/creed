@@ -282,8 +282,19 @@
             <property name="allowThrowsTagsForSubclasses" value="true"/>
             <property name="minLineCount" value="2"/>
         </module>
+        <!--javadoc注释中不能为空-->
+        <module name="JavadocStyle">
+            <property name="scope" value="public"/>
+            <property name="checkFirstSentence" value="false"/>
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
+        <!--javadoc标签换行时需要缩进4格-->
+        <module name="JavadocTagContinuationIndentation"/>
+        <!--@param、@return、@throws、@exception、@deprecated后必须接文字描述-->
+        <module name="NonEmptyAtclauseDescription"/>
+        <!--单行javadoc注释中只允许出现内联标签,出现块标签必须写多行-->
+        <module name="SingleLineJavadoc"/>
 
-        <!--todo JavadocStyle-->
 
 
     </module>

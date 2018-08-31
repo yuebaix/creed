@@ -23,8 +23,18 @@ public class UserDomain {
      *
      * @author jerryniu
      * @version 1.0.0
+     * @return String
+     *     一些注释
+     * @deprecated 0.9版本后失效
      */
     public String sayHi() {
+        return "hi, I'm " + name;
+    }
+
+    /**
+     * 1234打卡机的法律
+     */
+    public String sayHello() {
         return "hi, I'm " + name;
     }
 }
