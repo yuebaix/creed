@@ -290,7 +290,7 @@
         <!--单行javadoc注释中只允许出现内联标签,出现块标签必须写多行-->
         <module name="SingleLineJavadoc"/>
 
-        <!--Imports-->
+        <!--######### Imports #########-->
         <!--禁止*导入(import package.*)-->
         <module name="AvoidStarImport"/>
         <!--禁止静态导入(import static)-->
@@ -304,6 +304,45 @@
         <module name="RedundantImport"/>
         <!--禁止导入没有使用的包-->
         <module name="UnusedImports"/>
+
+        <!--######### Coding #########-->
+        <!--禁止equals(Foo foo),如果非要写需要先覆写equals(Object obj)-->
+        <module name="CovariantEquals"/>
+        <!--
+            限制接口与类元素声名顺序如下:
+                1. 类（静态）变量。首先应当是public类变量，然后是protected类变量，然后是package类变量（没有访问标识符），最后是private类变量。
+                2. 实例变量。首先应当是public类变量，然后是protected类变量，然后是package类变量（没有访问标识符），最后是private类变量。
+                3. 构造器
+                4. 方法
+        -->
+        <module name="DeclarationOrder"/>
+        <!--switch语句中的default应在所有的case分支之后-->
+        <module name="DefaultComesLast"/>
+        <!--禁止空语句(只有分号;)-->
+        <module name="EmptyStatement"/>
+        <!--禁止可能为null的变量在equals左侧-->
+        <module name="EqualsAvoidNull"/>
+        <!--equals()方法与hashcode()方法要同时覆写-->
+        <module name="EqualsHashCode"/>
+        <!--禁止类或对象的成员显式地初始化为成员所属类型的默认值(如Object a = null、boolean flag = false、int i = 0)-->
+        <module name="ExplicitInitialization"/>
+        <!--检查switch中case后是否加入了跳出语句(return、break、throw、continue)-->
+        <module name="FallThrough"/>
+        <!--禁止参数名或变量名隐藏成员变量(类变量、成员变量、方法参数、lambda),setter与构造器除外-->
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+            <property name="setterCanReturnItsClass" value="true"/>
+        </module>
+        <!--禁止子表达式中是否有赋值语句，例如String s = Integer.toString(i = 2)-->
+        <module name="InnerAssignment"/>
+        <!--禁止魔法值(需要用 static final 修饰并声名)-->
+        <module name="MagicNumber"/>
+        <!--switch语句必须含有一个default子句-->
+        <module name="MissingSwitchDefault"/>
+
+
+
 
     </module>
 </module>
