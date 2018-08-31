@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * <p>Title       : DemoController</p>
  * <p>Description : DemoController</p>
@@ -25,6 +27,8 @@ public class DemoController {
     /**
      * <p>description : 测试接口</p>
      * <p>create   on : 2018-08-07 18:31:22</p>
+     *
+     * {@link Date}
      *
      * todo
      * fixme

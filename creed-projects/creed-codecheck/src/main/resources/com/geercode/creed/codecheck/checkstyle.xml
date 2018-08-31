@@ -46,11 +46,6 @@
     <module name="TreeWalker">
         <!--tab为4空格-->
         <property name="tabWidth" value="4"/>
-        <!--管理包引入-->
-        <module name="ImportControl">
-            <property name="file" value="${com.geercode.importcontrol.file}"/>
-            <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
-        </module>
 
         <!--######### Size Violations #########-->
         <!--每行字符数-->
@@ -295,7 +290,20 @@
         <!--单行javadoc注释中只允许出现内联标签,出现块标签必须写多行-->
         <module name="SingleLineJavadoc"/>
 
-
+        <!--Imports-->
+        <!--禁止*导入(import package.*)-->
+        <module name="AvoidStarImport"/>
+        <!--禁止静态导入(import static)-->
+        <module name="AvoidStaticImport"/>
+        <!--对src/main/下的包进行导入管理,需要提供import-control.xml-->
+        <module name="ImportControl">
+            <property name="file" value="${com.geercode.importcontrol.file}"/>
+            <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
+        </module>
+        <!--禁止多余导入(重复导入、非静态导入java.lang包、非静态导入当前包)-->
+        <module name="RedundantImport"/>
+        <!--禁止导入没有使用的包-->
+        <module name="UnusedImports"/>
 
     </module>
 </module>

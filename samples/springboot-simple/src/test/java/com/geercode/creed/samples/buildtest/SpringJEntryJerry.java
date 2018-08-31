@@ -1,6 +1,10 @@
 package com.geercode.creed.samples.buildtest;
 
-import com.geercode.creed.samples.buildtest.spring.*;
+import com.geercode.creed.samples.buildtest.spring.DemoParameterizedTest;
+import com.geercode.creed.samples.buildtest.spring.DemoTheoriesTest;
+import com.geercode.creed.samples.buildtest.spring.DemoTrxTest;
+import com.geercode.creed.samples.buildtest.spring.SpringJ01;
+import com.geercode.creed.samples.buildtest.spring.SpringJ02;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
