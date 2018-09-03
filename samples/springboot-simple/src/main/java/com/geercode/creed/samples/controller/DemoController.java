@@ -1,6 +1,7 @@
 package com.geercode.creed.samples.controller;
 
 import com.geercode.creed.samples.service.DemoService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.Date;
  * @author jerryniu
  * @version 1.0.0
  */
+@Api("123")
 @RestController
 @RequestMapping("/demo")
 public class DemoController {

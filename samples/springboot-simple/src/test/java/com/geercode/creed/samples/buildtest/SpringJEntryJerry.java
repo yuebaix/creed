@@ -28,7 +28,7 @@ import org.junit.runners.Suite.SuiteClasses;
         DemoTheoriesTest.class,
         DemoTrxTest.class,
         SpringJ01.class,
-        SpringJ02.class,
+        SpringJ02.class
         /*******  所有需要测试的类 END  *******/
 })
 public class SpringJEntryJerry {

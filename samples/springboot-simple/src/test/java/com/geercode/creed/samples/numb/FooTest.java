@@ -14,6 +14,7 @@ import org.junit.Test;
  * @version 1.0.0
  */
 @Slf4j
+@SuppressWarnings({"unchecked", "rawtypes", "unused"})
 public class FooTest {
     private final int con1 = 1;
     private final int con2 = 2;

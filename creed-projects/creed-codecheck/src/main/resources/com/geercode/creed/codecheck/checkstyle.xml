@@ -427,5 +427,23 @@
             <property name="option" value="alone"/>
             <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT"/>
         </module>
+
+        <!--######### Annotations #########-->
+        <!--注解必须单独一行(类声名、接口声名、枚举声名、方法声名、构造器声名)-->
+        <module name="AnnotationLocation">
+            <property name="id" value="AnnotationLocationMostCases"/>
+            <property name="tokens"
+                      value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>
+        </module>
+        <!--多个注解可以跟目标元素在同一行(变量)-->
+        <module name="AnnotationLocation">
+            <property name="id" value="AnnotationLocationVariables"/>
+            <property name="tokens" value="VARIABLE_DEF"/>
+            <property name="allowSamelineMultipleAnnotations" value="true"/>
+        </module>
+        <!--注解风格,尽量减少代码,例：@SuppressWarnings("unchecked")-->
+        <module name="AnnotationUseStyle"/>
+
+
     </module>
 </module>
