@@ -243,9 +243,7 @@
         <!--&&, ||, &, | 和 ^ 在一句表达式里最多只允许出现3次(4条件综合)-->
         <module name="BooleanExpressionComplexity"/>
         <!--函数的分支复杂度最多为10,即各种流程控制语句与条件判断符造成的分支数量-->
-        <module name="CyclomaticComplexity">
-            <property name="switchBlockAsSingleDecisionPoint" value="true"/>
-        </module>
+        <module name="CyclomaticComplexity"/>
         <!--
             有效代码行数限制:
                 1.方法上限50

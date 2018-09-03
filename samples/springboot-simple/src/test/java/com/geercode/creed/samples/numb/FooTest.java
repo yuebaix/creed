@@ -15,8 +15,89 @@ import org.junit.Test;
  */
 @Slf4j
 public class FooTest {
+    private final int con1 = 1;
+    private final int con2 = 2;
+    private final int con3 = 3;
+    private final int con4 = 4;
+    private final int con5 = 5;
+    private final int con6 = 6;
+    private final int con7 = 7;
+    private final int con8 = 8;
+    private final int con9 = 9;
+    private final int con0 = 0;
+
     @Test
-    public void test2() throws Exception {
+    public void test1() {
+        int constant = 9;
+        switch (constant) {
+            case con1 :
+                log.debug("" + con1);
+                break;
+            case con2 :
+                log.debug("" + con2);
+                break;
+            case con3 :
+                log.debug("" + con3);
+                break;
+            case con4 :
+                log.debug("" + con4);
+                break;
+            case con5 :
+                log.debug("" + con5);
+                break;
+            case con6 :
+                log.debug("" + con6);
+                break;
+            case con7 :
+                log.debug("" + con7);
+                break;
+            case con8 :
+                log.debug("" + con8);
+                break;
+            case con9 :
+                log.debug("" + con9);
+                break;
+            default :
+                log.debug("default");
+        }
+    }
+
+    @Test
+    public void test2() {
+        int constant = 9;
+        if (constant == con1) {
+            doSomething(constant);
+        } else if (constant == con2) {
+            doSomething(constant);
+        } else {
+            doSomething(constant);
+        }
+    }
+
+    private void doSomething(int constant) {
+        if (constant == con3) {
+
+        } else if (constant == con4) {
+
+        } else if (constant == con5) {
+
+        } else if (constant == con6) {
+
+        } else if (constant == con7) {
+
+        } else if (constant == con8) {
+
+        } else if (constant == con9) {
+
+        } else if (constant == con0) {
+
+        } else {
+
+        }
+    }
+
+    @Test
+    public void test3() throws Exception {
         long l = 100L;
         log.debug("" + l);
         int[] arr = new int[]{1, 2,
