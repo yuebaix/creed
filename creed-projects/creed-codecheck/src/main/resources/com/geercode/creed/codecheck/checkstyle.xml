@@ -371,5 +371,22 @@
         <!--确保重写finalize()时调用了super.finalize()-->
         <module name="SuperFinalize"/>
 
+        <!--######### Class Design #########-->
+        <!--只有私有构造器的类必须声名为final-->
+        <module name="FinalClass"/>
+        <!--禁止工具类(只有静态方法、字段的类)有public构造器(工具类实例化是没有意义的,将工具类构造器设置为private)-->
+        <module name="HideUtilityClassConstructor"/>
+        <!--内部类、接口要在所有变量与方法声名之后,在类末尾-->
+        <module name="InnerTypeLast"/>
+        <!--接口是一种类型,不能只声名变量不声名方法-->
+        <module name="InterfaceIsType"/>
+        <!--异常类(规则:名称与父类名称符合^.*Exception$|^.*Error$|^.*Throwable$的类)变量要声名为final-->
+        <module name="MutableException"/>
+        <!--顶级(第一个出现的public类型、如果没有public类型,则选取第一个出现的类型)类、接口、枚举都必须在属于自己的源文件中-->
+        <module name="OneTopLevelClass"/>
+        <!--只有static final的类成员可以是public，其他的类成员必须是private-->
+        <module name="VisibilityModifier"/>
+
+
     </module>
 </module>
