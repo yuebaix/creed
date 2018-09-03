@@ -111,8 +111,64 @@ public class FooTest {
               ex) {
             log.debug("ex");
         }
-        if (true && true && true && true) {
-            log.debug("test through");
+        //if (true && true && true && true) {
+        //    log.debug("test through");
+        //}
+    }
+
+    @Test
+    public void test4() {
+        int constant = 9;
+        for (int i = 0; i < 10; i++) {
+            if (constant == con2) {
+                doSomething(constant);
+            } else if (constant == con2) {
+                doSomething(constant);
+            } else {
+                doSomething(constant);
+            }
+        }
+    }
+
+    private void over() {
+        for (;;) {
+            for (;;) {
+                for (;;) {
+
+                }
+            }
+        }
+    }
+
+    private void over(int i, String str) {
+        if (true) {
+            if (true) {
+                if (true) {
+
+                } else {
+
+                }
+            } else {
+
+            }
+        } else {
+
+        }
+    }
+
+    private void over(int i) {
+        try {
+            try {
+                try {
+
+                } catch (Exception ex) {
+
+                }
+            } catch (Exception ex) {
+
+            }
+        } catch (Exception ex) {
+
         }
     }
 }

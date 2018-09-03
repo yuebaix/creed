@@ -338,9 +338,38 @@
         <module name="MagicNumber"/>
         <!--switch语句必须含有一个default子句-->
         <module name="MissingSwitchDefault"/>
-
-
-
+        <!--变量声明须独立一行一条语句-->
+        <module name="MultipleVariableDeclarations"/>
+        <!--for循环代码块嵌套深度限制为2层(共3层)-->
+        <module name="NestedForDepth">
+            <property name="max" value="2"/>
+        </module>
+        <!--if-else控制代码块嵌套深度限制为2层(共3层)-->
+        <module name="NestedIfDepth">
+            <property name="max" value="2"/>
+        </module>
+        <!--try代码块嵌套深度限制为2层(共3层)-->
+        <module name="NestedTryDepth">
+            <property name="max" value="2"/>
+        </module>
+        <!--禁止重写clone()方法,有需求时请写shallowCopy()与deepCopy()-->
+        <module name="NoClone"/>
+        <!--禁止重写finalize()方法-->
+        <module name="NoFinalizer"/>
+        <!--每行只能有一条语句-->
+        <module name="OneStatementPerLine"/>
+        <!--重载方法要连续排列-->
+        <module name="OverloadMethodsDeclarationOrder"/>
+        <!--不允许有过度复杂的布尔表达式(对一些pattern进行检测)-->
+        <module name="SimplifyBooleanExpression"/>
+        <!--不允许返回过度复杂的布尔表达式(对一些pattern进行检测)-->
+        <module name="SimplifyBooleanReturn"/>
+        <!--禁止字符串判断时用==或!=,要用equals()-->
+        <module name="StringLiteralEquality"/>
+        <!--确保重写clone()时调用了super.clone()-->
+        <module name="SuperClone"/>
+        <!--确保重写finalize()时调用了super.finalize()-->
+        <module name="SuperFinalize"/>
 
     </module>
 </module>
