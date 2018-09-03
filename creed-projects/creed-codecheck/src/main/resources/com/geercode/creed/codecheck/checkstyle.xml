@@ -387,6 +387,45 @@
         <!--只有static final的类成员可以是public，其他的类成员必须是private-->
         <module name="VisibilityModifier"/>
 
-
+        <!--######### Block Checks #########-->
+        <!--禁止方法体内嵌代码块-->
+        <module name="AvoidNestedBlocks"/>
+        <!--禁止空代码块-->
+        <module name="EmptyBlock">
+            <property name="tokens" value="LITERAL_CATCH"/>
+            <property name="tokens" value="ARRAY_INIT"/>
+            <property name="tokens" value="LITERAL_DEFAULT"/>
+            <property name="tokens" value="LITERAL_CASE"/>
+            <property name="tokens" value="INSTANCE_INIT"/>
+            <property name="tokens" value="LITERAL_DO"/>
+            <property name="tokens" value="LITERAL_ELSE"/>
+            <property name="tokens" value="LITERAL_FINALLY"/>
+            <property name="tokens" value="LITERAL_FOR"/>
+            <property name="tokens" value="LITERAL_IF"/>
+            <property name="tokens" value="LITERAL_SWITCH"/>
+            <property name="tokens" value="LITERAL_SYNCHRONIZED"/>
+            <property name="tokens" value="LITERAL_TRY"/>
+            <property name="tokens" value="LITERAL_WHILE"/>
+            <property name="tokens" value="STATIC_INIT"/>
+        </module>
+        <!--catch代码块中不能为空(可写注释压制此冲突)-->
+        <module name="EmptyCatchBlock"/>
+        <!--左花括号{必须在代码尾-->
+        <module name="LeftCurly">
+            <property name="ignoreEnums" value="false"/>
+        </module>
+        <!--do、while、for、else、if代码快必须要有花括号-->
+        <module name="NeedBraces"/>
+        <!--右花括号}与接下来的代码在同一行(try、catch、finally、if、else、do)-->
+        <module name="RightCurly">
+            <property name="id" value="RightCurlySame"/>
+            <property name="tokens" value="LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_DO"/>
+        </module>
+        <!--右花括号}单独在一行(类定义、方法定义、构造器定义、for、while、static代码块、普通代码块)-->
+        <module name="RightCurly">
+            <property name="id" value="RightCurlyAlone"/>
+            <property name="option" value="alone"/>
+            <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT"/>
+        </module>
     </module>
 </module>

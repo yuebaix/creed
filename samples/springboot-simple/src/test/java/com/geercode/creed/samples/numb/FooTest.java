@@ -76,23 +76,25 @@ public class FooTest {
 
     private void doSomething(int constant) {
         if (constant == con3) {
-
+            new Thread(() -> {
+                log.debug("123");
+            }).start();
         } else if (constant == con4) {
-
+            log.debug("" + con1);
         } else if (constant == con5) {
-
+            log.debug("" + con1);
         } else if (constant == con6) {
-
+            log.debug("" + con1);
         } else if (constant == con7) {
-
+            log.debug("" + con1);
         } else if (constant == con8) {
-
+            log.debug("" + con1);
         } else if (constant == con9) {
-
+            log.debug("" + con1);
         } else if (constant == con0) {
-
+            log.debug("" + con1);
         } else {
-
+            log.debug("" + con1);
         }
     }
 
@@ -127,48 +129,6 @@ public class FooTest {
             } else {
                 doSomething(constant);
             }
-        }
-    }
-
-    private void over() {
-        for (;;) {
-            for (;;) {
-                for (;;) {
-
-                }
-            }
-        }
-    }
-
-    private void over(int i, String str) {
-        if (true) {
-            if (true) {
-                if (true) {
-
-                } else {
-
-                }
-            } else {
-
-            }
-        } else {
-
-        }
-    }
-
-    private void over(int i) {
-        try {
-            try {
-                try {
-
-                } catch (Exception ex) {
-
-                }
-            } catch (Exception ex) {
-
-            }
-        } catch (Exception ex) {
-
         }
     }
 }
