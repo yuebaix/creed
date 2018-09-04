@@ -75,6 +75,15 @@ public class FooTest {
         }
     }
 
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-09-04 12:56:48</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     * @deprecated version0.09以后失效
+     */
+    @Deprecated
     private void doSomething(int constant) {
         if (constant == con3) {
             new Thread(() -> {

@@ -441,9 +441,19 @@
             <property name="tokens" value="VARIABLE_DEF"/>
             <property name="allowSamelineMultipleAnnotations" value="true"/>
         </module>
-        <!--注解风格,尽量减少代码,例：@SuppressWarnings("unchecked")-->
-        <module name="AnnotationUseStyle"/>
-
-
+        <!--
+            注解风格value值可以用数组形式表示单个值,注解中有value元素并且是单独元素或其他元素有默认值的情况下生效,
+                例：@SuppressWarnings({"unchecked","unused"})、@SuppressWarnings({"unchecked"})、@SuppressWarnings("unchecked"),
+                不得使用扩展形式@SuppressWarnings(value = {"unchecked", "rawtypes", "unused"})
+        -->
+        <module name="AnnotationUseStyle">
+            <property name="elementStyle" value="compact"/>
+            <property name="trailingArrayComma" value="never"/>
+            <property name="closingParens" value="never"/>
+        </module>
+        <!--@Deprecated注解与javadoc标签@deprecated必须同时存在-->
+        <module name="MissingDeprecated"/>
+        <!--所有包注解都必须在package-info.java文件中出现-->
+        <module name="PackageAnnotation"/>
     </module>
 </module>

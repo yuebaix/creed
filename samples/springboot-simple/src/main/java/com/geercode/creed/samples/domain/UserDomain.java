@@ -25,7 +25,6 @@ public class UserDomain {
      * @version 1.0.0
      * @return String
      *     一些注释
-     * @deprecated 0.9版本后失效
      */
     public String sayHi() {
         return "hi, I'm " + name;
