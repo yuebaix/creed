@@ -43,7 +43,6 @@ public class DemoControllerTest extends SpringJ {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("hello")))
                 .andDo(MockMvcResultHandlers.print());
-        log.debug("1");
     }
 }
 

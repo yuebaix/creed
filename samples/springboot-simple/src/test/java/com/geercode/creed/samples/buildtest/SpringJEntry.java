@@ -17,10 +17,10 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Categories.class)
 //@Categories.IncludeCategory({SlowTests.class, FastTests.class})
 //@Categories.ExcludeCategory(FastTests.class)
-@SuiteClasses({
+@SuiteClasses(
         /*******  所有需要测试的Entry START  *******/
         SpringJEntryJerry.class
-        /*******  所有需要测试的Entry END  *******/
-})
+/*******  所有需要测试的Entry END  *******/
+)
 public class SpringJEntry {
 }

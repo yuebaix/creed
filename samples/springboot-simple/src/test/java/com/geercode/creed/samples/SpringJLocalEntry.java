@@ -17,10 +17,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Categories.class)
 //@Categories.IncludeCategory({SlowTests.class, FastTests.class})
 //@Categories.ExcludeCategory(FastTests.class)
-@SuiteClasses({
-        /*******  所有需要测试的Entry START  *******/
+@SuiteClasses(
         SpringJLocalEntryJerry.class
-        /*******  所有需要测试的Entry END  *******/
-})
+)
 public class SpringJLocalEntry {
 }

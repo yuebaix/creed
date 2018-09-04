@@ -29,11 +29,4 @@ public class UserDomain {
     public String sayHi() {
         return "hi, I'm " + name;
     }
-
-    /**
-     * 1234打卡机的法律
-     */
-    public String sayHello() {
-        return "hi, I'm " + name;
-    }
 }
