@@ -140,7 +140,6 @@
                 <module>dependencies</module>
                 <module>creed-projects</module>
                 <module>spring-supports</module>
-                <module>samples</module>
             </modules>
             <build>
                 <plugins>
