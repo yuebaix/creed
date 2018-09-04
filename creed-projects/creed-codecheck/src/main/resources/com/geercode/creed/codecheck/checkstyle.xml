@@ -211,7 +211,6 @@
         <module name="AvoidEscapedUnicodeCharacters"/>
         <!--注释与代码行对齐-->
         <module name="CommentsIndentation"/>
-        <!--todo DescendantToken-->
         <!--
             换行缩进规则:
                 1.代码体相对于所属的代码体的换行缩进量为4字符
