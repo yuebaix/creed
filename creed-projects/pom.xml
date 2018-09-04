@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build-neat</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.2-SNAPSHOT</version>
         <relativePath>../build-neat</relativePath>
     </parent>
 
