@@ -29,11 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Title       : SayController</p>
  * <p>Description : 测试swagger</p>
- * <p>Copyright   : Copyright 2018-2050</p>
- * <p>Company     : www.juxiangfen.com</p>
- * <p>created on  : 2018-08-27 21:55</p>
+ * <p>Created on  : 2018-08-27 21:55</p>
  *
  * @author jerryniu
  * @version 1.0.0
@@ -43,7 +40,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/say")
 public class SayController {
-
     private static final int NUMBVALUE0 = 0;
     private static final int NUMBVALUE1 = 1;
     private static final int NUMBVALUE2 = 2;
@@ -51,7 +47,10 @@ public class SayController {
 
     /**
      * <p>description : 测试获取姓名</p>
-     * <p>create   on : 2018-08-30 18:08:15</p>
+     * <p>create   on : 2018-09-05 18:18:53</p>
+     *
+     * @param userNumber 用户id
+     * @return java.lang.String 修改结果
      *
      * @author jerryniu
      * @version 1.0.0
@@ -71,7 +70,12 @@ public class SayController {
 
     /**
      * <p>description : 测试修改用户密码</p>
-     * <p>create   on : 2018-08-30 18:08:26</p>
+     * <p>create   on : 2018-09-05 18:18:02</p>
+     *
+     * @param userId 用户id
+     * @param password 用户原密码
+     * @param newPassword 用户新密码
+     * @return java.lang.String 修改结果
      *
      * @author jerryniu
      * @version 1.0.0

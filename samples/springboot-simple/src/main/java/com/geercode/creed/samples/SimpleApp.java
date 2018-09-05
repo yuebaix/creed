@@ -21,14 +21,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * <p>Title       : SimpleApp</p>
  * <p>Description : 简单示例启动类</p>
- * <p>Copyright   : Copyright 2018-2050</p>
- * <p>Company     : www.juxiangfen.com</p>
- * <p>created on  : 2018-08-07 18:32</p>
+ * <p>reated on  : 2018-08-07 18:32</p>
  *
  * @author jerryniu
- * @version 1.0.0
+ * @version 1.0.0C
  */
 @Slf4j
 @SpringBootApplication

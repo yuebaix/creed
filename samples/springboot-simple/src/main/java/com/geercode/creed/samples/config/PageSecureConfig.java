@@ -47,11 +47,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Title       : PageSecureConfig</p>
  * <p>Description : 页面安全</p>
- * <p>Copyright   : Copyright 2018-2050</p>
- * <p>Company     : www.juxiangfen.com</p>
- * <p>created on  : 2018-08-27 21:55</p>
+ * <p>Created on  : 2018-08-27 21:55</p>
  *
  * @author jerryniu
  * @version 1.0.0

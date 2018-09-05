@@ -29,11 +29,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * <p>Title       : SwaggerConfig</p>
  * <p>Description : swagger配置类</p>
- * <p>Copyright   : Copyright 2018-2050</p>
- * <p>Company     : www.juxiangfen.com</p>
- * <p>created on  : 2018-08-27 20:38</p>
+ * <p>Created on  : 2018-08-27 20:38</p>
  *
  * @author jerryniu
  * @version 1.0.0
