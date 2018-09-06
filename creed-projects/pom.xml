@@ -28,6 +28,5 @@
         <module>creed-core</module>
         <module>creed-starters</module>
         <module>creed-codecheck</module>
-        <module>creed-tools</module>
     </modules>
 </project>
