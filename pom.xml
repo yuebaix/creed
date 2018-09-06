@@ -30,14 +30,28 @@
         <developer>
             <name>jerryniu</name>
             <email>huifumanlove@hotmail.com</email>
-            <organization>Yimei Corp</organization>
-            <organizationUrl>https://www.juxiangfen.com</organizationUrl>
             <roles>
                 <role>Project Creed Master</role>
                 <role>Senior Developer</role>
             </roles>
         </developer>
     </developers>
+    <contributors>
+        <contributor>
+            <name>like</name>
+            <email>likerai@163.com</email>
+            <roles>
+                <role>Staff Engineer</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>zhaibolun</name>
+            <email>zhaibolun@163.com</email>
+            <roles>
+                <role>Project Contributor</role>
+            </roles>
+        </contributor>
+    </contributors>
     <issueManagement>
         <system>Github</system>
         <url>https://github.com/geercode/creed/issues</url>
