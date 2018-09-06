@@ -61,6 +61,14 @@
         <dependencies>
             <!-- bom dependencies at the bottom so they can be overridden above -->
             <dependency>
+                <!-- Import dependency management from Maven -->
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven</artifactId>
+                <version>${maven.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <!-- Import dependency management from Spring Framework -->
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
