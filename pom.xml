@@ -78,8 +78,7 @@
                 <!--checkstyle dependencies-->
                 <module>creed-projects/creed-codecheck</module>
                 <!--your won module 修改为自己开发的module-->
-                <!--<module>samples/springboot-simple</module>-->
-                <module>creed-projects/creed-tools/creed-maven-plugin</module>
+                <module>samples/springboot-simple</module>
             </modules>
         </profile>
         <!--all modules deactivate code quality inspectations 激活所有module,关闭代码质量检测-->
