@@ -5,17 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>creed-parent</artifactId>
+        <artifactId>build-neat</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.2-SNAPSHOT</version>
-        <relativePath>../creed-parent</relativePath>
+        <relativePath>../../build-neat</relativePath>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>creed-starters</artifactId>
 
-    <name>Creed Starters</name>
-    <description>Creed Starters</description>
+    <name>Creed Starters Build</name>
+    <description>Creed Starters Build</description>
 
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>

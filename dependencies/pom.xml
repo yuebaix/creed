@@ -45,17 +45,34 @@
         <guava.version>20.0</guava.version>
 
         <!--plugins version-->
+        <!--default-->
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <!--addition-->
+        <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+        <!--third party-->
+        <duplicate-finder-maven-plugin.version>1.3.0</duplicate-finder-maven-plugin.version>
+        <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
         <dockerfile-maven-plugin.version>1.4.4</dockerfile-maven-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <jmeter-maven-plugin.version>2.7.0</jmeter-maven-plugin.version>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-        <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
         <jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
         <javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <sourceforge.cobertura.version>2.1.1</sourceforge.cobertura.version>
-        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <lombok-maven-plugin.version>1.18.0.0</lombok-maven-plugin.version>
     </properties>
 
@@ -153,6 +170,39 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!--lock default plugin version-->
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
                 <!--springboot plugin-->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
@@ -169,25 +219,12 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
-                </plugin>
-                <!--test plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-                <!--build plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
+                    <version>${flatten-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>source-package</id>
@@ -201,6 +238,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
                     <configuration>
                         <charset>${build.encoding}</charset>
                         <docencoding>${build.encoding}</docencoding>
@@ -220,16 +258,12 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
                     <configuration>
                         <!--<locales>zh_CN,en</locales>-->
                         <locales>zh_CN</locales>
                     </configuration>
-                    <version>${maven-site-plugin.version}</version>
                 </plugin>
                 <!--docker-->
                 <plugin>
@@ -242,16 +276,19 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
                 </plugin>
                 <!--check classpath&classname-->
                 <plugin>
                     <groupId>org.basepom.maven</groupId>
                     <artifactId>duplicate-finder-maven-plugin</artifactId>
+                    <version>${duplicate-finder-maven-plugin.version}</version>
                 </plugin>
                 <!--check code style-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
                 </plugin>
                 <!--findbugs-->
                 <plugin>
@@ -270,11 +307,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
                 <!--site linkXRef-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${maven-jxr-plugin.version}</version>
                 </plugin>
                 <!--test info-->
                 <plugin>

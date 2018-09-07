@@ -1,38 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+#### 代码规范尝鲜版
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+* 添加仓库
 
-    <properties>
-        <!--java版本-->
-        <java.version>1.8</java.version>
-        <!--编码-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--creed版本-->
-        <creed.version>0.1-SNAPSHOT</creed.version>
-        <!--pmd插件-->
-        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
-        <!--alibaba第三版规范插件-->
-        <p3c-pmd.version>1.3.5</p3c-pmd.version>
-        <!--控制是否检测-->
-        <disable.checks>false</disable.checks>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <artifactId>dependencies</artifactId>
-                <groupId>com.geercode.creed</groupId>
-                <version>${creed.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
+```
     <repositories>
         <repository>
             <id>nexus</id>
@@ -52,7 +22,46 @@
             <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
         </pluginRepository>
     </pluginRepositories>
+```
 
+* 添加版本属性
+
+```
+    <properties>
+        <!--java版本-->
+        <java.version>1.8</java.version>
+        <!--编码-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--creed版本-->
+        <creed.version>0.1-SNAPSHOT</creed.version>
+        <!--pmd插件-->
+        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+        <!--alibaba第三版规范插件-->
+        <p3c-pmd.version>1.3.5</p3c-pmd.version>
+        <!--控制是否检测-->
+        <disable.checks>false</disable.checks>
+    </properties>
+```
+
+* 添加依赖管理
+
+```
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>dependencies</artifactId>
+                <groupId>com.geercode.creed</groupId>
+                <version>${creed.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+
+* 添加构建配置
+
+```
     <build>
         <plugins>
             <!--check code style-->
@@ -186,4 +195,57 @@
             </plugin>
         </plugins>
     </build>
-</project>
+```
+
+* 添加import-control.xml包管理配置文件
+
+```
+<?xml version="1.0"?>
+<!DOCTYPE import-control PUBLIC "-//Checkstyle//DTD ImportControl Configuration 1.4//EN"
+        "https://checkstyle.org/dtds/import_control_1_4.dtd">
+<!--要控制的包-->
+<import-control pkg="com.yimei.architect.samples">
+    <!--base check-->
+    <allow pkg=".*" regex="true"/>
+    <!--子包dao-->
+    <subpackage name="dao">
+        <!--禁止import的包-->
+        <disallow pkg="com.yimei.architect.samples.dao"/>
+        <disallow pkg="com.yimei.architect.samples.domain"/>
+        <disallow pkg="com.yimei.architect.samples.service"/>
+        <disallow pkg="com.yimei.architect.samples.controller"/>
+    </subpackage>
+    <!--子包domain-->
+    <subpackage name="domain">
+        <!--禁止import的包-->
+        <disallow pkg="com.yimei.architect.samples.domain"/>
+        <disallow pkg="com.yimei.architect.samples.service"/>
+        <disallow pkg="com.yimei.architect.samples.controller"/>
+    </subpackage>
+    <!--子包service-->
+    <subpackage name="service">
+        <!--禁止import的包-->
+        <disallow pkg="com.yimei.architect.samples.service"/>
+        <disallow pkg="com.yimei.architect.samples.controller"/>
+    </subpackage>
+    <!--子包controller-->
+    <subpackage name="controller">
+        <!--禁止import的包-->
+        <disallow pkg="com.yimei.architect.samples.controller"/>
+    </subpackage>
+</import-control>
+```
+
+* 添加checkstyle-header.txt文件头正则
+
+```
+^\Q/*\E$
+^\Q * Copyright \E20\d\d-20\d\d\Q the original author or authors.\E$
+^\Q * Powered by Yimei Corp.\E$
+^\Q * All Rights Reserved.\E$
+^\Q */\E$
+^$
+^.*$
+```
+
+* 执行mvn verify

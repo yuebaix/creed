@@ -5,4 +5,5 @@ mvn archetype:generate                                   \
   -DarchetypeVersion=0.2-SNAPSHOT                        \
   -DgroupId=com.yimei.architect                          \
   -DartifactId=creed-simple-app                          \
+  -Dpackage=com.yimei.architect.simple                   \
   -Dversion=1.0-SNAPSHOT
