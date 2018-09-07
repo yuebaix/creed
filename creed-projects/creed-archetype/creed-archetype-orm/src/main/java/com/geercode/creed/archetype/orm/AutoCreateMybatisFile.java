@@ -244,9 +244,9 @@ public class AutoCreateMybatisFile {
     private List<String> createBaseServiceImpl(PackageConfig pkgConf) {
         List<String> lines = new ArrayList<>();
         lines.addAll(createBaseServiceImplOne(pkgConf));
-        lines.addAll(createBaseServiceImplOne(pkgConf));
-        lines.addAll(createBaseServiceImplOne(pkgConf));
-        lines.addAll(createBaseServiceImplOne(pkgConf));
+        lines.addAll(createBaseServiceImplTwo(pkgConf));
+        lines.addAll(createBaseServiceImplThree(pkgConf));
+        lines.addAll(createBaseServiceImplFour(pkgConf));
         return lines;
     }
 
