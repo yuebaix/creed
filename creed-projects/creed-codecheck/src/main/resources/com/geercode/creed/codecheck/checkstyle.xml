@@ -60,7 +60,7 @@
         <!--构造器、静态代码块、普通初始代码可执行代码片段长度-->
         <module name="ExecutableStatementCount">
             <property name="max" value="30"/>
-            <property name="tokens" value="CTOR_DEF,METHOD_DEF,STATIC_INIT,INSTANCE_INIT"/>
+            <property name="tokens" value="CTOR_DEF,STATIC_INIT,INSTANCE_INIT"/>
         </module>
         <!--普通方法体可执行代码片段长度-->
         <module name="ExecutableStatementCount">
@@ -246,13 +246,16 @@
         <module name="CyclomaticComplexity"/>
         <!--
             有效代码行数限制:
-                1.方法上限50
+                1.方法上限60
                 2.类上限1500
                 3.文件上限2000
         -->
-        <module name="JavaNCSS"/>
+        <module name="JavaNCSS">
+            <property name="methodMaximum" value="60"/>
+        </module>
         <!--Npath复杂度(计算条件语句与布尔表达式的复杂度)一个方法内不超过200-->
-        <module name="NPathComplexity"/>
+        <!--计算方式不适用于大部分情况,暂时去掉-->
+        <!--<module name="NPathComplexity"/>-->
 
         <!--######### Javadoc Comments #########-->
         <!--限制javadoc标签的顺序(@author, @version, @param, @return, @throws, @exception,

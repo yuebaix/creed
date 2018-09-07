@@ -24,6 +24,7 @@
 
     <modules>
         <module>creed-archetype-simple</module>
+        <module>creed-archetype-orm</module>
     </modules>
 
 </project>
