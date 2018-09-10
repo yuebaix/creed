@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE import-control PUBLIC "-//Checkstyle//DTD ImportControl Configuration 1.4//EN"
+        "https://checkstyle.org/dtds/import_control_1_4.dtd">
+<!--要控制的包-->
+<import-control pkg="com.geercode.creed.samples">
+    <!--base check-->
+    <allow pkg=".*" regex="true"/>
+    <!--domain层-->
+    <subpackage name="domain">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.web"/>
+    </subpackage>
+    <!--repo层-->
+    <subpackage name="repo">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.web"/>
+    </subpackage>
+    <!--scene层-->
+    <subpackage name="scene">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.web"/>
+    </subpackage>
+    <!--service层-->
+    <subpackage name="service">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.web"/>
+    </subpackage>
+    <!--stub层-->
+    <subpackage name="stub">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.web"/>
+    </subpackage>
+    <!--web层-->
+    <subpackage name="web">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.stub"/>
+    </subpackage>
+</import-control>

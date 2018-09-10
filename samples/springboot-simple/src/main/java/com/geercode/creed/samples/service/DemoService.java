@@ -28,8 +28,8 @@ public interface DemoService {
      * <p>description : 测试接口</p>
      * <p>create   on : 2018-08-20 18:33:32</p>
      *
+     * @author jerryniu
      * @return String 测试接口返回字符串
-     * @author: jerryniu
      */
     String hello();
 }

@@ -16,7 +16,6 @@
 
 package com.geercode.creed.samples;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,16 +24,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>Created on  : 2018-08-07 18:32</p>
  *
  * @author jerryniu
- * @version 1.0.0C
+ * @since 1.0.0
  */
-@Slf4j
 @SpringBootApplication
 public class SimpleApp {
     /**
      * <p>description : 程序入口</p>
      * <p>create   on : 2018-08-07 18:32:40</p>
      *
-     * @author: jerryniu
+     * @author jerryniu
+     * @version 1.0.0
      */
     public static void main(String[] args) {
         SpringApplication.run(SimpleApp.class, args);
