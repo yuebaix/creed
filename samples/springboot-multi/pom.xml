@@ -4,16 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>dependencies</artifactId>
-        <groupId>com.geercode.creed</groupId>
-        <version>0.2-SNAPSHOT</version>
-        <relativePath>../../dependencies</relativePath>
-    </parent>
-
     <groupId>com.geercode.creed</groupId>
     <artifactId>springboot-multi</artifactId>
     <packaging>pom</packaging>
+    <version>0.2-SNAPSHOT</version>
     <name>SpringBoot示例 多模块网站</name>
     <description>SpringBoot示例 多模块网站</description>
 
@@ -32,16 +26,63 @@
         <config.basedir>${basedir}</config.basedir>
         <!--控制是否检测-->
         <disable.checks>false</disable.checks>
+        <!--主要依赖版本-->
+        <mybatis-plus-boot-starter.version>3.0.1</mybatis-plus-boot-starter.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--creed dependencies-->
             <dependency>
                 <artifactId>dependencies</artifactId>
                 <groupId>com.geercode.creed</groupId>
                 <version>${creed.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+            <!--local bom-->
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-repo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-scene</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-stub</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!--main materials-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -105,9 +146,7 @@
                                 <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                 <configLocation>com/geercode/creed/codecheck/checkstyle.xml</configLocation>
                                 <headerLocation>${config.basedir}/checkstyle-header.txt</headerLocation>
-                                <suppressionsLocation>
-                                    com/geercode/creed/codecheck/checkstyle-suppressions.xml
-                                </suppressionsLocation>
+                                <suppressionsLocation>${config.basedir}/checkstyle-suppressions.xml</suppressionsLocation>
                                 <!--配置包控制文件路径-->
                                 <propertyExpansion>
                                     com.geercode.importcontrol.file=${config.basedir}/import-control.xml
@@ -156,6 +195,11 @@
                             <ruleset>rulesets/java/ali-other.xml</ruleset>
                             <ruleset>rulesets/java/ali-set.xml</ruleset>
                         </rulesets>
+                        <excludes>
+                            <exclude>**/repo/dao/**/*.java</exclude>
+                            <exclude>**/service/**/*Service.java</exclude>
+                            <exclude>**/service/**/*ServiceImpl.java</exclude>
+                        </excludes>
                     </configuration>
                     <executions>
                         <!-- 绑定pmd:check到verify生命周期 -->
@@ -164,14 +208,7 @@
                             <phase>verify</phase>
                             <goals>
                                 <goal>check</goal>
-                            </goals>
-                        </execution>
-                        <!-- 绑定pmd:pmd到site生命周期 -->
-                        <execution>
-                            <id>pmd-pmd-site</id>
-                            <phase>site</phase>
-                            <goals>
-                                <goal>pmd</goal>
+                                <goal>cpd-check</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -197,9 +234,9 @@
                         <!-- Low、Medium和High (Low最严格) -->
                         <threshold>Low</threshold>
                         <!--findbugs需要检测的错误的配置文件-->
-                        <includeFilterFile>com/geercode/creed/codecheck/findbugs-include.xml</includeFilterFile>
+                        <includeFilterFile>${config.basedir}/findbugs-include.xml</includeFilterFile>
                         <!--findbugs需要忽略的错误的配置文件-->
-                        <excludeFilterFile>com/geercode/creed/codecheck/findbugs-exclude.xml</excludeFilterFile>
+                        <excludeFilterFile>${config.basedir}/findbugs-exclude.xml</excludeFilterFile>
                     </configuration>
                     <executions>
                         <execution>
@@ -210,13 +247,6 @@
                             </goals>
                         </execution>
                     </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.geercode.creed</groupId>
-                            <artifactId>creed-codecheck</artifactId>
-                            <version>${creed.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>

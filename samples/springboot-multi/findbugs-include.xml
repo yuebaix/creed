@@ -1,5 +1,5 @@
 <FindBugsFilter>
     <Match>
-        <Class name="~com\.geercode\.creed\..*"/>
+        <Class name="~com\.geercode\.creed\.samples\..*"/>
     </Match>
 </FindBugsFilter>
