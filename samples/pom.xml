@@ -23,6 +23,7 @@
 
     <modules>
         <module>springboot-simple</module>
+        <module>springboot-multi</module>
         <module>springcloud-center</module>
         <module>springcloud-config</module>
         <module>springcloud-uaa</module>

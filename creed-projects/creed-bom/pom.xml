@@ -20,6 +20,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--framework-->
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>creed-core</artifactId>
@@ -27,14 +28,21 @@
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>creed-starters</artifactId>
+                <artifactId>creed-codecheck</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!--archetype-->
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-archetype-orm</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>creed-codecheck</artifactId>
+                <artifactId>creed-archetype-simple</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--starters-->
         </dependencies>
     </dependencyManagement>
 </project>

@@ -22,7 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * <p>Description : 简单示例启动类</p>
- * <p>reated on  : 2018-08-07 18:32</p>
+ * <p>Created on  : 2018-08-07 18:32</p>
  *
  * @author jerryniu
  * @version 1.0.0C
