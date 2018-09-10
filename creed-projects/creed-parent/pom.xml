@@ -221,6 +221,7 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
+                            <goal>cpd-check</goal>
                         </goals>
                     </execution>
                     <!-- 绑定pmd:pmd到site生命周期 -->

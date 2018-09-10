@@ -7,8 +7,7 @@
 package com.geercode.creed.samples.web;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * <p>Description : springboot多模块示例启动类</p>
@@ -17,8 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author jerryniu
  * @since 1.0.0
  */
-@EnableAutoConfiguration
-@ComponentScan("com.geercode.creed.samples")
+@SpringBootApplication
 public class MultiApp {
     /**
      * <p>description : 程序入口</p>
