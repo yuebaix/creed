@@ -4,7 +4,7 @@
  * All Rights Reserved.
  */
 
-package com.geercode.creed.samples.repo.dao.model;
+package com.geercode.creed.samples.repo.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

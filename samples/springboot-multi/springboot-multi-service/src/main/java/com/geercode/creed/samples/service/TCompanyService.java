@@ -6,7 +6,7 @@
 
 package com.geercode.creed.samples.service;
 
-import com.geercode.creed.samples.repo.dao.model.TCompany;
+import com.geercode.creed.samples.repo.dao.entity.TCompany;
 
 /**
  * <p>Description : 服务接口</p>

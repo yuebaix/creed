@@ -7,7 +7,7 @@
 package com.geercode.creed.samples.service.impl;
 
 import com.geercode.creed.samples.repo.dao.mapper.BaseModelMapper;
-import com.geercode.creed.samples.repo.dao.model.TCompany;
+import com.geercode.creed.samples.repo.dao.entity.TCompany;
 import com.geercode.creed.samples.service.AbstractBaseService;
 import com.geercode.creed.samples.service.TCompanyService;
 import org.springframework.stereotype.Service;

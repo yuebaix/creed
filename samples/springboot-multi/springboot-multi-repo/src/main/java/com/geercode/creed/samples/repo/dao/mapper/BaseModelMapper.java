@@ -7,7 +7,7 @@
 package com.geercode.creed.samples.repo.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.geercode.creed.samples.repo.dao.model.TCompany;
+import com.geercode.creed.samples.repo.dao.entity.TCompany;
 
 /**
  * <p>Description : 实体操作注册类</p>

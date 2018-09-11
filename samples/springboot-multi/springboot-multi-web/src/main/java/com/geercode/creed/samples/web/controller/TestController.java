@@ -7,7 +7,7 @@
 package com.geercode.creed.samples.web.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.geercode.creed.samples.repo.dao.model.TCompany;
+import com.geercode.creed.samples.repo.dao.entity.TCompany;
 import com.geercode.creed.samples.service.TCompanyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
