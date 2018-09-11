@@ -6,8 +6,9 @@
 
 package com.geercode.creed.samples.service.impl;
 
-import com.geercode.creed.samples.repo.dao.BaseModelMapper;
+import com.geercode.creed.samples.repo.dao.mapper.BaseModelMapper;
 import com.geercode.creed.samples.repo.dao.model.TCompany;
+import com.geercode.creed.samples.service.AbstractBaseService;
 import com.geercode.creed.samples.service.TCompanyService;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,6 @@ import org.springframework.stereotype.Service;
  * @since 1.0.0
  */
 @Service
-public class TCompanyServiceImpl extends BaseServiceImpl<BaseModelMapper.TCompanyMapper, TCompany>
+public class TCompanyServiceImpl extends AbstractBaseService<BaseModelMapper.TCompanyMapper, TCompany>
         implements TCompanyService {
 }

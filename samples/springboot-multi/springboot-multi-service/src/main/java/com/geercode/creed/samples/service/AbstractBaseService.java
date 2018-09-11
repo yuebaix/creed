@@ -4,13 +4,12 @@
  * All Rights Reserved.
  */
 
-package com.geercode.creed.samples.service.impl;
+package com.geercode.creed.samples.service;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.geercode.creed.samples.service.BaseService;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +26,8 @@ import java.util.Map;
  * @author jerryniu
  * @since 1.0.0
  */
-public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements BaseService<T> {
+public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T>
+        implements BaseService<T> {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private SqlSessionTemplate sqlSession;

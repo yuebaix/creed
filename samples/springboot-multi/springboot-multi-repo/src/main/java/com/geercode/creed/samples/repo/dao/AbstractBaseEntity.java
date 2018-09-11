@@ -4,7 +4,7 @@
  * All Rights Reserved.
  */
 
-package com.geercode.creed.samples.repo.dao.model;
+package com.geercode.creed.samples.repo.dao;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 

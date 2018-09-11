@@ -16,5 +16,4 @@ import com.geercode.creed.samples.repo.dao.model.TCompany;
  * @since 1.0.0
  */
 public interface TCompanyService extends BaseService<TCompany> {
-
 }

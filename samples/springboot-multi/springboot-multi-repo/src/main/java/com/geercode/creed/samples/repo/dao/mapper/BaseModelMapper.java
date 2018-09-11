@@ -4,7 +4,7 @@
  * All Rights Reserved.
  */
 
-package com.geercode.creed.samples.repo.dao;
+package com.geercode.creed.samples.repo.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.geercode.creed.samples.repo.dao.model.TCompany;
@@ -16,7 +16,7 @@ import com.geercode.creed.samples.repo.dao.model.TCompany;
  * @author jerryniu
  * @since 1.0.0
  */
-public class BaseModelMapper {
-    public interface TCompanyMapper extends BaseMapper<TCompany> {
+public interface BaseModelMapper {
+    interface TCompanyMapper extends BaseMapper<TCompany> {
     }
 }

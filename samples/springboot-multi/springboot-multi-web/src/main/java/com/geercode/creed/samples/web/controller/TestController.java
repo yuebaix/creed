@@ -44,6 +44,8 @@ public class TestController {
         tCompany.setId(TEST_ID);
         List list = tCompanyService.list(new QueryWrapper(tCompany));
         log.debug(list.toString());
+        TCompany tCompany1 = tCompanyService.getById(TEST_ID);
+        log.debug(tCompany1.toString());
         return "success";
     }
 }

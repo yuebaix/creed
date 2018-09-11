@@ -8,6 +8,7 @@ package com.geercode.creed.samples.repo.dao.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.geercode.creed.samples.repo.dao.AbstractBaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
