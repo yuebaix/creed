@@ -1,7 +1,0 @@
-^\Q/*\E$
-^\Q * Copyright \E20\d\d-20\d\d\Q the original author or authors.\E$
-^\Q * Powered by Yimei Corp.\E$
-^\Q * All Rights Reserved.\E$
-^\Q */\E$
-^$
-^.*$

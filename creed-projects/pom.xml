@@ -28,6 +28,7 @@
         <module>creed-core</module>
         <module>creed-starters</module>
         <module>creed-codecheck</module>
-        <module>creed-archetype</module>
+        <module>creed-archetypes</module>
+        <module>creed-tools</module>
     </modules>
 </project>
