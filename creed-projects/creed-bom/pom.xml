@@ -31,6 +31,11 @@
                 <artifactId>creed-codecheck</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-tools</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!--archetype-->
             <dependency>
                 <groupId>com.geercode.creed</groupId>

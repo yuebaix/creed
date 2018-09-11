@@ -20,4 +20,44 @@
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>
     </properties>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-slf4j-impl</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!--定义测试套件入口-->
+                    <includes>
+                        <include>com/geercode/creed/tools/TestEntry.java</include>
+                    </includes>
+                    <!--同一次测试最多尝试两次-->
+                    <rerunFailingTestsCount>2</rerunFailingTestsCount>
+                    <!--返回失败一次则跳过测试过程-->
+                    <skipAfterFailureCount>1</skipAfterFailureCount>
+                    <!--并发执行-->
+                    <parallel>methods</parallel>
+                    <threadCount>10</threadCount>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
