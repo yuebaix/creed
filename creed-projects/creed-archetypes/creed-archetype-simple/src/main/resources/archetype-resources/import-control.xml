@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE import-control PUBLIC "-//Checkstyle//DTD ImportControl Configuration 1.4//EN"
+        "https://checkstyle.org/dtds/import_control_1_4.dtd">
+<!--要控制的包-->
+<import-control pkg="${package}.samples">
+    <!--base check-->
+    <allow pkg=".*" regex="true"/>
+    <!--子包dao-->
+    <subpackage name="dao">
+        <!--禁止import的包-->
+        <disallow pkg="${package}.dao"/>
+        <disallow pkg="${package}.domain"/>
+        <disallow pkg="${package}.service"/>
+        <disallow pkg="${package}.controller"/>
+    </subpackage>
+    <!--子包domain-->
+    <subpackage name="domain">
+        <!--禁止import的包-->
+        <disallow pkg="${package}.domain"/>
+        <disallow pkg="${package}.service"/>
+        <disallow pkg="${package}.controller"/>
+    </subpackage>
+    <!--子包service-->
+    <subpackage name="service">
+        <!--禁止import的包-->
+        <disallow pkg="${package}.service"/>
+        <disallow pkg="${package}.controller"/>
+    </subpackage>
+    <!--子包controller-->
+    <subpackage name="controller">
+        <!--禁止import的包-->
+        <disallow pkg="${package}.controller"/>
+    </subpackage>
+</import-control>
