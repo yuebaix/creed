@@ -27,78 +27,27 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.geercode.creed.tools.configure.ResourceUtil;
+import org.junit.Test;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <p>Description : Creed MybatisPlus Generator</p>
- * <p>Created on  : 2018-09-11 14:59</p>
+ * <p>Description : 生成代码测试</p>
+ * <p>Created on  : 2018-09-12 12:58</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public final class CreedMpg implements Mpg {
-    private volatile static Mpg holder;
-    private static final char[] HOLDER_MONITOR = new char[0];
-    private static final String CONFIG_FILE_PATH = "mybatis-plus";
-
-    private AutoGenerator mpg = new AutoGenerator();
-
-    private CreedMpg() {
-        configMpg();
-    }
-
-    /**
-     * <p>description : </p>
-     * <p>create   on : 2018-09-11 16:14:53</p>
-     *
-     * @author jerryniu
-     * @version 1.0.0
-     */
-    public static Mpg getHolder() {
-        if (holder == null) {
-            synchronized (HOLDER_MONITOR) {
-                if (holder == null) {
-                    holder = new CreedMpg();
-                }
-            }
-        }
-        return holder;
-    }
-
-    @Override
-    public void genBase() {
-
-    }
-
-    @Override
-    public void genXml() {
-
-    }
-
-    @Override
-    public void genMapper() {
-
-    }
-
-    @Override
-    public void genEntity() {
-
-    }
-
-    @Override
-    public void genService() {
-
-    }
-
-    @Override
-    public void genAll() {
+public class CreedMpgTest {
+    @Test
+    public void genAllTest() {
+        AutoGenerator mpg = new AutoGenerator();
         //读取配置文件
         Map<String, String> properties = ResourceUtil.readPropertiesFromResources("mybatis-plus");
-        //String author = properties.get("author");
-        //String pkg = properties.get("package");
+        String author = properties.get("author");
+        String pkg = properties.get("package");
         String dbUrl = properties.get("mysql.url");
         String dbUser = properties.get("mysql.user");
         String dbPwd = properties.get("mysql.pwd");
@@ -128,20 +77,6 @@ public final class CreedMpg implements Mpg {
                 .execute();
     }
 
-    private void configMpg() {
-        /*GlobalConfig globalConfig = new GlobalConfig();
-        DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        StrategyConfig strategyConfig = new StrategyConfig();
-        PackageConfig packageConfig = new PackageConfig();
-        TemplateConfig templateConfig = new TemplateConfig();
-        mpg.setGlobalConfig(globalConfig)
-                .setDataSource(dataSourceConfig)
-                .setStrategy(strategyConfig)
-                .setPackageInfo(packageConfig)
-                .setTemplate(templateConfig)
-                .setCfg(getInjectionConfig());*/
-    }
-
     private InjectionConfig getInjectionConfig() {
         return new InjectionConfig() {
             @Override
@@ -151,7 +86,7 @@ public final class CreedMpg implements Mpg {
                 this.setMap(map);
             }
         }.setFileOutConfigList(Collections.<FileOutConfig>singletonList(new FileOutConfig(
-                "/templates/mapper.xml.vm") {
+                "/template.java.vm") {
             // 自定义输出文件目录
             @Override
             public String outputFile(TableInfo tableInfo) {

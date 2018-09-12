@@ -36,7 +36,7 @@ public interface CreedOrm {
      *
      * @return Mpg CreedMybatisPlusGenerator
      */
-    default Mpg mpg() {
+    static Mpg mpg() {
         return CreedMpg.getHolder();
     }
 }

@@ -41,6 +41,7 @@
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>creed-archetype-orm</artifactId>
                 <version>${project.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>

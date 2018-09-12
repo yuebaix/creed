@@ -14,31 +14,19 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.archetype.orm.mybatisplus;
-
-import com.geercode.creed.tools.configure.ResourceUtil;
+import com.geercode.creed.archetype.orm.CreedOrm;
 import org.junit.Test;
 
-import java.util.Map;
-
 /**
- * <p>Description : ResourceUtilTest</p>
- * <p>Created on  : 2018-09-11 18:29</p>
+ * <p>Description : Mpg测试</p>
+ * <p>Created on  : 2018-09-12 14:32</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class ResourceUtilTest {
+public class CreedOrmMpgTest {
     @Test
-    public void readFileFromJarTest() {
-        //读取模板
-        String input = ResourceUtil.readFileFromJar("mybatis-plus.properties");
-        System.out.println(input);
-    }
-
-    @Test
-    public void readPropertyFromResourcesTest() {
-        Map result = ResourceUtil.readPropertiesFromResources("mybatis-plus");
-        System.out.println(result);
+    public void genAllTest() {
+        CreedOrm.mpg().genAll();
     }
 }
