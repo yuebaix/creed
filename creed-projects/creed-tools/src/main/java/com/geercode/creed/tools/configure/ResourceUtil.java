@@ -17,8 +17,11 @@
 package com.geercode.creed.tools.configure;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -40,6 +43,9 @@ public final class ResourceUtil {
     /**
      * <p>description : 从jar中读取文件内容</p>
      * <p>create   on : 2018-09-11 16:44:14</p>
+     *
+     * eg: ResourceUtil.readFileFromJar("config.xml")
+     * 相对于jar包中的资源路径
      *
      * @author jerryniu
      * @version 1.0.0
@@ -67,6 +73,46 @@ public final class ResourceUtil {
         }
         String input = buffer.toString();
         return input;
+    }
+
+    /**
+     * <p>description : 从源码中读取文件</p>
+     * <p>create   on : 2018-09-12 16:02:35</p>
+     *
+     * eg: ResourceUtil.readFileFromCode("src/main/resources/config.xml")
+     * 相对于代码中的资源路径
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    public static String readFileFromCode(String url) {
+        BufferedReader reader = null;
+        StringBuilder sb = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(url), DEFAULT_ENCODE));
+            String s;
+            for (s = reader.readLine(); s != null; s = reader.readLine()) {
+                sb.append(lineSeparator);
+                sb.append(s);
+            }
+            return sb.toString().replaceFirst(lineSeparator, "");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return "";
     }
 
     /**

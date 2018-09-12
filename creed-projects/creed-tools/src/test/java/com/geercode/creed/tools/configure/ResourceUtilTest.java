@@ -35,4 +35,9 @@ public class ResourceUtilTest {
         Map result = ResourceUtil.readPropertiesFromResources("templates/mybatis-plus");
         System.out.println(result);
     }
+
+    @Test
+    public void readFileFromCode() {
+        System.out.println(ResourceUtil.readFileFromCode("src/test/resources/templates/mybatis-plus.properties"));
+    }
 }

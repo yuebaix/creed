@@ -16,7 +16,7 @@
 
 package com.geercode.creed.archetype.orm;
 
-import com.geercode.creed.archetype.orm.mybatisplus.CreedMpg;
+import com.geercode.creed.archetype.orm.mybatisplus.MpgImpl;
 import com.geercode.creed.archetype.orm.mybatisplus.Mpg;
 
 /**
@@ -37,6 +37,6 @@ public interface CreedOrm {
      * @return Mpg CreedMybatisPlusGenerator
      */
     static Mpg mpg() {
-        return CreedMpg.getHolder();
+        return MpgImpl.getHolder();
     }
 }
