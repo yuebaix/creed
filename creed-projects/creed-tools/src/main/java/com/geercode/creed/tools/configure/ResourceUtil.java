@@ -44,7 +44,7 @@ public final class ResourceUtil {
      * @author jerryniu
      * @version 1.0.0
      */
-    public static String readCntFromJar(String path) {
+    public static String readFileFromJar(String path) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         StringBuffer buffer = new StringBuffer();
         BufferedReader in = null;
@@ -76,8 +76,8 @@ public final class ResourceUtil {
      * @author jerryniu
      * @version 1.0.0
      */
-    public static String readPropertyFromResources(String propertyPath, String key) {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(propertyPath);
+    public static String readPropertyFromResources(String propertiesPath, String key) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(propertiesPath);
         return resourceBundle.getString(key);
     }
 
@@ -88,8 +88,8 @@ public final class ResourceUtil {
      * @author jerryniu
      * @version 1.0.0
      */
-    public static Map<String, String> readPropertyFromResources(String propertyPath) {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(propertyPath);
+    public static Map<String, String> readPropertiesFromResources(String propertiesPath) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(propertiesPath);
         Map<String, String> map = new HashMap(HASHMAP_INIT_CAPACITY);
         for (String key : resourceBundle.keySet()) {
             map.put(key, resourceBundle.getString(key));
