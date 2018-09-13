@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0.0
  */
 @Configuration
-@MapperScan("com.geercode.creed.samples.repo.dao.mapper")
+@MapperScan("com.geercode.creed.samples.repo.dao")
 public class MybatisPlusConfig {
     @Bean
     public PaginationInterceptor paginationInterceptor() {

@@ -1,5 +1,8 @@
 <FindBugsFilter>
-    <!--<Match>-->
-    <!--<Class name="~com\.geercode\.creed\.samples.*" />-->
-    <!--</Match>-->
+    <!--取消引用暴露的检测-->
+    <Match>
+        <Class name="~.*" />
+        <Method name="~(get.*|set.*)" />
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+    </Match>
 </FindBugsFilter>

@@ -16,6 +16,7 @@
 
     <properties>
         <config.basedir>${basedir}/..</config.basedir>
+        <swagger.version>1.5.20</swagger.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--swagger-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

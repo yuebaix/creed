@@ -30,6 +30,9 @@ public class TestController {
     private static final long TEST_ID = 1007L;
     @Autowired
     private TCompanyService tCompanyService;
+    ///跳过检测
+    /*@Autowired
+    private TProxyService tProxyService;*/
 
     /**
      * <p>description : testDao</p>
@@ -48,4 +51,16 @@ public class TestController {
         log.debug(tCompany1.toString());
         return "success";
     }
+    /// 跳过检测
+    /*@RequestMapping("/gen")
+    public String testGen() {
+        TProxyEntity tProxyEntity = new TProxyEntity();
+        List list = tProxyService.list(new QueryWrapper(tProxyEntity));
+        log.debug(list.toString());
+        List list1 = tProxyService.getListBySqlId("findCourseById", null);
+        System.out.println(list1.toString());
+        TProxyEntity tProxyEntity1 = (TProxyEntity)tProxyService.getObjectBySqlId("findCourseById_By", null);
+        System.out.println(tProxyEntity1);
+        return "success";
+    }*/
 }

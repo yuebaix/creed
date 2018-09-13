@@ -41,8 +41,8 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends Se
      */
     @Override
     public Object getObjectBySqlId(String myBatisSqlId, Object conditions) {
-        String model = getModel();
-        String statement = "" + model + "Mapper." + myBatisSqlId;
+        String model = getDaoNameSpace();
+        String statement = "" + model + "Dao." + myBatisSqlId;
         Object object = sqlSession.selectOne(statement, conditions);
         return object;
     }
@@ -56,9 +56,9 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends Se
      */
     @Override
     public List getListBySqlId(String myBatisSqlId, Object conditions) {
-        String model = getModel();
+        String model = getDaoNameSpace();
         logger.info(" this service class is {}", this.getClass().toString());
-        String statement = "" + model + "Mapper." + myBatisSqlId;
+        String statement = "" + model + "Dao." + myBatisSqlId;
         List list = sqlSession.selectList(statement, conditions);
         return list;
     }
@@ -76,7 +76,7 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends Se
     @Override
     public IPage<Object> queryPageBySqlId(String querySqlId, String countSqlId, Map<String, Object> param,
             Long pageSize, Long currentPage) {
-        String model = getModel();
+        String model = getDaoNameSpace();
         List<Object> list = null;
         String statement = "" + model + "Dao." + countSqlId;
         Long totalSize = sqlSession.selectOne(statement, param);
@@ -90,11 +90,17 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends Se
         return page;
     }
 
-    private String getModel() {
+    private String getDaoNameSpace() {
         Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[1];
-        String paths = entityClass.toString();
-        String model = paths.substring(paths.lastIndexOf(".") + 1, paths.length());
-        return model;
+        String clazzFullName = entityClass.getName();
+        String head = clazzFullName.substring(0, clazzFullName.lastIndexOf(".entity."));
+        String end = clazzFullName.substring(clazzFullName.lastIndexOf(".entity.") + ".entity.".length(),
+                clazzFullName.length());
+        if (end.endsWith("Entity")) {
+            end = end.substring(0, end.lastIndexOf("Entity"));
+        }
+        clazzFullName = head + ".mapper." + end;
+        return clazzFullName;
     }
 }

@@ -3,7 +3,7 @@
     <Match>
         <Class name="~.*" />
         <Method name="~(get.*|set.*)" />
-        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2,SE_NO_SERIALVERSIONID" />
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
     </Match>
     <!--取消序列化的检测-->
     <Match>

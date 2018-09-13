@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geercode.creed.samples.repo.dao.mapper.TProxyDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.geercode.creed.samples.repo.dao.entity.TProxyEntity">
+        <id column="id" property="id" />
+        <result column="ip" property="ip" />
+        <result column="port" property="port" />
+        <result column="state" property="state" />
+        <result column="type" property="type" />
+        <result column="udpate_time" property="udpateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ip, port, state, type, udpate_time, create_time
+    </sql>
+
+    <select id="findCourseById"  resultMap="BaseResultMap" >
+        select * from t_proxy
+    </select>
+    <select id="findCourseById_By"  resultMap="BaseResultMap" >
+        select * from t_proxy where id = 11912
+    </select>
+</mapper>

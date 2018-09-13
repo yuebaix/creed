@@ -32,6 +32,7 @@ public class ResourceUtilTest {
     public void readPropertyFromResourcesTest() {
         //读取模板
         String input = ResourceUtil.readFileFromJar("templates/mybatis-plus.properties");
+        System.out.println(input);
         Map result = ResourceUtil.readPropertiesFromResources("templates/mybatis-plus");
         System.out.println(result);
     }
