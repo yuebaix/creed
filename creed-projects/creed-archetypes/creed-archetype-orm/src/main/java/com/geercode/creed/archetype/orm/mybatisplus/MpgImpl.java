@@ -80,8 +80,8 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genBase() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"base"})));
         mpg.execute();
@@ -89,8 +89,12 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genXml() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
+        //判断生成哪些表
+        if (pathConfig.getIncludeTables().length != 0) {
+            strategyConfig.setInclude(pathConfig.getIncludeTables());
+        }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"xml"})));
         mpg.execute();
@@ -98,8 +102,12 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genDao() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
+        //判断生成哪些表
+        if (pathConfig.getIncludeTables().length != 0) {
+            strategyConfig.setInclude(pathConfig.getIncludeTables());
+        }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"dao"})));
         mpg.execute();
@@ -107,8 +115,12 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genService() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
+        //判断生成哪些表
+        if (pathConfig.getIncludeTables().length != 0) {
+            strategyConfig.setInclude(pathConfig.getIncludeTables());
+        }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"service"})));
         mpg.execute();
@@ -116,8 +128,12 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genWeb() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
+        //判断生成哪些表
+        if (pathConfig.getIncludeTables().length != 0) {
+            strategyConfig.setInclude(pathConfig.getIncludeTables());
+        }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"web"})));
         mpg.execute();
@@ -125,11 +141,15 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genAll() {
-        strategyConfig.setInclude("t_proxy");
-
+        //判断是否覆盖
+        globalConfig.setFileOverride(pathConfig.isOverride());
+        //判断生成哪些表
+        if (pathConfig.getIncludeTables().length != 0) {
+            strategyConfig.setInclude(pathConfig.getIncludeTables());
+        }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {
-                "base", "dao", "xml", "service", "web"})));
+                "base", "dao", "xml", "service"})));
         mpg.execute();
     }
 
@@ -166,6 +186,7 @@ public final class MpgImpl implements Mpg {
                 .entityTableFieldAnnotationEnable(true)
                 .setEntityLombokModel(true)
                 .setSuperEntityClass(pathConfig.getPkg() + ".repo.dao.AbstractBaseEntity")
+                .setSuperServiceClass(pathConfig.getPkg() + ".service.BaseService")
                 .setSuperServiceImplClass(pathConfig.getPkg() + ".service.AbstractBaseService");
         packageConfig = new PackageConfig()
                 .setParent(pathConfig.getPkg())

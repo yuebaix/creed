@@ -60,6 +60,10 @@ public class MultiModulePathConfig {
     private String databaseUser;
     private String databasePassword;
 
+    /**执行时判断*/
+    private boolean override = true;
+    private String[] includeTables = {};
+
     /**
      * <p>description : 初始化多模块路径配置</p>
      * <p>create   on : 2018-09-12 19:36:23</p>
@@ -83,13 +87,24 @@ public class MultiModulePathConfig {
         if (StringUtil.isEmpty(pkg)) {
             pkg = groupId + StringPool.DOT + artifactId;
         }
-
         author = properties.get("author");
         databaseDriver = properties.get("mysql.driver");
         databaseUrl = properties.get("mysql.url");
         databaseUser = properties.get("mysql.user");
         databasePassword = properties.get("mysql.pwd");
 
+        String tmpHeader = properties.get("header");
+        if (!StringUtil.isEmpty(tmpHeader)) {
+            header = tmpHeader;
+        }
+        String overrideStr = properties.get("override");
+        if (!StringUtil.isEmpty(overrideStr)) {
+            override = Boolean.parseBoolean(overrideStr);
+        }
+        String includeTablesStr = properties.get("includeTables");
+        if (!StringUtil.isEmpty(includeTablesStr)) {
+            includeTables = includeTablesStr.split(",", -1);
+        }
         return this;
     }
 
@@ -105,18 +120,15 @@ public class MultiModulePathConfig {
     }
 
     private String getRepoRoot() {
-        return rootArtifactDir + artifactId + "-repo" + File.separator + "src" + File.separator + "main"
-                + File.separator + "java";
+        return rootArtifactDir + artifactId + "-repo";
     }
 
     private String getServiceRoot() {
-        return rootArtifactDir + artifactId + "-service" + File.separator + "src" + File.separator + "main"
-                + File.separator + "java";
+        return rootArtifactDir + artifactId + "-service";
     }
 
     private String getWebRoot() {
-        return rootArtifactDir + artifactId + "-web" + File.separator + "src" + File.separator + "main"
-                + File.separator + "java";
+        return rootArtifactDir + artifactId + "-web";
     }
 
     /**
@@ -127,7 +139,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getEntityDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
+        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "entity";
     }
 
@@ -139,7 +152,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getDaoDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
+        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "mapper";
     }
 
@@ -151,8 +165,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getXmlDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "xml";
+        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "resources"
+                + File.separator + "mapper";
     }
 
     /**
@@ -163,7 +177,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getServiceDir() {
-        return getServiceRoot() + File.separator + getPkgDir() + File.separator + "service";
+        return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator + "service";
     }
 
     /**
@@ -174,7 +189,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getServiceImplDir() {
-        return getServiceRoot() + File.separator + getPkgDir() + File.separator + "service" + File.separator + "impl";
+        return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator + "service" + File.separator + "impl";
     }
 
     /**
@@ -185,7 +201,8 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getControllerDir() {
-        return getWebRoot() + File.separator + getPkgDir() + File.separator + "web" + File.separator + "controller";
+        return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator + "web" + File.separator + "controller";
     }
 
     private String getPkgDir() {
@@ -268,5 +285,27 @@ public class MultiModulePathConfig {
      */
     public String getDatabasePassword() {
         return databasePassword;
+    }
+
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-09-12 19:36:42</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    public boolean isOverride() {
+        return override;
+    }
+
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-09-12 19:36:42</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    public String[] getIncludeTables() {
+        return includeTables;
     }
 }

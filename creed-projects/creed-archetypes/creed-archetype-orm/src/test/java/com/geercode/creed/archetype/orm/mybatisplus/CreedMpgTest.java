@@ -16,24 +16,8 @@
 
 package com.geercode.creed.archetype.orm.mybatisplus;
 
-import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.FileOutConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
-import com.baomidou.mybatisplus.generator.config.TemplateConfig;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.geercode.creed.archetype.orm.CreedOrm;
-import com.geercode.creed.tools.configure.ResourceUtil;
 import org.junit.Test;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * <p>Description : 生成代码测试</p>
@@ -44,94 +28,14 @@ import java.util.Map;
  */
 public class CreedMpgTest {
     @Test
-    public void genAllTest() {
-        AutoGenerator mpg = new AutoGenerator();
-        //读取配置文件
-        Map<String, String> properties = ResourceUtil.readPropertiesFromResources("creed-mybatis-plus");
-        String author = properties.get("author");
-        String pkg = properties.get("package");
-        String dbUrl = properties.get("mysql.url");
-        String dbUser = properties.get("mysql.user");
-        String dbPwd = properties.get("mysql.pwd");
-
-        /*String outputDir = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-                + File.separator + "java";*/
-
-        //全局配置
-        GlobalConfig globalConfig = new GlobalConfig()
-                //.setOutputDir(outputDir)
-                .setFileOverride(true)
-                .setActiveRecord(true)
-                .setEnableCache(false)
-                .setBaseResultMap(true)
-                .setBaseColumnList(true)
-                .setAuthor(author)
-                .setEntityName("%sEntity")
-                .setMapperName("%sDAO")
-                .setXmlName("%sMapper")
-                .setServiceName("%sService")
-                .setServiceImplName("%sServiceImpl");
-        //数据源配置
-        DataSourceConfig dataSourceConfig = new DataSourceConfig()
-                .setDbType(DbType.MYSQL)
-                .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl(dbUrl)
-                .setUsername(dbUser)
-                .setPassword(dbPwd);
-        //策略配置
-        StrategyConfig strategyConfig = new StrategyConfig()
-                .setNaming(NamingStrategy.underline_to_camel)
-                .setColumnNaming(NamingStrategy.underline_to_camel)
-                .entityTableFieldAnnotationEnable(true)
-                .setEntityLombokModel(true)
-                .setInclude(new String[] {"t_proxy"});
-        //包信息配置
-        PackageConfig packageConfig = new PackageConfig()
-                .setParent(pkg)
-                .setEntity("repo.dao.entity")
-                .setMapper("repo.dao.mapper")
-                .setXml("repo.dao.xml")
-                .setService("service")
-                .setServiceImpl("service.impl")
-                .setController("web.controller");
-        //模板信息配置
-        TemplateConfig templateConfig = new TemplateConfig();
-        //加载配置并执行
-        mpg.setGlobalConfig(globalConfig)
-                .setDataSource(dataSourceConfig)
-                .setStrategy(strategyConfig)
-                .setPackageInfo(packageConfig)
-                .setTemplate(templateConfig)
-                .setCfg(getInjectionConfig())
-                .execute();
-    }
-
-    private InjectionConfig getInjectionConfig() {
-        return new InjectionConfig() {
-            @Override
-            public void initMap() {
-                Map<String, Object> map = new HashMap<>(1);
-                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
-                this.setMap(map);
-            }
-        }.setFileOutConfigList(Collections.<FileOutConfig>singletonList(new FileOutConfig(
-                "/creed.java.vm") {
-            // 自定义输出文件目录
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return "/develop/code/xml/" + tableInfo.getEntityName() + ".xml";
-            }
-        }));
-    }
-
-    @Test
     public void getSrcPath() {
         MultiModulePathConfig mpc = new MultiModulePathConfig().init();
         System.out.println(mpc.getEntityDir());
     }
 
     @Test
-    public void genAllTest2() {
+    public void genAllTest() {
         CreedOrm.mpg().genAll();
+        CreedOrm.mpg().genWeb();
     }
 }
