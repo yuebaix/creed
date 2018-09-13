@@ -43,22 +43,13 @@ public interface Mpg {
     void genXml();
 
     /**
-     * <p>description : 生成mapper类</p>
+     * <p>description : 生成dao</p>
      * <p>create   on : 2018-09-11 16:19:16</p>
      *
      * @author jerryniu
      * @version 1.0.0
      */
-    void genMapper();
-
-    /**
-     * <p>description : 生成实体类</p>
-     * <p>create   on : 2018-09-11 16:19:16</p>
-     *
-     * @author jerryniu
-     * @version 1.0.0
-     */
-    void genEntity();
+    void genDao();
 
     /**
      * <p>description : 生成服务类</p>
@@ -68,6 +59,15 @@ public interface Mpg {
      * @version 1.0.0
      */
     void genService();
+
+    /**
+     * <p>description : 生成Controller</p>
+     * <p>create   on : 2018-09-11 16:19:16</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    void genWeb();
 
     /**
      * <p>description : 全部生成</p>

@@ -35,14 +35,14 @@ public class MultiModulePathConfig {
     private static final String CONFIG_FILE_PATH = "creed-mybatis-plus";
 
     private static final String ROOTARTIFACTDIR_KEY = "rootArtifactDir";
-    private static final String GROUPID_KEY = "groupId";
+    /*private static final String GROUPID_KEY = "groupId";
     private static final String ARTIFACTID_KEY = "artifactId";
     private static final String PACKAGE_KEY = "package";
     private static final String AUTHOR_KEY = "author";
     private static final String DATABASE_DRIVER_KEY = "mysql.driver";
     private static final String DATABASE_URL_KEY = "mysql.url";
     private static final String DATABASE_USER_KEY = "mysql.user";
-    private static final String DATABASE_PASSWORD_KEY = "mysql.pwd";
+    private static final String DATABASE_PASSWORD_KEY = "mysql.pwd";*/
 
     private String rootArtifactDir;
     private String groupId;
@@ -50,7 +50,11 @@ public class MultiModulePathConfig {
     private String pkg;
 
     private String author;
-    private String header = "123";
+    private String header = "/*\n"
+            + " * Copyright 2018-2050 the original author or authors.\n"
+            + " * Powered by Yimei Corp.\n"
+            + " * All Rights Reserved.\n"
+            + " */";
     private String databaseDriver;
     private String databaseUrl;
     private String databaseUser;
@@ -136,7 +140,7 @@ public class MultiModulePathConfig {
      */
     public String getDaoDir() {
         return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "entity";
+                + "repo" + File.separator + "dao" + File.separator + "mapper";
     }
 
     /**
@@ -146,9 +150,9 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
-    public String getMapperDir() {
+    public String getXmlDir() {
         return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "entity";
+                + "repo" + File.separator + "dao" + File.separator + "xml";
     }
 
     /**
@@ -159,8 +163,7 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getServiceDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "entity";
+        return getServiceRoot() + File.separator + getPkgDir() + File.separator + "service";
     }
 
     /**
@@ -171,8 +174,7 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getServiceImplDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "entity";
+        return getServiceRoot() + File.separator + getPkgDir() + File.separator + "service" + File.separator + "impl";
     }
 
     /**
@@ -183,8 +185,7 @@ public class MultiModulePathConfig {
      * @version 1.0.0
      */
     public String getControllerDir() {
-        return getRepoRoot() + File.separator + getPkgDir() + File.separator
-                + "repo" + File.separator + "dao" + File.separator + "entity";
+        return getWebRoot() + File.separator + getPkgDir() + File.separator + "web" + File.separator + "controller";
     }
 
     private String getPkgDir() {

@@ -30,7 +30,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +53,8 @@ public final class MpgImpl implements Mpg {
     private TemplateConfig templateConfig = new TemplateConfig();
 
     private AutoGenerator mpg = new AutoGenerator();
+
+    private MultiModulePathConfig pathConfig = new MultiModulePathConfig();
 
     private MpgImpl() {
         configMpg();
@@ -78,53 +80,78 @@ public final class MpgImpl implements Mpg {
 
     @Override
     public void genBase() {
+        strategyConfig.setInclude("t_proxy");
 
+        //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"base"})));
+        mpg.execute();
     }
 
     @Override
     public void genXml() {
+        strategyConfig.setInclude("t_proxy");
 
+        //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"xml"})));
+        mpg.execute();
     }
 
     @Override
-    public void genMapper() {
+    public void genDao() {
+        strategyConfig.setInclude("t_proxy");
 
-    }
-
-    @Override
-    public void genEntity() {
-
+        //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"dao"})));
+        mpg.execute();
     }
 
     @Override
     public void genService() {
+        strategyConfig.setInclude("t_proxy");
 
+        //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"service"})));
+        mpg.execute();
+    }
+
+    @Override
+    public void genWeb() {
+        strategyConfig.setInclude("t_proxy");
+
+        //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {"web"})));
+        mpg.execute();
     }
 
     @Override
     public void genAll() {
         strategyConfig.setInclude("t_proxy");
+
         //加载配置并执行
+        mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {
+                "base", "dao", "xml", "service", "web"})));
         mpg.execute();
     }
 
     private void configMpg() {
+        pathConfig.init();
         //从配置文件读取配置
-        MultiModulePathConfig pathConfig = new MultiModulePathConfig().init();
-        //加载默认配置
         globalConfig = new GlobalConfig()
                 .setOutputDir(pathConfig.getRootArtifactDir())
-                .setFileOverride(false)
+                .setFileOverride(true)
                 .setActiveRecord(true)
                 .setEnableCache(false)
                 .setBaseResultMap(true)
                 .setBaseColumnList(true)
                 .setAuthor(pathConfig.getAuthor())
+                .setSwagger2(true)
                 .setEntityName("%sEntity")
-                .setMapperName("%sDAO")
+                .setMapperName("%sDao")
                 .setXmlName("%sMapper")
                 .setServiceName("%sService")
-                .setServiceImplName("%sServiceImpl");
+                .setServiceImplName("%sServiceImpl")
+                .setControllerName("%sController");
+        //加载默认配置
         dataSourceConfig = new DataSourceConfig()
                 .setDbType(DbType.MYSQL)
                 .setDriverName(pathConfig.getDatabaseDriver())
@@ -134,8 +161,12 @@ public final class MpgImpl implements Mpg {
         strategyConfig = new StrategyConfig()
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setColumnNaming(NamingStrategy.underline_to_camel)
+                //用来生成tableInfo,MPG有转换判断的逻辑错误
+                .setTablePrefix(new String[]{""})
                 .entityTableFieldAnnotationEnable(true)
-                .setEntityLombokModel(true);
+                .setEntityLombokModel(true)
+                .setSuperEntityClass(pathConfig.getPkg() + ".repo.dao.AbstractBaseEntity")
+                .setSuperServiceImplClass(pathConfig.getPkg() + ".service.AbstractBaseService");
         packageConfig = new PackageConfig()
                 .setParent(pathConfig.getPkg())
                 .setEntity("repo.dao.entity")
@@ -156,58 +187,13 @@ public final class MpgImpl implements Mpg {
                 .setDataSource(dataSourceConfig)
                 .setStrategy(strategyConfig)
                 .setPackageInfo(packageConfig)
-                .setTemplate(templateConfig)
-                .setCfg(getInjectionConfig(pathConfig));
+                .setTemplate(templateConfig);
     }
 
     /**
-     * 修改代码模板与生成路径
+     * 装配InjectionConfig
      */
-    private InjectionConfig getInjectionConfig(MultiModulePathConfig pathConfig) {
-        List<FileOutConfig> fileOutConfigList = Arrays.asList(
-                new FileOutConfig("/creed.entity.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getEntityDir() + File.separator + tableInfo.getEntityName()
-                                + StringPool.DOT_JAVA;
-                    }
-                },
-                new FileOutConfig("/creed.dao.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getDaoDir() + File.separator + tableInfo.getMapperName()
-                                + StringPool.DOT_JAVA;
-                    }
-                },
-                new FileOutConfig("/creed.mapper.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getMapperDir() + File.separator + tableInfo.getXmlName()
-                                + StringPool.DOT_XML;
-                    }
-                },
-                new FileOutConfig("/creed.service.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getServiceDir() + File.separator + tableInfo.getServiceName()
-                                + StringPool.DOT_JAVA;
-                    }
-                },
-                new FileOutConfig("/creed.serviceimpl.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getServiceImplDir() + File.separator + tableInfo.getServiceImplName()
-                                + StringPool.DOT_JAVA;
-                    }
-                },
-                new FileOutConfig("/creed.controller.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getControllerDir() + File.separator + tableInfo.getControllerName()
-                                + StringPool.DOT_JAVA;
-                    }
-                }
-        );
+    private InjectionConfig getInjectionConfig(List<FileOutConfig> fileOutConfigList) {
         return new InjectionConfig() {
             @Override
             public void initMap() {
@@ -216,5 +202,72 @@ public final class MpgImpl implements Mpg {
                 this.setMap(map);
             }
         }.setFileOutConfigList(fileOutConfigList);
+    }
+
+    /**
+     * 根据选项提供模板配置
+     */
+    private List<FileOutConfig> manipulateFileOutConfig(String[] cmds) {
+        List<FileOutConfig> fileOutConfigList = new ArrayList();
+        for (String cmd : cmds) {
+            if ("dao".equals(cmd)) {
+                fileOutConfigList.add(new FileOutConfig("/creed.entity.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getEntityDir() + File.separator + tableInfo.getEntityName()
+                                + StringPool.DOT_JAVA;
+                    }
+                });
+                fileOutConfigList.add(new FileOutConfig("/creed.dao.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getDaoDir() + File.separator + tableInfo.getMapperName()
+                                + StringPool.DOT_JAVA;
+                    }
+                });
+                continue;
+            }
+            if ("xml".equals(cmd)) {
+                fileOutConfigList.add(new FileOutConfig("/creed.xml.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getXmlDir() + File.separator + tableInfo.getXmlName()
+                                + StringPool.DOT_XML;
+                    }
+                });
+                continue;
+            }
+            if ("service".equals(cmd)) {
+                fileOutConfigList.add(new FileOutConfig("/creed.service.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getServiceDir() + File.separator + tableInfo.getServiceName()
+                                + StringPool.DOT_JAVA;
+                    }
+                });
+                fileOutConfigList.add(new FileOutConfig("/creed.serviceimpl.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getServiceImplDir() + File.separator + tableInfo.getServiceImplName()
+                                + StringPool.DOT_JAVA;
+                    }
+                });
+                continue;
+            }
+            if ("web".equals(cmd)) {
+                fileOutConfigList.add(new FileOutConfig("/creed.controller.vm") {
+                    @Override
+                    public String outputFile(TableInfo tableInfo) {
+                        return pathConfig.getControllerDir() + File.separator + tableInfo.getControllerName()
+                                + StringPool.DOT_JAVA;
+                    }
+                });
+                continue;
+            }
+            if ("base".equals(cmd)) {
+                continue;
+            }
+        }
+        return fileOutConfigList;
     }
 }
