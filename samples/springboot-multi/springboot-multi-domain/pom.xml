@@ -18,4 +18,10 @@
         <config.basedir>${basedir}/..</config.basedir>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>springboot-multi-repo</artifactId>
+        </dependency>
+    </dependencies>
 </project>

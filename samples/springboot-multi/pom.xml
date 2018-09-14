@@ -47,17 +47,12 @@
             <!--local bom-->
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>springboot-multi-domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.geercode.creed</groupId>
                 <artifactId>springboot-multi-repo</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>springboot-multi-scene</artifactId>
+                <artifactId>springboot-multi-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -67,12 +62,17 @@
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>springboot-multi-stub</artifactId>
+                <artifactId>springboot-multi-scene</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>springboot-multi-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>springboot-multi-stub</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!--main materials-->

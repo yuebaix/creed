@@ -87,5 +87,9 @@
             <groupId>com.geercode.creed</groupId>
             <artifactId>springboot-multi-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>springboot-multi-scene</artifactId>
+        </dependency>
     </dependencies>
 </project>

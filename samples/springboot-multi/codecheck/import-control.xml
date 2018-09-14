@@ -5,34 +5,49 @@
 <import-control pkg="com.geercode.creed.samples">
     <!--base check-->
     <allow pkg=".*" regex="true"/>
-    <!--domain层-->
-    <subpackage name="domain">
-        <!--禁止import的包-->
-        <disallow pkg="com.geercode.creed.samples.web"/>
-    </subpackage>
     <!--repo层-->
     <subpackage name="repo">
         <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.domain"/>
+        <disallow pkg="com.geercode.creed.samples.service"/>
+        <disallow pkg="com.geercode.creed.samples.scene"/>
         <disallow pkg="com.geercode.creed.samples.web"/>
+        <disallow pkg="com.geercode.creed.samples.stub"/>
+    </subpackage>
+    <!--domain层-->
+    <subpackage name="domain">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.service"/>
+        <disallow pkg="com.geercode.creed.samples.scene"/>
+        <disallow pkg="com.geercode.creed.samples.web"/>
+        <disallow pkg="com.geercode.creed.samples.stub"/>
+    </subpackage>
+    <!--service层-->
+    <subpackage name="service">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.domain"/>
+        <disallow pkg="com.geercode.creed.samples.scene"/>
+        <disallow pkg="com.geercode.creed.samples.web"/>
+        <disallow pkg="com.geercode.creed.samples.stub"/>
     </subpackage>
     <!--scene层-->
     <subpackage name="scene">
         <!--禁止import的包-->
         <disallow pkg="com.geercode.creed.samples.web"/>
-    </subpackage>
-    <!--service层-->
-    <subpackage name="service">
-        <!--禁止import的包-->
-        <disallow pkg="com.geercode.creed.samples.web"/>
-    </subpackage>
-    <!--stub层-->
-    <subpackage name="stub">
-        <!--禁止import的包-->
-        <disallow pkg="com.geercode.creed.samples.web"/>
+        <disallow pkg="com.geercode.creed.samples.stub"/>
     </subpackage>
     <!--web层-->
     <subpackage name="web">
         <!--禁止import的包-->
         <disallow pkg="com.geercode.creed.samples.stub"/>
+    </subpackage>
+    <!--stub层-->
+    <subpackage name="stub">
+        <!--禁止import的包-->
+        <disallow pkg="com.geercode.creed.samples.repo"/>
+        <disallow pkg="com.geercode.creed.samples.domain"/>
+        <disallow pkg="com.geercode.creed.samples.service"/>
+        <disallow pkg="com.geercode.creed.samples.scene"/>
+        <disallow pkg="com.geercode.creed.samples.web"/>
     </subpackage>
 </import-control>
