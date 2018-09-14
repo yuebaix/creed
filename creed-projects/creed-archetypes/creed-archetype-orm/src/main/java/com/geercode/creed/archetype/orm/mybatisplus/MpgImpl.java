@@ -149,7 +149,7 @@ public final class MpgImpl implements Mpg {
         }
         //加载配置并执行
         mpg.setCfg(getInjectionConfig(manipulateFileOutConfig(new String[] {
-                "base", "dao", "xml", "service"})));
+                "base", "dao" , "service"})));
         mpg.execute();
     }
 

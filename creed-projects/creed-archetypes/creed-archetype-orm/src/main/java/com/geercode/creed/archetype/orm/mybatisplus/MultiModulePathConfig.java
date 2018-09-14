@@ -34,32 +34,35 @@ import java.util.regex.Matcher;
 public class MultiModulePathConfig {
     private static final String CONFIG_FILE_PATH = "creed-mybatis-plus";
 
-    private static final String ROOTARTIFACTDIR_KEY = "rootArtifactDir";
-    /*private static final String GROUPID_KEY = "groupId";
+    private static final String GROUPID_KEY = "groupId";
     private static final String ARTIFACTID_KEY = "artifactId";
     private static final String PACKAGE_KEY = "package";
     private static final String AUTHOR_KEY = "author";
     private static final String DATABASE_DRIVER_KEY = "mysql.driver";
     private static final String DATABASE_URL_KEY = "mysql.url";
     private static final String DATABASE_USER_KEY = "mysql.user";
-    private static final String DATABASE_PASSWORD_KEY = "mysql.pwd";*/
+    private static final String DATABASE_PASSWORD_KEY = "mysql.pwd";
 
-    private String rootArtifactDir;
+    private static final String ROOTARTIFACTDIR_KEY = "rootArtifactDir";
+    private static final String HEADER_KEY = "header";
+    private static final String OVERRIDE_KEY = "override";
+    private static final String INCLUDE_TABLES_KEY = "includeTables";
+
     private String groupId;
     private String artifactId;
     private String pkg;
-
     private String author;
-    private String header = "/*\n"
-            + " * Copyright 2018-2050 the original author or authors.\n"
-            + " * Powered by Yimei Corp.\n"
-            + " * All Rights Reserved.\n"
-            + " */";
     private String databaseDriver;
     private String databaseUrl;
     private String databaseUser;
     private String databasePassword;
 
+    private String rootArtifactDir;
+    private String header = "/*\n"
+            + " * Copyright 2018-2050 the original author or authors.\n"
+            + " * Powered by Yimei Corp.\n"
+            + " * All Rights Reserved.\n"
+            + " */";
     /**执行时判断*/
     private boolean override = true;
     private String[] includeTables = {};
@@ -73,6 +76,18 @@ public class MultiModulePathConfig {
      */
     public MultiModulePathConfig init() {
         Map<String, String> properties = ResourceUtil.readPropertiesFromResources(CONFIG_FILE_PATH);
+        groupId = properties.get(GROUPID_KEY);
+        artifactId = properties.get(ARTIFACTID_KEY);
+        pkg = properties.get(PACKAGE_KEY);
+        if (StringUtil.isEmpty(pkg)) {
+            pkg = groupId + StringPool.DOT + artifactId;
+        }
+        author = properties.get(AUTHOR_KEY);
+        databaseDriver = properties.get(DATABASE_DRIVER_KEY);
+        databaseUrl = properties.get(DATABASE_URL_KEY);
+        databaseUser = properties.get(DATABASE_USER_KEY);
+        databasePassword = properties.get(DATABASE_PASSWORD_KEY);
+
         rootArtifactDir = properties.get(ROOTARTIFACTDIR_KEY);
         if (StringUtil.isEmpty(rootArtifactDir)) {
             rootArtifactDir = new File("../").getAbsolutePath();
@@ -81,27 +96,15 @@ public class MultiModulePathConfig {
                 rootArtifactDir += File.separator;
             }
         }
-        groupId = properties.get("groupId");
-        artifactId = properties.get("artifactId");
-        pkg = properties.get("package");
-        if (StringUtil.isEmpty(pkg)) {
-            pkg = groupId + StringPool.DOT + artifactId;
-        }
-        author = properties.get("author");
-        databaseDriver = properties.get("mysql.driver");
-        databaseUrl = properties.get("mysql.url");
-        databaseUser = properties.get("mysql.user");
-        databasePassword = properties.get("mysql.pwd");
-
-        String tmpHeader = properties.get("header");
+        String tmpHeader = properties.get(HEADER_KEY);
         if (!StringUtil.isEmpty(tmpHeader)) {
             header = tmpHeader;
         }
-        String overrideStr = properties.get("override");
+        String overrideStr = properties.get(OVERRIDE_KEY);
         if (!StringUtil.isEmpty(overrideStr)) {
             override = Boolean.parseBoolean(overrideStr);
         }
-        String includeTablesStr = properties.get("includeTables");
+        String includeTablesStr = properties.get(INCLUDE_TABLES_KEY);
         if (!StringUtil.isEmpty(includeTablesStr)) {
             includeTables = includeTablesStr.split(",", -1);
         }
@@ -109,7 +112,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取父模块根目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -132,7 +135,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取entity目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -145,7 +148,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取dao目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -158,7 +161,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取xml目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -170,7 +173,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取service目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -182,7 +185,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取serviceImpl目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -194,7 +197,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取controller目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -211,7 +214,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取根package</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -222,7 +225,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取作者名</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -233,7 +236,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取文件头</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -244,7 +247,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取数据库驱动类名</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -255,7 +258,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取数据库地址</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -266,7 +269,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取数据库用户名</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -277,7 +280,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取数据库密码</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -288,7 +291,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 是否覆盖原文件</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -299,7 +302,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 包含哪些表</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu

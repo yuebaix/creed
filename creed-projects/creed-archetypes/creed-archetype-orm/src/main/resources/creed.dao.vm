@@ -1,3 +1,5 @@
+${cfg.header}
+
 package ${package.Mapper};
 
 import ${package.Entity}.${entity};

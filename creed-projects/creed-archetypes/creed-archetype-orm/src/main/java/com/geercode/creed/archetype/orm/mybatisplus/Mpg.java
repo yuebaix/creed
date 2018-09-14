@@ -70,7 +70,7 @@ public interface Mpg {
     void genWeb();
 
     /**
-     * <p>description : 全部生成</p>
+     * <p>description : 生成base文件、dao层(不包含xml)与service层</p>
      * <p>create   on : 2018-09-11 16:19:16</p>
      *
      * @author jerryniu

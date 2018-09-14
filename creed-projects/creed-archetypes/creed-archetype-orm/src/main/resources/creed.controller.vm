@@ -1,5 +1,6 @@
-package ${package.Controller};
+${cfg.header}
 
+package ${package.Controller};
 
 import org.springframework.web.bind.annotation.RequestMapping;
 

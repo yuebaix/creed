@@ -1,7 +1,9 @@
+${cfg.header}
+
 package ${package.Service};
 
 import ${package.Entity}.${entity};
-import ${superServiceClassPackage};
+## import ${superServiceClassPackage};
 
 /**
  * <p>

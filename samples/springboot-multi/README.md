@@ -5,3 +5,5 @@
 * service -服务层
 * stub -存根层(对外服务接口与实体)
 * web -网站层(控制器、拦截器、过滤器等一切容器管理)
+
+![](../../docs/asset/instruction/codeLayer.jpg)
