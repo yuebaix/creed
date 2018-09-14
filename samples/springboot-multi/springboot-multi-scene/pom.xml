@@ -27,6 +27,9 @@
             <groupId>com.geercode.creed</groupId>
             <artifactId>springboot-multi-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
-
 </project>

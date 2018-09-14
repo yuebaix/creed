@@ -19,7 +19,7 @@
     </sql>
 
     <select id="findCourseById"  resultMap="BaseResultMap" >
-        select * from t_proxy
+        select * from t_proxy limit 100
     </select>
     <select id="findCourseById_By"  resultMap="BaseResultMap" >
         select * from t_proxy where id = 11912

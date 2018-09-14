@@ -90,12 +90,12 @@ public class MultiModulePathConfig {
 
         rootArtifactDir = properties.get(ROOTARTIFACTDIR_KEY);
         if (StringUtil.isEmpty(rootArtifactDir)) {
-            rootArtifactDir = new File("../").getAbsolutePath();
-        } else {
-            if (!rootArtifactDir.endsWith(File.separator)) {
-                rootArtifactDir += File.separator;
-            }
+            rootArtifactDir = new File("").getAbsoluteFile().getParent();
         }
+        if (!rootArtifactDir.endsWith(File.separator)) {
+            rootArtifactDir += File.separator;
+        }
+
         String tmpHeader = properties.get(HEADER_KEY);
         if (!StringUtil.isEmpty(tmpHeader)) {
             header = tmpHeader;

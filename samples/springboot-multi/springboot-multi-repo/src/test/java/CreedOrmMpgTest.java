@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import com.geercode.creed.archetype.orm.CreedOrm;
 import org.junit.Test;
 
 import java.io.File;
@@ -26,13 +27,14 @@ import java.io.File;
  * @since 1.0.0
  */
 public class CreedOrmMpgTest {
-    /*@Test
+    @Test
     public void genAllTest() {
         CreedOrm.mpg().genAll();
-    }*/
+        CreedOrm.mpg().genXml();
+    }
 
     @Test
     public void getRootPath() {
-        System.out.println(new File("").getAbsolutePath());
+        System.out.println(new File("").getAbsoluteFile().getParent());
     }
 }
