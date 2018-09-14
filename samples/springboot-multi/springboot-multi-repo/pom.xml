@@ -15,39 +15,45 @@
     <description>SpringBoot示例 多模块网站 REPO层</description>
 
     <properties>
+        <!--确保插件相对父模块工程目录下-->
         <config.basedir>${basedir}/..</config.basedir>
-        <swagger.version>1.5.20</swagger.version>
     </properties>
 
     <dependencies>
+        <!--MybatisPlus Model依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.geercode.creed</groupId>
-            <artifactId>creed-archetype-orm</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <!--swagger-->
+        <!--swagger注解依赖-->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>${swagger.version}</version>
+            <version>${swagger-annotations.version}</version>
             <optional>true</optional>
         </dependency>
+        <!--精简代码所需-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!--junit-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <!--Mysql驱动依赖,生成ORM结构需要-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--根据MybatisPlus生成符合公司标准的多模块结构代码-->
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>creed-archetype-orm</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

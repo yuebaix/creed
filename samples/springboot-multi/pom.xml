@@ -27,9 +27,11 @@
         <!--控制是否检测-->
         <disable.checks>false</disable.checks>
         <!--主要依赖版本-->
-        <mybatis-plus-boot-starter.version>3.0.1</mybatis-plus-boot-starter.version>
+        <mybatis-plus.version>3.0.1</mybatis-plus.version>
         <lombok.version>1.18.2</lombok.version>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
+        <!--swagger-annotations版本,必须与swagger的版本兼容-->
+        <swagger-annotations.version>1.5.20</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
@@ -77,7 +79,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter.version}</version>
+                <version>${mybatis-plus.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
