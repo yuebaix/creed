@@ -148,7 +148,7 @@ public class MultiModulePathConfig {
     }
 
     /**
-     * <p>description : 获取dao目录</p>
+     * <p>description : 获取dao接口目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
      *
      * @author jerryniu
@@ -158,6 +158,19 @@ public class MultiModulePathConfig {
         return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "mapper";
+    }
+
+    /**
+     * <p>description : 获取dao根目录</p>
+     * <p>create   on : 2018-09-12 19:36:42</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    public String getBaseDaoDir() {
+        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator
+                + "repo" + File.separator + "dao";
     }
 
     /**

@@ -1,10 +1,6 @@
-/*
- * Copyright 2018-2050 the original author or authors.
- * Powered by Yimei Corp.
- * All Rights Reserved.
- */
+${cfg.header}
 
-package com.geercode.creed.samples.service;
+package ${package.Service};
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -21,8 +17,8 @@ import java.util.Map;
 /**
  * <p>基础service实现类</p>
  *
- * @author jerryniu
- * @since 2018-09-14
+ * @author ${author}
+ * @since ${date}
  */
 public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T>
         implements BaseService<T> {

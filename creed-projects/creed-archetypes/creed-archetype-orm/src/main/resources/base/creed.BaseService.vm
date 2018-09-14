@@ -1,10 +1,6 @@
-/*
- * Copyright 2018-2050 the original author or authors.
- * Powered by Yimei Corp.
- * All Rights Reserved.
- */
+${cfg.header}
 
-package com.geercode.creed.samples.service;
+package ${package.Service};
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -14,8 +10,8 @@ import java.util.Map;
 /**
  * <p>基础service接口</p>
  *
- * @author jerryniu
- * @since 2018-09-14
+ * @author ${author}
+ * @since ${date}
  */
 public interface BaseService<T> extends IService<T> {
     /**

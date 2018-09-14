@@ -39,4 +39,9 @@ public class CreedMpgTest {
         CreedOrm.mpg().genXml();
         //CreedOrm.mpg().genWeb();
     }
+
+    @Test
+    public void genBase() {
+        CreedOrm.mpg().genBase();
+    }
 }

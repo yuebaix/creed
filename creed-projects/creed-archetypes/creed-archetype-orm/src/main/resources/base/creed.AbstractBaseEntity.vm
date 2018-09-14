@@ -1,0 +1,14 @@
+${cfg.header}
+
+package ${cfg.BaseDaoDir};
+
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
+/**
+ * <p>基础实体</p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public abstract class AbstractBaseEntity<T extends Model> extends Model<T> {
+}

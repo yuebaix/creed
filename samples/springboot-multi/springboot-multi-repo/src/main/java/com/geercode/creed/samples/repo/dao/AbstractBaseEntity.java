@@ -9,11 +9,10 @@ package com.geercode.creed.samples.repo.dao;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 /**
- * <p>Description : 基础实体</p>
- * <p>Created on  : 2018-09-10 15:28</p>
+ * <p>基础实体</p>
  *
  * @author jerryniu
- * @since 1.0.0
+ * @since 2018-09-14
  */
 public abstract class AbstractBaseEntity<T extends Model> extends Model<T> {
 }
