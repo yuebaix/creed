@@ -1,0 +1,87 @@
+variables:
+  FOO: 'numb-value'
+
+############ 预加载shell脚本 ############
+.script-template: &script-definition |
+  #!/bin/bash
+  function sout() {
+    echo 123
+  }
+  function revision() {
+    if [ -n "$CI_COMMIT_TAG" ]; then
+        echo stable-$CI_COMMIT_TAG
+    else
+        echo $CI_COMMIT_REF_SLUG-snapshot-$CI_PIPELINE_ID
+    fi
+  }
+
+.build-template: &build-definition
+  stage: build
+  script:
+    - sout
+    - echo 'mvn clean verify -B -V -pl springboot-multi-web -am -amd'
+
+.deploy-template: &deploy-definiton
+  stage: deploy
+  script:
+    - sout
+
+stages:
+  - debug
+  - build
+  - deploy
+
+before_script:
+  - *script-definition
+
+debug:
+  stage: debug
+  script:
+    - docker --version
+    - echo $CI_PROJECT_NAMESPACE
+    - echo $CI_PROJECT_NAME
+    - echo $CI_COMMIT_SHA
+    - nower=$(date '+%Y%m%d#%H%M%S')
+    - echo $nower
+    - echo $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$(revision)
+
+# master分支
+build-master:
+  <<: *build-definition
+  only:
+    - master
+deploy-master:
+  <<: *deploy-definiton
+  when: manual
+  only:
+    - master
+
+# tag
+build-tag:
+  <<: *build-definition
+  only:
+    - tags
+deploy-tag:
+  <<: *deploy-definiton
+  when: manual
+  only:
+    - tags
+
+# 除去master的分支
+build-other-branch:
+  <<: *build-definition
+  only:
+    - branches
+  except:
+    - master
+deploy-other-branch:
+  <<: *deploy-definiton
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+
+after_script:
+  - echo "After script section"
+  - echo "For example you might do some cleanup here"
