@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 /*
  * Copyright 2018-2050 the original author or authors.
  *
@@ -14,7 +17,7 @@
  * limitations under the License.
  */
 
-import com.geercode.creed.archetype.orm.CreedOrm;
+import ${groupId}.archetype.orm.CreedOrm;
 import org.junit.Test;
 
 import java.io.File;
@@ -31,10 +34,5 @@ public class CreedOrmMpgTest {
     public void genAllTest() {
         CreedOrm.mpg().genAll();
         CreedOrm.mpg().genXml();
-    }
-
-    @Test
-    public void getRootPath() {
-        System.out.println(new File("").getAbsoluteFile().getParent());
     }
 }

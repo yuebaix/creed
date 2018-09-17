@@ -1,8 +1,4 @@
-/*
- * Copyright 2018-2050 the original author or authors.
- * Powered by Yimei Corp.
- * All Rights Reserved.
- */
+package com.geercode.creed.samples.domain;
 
 import org.junit.Test;
 

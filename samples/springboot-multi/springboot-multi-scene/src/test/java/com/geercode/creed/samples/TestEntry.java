@@ -4,6 +4,9 @@
  * All Rights Reserved.
  */
 
+package com.geercode.creed.samples;
+
+import com.geercode.creed.samples.scene.ClassNameTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
