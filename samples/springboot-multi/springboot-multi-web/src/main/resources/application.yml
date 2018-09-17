@@ -5,6 +5,12 @@ spring:
     url: jdbc:mysql://192.168.21.22:3306/jufan_crawler?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
     username: root
     password: We-are-hero-2015
+  jackson:
+      joda-date-time-format: yyyy-MM-dd HH:mm:ss
+      time-zone:  Asia/Shanghai
+      date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
 
 #mybatis plus 配置
 mybatis-plus:

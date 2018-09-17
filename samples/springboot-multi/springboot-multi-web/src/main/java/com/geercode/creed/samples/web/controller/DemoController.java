@@ -6,6 +6,7 @@
 
 package com.geercode.creed.samples.web.controller;
 
+import com.geercode.creed.samples.web.vo.ShowSwaggerModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -88,5 +89,18 @@ public class DemoController {
             return "新旧密码不能相同";
         }
         return "密码修改成功!";
+    }
+
+    /**
+     * <p>description : test</p>
+     * <p>create   on : 2018-09-17 17:18:23</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    @ApiOperation(value = "测试swagger entity mapping", notes = "测试一下")
+    @PostMapping("/model")
+    public ShowSwaggerModel test(ShowSwaggerModel model) {
+        return model;
     }
 }
