@@ -12,11 +12,11 @@
     </parent>
 
     <groupId>com.geercode.creed</groupId>
-    <artifactId>creed-archetype-simple</artifactId>
+    <artifactId>creed-archetype-multi</artifactId>
     <packaging>maven-archetype</packaging>
 
-    <name>Creed Archetype Simple</name>
-    <description>Creed Archetype Simple</description>
+    <name>Creed Archetype Multi</name>
+    <description>Creed Archetype Multi</description>
 
     <properties>
         <main.basedir>${basedir}/../../..</main.basedir>

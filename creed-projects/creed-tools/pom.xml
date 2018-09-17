@@ -35,7 +35,7 @@
                 <configuration>
                     <!--定义测试套件入口-->
                     <includes>
-                        <include>com/geercode/creed/tools/TestEntry.java</include>
+                        <include>com/geercode/creed/tools/com.geercode.creed.samples.domain.com.geercode.creed.samples.repo.com.geercode.creed.samples.com.geercode.creed.samples.com.geercode.creed.samples.com.geercode.creed.samples.TestEntry.java</include>
                     </includes>
                     <!--同一次测试最多尝试两次-->
                     <rerunFailingTestsCount>2</rerunFailingTestsCount>
