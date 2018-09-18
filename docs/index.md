@@ -1,3 +1,4 @@
+```
 mvn archetype:generate                                   \
   -DinteractiveMode=false                                \
   -DarchetypeGroupId=com.geercode.creed                  \
@@ -7,7 +8,8 @@ mvn archetype:generate                                   \
   -DartifactId=creed-simple-app                          \
   -Dpackage=com.yimei.architect.simple                   \
   -Dversion=1.0-SNAPSHOT
-  
+```
+```
 mvn archetype:generate                                   \
   -DinteractiveMode=false                                \
   -DarchetypeGroupId=com.geercode.creed                  \
@@ -17,3 +19,4 @@ mvn archetype:generate                                   \
   -DartifactId=creed-simple-app                          \
   -Dpackage=com.yimei.architect.simple                   \
   -Dversion=1.0-SNAPSHOT
+```
