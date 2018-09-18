@@ -113,8 +113,9 @@
                             <flattenMode>oss</flattenMode>
                             <pomElements>
                                 <parent>expand</parent>
-                                <distributionManagement>remove</distributionManagement>
                                 <repositories>remove</repositories>
+                                <pluginRepositories>remove</pluginRepositories>
+                                <distributionManagement>remove</distributionManagement>
                             </pomElements>
                         </configuration>
                     </execution>

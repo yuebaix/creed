@@ -166,6 +166,8 @@
                                 <updatePomFile>true</updatePomFile>
                                 <pomElements>
                                     <properties>remove</properties>
+                                    <repositories>remove</repositories>
+                                    <pluginRepositories>remove</pluginRepositories>
                                     <distributionManagement>remove</distributionManagement>
                                     <dependencyManagement>keep</dependencyManagement>
                                     <pluginManagement>keep</pluginManagement>
