@@ -12,3 +12,5 @@ Lombok Plugin -lombok插件的idea支持
 Alibaba Java Code Guidelines -阿里巴巴Java开发规范检测
 Findbugs-Idea -findbugs的检测插件
 ```
+
+[脚手架说明](archetype/archetype-multi.md)

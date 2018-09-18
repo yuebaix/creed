@@ -1,3 +1,4 @@
+
 ```
 mvn archetype:generate                                   \
   -DinteractiveMode=false                                \
