@@ -19,6 +19,7 @@ variables:
   stage: build
   script:
     - sout
+    - echo '补充构建脚本'
     - echo 'mvn clean verify -B -V -pl springboot-multi-web -am -amd'
 
 .deploy-template: &deploy-definiton

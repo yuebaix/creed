@@ -44,7 +44,7 @@
         <docker.config.profile>dev</docker.config.profile>
     </properties>
 
-    <repositories>
+    <!--<repositories>
         <repository>
             <id>nexus</id>
             <name>jufan-group-public</name>
@@ -72,7 +72,7 @@
             <name>jufan-hosted-snapshots</name>
             <url>http://svn.jufandev.com:8087/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 
     <dependencyManagement>
         <dependencies>
