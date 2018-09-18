@@ -36,6 +36,7 @@ mvn archetype:generate                                   \
   -Dpackage=com.yimei.architect.simple                   \
   -Dversion=1.0-SNAPSHOT
 ```
+![](../../asset/instruction/archetype/archetype-multi_01.png)
 #### 3.执行测试代码生成orm
 ```
 代码在repo层test中CreedOrmMpgTest.java
