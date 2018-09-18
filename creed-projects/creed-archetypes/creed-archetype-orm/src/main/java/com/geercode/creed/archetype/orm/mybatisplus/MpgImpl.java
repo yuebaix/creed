@@ -185,6 +185,7 @@ public final class MpgImpl implements Mpg {
                 .setTablePrefix(new String[]{""})
                 .entityTableFieldAnnotationEnable(true)
                 .setEntityLombokModel(true)
+                .setRestControllerStyle(true)
                 .setSuperEntityClass(pathConfig.getPkg() + ".repo.dao.AbstractBaseEntity")
                 .setSuperServiceClass(pathConfig.getPkg() + ".service.BaseService")
                 .setSuperServiceImplClass(pathConfig.getPkg() + ".service.AbstractBaseService");

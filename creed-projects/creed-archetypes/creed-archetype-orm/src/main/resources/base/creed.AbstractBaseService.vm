@@ -22,6 +22,7 @@ import java.util.Map;
  */
 public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T>
         implements BaseService<T> {
+    private static final String ENTITY_SUFFIX = "Entity";
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private SqlSessionTemplate sqlSession;
@@ -91,7 +92,7 @@ public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends Se
         String head = clazzFullName.substring(0, clazzFullName.lastIndexOf(".entity."));
         String end = clazzFullName.substring(clazzFullName.lastIndexOf(".entity.") + ".entity.".length(),
                 clazzFullName.length());
-        if (end.endsWith("Entity")) {
+        if (end.endsWith(ENTITY_SUFFIX)) {
             end = end.substring(0, end.lastIndexOf("Entity"));
         }
         clazzFullName = head + ".mapper." + end;

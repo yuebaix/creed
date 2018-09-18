@@ -7,11 +7,17 @@
 package com.geercode.creed.samples.web.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.geercode.creed.samples.repo.dao.entity.TProxyEntity;
 import com.geercode.creed.samples.service.TProxyService;
+import com.geercode.creed.samples.web.common.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -51,5 +57,79 @@ public class TestController {
         TProxyEntity tProxyEntity1 = (TProxyEntity) tProxyService.getObjectBySqlId("findCourseById_By", null);
         log.debug(tProxyEntity1.toString());
         return "success";
+    }
+
+    /**
+     * 获取数据列表
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public BaseResponse findListByPage(@RequestParam(name = "page", defaultValue = "1") int pageIndex,
+            @RequestParam(name = "rows", defaultValue = "20") int step) {
+        Page page = new Page(pageIndex, step);
+        tProxyService.page(page, null);
+        return BaseResponse.onSuccess(page);
+    }
+
+    /**
+     * 获取全部数据
+     */
+    @RequestMapping("/all")
+    @ResponseBody
+    public BaseResponse findAll() {
+        List<TProxyEntity> models = tProxyService.list(null);
+        return BaseResponse.onSuccess(models);
+    }
+
+    /**
+     * 根据ID查找数据
+     */
+    @RequestMapping("/find")
+    @ResponseBody
+    public BaseResponse find(@RequestParam("id") Long id) {
+        TProxyEntity entity = tProxyService.getById(id);
+        if (entity == null) {
+            return BaseResponse.onFail("尚未查询到此ID");
+        }
+        return BaseResponse.onSuccess(entity);
+    }
+
+    /**
+     * 添加数据
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponse addItem(@RequestBody TProxyEntity entity) {
+        boolean isOk = tProxyService.save(entity);
+        if (isOk) {
+            return BaseResponse.onSuccess("数据添加成功！");
+        }
+        return BaseResponse.onFail("数据添加失败");
+    }
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponse updateItem(@RequestBody TProxyEntity entity) {
+        boolean isOk = tProxyService.updateById(entity);
+        if (isOk) {
+            return BaseResponse.onSuccess("数据更改成功！");
+        }
+        return BaseResponse.onFail("数据更改失败");
+    }
+
+    /**
+     * 删除数据
+     */
+    @RequestMapping("/del")
+    @ResponseBody
+    public BaseResponse deleteItems(@RequestParam("ids") List<Long> ids) {
+        boolean isOk = tProxyService.removeByIds(ids);
+        if (isOk) {
+            return BaseResponse.onSuccess("数据删除成功！");
+        }
+        return BaseResponse.onFail("数据删除失败");
     }
 }

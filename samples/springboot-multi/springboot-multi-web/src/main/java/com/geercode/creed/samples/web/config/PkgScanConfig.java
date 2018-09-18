@@ -7,7 +7,6 @@
 package com.geercode.creed.samples.web.config;
 
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -18,8 +17,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0.0
  */
 @Configuration
-@ComponentScans({
-        @ComponentScan("com.geercode.creed.samples")
-})
+@ComponentScan("com.geercode.creed.samples")
 public class PkgScanConfig {
 }

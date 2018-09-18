@@ -258,17 +258,13 @@
                             <ruleset>rulesets/java/ali-constant.xml</ruleset>
                             <ruleset>rulesets/java/ali-exception.xml</ruleset>
                             <ruleset>rulesets/java/ali-flowcontrol.xml</ruleset>
-                            <ruleset>rulesets/java/ali-naming.xml</ruleset>
                             <ruleset>rulesets/java/ali-oop.xml</ruleset>
                             <ruleset>rulesets/java/ali-orm.xml</ruleset>
                             <ruleset>rulesets/java/ali-other.xml</ruleset>
                             <ruleset>rulesets/java/ali-set.xml</ruleset>
+                            <!--替换rulesets/java/ali-naming.xml,干掉与checkstyle重合又不好用的ClassNamingShouldBeCamelRule-->
+                            <ruleset>com/geercode/creed/codecheck/rulesets/creed-naming.xml</ruleset>
                         </rulesets>
-                        <excludes>
-                            <exclude>**/repo/dao/**/*.java</exclude>
-                            <exclude>**/service/**/*Service.java</exclude>
-                            <exclude>**/service/**/*ServiceImpl.java</exclude>
-                        </excludes>
                     </configuration>
                     <executions>
                         <!-- 绑定pmd:check到verify生命周期 -->
@@ -287,6 +283,11 @@
                             <groupId>com.alibaba.p3c</groupId>
                             <artifactId>p3c-pmd</artifactId>
                             <version>${p3c-pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.geercode.creed</groupId>
+                            <artifactId>creed-codecheck</artifactId>
+                            <version>${creed.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>

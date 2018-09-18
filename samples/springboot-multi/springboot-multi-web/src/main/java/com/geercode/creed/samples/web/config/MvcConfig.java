@@ -14,29 +14,21 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.archetype.orm.mybatisplus;
+package com.geercode.creed.samples.web.config;
 
-import com.geercode.creed.archetype.orm.CreedOrm;
-import org.junit.Test;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * <p>Description : 生成代码测试</p>
- * <p>Created on  : 2018-09-12 12:58</p>
+ * <p>Description : mvc配置类</p>
+ * <p>Created on  : 2018-09-18 17:49</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class CreedMpgTest {
-    @Test
-    public void getSrcPath() {
-        MultiModulePathConfig mpc = new MultiModulePathConfig().init();
-        System.out.println(mpc.getEntityDir());
-    }
-
-    @Test
-    public void genAllTest() {
-        //CreedOrm.mpg().genAll();
-        //CreedOrm.mpg().genXml();
-        CreedOrm.mpg().genWeb();
-    }
+@Configuration
+@EnableWebMvc
+public class MvcConfig implements WebMvcConfigurer {
+//    ApiResourceController
 }
