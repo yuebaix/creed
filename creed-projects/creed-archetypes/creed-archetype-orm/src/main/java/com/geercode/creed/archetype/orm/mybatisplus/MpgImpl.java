@@ -222,6 +222,7 @@ public final class MpgImpl implements Mpg {
                 Map<String, Object> map = new HashMap<>(1);
                 map.put("header", pathConfig.getHeader());
                 map.put("BaseDaoDir", pathConfig.getPkg() + ".repo.dao");
+                map.put("BaseRespDir", pathConfig.getPkg() + ".web.common");
                 this.setMap(map);
             }
         }.setFileOutConfigList(fileOutConfigList);
@@ -284,30 +285,44 @@ public final class MpgImpl implements Mpg {
                 });
                 continue;
             } else if ("base".equals(cmd)) {
-                fileOutConfigList.add(new FileOutConfig("/base/creed.AbstractBaseEntity.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getBaseDaoDir() + File.separator + "AbstractBaseEntity"
-                                + StringPool.DOT_JAVA;
-                    }
-                });
-                fileOutConfigList.add(new FileOutConfig("/base/creed.AbstractBaseService.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getServiceDir() + File.separator + "AbstractBaseService"
-                                + StringPool.DOT_JAVA;
-                    }
-                });
-                fileOutConfigList.add(new FileOutConfig("/base/creed.BaseService.vm") {
-                    @Override
-                    public String outputFile(TableInfo tableInfo) {
-                        return pathConfig.getServiceDir() + File.separator + "BaseService"
-                                + StringPool.DOT_JAVA;
-                    }
-                });
+                configBase(fileOutConfigList);
                 continue;
             }
         }
+        return fileOutConfigList;
+    }
+
+    private List<FileOutConfig> configBase(List<FileOutConfig> fileOutConfigList) {
+        fileOutConfigList.add(new FileOutConfig("/base/creed.AbstractBaseEntity.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return pathConfig.getBaseDaoDir() + File.separator + "AbstractBaseEntity" + StringPool.DOT_JAVA;
+            }
+        });
+        fileOutConfigList.add(new FileOutConfig("/base/creed.AbstractBaseService.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return pathConfig.getServiceDir() + File.separator + "AbstractBaseService" + StringPool.DOT_JAVA;
+            }
+        });
+        fileOutConfigList.add(new FileOutConfig("/base/creed.BaseService.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return pathConfig.getServiceDir() + File.separator + "BaseService" + StringPool.DOT_JAVA;
+            }
+        });
+        fileOutConfigList.add(new FileOutConfig("/base/creed.BaseCode.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return pathConfig.getRespDir() + File.separator + "BaseCode" + StringPool.DOT_JAVA;
+            }
+        });
+        fileOutConfigList.add(new FileOutConfig("/base/creed.BaseResp.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return pathConfig.getRespDir() + File.separator + "BaseResp" + StringPool.DOT_JAVA;
+            }
+        });
         return fileOutConfigList;
     }
 }

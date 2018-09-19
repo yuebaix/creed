@@ -160,6 +160,11 @@ public class MultiModulePathConfig {
                 + "repo" + File.separator + "dao" + File.separator + "mapper";
     }
 
+    public String getRespDir() {
+        return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+                + File.separator + getPkgDir() + File.separator + "web" + File.separator + "common";
+    }
+
     /**
      * <p>description : 获取dao根目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>

@@ -1,16 +1,12 @@
-/*
- * Copyright 2018-2050 the original author or authors.
- * Powered by Yimei Corp.
- * All Rights Reserved.
- */
+${cfg.header}
 
-package com.geercode.creed.samples.web.common;
+package ${cfg.BaseRespDir};
 
 /**
  * <p>description : 基础回复编码</p>
  *
- * @author jerryniu
- * @since 2018-09-19
+ * @author ${author}
+ * @since ${date}
  */
 public enum BaseCode {
     /**成功*/

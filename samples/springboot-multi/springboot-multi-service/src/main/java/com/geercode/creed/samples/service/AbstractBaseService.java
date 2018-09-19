@@ -22,7 +22,7 @@ import java.util.Map;
  * <p>基础service实现类</p>
  *
  * @author jerryniu
- * @since 2018-09-14
+ * @since 2018-09-19
  */
 public abstract class AbstractBaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T>
         implements BaseService<T> {
