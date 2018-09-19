@@ -13,7 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * <p>Description : springboot多模块示例启动类</p>
+ * <p>Description : springboot多模块启动类</p>
  * <p>Created on  : 2018-09-10 15:49</p>
  *
  * @author jerryniu
