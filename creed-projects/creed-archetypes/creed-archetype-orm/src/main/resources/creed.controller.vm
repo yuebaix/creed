@@ -24,6 +24,9 @@ import java.util.List;
 /**
  * <p>$!{table.comment} 前端控制器</p>
  *
+ * 增POST 删DELETE 改PUT 查GET
+ * CRUD (POST GET PUT DELETE)
+ *
  * @author ${author}
  * @since ${date}
  */
