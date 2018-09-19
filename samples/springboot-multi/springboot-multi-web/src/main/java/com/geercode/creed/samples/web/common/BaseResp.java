@@ -6,6 +6,8 @@
 
 package com.geercode.creed.samples.web.common;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -14,13 +16,17 @@ import lombok.Data;
  * @author jerryniu
  * @since 2018-09-19
  */
+@ApiModel("回复基类")
 @Data
 public class BaseResp<T> {
     /**描述*/
+    @ApiModelProperty("描述")
     private String msg;
     /**编码*/
+    @ApiModelProperty("编码")
     private String code;
     /**数据内容*/
+    @ApiModelProperty("数据")
     private T data;
 
     /**
