@@ -17,6 +17,7 @@ public class CreedOrmMpgTest {
     @Test
     public void genAllTest() {
         CreedOrm.mpg().genAll();
-        CreedOrm.mpg().genXml();
+        //CreedOrm.mpg().genXml();
+        //CreedOrm.mpg().genWeb();
     }
 }
