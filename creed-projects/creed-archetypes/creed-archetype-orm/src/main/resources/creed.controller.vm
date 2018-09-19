@@ -7,8 +7,8 @@ import ${superControllerClassPackage};
 #end
 import ${package.Service}.${table.serviceName};
 import ${package.Entity}.${entity};
+import ${cfg.BaseRespDir}.BaseResp;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.geercode.creed.samples.web.common.BaseResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
