@@ -12,6 +12,7 @@ import lombok.Data;
  * @author ${author}
  * @since ${date}
  */
+@ApiModel("回复基类")
 @Data
 public class BaseResp<T> {
     /**描述*/
