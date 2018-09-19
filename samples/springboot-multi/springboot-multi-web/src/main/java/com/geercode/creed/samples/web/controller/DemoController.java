@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
  * <p>Description : 测试swagger</p>
  * <p>Created on  : 2018-08-27 21:55</p>
  *
+ * 增POST 删DELETE 改PUT 查GET
+ * CRUD (POST GET PUT DELETE)
+ *
  * @author jerryniu
  * @version 1.0.0
  */

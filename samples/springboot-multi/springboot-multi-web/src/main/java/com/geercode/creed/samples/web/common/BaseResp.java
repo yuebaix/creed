@@ -54,16 +54,6 @@ public class BaseResp<T> {
     }
 
     /**
-     * <p>description : 失败(返回描述)</p>
-     *
-     * @author jerryniu
-     * @version 1.0.0
-     */
-    public static BaseResp fail(String msg) {
-        return BaseResp.custom(BaseCode.FAIL.getCode(), BaseCode.FAIL.getMsg() + ":" + msg, null);
-    }
-
-    /**
      * <p>description : 失败(返回数据)</p>
      *
      * @author jerryniu
