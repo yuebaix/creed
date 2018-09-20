@@ -6,10 +6,11 @@
 
 package com.geercode.creed.samples.web.config;
 
+import com.geercode.creed.samples.web.common.SystemConstant;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,7 +21,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * <p>Description : swagger配置类</p>
+ * <p>Description : swagger配置类,在开发环境与测试环境开启文档</p>
  * <p>Created on  : 2018-08-27 20:38</p>
  *
  * @author jerryniu
@@ -28,7 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnExpression("'${spring.profiles.active}'!='prod'")
+@Profile({SystemConstant.PROFILE_DEV, SystemConstant.PROFILE_TEST})
 public class SwaggerConfig {
 
     public static final String GROUP_NAME = "all";

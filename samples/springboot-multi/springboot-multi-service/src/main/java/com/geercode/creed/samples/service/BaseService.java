@@ -15,7 +15,7 @@ import java.util.Map;
  * <p>基础service接口</p>
  *
  * @author jerryniu
- * @since 2018-09-19
+ * @since 2018-09-20
  */
 public interface BaseService<T> extends IService<T> {
     /**
