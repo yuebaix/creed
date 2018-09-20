@@ -45,7 +45,7 @@
             </dependency>
             <dependency>
                 <groupId>com.geercode.creed</groupId>
-                <artifactId>creed-archetype-simple</artifactId>
+                <artifactId>creed-archetype-multi</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!--starters-->

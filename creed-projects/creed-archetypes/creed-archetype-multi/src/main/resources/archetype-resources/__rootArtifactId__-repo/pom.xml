@@ -39,6 +39,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <!--Mysql驱动依赖,生成ORM结构需要-->
         <dependency>

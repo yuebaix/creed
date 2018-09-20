@@ -26,5 +26,6 @@
         <module>spring-supports-bom</module>
         <module>spring-supports-parent</module>
         <module>spring-supports-utils</module>
+        <module>spring-supports-test</module>
     </modules>
 </project>
