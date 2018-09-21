@@ -2,11 +2,14 @@ spring:
   profiles:
     active: dev
   jackson:
-      joda-date-time-format: yyyy-MM-dd HH:mm:ss
-      time-zone:  Asia/Shanghai
-      date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone:  Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
+    favicon:
+      # 关闭favicon.ico
+      enabled: false
 
 mybatis-plus:
   # 通配符映射,所有jar下的mapper文件夹下的Mapper.xml结尾的文件

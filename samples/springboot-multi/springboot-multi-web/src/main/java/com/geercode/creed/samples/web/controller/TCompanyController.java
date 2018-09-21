@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -101,7 +102,7 @@ public class TCompanyController {
      */
     @ApiOperation("更新单条记录")
     @PutMapping(value = "/update")
-    public BaseResp updateItem(TCompanyEntity entity) {
+    public BaseResp updateItem(@RequestBody TCompanyEntity entity) {
         boolean isOk = targetService.updateById(entity);
         if (isOk) {
             return BaseResp.success("数据更改成功");
