@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -92,7 +93,7 @@ public class ${table.controllerName} {
      */
     @ApiOperation(value = "添加单条记录", notes = "id自增")
     @PostMapping(value = "/add")
-    public BaseResp addItem(${entity} entity) {
+    public BaseResp addItem(@RequestBody ${entity} entity) {
         boolean isOk = targetService.save(entity);
         if (isOk) {
             return BaseResp.success("数据添加成功");
@@ -107,7 +108,7 @@ public class ${table.controllerName} {
      */
     @ApiOperation("更新单条记录")
     @PutMapping(value = "/update")
-    public BaseResp updateItem(${entity} entity) {
+    public BaseResp updateItem(@RequestBody ${entity} entity) {
         boolean isOk = targetService.updateById(entity);
         if (isOk) {
             return BaseResp.success("数据更改成功");
