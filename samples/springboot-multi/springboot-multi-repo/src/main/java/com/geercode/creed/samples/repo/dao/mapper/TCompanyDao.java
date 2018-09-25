@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * <p>公司基本信息表 Mapper 接口</p>
  *
  * @author jerryniu
- * @since 2018-09-20
+ * @since 2018-09-25
  */
 public interface TCompanyDao extends BaseMapper<TCompanyEntity> {
 }

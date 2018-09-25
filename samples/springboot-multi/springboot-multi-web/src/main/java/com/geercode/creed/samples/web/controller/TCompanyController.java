@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -30,7 +30,7 @@ import java.util.List;
  * CRUD (POST GET PUT DELETE)
  *
  * @author jerryniu
- * @since 2018-09-20
+ * @since 2018-09-25
  */
 @Api(tags = "TCompanyController")
 @RestController
@@ -87,7 +87,7 @@ public class TCompanyController {
      */
     @ApiOperation(value = "添加单条记录", notes = "id自增")
     @PostMapping(value = "/add")
-    public BaseResp addItem(TCompanyEntity entity) {
+    public BaseResp addItem(@RequestBody TCompanyEntity entity) {
         boolean isOk = targetService.save(entity);
         if (isOk) {
             return BaseResp.success("数据添加成功");

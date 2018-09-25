@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -83,7 +83,7 @@ public class MybatisPlusConfig {
 
         @Override
         public void insertFill(MetaObject metaObject) {
-            LocalDateTime nower = LocalDateTime.now();
+            Date nower = new Date();
             setFieldValByName("creatorId", SYSTEM_ID, metaObject);
             setFieldValByName("createTime", nower, metaObject);
             setFieldValByName("updaterId", SYSTEM_ID, metaObject);
@@ -92,7 +92,7 @@ public class MybatisPlusConfig {
 
         @Override
         public void updateFill(MetaObject metaObject) {
-            LocalDateTime nower = LocalDateTime.now();
+            Date nower = new Date();
             setFieldValByName("updaterId", SYSTEM_ID, metaObject);
             setFieldValByName("updateTime", nower, metaObject);
         }

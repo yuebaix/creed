@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * <p>公司基本信息表 服务实现类</p>
  *
  * @author jerryniu
- * @since 2018-09-20
+ * @since 2018-09-25
  */
 @Service
 public class TCompanyServiceImpl extends AbstractBaseService<TCompanyDao, TCompanyEntity>

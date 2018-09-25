@@ -10,7 +10,7 @@ package com.geercode.creed.samples.web.common;
  * <p>description : 基础回复编码</p>
  *
  * @author jerryniu
- * @since 2018-09-19
+ * @since 2018-09-25
  */
 public enum BaseCode {
     /**成功*/

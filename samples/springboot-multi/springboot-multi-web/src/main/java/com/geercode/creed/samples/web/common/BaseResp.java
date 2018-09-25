@@ -14,7 +14,7 @@ import lombok.Data;
  * <p>description : 基础回复类</p>
  *
  * @author jerryniu
- * @since 2018-09-19
+ * @since 2018-09-25
  */
 @ApiModel("回复基类")
 @Data

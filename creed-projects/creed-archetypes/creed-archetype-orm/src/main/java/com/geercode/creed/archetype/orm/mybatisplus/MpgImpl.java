@@ -27,6 +27,7 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.io.File;
@@ -161,6 +162,7 @@ public final class MpgImpl implements Mpg {
                 .setFileOverride(true)
                 .setActiveRecord(true)
                 .setEnableCache(false)
+                .setDateType(DateType.ONLY_DATE)
                 .setBaseResultMap(true)
                 .setBaseColumnList(true)
                 .setAuthor(pathConfig.getAuthor())

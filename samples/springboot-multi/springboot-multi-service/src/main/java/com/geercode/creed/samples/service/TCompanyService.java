@@ -12,7 +12,7 @@ import com.geercode.creed.samples.repo.dao.entity.TCompanyEntity;
  * <p>公司基本信息表 服务类</p>
  *
  * @author jerryniu
- * @since 2018-09-20
+ * @since 2018-09-25
  */
 public interface TCompanyService extends BaseService<TCompanyEntity> {
 }

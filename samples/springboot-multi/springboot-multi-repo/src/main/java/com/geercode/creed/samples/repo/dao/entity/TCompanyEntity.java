@@ -6,23 +6,24 @@
 
 package com.geercode.creed.samples.repo.dao.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.geercode.creed.samples.repo.dao.AbstractBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.geercode.creed.samples.repo.dao.AbstractBaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>公司基本信息表</p>
  *
  * @author jerryniu
- * @since 2018-09-20
+ * @since 2018-09-25
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -99,10 +100,10 @@ public class TCompanyEntity extends AbstractBaseEntity<TCompanyEntity> {
     private String memo;
 
     @ApiModelProperty(value = "更新时间 ")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     @ApiModelProperty(value = "记录创建时间 ")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @Override
     protected Serializable pkVal() {

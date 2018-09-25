@@ -6,18 +6,19 @@
 
 package com.geercode.creed.samples.web.controller;
 
-import com.geercode.creed.samples.web.vo.ShowSwaggerModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>Description : 测试swagger</p>
@@ -66,32 +67,15 @@ public class DemoController {
      * <p>description : 测试修改用户密码</p>
      * <p>create   on : 2018-09-05 18:18:02</p>
      *
-     * @param userId 用户id
-     * @param password 用户原密码
-     * @param newPassword 用户新密码
      * @return java.lang.String 修改结果
      *
      * @author jerryniu
      * @version 1.0.0
      */
     @ApiOperation(value = "修改用户密码", notes = "根据用户id修改密码<br>新旧密码不能相同<br>用户ID必须在0与5之间")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户ID # Integer", required = true),
-            @ApiImplicitParam(name = "password", value = "旧密码 # String", required = true),
-            @ApiImplicitParam(name = "newPassword", value = "新密码 # String", required = true)
-    })
     @PostMapping("/updatePassword")
-    public String updatePassword(int userId, String password, String newPassword) {
-        if (userId <= NUMBVALUE0 || userId > NUMBVALUE5) {
-            return "未知的用户";
-        }
-        if (StringUtils.isEmpty(password) || StringUtils.isEmpty(newPassword)) {
-            return "密码不能为空";
-        }
-        if (password.equals(newPassword)) {
-            return "新旧密码不能相同";
-        }
-        return "密码修改成功!";
+    public Date updatePassword(Date date) {
+        return date;
     }
 
     /**
@@ -103,7 +87,7 @@ public class DemoController {
      */
     @ApiOperation(value = "测试swagger entity mapping", notes = "测试一下")
     @PostMapping("/model")
-    public ShowSwaggerModel test(ShowSwaggerModel model) {
-        return model;
+    public LocalDateTime test(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime date) {
+        return date;
     }
 }
