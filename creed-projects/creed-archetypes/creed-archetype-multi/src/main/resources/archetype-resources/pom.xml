@@ -19,7 +19,7 @@
         <!--控制是否检测-->
         <disable.checks>false</disable.checks>
         <!--主要依赖版本-->
-        <mybatis-plus.version>3.0.1</mybatis-plus.version>
+        <mybatis-plus.version>3.0.3</mybatis-plus.version>
         <lombok.version>1.18.2</lombok.version>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
         <!--插件版本-->
