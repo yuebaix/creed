@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geercode.creed.samples.repo.dao.mapper.TCompanyDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.geercode.creed.samples.repo.dao.entity.TCompanyEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="oper_name" property="operName" />
+        <result column="org_no" property="orgNo" />
+        <result column="address" property="address" />
+        <result column="scope" property="scope" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="status" property="status" />
+        <result column="term_start" property="termStart" />
+        <result column="term_end" property="termEnd" />
+        <result column="regist_capi" property="registCapi" />
+        <result column="reg_no" property="regNo" />
+        <result column="check_date" property="checkDate" />
+        <result column="econ_kind" property="econKind" />
+        <result column="credit_no" property="creditNo" />
+        <result column="belong_org" property="belongOrg" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="email" property="email" />
+        <result column="telephone" property="telephone" />
+        <result column="memo" property="memo" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, oper_name, org_no, address, scope, start_date, end_date, status, term_start, term_end, regist_capi, reg_no, check_date, econ_kind, credit_no, belong_org, province, city, email, telephone, memo, update_time, create_time
+    </sql>
+
+</mapper>
