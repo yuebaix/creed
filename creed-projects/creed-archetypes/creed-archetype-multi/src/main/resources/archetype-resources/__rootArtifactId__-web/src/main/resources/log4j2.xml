@@ -73,6 +73,8 @@
         <Logger name="org.apache" level="INFO"/>
         <Logger name="com.netflix" level="INFO"/>
         <Logger name="org.hibernate" level="INFO"/>
+        <Logger name="springfox.documentation" level="INFO"/>
+        <Logger name="io.swagger" level="INFO"/>
         <!--阿里MQ-->
         <Logger name="RocketmqClient" level="ERROR"/>
         <Logger name="RocketmqCommon" level="WARN"/>
