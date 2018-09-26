@@ -183,8 +183,9 @@ public final class MpgImpl implements Mpg {
         strategyConfig = new StrategyConfig()
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setColumnNaming(NamingStrategy.underline_to_camel)
+                ///作者已修复,删除
                 //用来生成tableInfo,MPG有转换判断的逻辑错误
-                .setTablePrefix(new String[]{""})
+                //.setTablePrefix(new String[]{""})
                 .entityTableFieldAnnotationEnable(true)
                 .setEntityLombokModel(true)
                 .setRestControllerStyle(true)
