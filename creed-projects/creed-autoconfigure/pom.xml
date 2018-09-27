@@ -20,4 +20,16 @@
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>optional</scope>
+        </dependency>
+    </dependencies>
 </project>
