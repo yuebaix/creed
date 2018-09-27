@@ -48,7 +48,23 @@
                 <artifactId>creed-archetype-multi</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--autoconfigure-->
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!--starters-->
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>creed-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>reconfig-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

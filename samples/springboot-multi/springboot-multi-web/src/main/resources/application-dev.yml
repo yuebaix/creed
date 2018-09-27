@@ -1,3 +1,7 @@
+mybatis-plus:
+  global-config:
+    #xml调试,无需重启
+    refresh: true
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -15,7 +19,22 @@ spring:
       idle-timeout: 600000
       max-lifetime: 1800000
       connection-test-query: SELECT 1
-mybatis-plus:
-  global-config:
-    #xml调试,无需重启
-    refresh: true
+  redis:
+    host: 192.168.21.27
+    port: 6379
+    database: 0
+    password: We-are-hero-2015
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+  cache:
+    type: redis
+    cache-names: local,global,hot
+    redis:
+      time-to-live: 60s
+      cache-null-values: true
+#      key-prefix: 'cache:creed:'
+#      use-key-prefix: true

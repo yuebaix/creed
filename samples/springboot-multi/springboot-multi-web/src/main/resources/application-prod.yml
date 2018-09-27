@@ -1,4 +1,7 @@
 spring:
+  resources:
+    #关闭默认资源映射
+    add-mappings: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.21.22:3306/jufan_crawler?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
@@ -15,6 +18,3 @@ spring:
       idle-timeout: 600000
       max-lifetime: 1800000
       connection-test-query: SELECT 1
-  resources:
-    #关闭默认资源映射
-    add-mappings: false

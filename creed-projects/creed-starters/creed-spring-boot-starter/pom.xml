@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>creed-parent</artifactId>
+        <groupId>com.geercode.creed</groupId>
+        <version>0.3-SNAPSHOT</version>
+        <relativePath>../../creed-parent</relativePath>
+    </parent>
+
+    <groupId>com.geercode.creed</groupId>
+    <artifactId>creed-spring-boot-starter</artifactId>
+
+    <name>Starter Creed</name>
+    <description>Starter Creed</description>
+
+    <properties>
+        <main.basedir>${basedir}/../../..</main.basedir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!--修改强化springboot的自动配置-->
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>reconfig-spring-boot-starter</artifactId>
+        </dependency>
+        <!--creed framework自动配置-->
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>creed-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
+</project>

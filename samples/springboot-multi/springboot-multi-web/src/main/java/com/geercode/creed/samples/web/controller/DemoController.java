@@ -10,6 +10,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,11 +38,14 @@ import java.util.Date;
 @Slf4j
 @RestController
 @RequestMapping("/demo")
+@CacheConfig(cacheNames = "123")
 public class DemoController {
     private static final int NUMBVALUE0 = 0;
     private static final int NUMBVALUE1 = 1;
     private static final int NUMBVALUE2 = 2;
     private static final int NUMBVALUE5 = 5;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * <p>description : 测试获取姓名</p>
@@ -89,5 +96,11 @@ public class DemoController {
     @PostMapping("/model")
     public LocalDateTime test(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime date) {
         return date;
+    }
+
+    @Cacheable
+    @GetMapping("/redis")
+    public String testRedis(String id) {
+        return stringRedisTemplate.opsForValue().getAndSet("123", "456");
     }
 }

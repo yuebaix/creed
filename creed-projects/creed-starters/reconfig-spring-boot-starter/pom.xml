@@ -5,25 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>build-neat</artifactId>
+        <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.3-SNAPSHOT</version>
-        <relativePath>../../build-neat</relativePath>
+        <relativePath>../../creed-parent</relativePath>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
-    <artifactId>creed-starters</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>reconfig-spring-boot-starter</artifactId>
 
-    <name>Starter Build</name>
-    <description>Starter Build</description>
+    <name>Starter Reconfig</name>
+    <description>Starter Reconfig</description>
 
     <properties>
-        <main.basedir>${basedir}/../..</main.basedir>
+        <main.basedir>${basedir}/../../..</main.basedir>
     </properties>
-
-    <modules>
-        <module>creed-spring-boot-starter</module>
-        <module>reconfig-spring-boot-starter</module>
-    </modules>
 </project>

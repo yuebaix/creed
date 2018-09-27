@@ -30,5 +30,6 @@
         <module>creed-codecheck</module>
         <module>creed-archetypes</module>
         <module>creed-tools</module>
+        <module>creed-autoconfigure</module>
     </modules>
 </project>
