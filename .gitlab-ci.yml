@@ -19,6 +19,7 @@ variables:
   stage: build
   script:
     - sout
+    - mvn clean install -B -V -Pall
 
 .deploy-template: &deploy-definiton
   stage: deploy
