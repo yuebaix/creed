@@ -136,6 +136,9 @@
                 <inherited>true</inherited>
                 <configuration>
                     <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
+                    <ignoredResourcePatterns>
+                        <ignoredResourcePattern>changelog.txt</ignoredResourcePattern>
+                    </ignoredResourcePatterns>
                 </configuration>
                 <executions>
                     <execution>

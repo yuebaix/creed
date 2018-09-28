@@ -31,10 +31,8 @@ spring:
         max-wait: -1ms
         min-idle: 0
   cache:
-    type: redis
-    cache-names: local,global,hot
     redis:
       time-to-live: 60s
       cache-null-values: true
-#      key-prefix: 'cache:creed:'
-#      use-key-prefix: true
+      key-prefix: 'cache:creed:'
+      use-key-prefix: true
