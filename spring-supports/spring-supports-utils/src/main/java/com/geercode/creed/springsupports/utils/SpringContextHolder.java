@@ -27,7 +27,7 @@ import org.springframework.core.env.Environment;
 import java.util.Map;
 
 /**
- * <p>Description : Spring的ApplicationContext, Environment获取器</p>
+ * <p>Description : Spring的ApplicationContext, Environment获取器(存在多线程安全问题,多线程环境禁用)</p>
  * <p>Created on  : 2017-12-18 20:08</p>
  *
  * @author jerryniu
@@ -35,12 +35,12 @@ import java.util.Map;
  */
 @Slf4j
 public class SpringContextHolder implements ApplicationContextAware, EnvironmentAware {
-    private static ApplicationContext context;
-    private static Environment environment;
+    private ApplicationContext context;
+    private Environment environment;
 
     @Override
     public void setEnvironment(Environment environment) {
-        SpringContextHolder.environment = environment;
+        this.environment = environment;
         log.info(this.getClass().getSimpleName() + "--->Environment注入完成");
     }
 
@@ -49,17 +49,17 @@ public class SpringContextHolder implements ApplicationContextAware, Environment
     }
 
     public ApplicationContext getApplicationContext() {
-        return SpringContextHolder.context;
+        return this.context;
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext context) throws BeansException {
-        SpringContextHolder.context = context;
+    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
+        this.context = ctx;
         log.info(this.getClass().getSimpleName() + "--->ApplicationContext注入完成");
     }
 
-    public <T> Map<String, T> getBeansOfType(Class T) {
-        return context.getBeansOfType(T);
+    public <T> Map<String, T> getBeansOfType(Class<T> clazz) {
+        return context.getBeansOfType(clazz);
     }
 
     public Object getBean(String name) {

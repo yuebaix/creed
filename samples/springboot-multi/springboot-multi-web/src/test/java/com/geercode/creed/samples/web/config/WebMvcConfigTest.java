@@ -79,9 +79,11 @@ public class WebMvcConfigTest {
 
     @Test
     public void testGenerator() throws Exception {
-        String finalKey = Arrays.deepToString(new Object[]{null, new Object(), new HashMap(), Collections.singletonList(new TCompanyEntity())});
+        String finalKey = Arrays.deepToString(new Object[]{null, new Object(), new HashMap(),
+                Collections.singletonList(new TCompanyEntity())});
         System.out.println(finalKey);
-        String finalKey2 = new ObjectMapper().writeValueAsString(new Object[]{null, new Object(), new HashMap(), Collections.singletonList(new TCompanyEntity())});
+        String finalKey2 = new ObjectMapper().writeValueAsString(new Object[]{null, new Object(), new HashMap(),
+                Collections.singletonList(new TCompanyEntity())});
         System.out.println(finalKey2);
     }
 
@@ -110,7 +112,8 @@ public class WebMvcConfigTest {
         String value5 = om.writeValueAsString(nower);
         System.out.println(value5);
 
-        String finalKey2 = om.writeValueAsString(new Object[]{null, new Object(), new HashMap(), Collections.singletonList(new TCompanyEntity())});
+        String finalKey2 = om.writeValueAsString(new Object[]{null, new Object(), new HashMap(),
+                Collections.singletonList(new TCompanyEntity())});
         System.out.println(finalKey2);
     }
 

@@ -20,6 +20,11 @@ import com.geercode.creed.starter.reconfig.cache.EnhanceCachingAutoConfig;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * <p>Description : 修改默认缓存配置</p>
  * <p>Created on  : 2018-09-27 18:37</p>
@@ -27,6 +32,8 @@ import org.springframework.context.annotation.Import;
  * @author jerryniu
  * @since 1.0.0
  */
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
 @EnableCaching
 @Import(EnhanceCachingAutoConfig.class)
 public @interface EnhanceCaching {
