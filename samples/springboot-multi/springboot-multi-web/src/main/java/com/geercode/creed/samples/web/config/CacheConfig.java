@@ -6,7 +6,7 @@
 
 package com.geercode.creed.samples.web.config;
 
-import org.springframework.cache.annotation.EnableCaching;
+import com.geercode.creed.starter.reconfig.EnhanceCaching;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -17,6 +17,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0.0
  */
 @Configuration
-@EnableCaching
+@EnhanceCaching
 public class CacheConfig {
 }

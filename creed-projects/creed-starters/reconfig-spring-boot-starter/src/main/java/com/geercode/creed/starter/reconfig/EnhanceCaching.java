@@ -16,6 +16,10 @@
 
 package com.geercode.creed.starter.reconfig;
 
+import com.geercode.creed.starter.reconfig.cache.EnhanceCachingAutoConfig;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Import;
+
 /**
  * <p>Description : 修改默认缓存配置</p>
  * <p>Created on  : 2018-09-27 18:37</p>
@@ -23,5 +27,7 @@ package com.geercode.creed.starter.reconfig;
  * @author jerryniu
  * @since 1.0.0
  */
-public @interface EnhanceCache {
+@EnableCaching
+@Import(EnhanceCachingAutoConfig.class)
+public @interface EnhanceCaching {
 }

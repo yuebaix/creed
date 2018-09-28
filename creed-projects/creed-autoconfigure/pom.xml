@@ -14,8 +14,8 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>creed-autoconfigure</artifactId>
 
-    <name>Creed Tools</name>
-    <description>Creed Tools</description>
+    <name>Creed AutoConfigure</name>
+    <description>Creed AutoConfigure</description>
 
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>
