@@ -22,6 +22,8 @@ import com.github.benmanes.caffeine.cache.CaffeineSpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;
 import org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -45,6 +47,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 @Configuration
 @ConditionalOnClass({RedisConnectionFactory.class, Caffeine.class, CaffeineCacheManager.class})
 @AutoConfigureAfter(RedisAutoConfiguration.class)
+@AutoConfigureBefore(CacheAutoConfiguration.class)
 @ConditionalOnBean(RedisConnectionFactory.class)
 @ConditionalOnMissingBean(CacheManager.class)
 @Slf4j
