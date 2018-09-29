@@ -34,7 +34,7 @@ public class SimpleBatch {
 
 	@Async("batchpool")
 	public void executeEsTask() {
-		bankService.update();
+		bankService.query("工商");
 		log.info("修改成功");
 	}
 }

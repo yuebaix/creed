@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.samples.service;
-
 /**
- * <p>Description : BankService</p>
- * <p>Created on  : 2018-09-29 15:58</p>
+ * <p>Description : es批处理</p>
+ * <p>Created on  : 2018-09-29 17:00</p>
+ *
+ * http://192.168.21.25:9200/architect/_search?type=bank&pretty
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface BankService {
-    String add();
-    String delete(Long id);
-    String update(Long id);
-    String query(String searchContent);
-}
+package com.geercode.creed.samples;

@@ -18,7 +18,9 @@ package com.geercode.creed.samples.repo.es;
 
 import com.geercode.creed.samples.entity.Bank;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>Description : 银行类Dao</p>
@@ -27,6 +29,7 @@ import org.springframework.stereotype.Component;
  * @author jerryniu
  * @since 1.0.0
  */
-@Component
+@Repository
 public interface BankEsDao extends ElasticsearchRepository<Bank, Long> {
+    List<Bank> findByNameLike(String name);
 }

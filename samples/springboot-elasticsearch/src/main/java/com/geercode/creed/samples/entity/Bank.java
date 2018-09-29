@@ -35,7 +35,7 @@ public class Bank {
     private long id;
     @Field
     private String code;
-    @Field
+    @Field(fielddata = true)
     private String name;
     @Field
     private String address;
