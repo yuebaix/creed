@@ -2,7 +2,7 @@ spring:
   data:
     elasticsearch:
       cluster-name: es-server6.3-test
-      cluster-nodes: 192.168.21.25:9200
+      cluster-nodes: 192.168.21.25:9300
       repositories:
         enabled: true
 jufan:

@@ -14,29 +14,18 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.samples.entity;
-
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
+package com.geercode.creed.samples.service;
 
 /**
- * <p>Description : 银行实体类</p>
- * <p>Created on  : 2018-09-29 15:34</p>
+ * <p>Description : BankService</p>
+ * <p>Created on  : 2018-09-29 15:58</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@Document(indexName = "architect", type = "bank", shards = 1, replicas = 0, refreshInterval = "-1")
-@Data
-public class Bank {
-    @Id
-    private long id;
-    @Field
-    private String code;
-    @Field
-    private String name;
-    @Field
-    private String address;
+public interface BankService {
+    String add();
+    String delete();
+    String update();
+    String query();
 }

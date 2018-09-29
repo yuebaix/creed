@@ -1,5 +1,6 @@
 package com.geercode.creed.samples.batch;
 
+import com.geercode.creed.samples.service.BankService;
 import com.geercode.creed.samples.service.TimeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Log4j2
 public class SimpleBatch {
-
+	@Autowired
+	private BankService bankService;
 	@Autowired
 	private TimeService timeService;
+
 	@Async("batchpool")
 	public void executeBatchTask() {
 		for (int i =0; i < 10; i++) {
@@ -27,5 +30,11 @@ public class SimpleBatch {
 
 			}
 		}
+	}
+
+	@Async("batchpool")
+	public void executeEsTask() {
+		bankService.update();
+		log.info("修改成功");
 	}
 }

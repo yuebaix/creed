@@ -79,6 +79,8 @@
         <!--druid-->
         <Logger name="druid.sql.Statement" level="WARN"/>
         <Logger name="druid.sql.ResultSet" level="WARN"/>
+        <!--elasticsearch-->
+        <Logger name="org.elasticsearch" level="WARN"/>
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>

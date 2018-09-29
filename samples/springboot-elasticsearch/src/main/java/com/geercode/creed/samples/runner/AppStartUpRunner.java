@@ -36,6 +36,8 @@ public class AppStartUpRunner implements ApplicationRunner {
 		//示例
 		simpleBatch.executeBatchTask();
 
+		simpleBatch.executeEsTask();
+
 		//异步触发退出jvm任务(所有任务完成后)
 		if (CmdDealRunner.autostop) {
 			exitJvm();
@@ -46,11 +48,13 @@ public class AppStartUpRunner implements ApplicationRunner {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				batchpool.shutdown();
 				for (;;) {
 					try {
 						//每隔一秒检测一次
 						Thread.sleep(1000);
+						if (batchpool.getActiveCount() == 0) {
+							batchpool.shutdown();
+						}
 						//判断任务线程池是否停止
 						if (batchpool.getThreadPoolExecutor().isTerminated()) {
 							log.info(this.getClass().getSimpleName() + "--->批处理任务执行完毕，jvm虚拟机关闭");

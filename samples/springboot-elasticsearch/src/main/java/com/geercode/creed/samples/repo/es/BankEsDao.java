@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.samples.dao;
+package com.geercode.creed.samples.repo.es;
 
 import com.geercode.creed.samples.entity.Bank;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>Description : 银行类Dao</p>
@@ -26,5 +27,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * @author jerryniu
  * @since 1.0.0
  */
-public interface BankDao extends ElasticsearchRepository<Bank, String> {
+@Component
+public interface BankEsDao extends ElasticsearchRepository<Bank, Long> {
 }

@@ -18,7 +18,7 @@ import java.util.List;
 @Order(8888)
 public class CmdDealRunner implements ApplicationRunner {
 	private String AUTOSTOP = "jufan.autostop";
-	public static boolean autostop = false;
+	public static boolean autostop = true;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		if (args.containsOption(AUTOSTOP)) {
