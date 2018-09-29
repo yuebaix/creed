@@ -96,7 +96,8 @@ public class BankServiceImpl implements BankService {
         /**************/
         //1.配置操作
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-        boolQueryBuilder.must(QueryBuilders.matchQuery("name", "工商銀行"));
+//        boolQueryBuilder.must(QueryBuilders.wildcardQuery("name", "*工*"));
+        boolQueryBuilder.must(QueryBuilders.matchQuery("name", "中国工商银行"));
 
         FilterFunctionBuilder[] filterFunctionBuilders = new FilterFunctionBuilder[]{
                 new FilterFunctionBuilder(
