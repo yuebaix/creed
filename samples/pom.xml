@@ -35,6 +35,7 @@
         <module>sc-aggregator</module>
         <module>sc-app</module>
         <module>datamining</module>
+        <module>springboot-elasticsearch</module>
         <!--<module>jmeter-test</module>-->
     </modules>
 </project>

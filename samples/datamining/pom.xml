@@ -7,8 +7,8 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>datamining</artifactId>
     <version>0.3-SNAPSHOT</version>
-    <name>SpringBoot示例 多模块网站</name>
-    <description>SpringBoot示例 多模块网站</description>
+    <name>数据挖掘</name>
+    <description>数据挖掘</description>
 
     <dependencies>
         <dependency>
