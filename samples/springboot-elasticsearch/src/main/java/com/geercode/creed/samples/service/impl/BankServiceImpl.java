@@ -94,6 +94,9 @@ public class BankServiceImpl implements BankService {
      * 2.权重分数第一名与第二名差距大则选用第一个
      * 3.结果错误直接填空值
      *
+     * 注意：查询的文本字段必需在索引设置里设置fielddata为true, painless脚本有特别的使用用法, 是groovy的一个子集
+     * 通过调整字段与过滤打分规则去调整分值排序, 调整分数间隔常数来控制是否有多个结果
+     *
      * @author jerryniu
      * @version 1.0.0
      */
@@ -150,9 +153,9 @@ public class BankServiceImpl implements BankService {
         SearchHit[] hitList = response.getHits().getHits();
         //Arrays.sort(hitList, (hitB, hitA) -> (hitA.getScore() < hitB.getScore()) ? -1 : ((hitA.getScore() == hitB.getScore()) ? 0 : 1));
 
-        for (SearchHit hit : hitList) {
+        /*for (SearchHit hit : hitList) {
             log.info(hit.getSourceAsString() + "  -----------  " + hit.getScore());
-        }
+        }*/
 
         if (hitList.length == 0) {
             log.info("No Possible Value");

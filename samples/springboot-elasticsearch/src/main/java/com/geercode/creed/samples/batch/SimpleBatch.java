@@ -34,7 +34,7 @@ public class SimpleBatch {
 
 	@Async("batchpool")
 	public void executeEsTask() {
-		bankService.query("上海");
+		bankService.query("上海长宁招商");
 		/*Bank bank = new Bank();
 		bank.setId(0);
 		bank.setName("宇宙洪荒破产第一爱存不存工商银行长宁破烂行");
