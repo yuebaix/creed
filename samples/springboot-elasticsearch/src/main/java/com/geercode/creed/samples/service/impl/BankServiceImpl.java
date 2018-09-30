@@ -16,31 +16,36 @@
 
 package com.geercode.creed.samples.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.geercode.creed.samples.entity.Bank;
 import com.geercode.creed.samples.repo.es.BankEsDao;
 import com.geercode.creed.samples.service.BankService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.lucene.search.function.CombineFunction;
-import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction;
 import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery.ScoreMode;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
-import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder.FilterFunctionBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
+import org.elasticsearch.script.Script;
+import org.elasticsearch.script.ScriptType;
+import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -56,7 +61,7 @@ public class BankServiceImpl implements BankService {
     @Autowired
     private BankEsDao bankEsDao;
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private TransportClient client;
 
     @Override
     public String add(Bank bank){
@@ -92,43 +97,61 @@ public class BankServiceImpl implements BankService {
     @SneakyThrows
     @Override
     public String query(String searchContent){
-        Optional<Bank> bankOp = bankEsDao.findById(1L);
-        Bank bank = bankOp.get();
-        String result = new ObjectMapper().writeValueAsString(bank);
-
-        List<Bank> bankList = bankEsDao.findByNameLike(searchContent);
-        log.info(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(bankList));
-
-        Bank bank2 = new Bank();
-        bank2.setName("工商");
-        Page<Bank> bankList3 = bankEsDao.searchSimilar(bank2, new String[]{"name"}, PageRequest.of(0, 10));
-        log.info("==========");
-        log.info(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(bankList3));
+        ObjectMapper ob = new ObjectMapper();
+        //允许序列化空POJO
+        ob.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        //把时间按照字符串输出
+        ob.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        //POJO中的null值不输出
+        ob.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        //在遇到未知属性的时候不抛出异常
+        ob.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         /**************/
         //1.配置操作
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-//        boolQueryBuilder.must(QueryBuilders.wildcardQuery("name", "*工*"));
         boolQueryBuilder.must(QueryBuilders.matchQuery("name", "中国工商银行"));
 
-        FilterFunctionBuilder[] filterFunctionBuilders = new FilterFunctionBuilder[]{
-                new FilterFunctionBuilder(ScoreFunctionBuilders.fieldValueFactorFunction("name")
-                        .modifier(FieldValueFactorFunction.Modifier.LOG1P).factor(2))
+        List briefBankList = Arrays.asList("工商银行","农业银行","中国银行","建设银行","招商银行");
+        List briefLocationList = Arrays.asList("上海", "北京");
+        Map<String, Object> params = new HashMap<>();
+        params.put("test", 1);
+        params.put("briefBankList", briefBankList);
+        params.put("briefLocationList", briefLocationList);
+        //String scriptStr = "String bankName = doc[\"name\"];boolean bankFlag = false;for (String briefBank : params.briefBankList) {if (bankName.contains(briefBank)) {bankFlag = true;break;}}if (!bankFlag) {return 0;}boolean locationFlag = false;for (String location : params.briefLocationList) {if (bankName.contains(location)) {locationFlag = true;break;}}if (!locationFlag) {return 0;}return 1;";
+        String scriptStr = "return params.test";
+        //脚本
+        Script script = new Script(ScriptType.INLINE, Script.DEFAULT_SCRIPT_LANG, scriptStr, params);
+
+        //多个计分函数
+        FunctionScoreQueryBuilder.FilterFunctionBuilder[] filterFunctionBuilders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[]{
+                new FunctionScoreQueryBuilder.FilterFunctionBuilder(ScoreFunctionBuilders.scriptFunction(script))
                 };
 
         FunctionScoreQueryBuilder functionScoreQuery = QueryBuilders.functionScoreQuery(boolQueryBuilder, filterFunctionBuilders)
                 .scoreMode(ScoreMode.MULTIPLY)
-                .boostMode(CombineFunction.SUM);
+                .boostMode(CombineFunction.MULTIPLY);
+
+        /*FunctionScoreQueryBuilder functionScoreQuery = QueryBuilders.functionScoreQuery(boolQueryBuilder)
+                .scoreMode(ScoreMode.MULTIPLY)
+                .boostMode(CombineFunction.MULTIPLY);*/
 
         //2.构建操作
-        SearchQuery query = new NativeSearchQueryBuilder().withQuery(functionScoreQuery)
-                .withSort(SortBuilders.scoreSort().order(SortOrder.DESC))
-                .withPageable(PageRequest.of(0, 10))
-                .build();
+        SearchRequestBuilder requestBuilder = client.prepareSearch("architect").setTypes("bank")
+                .setQuery(functionScoreQuery);
 
-        Page<Bank> bankList2 = bankEsDao.search(query);
+        SearchResponse response = requestBuilder
+                .addSort(SortBuilders.scoreSort().order(SortOrder.DESC))
+                .setMinScore(0)
+                .setFrom(0).setSize(10)
+                .execute().actionGet();
+
         log.info("==========");
-        log.info(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(bankList2));
-        return result;
+        log.info(ob.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        SearchHit[] hitList = response.getHits().getHits();
+        for (SearchHit hit : hitList) {
+            log.info(hit.getSourceAsString() + "  -----------  " + hit.getScore());
+        }
+        return ob.writeValueAsString(response);
     }
 }
