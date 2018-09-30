@@ -1,5 +1,6 @@
 package com.geercode.creed.samples.batch;
 
+import com.geercode.creed.samples.entity.Bank;
 import com.geercode.creed.samples.service.BankService;
 import com.geercode.creed.samples.service.TimeService;
 import lombok.extern.log4j.Log4j2;
@@ -34,7 +35,22 @@ public class SimpleBatch {
 
 	@Async("batchpool")
 	public void executeEsTask() {
-		bankService.query("工商");
+		//bankService.query("工商");
+		Bank bank = new Bank();
+		bank.setId(0);
+		bank.setName("宇宙洪荒破产第一爱存不存工商银行长宁破烂行");
+		bank.setCode("0001");
+		bank.setAddress("上海徐汇");
+		bankService.add(bank);
+		bank.setId(1);
+		bank.setName("农业银行");
+		bankService.add(bank);
+		bank.setId(2);
+		bank.setName("长宁支行(招商银行)");
+		bankService.add(bank);
+		bank.setId(3);
+		bank.setName("从来没用过的浦发银行");
+		bankService.add(bank);
 		log.info("修改成功");
 	}
 }

@@ -23,11 +23,15 @@ import com.geercode.creed.samples.service.BankService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.common.lucene.search.function.CombineFunction;
+import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction;
+import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery.ScoreMode;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder.FilterFunctionBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -55,11 +59,7 @@ public class BankServiceImpl implements BankService {
     private ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
-    public String add(){
-        Bank bank=new Bank();
-        bank.setName("工商銀行");
-        bank.setCode("0001");
-        bank.setAddress("上海徐匯");
+    public String add(Bank bank){
         bankEsDao.save(bank);
         return "success";
     }
@@ -77,6 +77,18 @@ public class BankServiceImpl implements BankService {
         return "success";
     }
 
+
+    /**
+     * <p>description : query</p>
+     * <p>create   on : 2018-09-30 12:11:40</p>
+     *
+     * 1.总行名称起决定性作用
+     * 2.权重分数第一名与第二名差距大则选用第一个
+     * 3.结果错误直接填空值
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
     @SneakyThrows
     @Override
     public String query(String searchContent){
@@ -100,15 +112,17 @@ public class BankServiceImpl implements BankService {
         boolQueryBuilder.must(QueryBuilders.matchQuery("name", "中国工商银行"));
 
         FilterFunctionBuilder[] filterFunctionBuilders = new FilterFunctionBuilder[]{
-                new FilterFunctionBuilder(
-                        ScoreFunctionBuilders.weightFactorFunction(2))
+                new FilterFunctionBuilder(ScoreFunctionBuilders.fieldValueFactorFunction("name")
+                        .modifier(FieldValueFactorFunction.Modifier.LOG1P).factor(2))
                 };
 
         FunctionScoreQueryBuilder functionScoreQuery = QueryBuilders.functionScoreQuery(boolQueryBuilder, filterFunctionBuilders)
+                .scoreMode(ScoreMode.MULTIPLY)
                 .boostMode(CombineFunction.SUM);
 
         //2.构建操作
         SearchQuery query = new NativeSearchQueryBuilder().withQuery(functionScoreQuery)
+                .withSort(SortBuilders.scoreSort().order(SortOrder.DESC))
                 .withPageable(PageRequest.of(0, 10))
                 .build();
 

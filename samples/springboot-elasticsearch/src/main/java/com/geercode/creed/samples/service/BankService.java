@@ -16,6 +16,8 @@
 
 package com.geercode.creed.samples.service;
 
+import com.geercode.creed.samples.entity.Bank;
+
 /**
  * <p>Description : BankService</p>
  * <p>Created on  : 2018-09-29 15:58</p>
@@ -24,7 +26,7 @@ package com.geercode.creed.samples.service;
  * @since 1.0.0
  */
 public interface BankService {
-    String add();
+    String add(Bank bank);
     String delete(Long id);
     String update(Long id);
     String query(String searchContent);
