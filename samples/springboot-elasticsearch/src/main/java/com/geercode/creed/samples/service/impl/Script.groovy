@@ -8,7 +8,7 @@ class Script {
     }
 
     static int getScore(Map doc, List briefBankList, List briefLocationList) {
-        String bankName = doc["name"];
+        String bankName = doc["name"].value;
         boolean bankFlag = false;
         for (String briefBank : briefBankList) {
             if (bankName.contains(briefBank)) {

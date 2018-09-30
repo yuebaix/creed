@@ -34,7 +34,7 @@ public class SimpleBatch {
 
 	@Async("batchpool")
 	public void executeEsTask() {
-		bankService.query("长宁工商");
+		bankService.query("上海");
 		/*Bank bank = new Bank();
 		bank.setId(0);
 		bank.setName("宇宙洪荒破产第一爱存不存工商银行长宁破烂行");
@@ -45,10 +45,25 @@ public class SimpleBatch {
 		bank.setName("农业银行");
 		bankService.add(bank);
 		bank.setId(2);
-		bank.setName("长宁支行(招商银行)");
+		bank.setName("长宁支行--(招商银行)");
 		bankService.add(bank);
 		bank.setId(3);
 		bank.setName("从来没用过的浦发银行");
+		bankService.add(bank);
+		bank.setId(4);
+		bank.setName("上海招商银行");
+		bankService.add(bank);
+		bank.setId(5);
+		bank.setName("北京农业银行");
+		bankService.add(bank);
+		bank.setId(6);
+		bank.setName("上海浦发银行");
+		bankService.add(bank);
+		bank.setId(7);
+		bank.setName("上海中信银行");
+		bankService.add(bank);
+		bank.setId(8);
+		bank.setName("招商银行上海分行长宁支行");
 		bankService.add(bank);*/
 		log.info("修改成功");
 	}

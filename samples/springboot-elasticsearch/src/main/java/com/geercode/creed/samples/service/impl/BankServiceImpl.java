@@ -33,6 +33,7 @@ import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder.FilterFunctionBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.script.Script;
 import org.elasticsearch.script.ScriptType;
@@ -42,6 +43,8 @@ import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -110,31 +113,26 @@ public class BankServiceImpl implements BankService {
         /**************/
         //1.配置操作
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-        boolQueryBuilder.must(QueryBuilders.matchQuery("name", "中国工商银行"));
+        boolQueryBuilder.must(QueryBuilders.multiMatchQuery(searchContent, "name"));
 
+        //字典参数
         List briefBankList = Arrays.asList("工商银行","农业银行","中国银行","建设银行","招商银行");
         List briefLocationList = Arrays.asList("上海", "北京");
         Map<String, Object> params = new HashMap<>();
-        params.put("test", 1);
         params.put("briefBankList", briefBankList);
         params.put("briefLocationList", briefLocationList);
-        //String scriptStr = "String bankName = doc[\"name\"];boolean bankFlag = false;for (String briefBank : params.briefBankList) {if (bankName.contains(briefBank)) {bankFlag = true;break;}}if (!bankFlag) {return 0;}boolean locationFlag = false;for (String location : params.briefLocationList) {if (bankName.contains(location)) {locationFlag = true;break;}}if (!locationFlag) {return 0;}return 1;";
-        String scriptStr = "return params.test";
+
         //脚本
+        String scriptStr = "String bankName = doc['name.keyword'].value;boolean bankFlag = false;for (String briefBank : params.briefBankList) {if (bankName.contains(briefBank)) {bankFlag = true;break;}}if (!bankFlag) {return 0;}boolean locationFlag = false;for (String location : params.briefLocationList) {if (bankName.contains(location)) {locationFlag = true;break;}}if (!locationFlag) {return 0;}return 1;";
         Script script = new Script(ScriptType.INLINE, Script.DEFAULT_SCRIPT_LANG, scriptStr, params);
 
         //多个计分函数
-        FunctionScoreQueryBuilder.FilterFunctionBuilder[] filterFunctionBuilders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[]{
-                new FunctionScoreQueryBuilder.FilterFunctionBuilder(ScoreFunctionBuilders.scriptFunction(script))
+        FilterFunctionBuilder[] filterFunctionBuilders = new FilterFunctionBuilder[]{
+                new FilterFunctionBuilder(ScoreFunctionBuilders.scriptFunction(script))
                 };
-
         FunctionScoreQueryBuilder functionScoreQuery = QueryBuilders.functionScoreQuery(boolQueryBuilder, filterFunctionBuilders)
                 .scoreMode(ScoreMode.MULTIPLY)
                 .boostMode(CombineFunction.MULTIPLY);
-
-        /*FunctionScoreQueryBuilder functionScoreQuery = QueryBuilders.functionScoreQuery(boolQueryBuilder)
-                .scoreMode(ScoreMode.MULTIPLY)
-                .boostMode(CombineFunction.MULTIPLY);*/
 
         //2.构建操作
         SearchRequestBuilder requestBuilder = client.prepareSearch("architect").setTypes("bank")
@@ -142,16 +140,45 @@ public class BankServiceImpl implements BankService {
 
         SearchResponse response = requestBuilder
                 .addSort(SortBuilders.scoreSort().order(SortOrder.DESC))
-                .setMinScore(0)
+                .setMinScore(0.01f)
                 .setFrom(0).setSize(10)
                 .execute().actionGet();
 
         log.info("==========");
         log.info(ob.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+
         SearchHit[] hitList = response.getHits().getHits();
+        //Arrays.sort(hitList, (hitB, hitA) -> (hitA.getScore() < hitB.getScore()) ? -1 : ((hitA.getScore() == hitB.getScore()) ? 0 : 1));
+
         for (SearchHit hit : hitList) {
             log.info(hit.getSourceAsString() + "  -----------  " + hit.getScore());
         }
+
+        if (hitList.length == 0) {
+            log.info("No Possible Value");
+        } else {
+            log.info("Guess Value is    >" + hitList[0].getSourceAsString() + "  -----------  " + hitList[0].getScore());
+            if (hitList.length > 1) {
+                for (int i = 0; i < hitList.length - 1; i++) {
+                    if (isPossibleValue(hitList[i].getScore(), hitList[i + 1].getScore(), 0.1f)) {
+                        log.info("Possible Value is >" + hitList[i + 1].getSourceAsString() + "  -----------  " + hitList[i + 1].getScore());
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
         return ob.writeValueAsString(response);
+    }
+
+    private boolean isPossibleValue(float f1, float f2, float limit) {
+        BigDecimal b1 = BigDecimal.valueOf(f1);
+        BigDecimal b2 = BigDecimal.valueOf(f2);
+        BigDecimal dValue = b1.subtract(b2);
+        double similarValue = dValue.divide(b1, 6, RoundingMode.CEILING).doubleValue();
+        if (similarValue < limit) {
+            return true;
+        }
+        return false;
     }
 }
