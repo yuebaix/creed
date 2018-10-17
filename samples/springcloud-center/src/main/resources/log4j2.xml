@@ -34,7 +34,6 @@
             <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
-                <OnStartupTriggeringPolicy/>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
@@ -52,7 +51,6 @@
             <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
-                <OnStartupTriggeringPolicy/>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
@@ -67,9 +65,9 @@
     <Loggers>
         <!-- 去除日志 -->
         <AsyncLogger name="org.springframework" level="INFO" />
-        <AsyncLogger name="org.apache" level="INFO" />
         <AsyncLogger name="com.netflix" level="INFO" />
-        <AsyncLogger name="org.hibernate" level="INFO" />
+        <AsyncLogger name="io.undertow" level="INFO" />
+        <AsyncLogger name="org.apache" level="INFO" />
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>

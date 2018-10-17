@@ -23,8 +23,10 @@ spring:
 eureka:
   environment : product
   datacenter : cloud
+  client:
+    register-with-eureka: true
+    fetch-registry: true
   instance:
-    prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
@@ -35,9 +37,6 @@ eureka:
     eviction-interval-timer-in-ms: 5000
 # eureka server刷新readCacheMap的时间，注意，client读取的是readCacheMap，这个时间决定了多久会把readWriteCacheMap的缓存更新到readCacheMap上
     response-cache-update-interval-ms: 3000
-#  client:
-#    register-with-eureka: false
-#    fetch-registry: false
 ---
 # profile singleton
 spring:

@@ -34,7 +34,6 @@
             <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
-                <OnStartupTriggeringPolicy/>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
