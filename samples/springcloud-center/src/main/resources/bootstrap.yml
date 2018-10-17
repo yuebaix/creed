@@ -61,7 +61,8 @@ eureka:
     hostname: ${creed.center0.domain}
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/"
 
 ---
 # profile peer1
@@ -74,7 +75,8 @@ eureka:
     hostname: ${creed.center1.domain}
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/"
 
 ---
 # profile peer2
@@ -87,4 +89,5 @@ eureka:
     hostname: ${creed.center2.domain}
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/"
