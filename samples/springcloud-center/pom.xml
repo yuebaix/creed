@@ -2,16 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.3-SNAPSHOT</version>
+        <relativePath>../../creed-projects/creed-parent</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>springcloud-center</artifactId>
     <name>SpringCloud示例 注册中心</name>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -35,15 +40,35 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>HdrHistogram</artifactId>
+                    <groupId>org.hdrhistogram</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-security</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>creedcenter</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.basepom.maven</groupId>
+                <artifactId>duplicate-finder-maven-plugin</artifactId>
+                <configuration>
+                    <ignoredClassPatterns>
+                        <ignoredClassPattern>^(org.xmlpull.v1.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(com.ctc.wstx.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.xml.stream.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.aopalliance.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
+                    </ignoredClassPatterns>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

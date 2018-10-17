@@ -14,3 +14,5 @@ Findbugs-Idea -findbugs的检测插件
 ```
 
 [脚手架说明](archetype/archetype-multi.md)
+
+[springcloud安装配置](springcloud/index.md)

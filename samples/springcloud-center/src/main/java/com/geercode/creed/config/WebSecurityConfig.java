@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package com.geercode.creed;
+package com.geercode.creed.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * <p>Description : 注册中心</p>
- * <p>Created on  : 2018-10-16 19:03</p>
+ * <p>Description : 网站安全配置</p>
+ * <p>Created on  : 2018-10-17 13:12</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@SpringBootApplication
-@EnableEurekaServer
-public class CreedCenterApp {
-    public static void main(String[] args) {
-        SpringApplication.run(CreedCenterApp.class, args);
+@Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().ignoringAntMatchers("/eureka/**");
+        super.configure(http);
     }
 }

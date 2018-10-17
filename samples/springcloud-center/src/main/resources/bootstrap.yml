@@ -1,20 +1,80 @@
-server:
-  port: 10100
+# 全局配置
+creed:
+  center0:
+    domain: creedcenter0.jufandev.com
+    port: 10100
+  center1:
+    domain: creedcenter1.jufandev.com
+    port: 10101
+  center2:
+    domain: creedcenter2.jufandev.com
+    port: 10102
+# 统一配置
 spring:
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-#      roles: admin
   application:
     name: a-center
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: admin
+  profiles:
+    active: singleton
 eureka:
   instance:
-    hostname: localhost
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
+#    register-with-eureka: false
+#    fetch-registry: false
+---
+# profile singleton
+spring:
+  profiles: singleton
+server:
+  port: ${creed.center0.port}
+eureka:
+  instance:
+    hostname: ${creed.center0.domain}
+  client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    register-with-eureka: true
-    fetch-registry: true
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+# profile peer0
+spring:
+  profiles: peer0
+server:
+  port: ${creed.center0.port}
+eureka:
+  instance:
+    hostname: ${creed.center0.domain}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/
+
+---
+# profile peer1
+spring:
+  profiles: peer1
+server:
+  port: ${creed.center1.port}
+eureka:
+  instance:
+    hostname: ${creed.center1.domain}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/
+
+---
+# profile peer2
+spring:
+  profiles: peer2
+server:
+  port: ${creed.center2.port}
+eureka:
+  instance:
+    hostname: ${creed.center2.domain}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/
