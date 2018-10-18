@@ -382,6 +382,7 @@
                         </goals>
                         <configuration>
                             <flattenMode>oss</flattenMode>
+                            <updatePomFile>true</updatePomFile>
                             <pomElements>
                                 <profiles>remove</profiles>
                                 <properties>remove</properties>
