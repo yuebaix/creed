@@ -13,7 +13,6 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>springboot-elasticsearch</artifactId>
-
     <name>SpringBoot示例 elasticsearch</name>
     <description>SpringBoot示例 elasticsearch</description>
 
