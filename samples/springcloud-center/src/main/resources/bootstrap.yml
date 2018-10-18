@@ -13,13 +13,13 @@ creed:
 spring:
   application:
     name: a-center
+  profiles:
+    active: singleton
   security:
     user:
       name: admin
       password: admin
       roles: admin
-  profiles:
-    active: singleton
 eureka:
   environment : product
   datacenter : cloud

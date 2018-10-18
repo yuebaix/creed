@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+1.日志触发滚动策略(每天或日志体积达到128MB,压缩为zip格式)
+2.每天压缩包最多为40个(debug与error各为40个)
+3.超过15天的日志会自动删除
+4.调试窗口默认输出debug等级以上的日志,debug日志只输出info以上的日志未免无效日志过多(与服务器调试相关的日志一定要写info以上),error日志
+只输出error等级以上的日志
+-->
+<!-- Don't forget to set system property
+-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+     to make all loggers asynchronous. -->
+<Configuration status="WARN" monitorInterval="60">
+    <Properties>
+        <!-- 日志文件前缀 -->
+        <Property name="APP_NAME" value="creedservice"/>
+        <!-- 日志目录 -->
+        <Property name="LOG_DIR" value="../logs/"/>
+        <!-- 日志格式 -->
+        <Property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{1.} : %L#\t%m%n"/>
+        <!-- 彩色日志格式(控制台) -->
+        <Property name="CONSOLE_LOG_PATTERN"
+                  value="%clr{%d{yyyy-MM-dd HH:mm:ss}}{magenta} %clr{${LOG_LEVEL_PATTERN:-%5p}} %clr{[%-15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %clr{%L#\t}{green}%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%xwEx}"/>
+    </Properties>
+    <Appenders>
+        <!-- 控制台日志 -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <!-- DEBUG日志文件 -->
+        <RollingRandomAccessFile name="DEBUG-OUT" fileName="${LOG_DIR}${APP_NAME}_debug.log"
+                                 filePattern="${LOG_DIR}${APP_NAME}_debug.%d{yyyy-MM-dd}-%i.log.zip"
+                                 immediateFlush="false" append="true">
+            <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="128 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="40">
+                <Delete basePath="${LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}_debug.*.log.zip"/>
+                    <IfLastModified age="15d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+        <!-- ERROR日志文件 -->
+        <RollingRandomAccessFile name="ERROR-OUT" fileName="${LOG_DIR}${APP_NAME}_error.log"
+                                 filePattern="${LOG_DIR}${APP_NAME}_error.%d{yyyy-MM-dd}-%i.log.zip"
+                                 immediateFlush="false" append="true">
+            <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="128 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="40">
+                <Delete basePath="${LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}_error.*.log.zip"/>
+                    <IfLastModified age="15d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <!-- 去除日志 -->
+        <AsyncLogger name="org.springframework" level="INFO" />
+        <AsyncLogger name="com.netflix" level="INFO" />
+        <AsyncLogger name="io.undertow" level="INFO" />
+        <AsyncLogger name="org.apache" level="INFO" />
+        <!-- ROOT日志 -->
+        <Root level="ALL" includeLocation="true">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="DEBUG-OUT"/>
+            <appender-ref ref="ERROR-OUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
