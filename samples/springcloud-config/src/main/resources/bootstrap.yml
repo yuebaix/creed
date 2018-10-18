@@ -26,8 +26,8 @@ spring:
   application:
     name: a-config
   profiles:
-#配置文件存储路径配置git,svn.native,vault
-    active: singleton
+#配置文件存储路径配置git,svn.native,vault 不同配置服务器gitcom jufandev 实例配置singleton peer0 peer1 peer2
+    active: singleton,jufandev
 eureka:
   client:
     registry-fetch-interval-seconds: 5
@@ -37,12 +37,55 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
 ---
+# profile git.com
+spring:
+  profiles: gitcom
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/geercode/config-repo.git
+          searchPaths: '{application}/'
+          ignoreLocalSshSettings: false
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            #### to do (config ignoreLocalSshSettings to true & paste ssh private key here) ####
+            -----END RSA PRIVATE KEY-----
+          strictHostKeyChecking: true
+          cloneOnStart: true
+          deleteUntrackedBranches: true
+          force-pull: true
+        native:
+          searchLocations: classpath:/config-repo/{application}
+---
+# profile jufandev.com
+spring:
+  profiles: jufandev
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@git.jufandev.com:config-repo/{application}.git
+          searchPaths: '/'
+          ignoreLocalSshSettings: false
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            #### to do (config ignoreLocalSshSettings to true & paste ssh private key here) ####
+            -----END RSA PRIVATE KEY-----
+          strictHostKeyChecking: true
+          deleteUntrackedBranches: true
+          force-pull: true
+        native:
+          searchLocations: classpath:/config-repo/{application}
+---
 # profile singleton
 spring:
   profiles: singleton
 server:
   port: ${creed.config0.port}
 eureka:
+  instance:
+    hostname: ${creed.config0.domain}
   client:
     service-url:
       defaultZone: http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/
@@ -53,6 +96,8 @@ spring:
 server:
   port: ${creed.config0.port}
 eureka:
+  instance:
+    hostname: ${creed.config0.domain}
   client:
     service-url:
       defaultZone: "http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
@@ -65,6 +110,8 @@ spring:
 server:
   port: ${creed.config1.port}
 eureka:
+  instance:
+    hostname: ${creed.config1.domain}
   client:
     service-url:
       defaultZone: "http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
@@ -77,6 +124,8 @@ spring:
 server:
   port: ${creed.config2.port}
 eureka:
+  instance:
+    hostname: ${creed.config2.domain}
   client:
     service-url:
       defaultZone: "http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
