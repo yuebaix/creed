@@ -29,6 +29,12 @@ spring:
     name: e-gate
   profiles:
     active: singleton
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: a-config
+      label: master
 eureka:
   client:
     registry-fetch-interval-seconds: 5

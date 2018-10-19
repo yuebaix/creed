@@ -12,7 +12,7 @@
 <Configuration status="WARN" monitorInterval="60">
     <Properties>
         <!-- 日志文件前缀 -->
-        <Property name="APP_NAME" value="creeduua"/>
+        <Property name="APP_NAME" value="creeduaa"/>
         <!-- 日志目录 -->
         <Property name="LOG_DIR" value="../logs/"/>
         <!-- 日志格式 -->
