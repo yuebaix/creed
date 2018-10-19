@@ -21,16 +21,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * <p>Description : 客户端</p>
- * <p>Created on  : 2018-10-18 16:11</p>
+ * <p>Description : 最小中心</p>
+ * <p>Created on  : 2018-10-19 16:50</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
 @SpringBootApplication
 @EnableEurekaClient
-public class CreedClientApp {
+public class CreedMcenterApp {
     public static void main(String[] args) {
-        SpringApplication.run(CreedClientApp.class, args);
+        SpringApplication.run(CreedMcenterApp.class, args);
     }
 }

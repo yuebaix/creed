@@ -2,15 +2,87 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>samples</artifactId>
+        <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
         <version>0.3-SNAPSHOT</version>
+        <relativePath>../../creed-projects/creed-parent</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>springcloud-uaa</artifactId>
     <name>SpringCloud示例 安全中心</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <exclusions>
+                <!--去除版本依赖冲突的模块-->
+                <exclusion>
+                    <artifactId>HdrHistogram</artifactId>
+                    <groupId>org.hdrhistogram</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>creedconfig</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.basepom.maven</groupId>
+                <artifactId>duplicate-finder-maven-plugin</artifactId>
+                <configuration>
+                    <ignoredClassPatterns>
+                        <ignoredClassPattern>^(org.xmlpull.v1.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(com.ctc.wstx.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.xml.stream.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.aopalliance.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
+                    </ignoredClassPatterns>
+                    <ignoredResourcePatterns>
+                        <ignoredResourcePattern>about.html</ignoredResourcePattern>
+                        <ignoredResourcePattern>plugin.properties</ignoredResourcePattern>
+                    </ignoredResourcePatterns>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

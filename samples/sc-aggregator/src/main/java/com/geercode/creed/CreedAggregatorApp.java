@@ -21,7 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * <p>Description : 服务节点</p>
+ * <p>Description : 服务聚合节点</p>
  * <p>Created on  : 2018-10-18 16:28</p>
  *
  * @author jerryniu
