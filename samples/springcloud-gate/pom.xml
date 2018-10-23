@@ -59,7 +59,7 @@
     </dependencies>
 
     <build>
-        <finalName>creedconfig</finalName>
+        <finalName>creedgate</finalName>
         <plugins>
             <plugin>
                 <groupId>org.basepom.maven</groupId>

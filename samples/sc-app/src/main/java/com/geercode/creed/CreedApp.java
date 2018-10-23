@@ -19,6 +19,7 @@ package com.geercode.creed;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 /**
  * <p>Description : 应用节点</p>
@@ -29,6 +30,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
+@EnableOAuth2Client
 public class CreedApp {
     public static void main(String[] args) {
         SpringApplication.run(CreedApp.class, args);

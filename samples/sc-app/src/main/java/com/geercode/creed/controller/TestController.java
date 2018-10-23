@@ -16,49 +16,40 @@
 
 package com.geercode.creed.controller;
 
-import com.geercode.creed.utils.JacksonUtil;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * <p>Description : 测试控制器</p>
- * <p>Created on  : 2018-10-22 15:14</p>
+ * <p>Description : </p>
+ * <p>Created on  : 2018-10-23 18:31</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
 @RestController
-@RequestMapping("/resource")
-@Slf4j
-public class ResourceController {
+@RequestMapping("/test")
+public class TestController {
     @Autowired
-    private OAuth2ClientContext oauth2ClientContext;
+    private OAuth2ClientContext oAuth2ClientContext;
+    @Autowired
+    private OAuth2RestTemplate oAuth2RestTemplate;
 
     /**
-     * <p>description : 测试resource保护</p>
-     * <p>create   on : 2018-10-23 16:30:50</p>
+     * <p>description : 测试资源是否正确访问</p>
+     * <p>create   on : 2018-10-23 20:50:08</p>
      *
      * @author jerryniu
      * @version 1.0.0
      */
-    @RequestMapping("/me")
-    @SneakyThrows
-    public Map<String, String> user(Principal principal) {
-        Map<String, String> map = new HashMap(1);
-        OAuth2AccessToken accessToken = oauth2ClientContext.getAccessToken();
-        map.put("name", principal.getName());
-        map.put("access_token", JacksonUtil.getObjectMapperHolder().writeValueAsString(accessToken));
-        log.debug(JacksonUtil.getObjectMapperHolder().writeValueAsString(map));
-        return map;
+    @GetMapping("/getToken")
+    public String getToken() {
+        ResponseEntity<String> responseEntity = oAuth2RestTemplate
+                .getForEntity("http://creeduaa.jufandev.com:10103/resource/me", String.class);
+        return responseEntity.getBody();
     }
 }
-

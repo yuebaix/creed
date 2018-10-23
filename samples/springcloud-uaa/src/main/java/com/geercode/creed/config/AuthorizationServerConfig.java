@@ -75,8 +75,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("uua_id")
-                .secret("uua_secret")
+                .withClient("uaa_id")
+                .secret("uaa_secret")
                 .authorizedGrantTypes("client_credentials", "password", "refresh_token",
                         "authorization_code", "implicit").scopes("default")
                 .and()

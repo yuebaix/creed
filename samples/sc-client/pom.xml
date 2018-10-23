@@ -44,7 +44,6 @@
     </dependencies>
 
     <build>
-        <finalName>creedconfig</finalName>
         <plugins>
             <plugin>
                 <groupId>org.basepom.maven</groupId>

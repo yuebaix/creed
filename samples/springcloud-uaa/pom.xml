@@ -34,6 +34,10 @@
             <artifactId>disruptor</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <exclusions>
@@ -59,7 +63,7 @@
     </dependencies>
 
     <build>
-        <finalName>creedconfig</finalName>
+        <finalName>creeduaa</finalName>
         <plugins>
             <plugin>
                 <groupId>org.basepom.maven</groupId>

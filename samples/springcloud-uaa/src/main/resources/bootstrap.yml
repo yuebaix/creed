@@ -40,8 +40,8 @@ eureka:
 security:
   oauth2:
     client:
-      client-id: uua_id
-      client-secret: uua_secret
+      client-id: uaa_id
+      client-secret: uaa_secret
       grant-type: client_credentials
 ---
 # profile singleton

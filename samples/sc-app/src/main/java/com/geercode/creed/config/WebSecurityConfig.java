@@ -18,20 +18,22 @@ package com.geercode.creed.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * <p>Description : 资源服务器配置</p>
- * <p>Created on  : 2018-10-22 15:16</p>
+ * <p>Description : 网站安全配置</p>
+ * <p>Created on  : 2018-10-22 13:19</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
 @Configuration
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-    /** 配置保护资源的安全策略*/
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    /** 配置websecurityfilter中的安全策略*/
     @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/resource/**").authorizeRequests().anyRequest().authenticated();
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/**")
+                .authorizeRequests().antMatchers("/test/**").permitAll()
+                .anyRequest().authenticated();
     }
 }
