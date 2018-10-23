@@ -32,6 +32,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     /** 配置保护资源的安全策略*/
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/test/me").authorizeRequests().anyRequest().authenticated();
+        http.antMatcher("/resource**").authorizeRequests().anyRequest().authenticated();
     }
 }

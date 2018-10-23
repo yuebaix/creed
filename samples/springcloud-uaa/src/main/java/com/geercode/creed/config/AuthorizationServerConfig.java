@@ -67,15 +67,28 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
-    /** 1.用来配置客户端详情服务(ClientDetailsService)*/
+    /**
+     * 1.用来配置客户端详情服务(ClientDetailsService)
+     *
+     * warn:必须要有scope,否则会触发spelview的漏洞执行服务器代码
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("acme")
-                .secret("acmesecret")
+                .withClient("uua_id")
+                .secret("uua_secret")
                 .authorizedGrantTypes("client_credentials", "password", "refresh_token",
-                        "authorization_code", "implicit")
-                .scopes("read, write");
+                        "authorization_code", "implicit").scopes("default")
+                .and()
+                .withClient("gate_id")
+                .secret("gate_secret")
+                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
+                .scopes("default")
+                .and()
+                .withClient("app_id")
+                .secret("app_secret")
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("default");
     }
 
     /** 2.用来配置令牌端点(Token Endpoint)的安全约束*/

@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/**")
                 .authorizeRequests().antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin()
+                .and().formLogin().successForwardUrl("/resource/me").permitAll()
                 .and().logout().logoutSuccessUrl("/").permitAll()
                 .and().csrf().disable();
     }

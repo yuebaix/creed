@@ -33,19 +33,19 @@ import java.util.Map;
  * @since 1.0.0
  */
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/resource")
+public class ResourceController {
     @Autowired
     private OAuth2ClientContext oauth2ClientContext;
 
     /**
      * <p>description : 测试resource保护</p>
-     * <p>create   on : 2018-10-23 16:09:50</p>
+     * <p>create   on : 2018-10-23 16:30:50</p>
      *
      * @author jerryniu
      * @version 1.0.0
      */
-    @RequestMapping({ "/user", "/me" })
+    @RequestMapping("/me")
     public Map<String, String> user(Principal principal) {
         Map<String, String> map = new LinkedHashMap<>();
         map.put("name", principal.getName());
