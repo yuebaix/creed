@@ -1,6 +1,0 @@
-security:
-  oauth2:
-    client:
-      client-id: uua_id
-      client-secret: uua_secret
-      grant-type: client_credentials
