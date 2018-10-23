@@ -1,0 +1,7 @@
+security:
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret1
+      scope: read,write
+      auto-approve-scopes: '.*'

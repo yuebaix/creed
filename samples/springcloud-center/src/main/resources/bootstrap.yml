@@ -19,7 +19,6 @@ spring:
     user:
       name: admin
       password: admin
-      roles: admin
 eureka:
   environment : product
   datacenter : cloud
