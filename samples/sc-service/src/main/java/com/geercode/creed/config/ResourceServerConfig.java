@@ -34,7 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     /** 配置保护资源的安全策略*/
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/resource/**").authorizeRequests()
+        http.antMatcher("/**").authorizeRequests()
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint((request, response, authException) -> {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED);

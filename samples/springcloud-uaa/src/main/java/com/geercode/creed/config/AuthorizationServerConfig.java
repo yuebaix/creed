@@ -28,7 +28,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
-
 import java.security.KeyPair;
 
 /**
@@ -83,6 +82,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("gate_id")
                 .secret("gate_secret")
                 .authorizedGrantTypes("client_credentials", "password", "refresh_token")
+                .scopes("default")
+                .and()
+                .withClient("service_id")
+                .secret("service_secret")
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("default")
+                .and()
+                .withClient("aggregator_id")
+                .secret("aggregator_secret")
+                .authorizedGrantTypes("client_credentials", "refresh_token")
                 .scopes("default")
                 .and()
                 .withClient("app_id")

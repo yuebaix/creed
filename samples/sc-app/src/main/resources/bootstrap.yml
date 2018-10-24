@@ -46,7 +46,6 @@ security:
       client-id: app_id
       client-secret: app_secret
       grant-type: client_credentials
-      user-authorization-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/authorize
       access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
 ---
 # profile singleton

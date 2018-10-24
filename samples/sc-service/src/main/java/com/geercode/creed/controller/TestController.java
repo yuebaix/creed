@@ -46,7 +46,7 @@ public class TestController {
     @GetMapping("/check")
     public String getToken() {
         ResponseEntity<String> responseEntity = oAuth2RestTemplate
-                .getForEntity("http://creeduaa.jufandev.com:10200/test/check", String.class);
+                .getForEntity("http://creeduaa.jufandev.com:10103/resource/me", String.class);
         return responseEntity.getBody();
     }
 }

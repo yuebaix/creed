@@ -21,6 +21,9 @@ creed:
   config2:
     domain: creedconfig2.jufandev.com
     port: 10197
+  uaa:
+    domain: creeduaa.jufandev.com
+    port: 10103
 # 统一配置
 server:
   port: 10200
@@ -37,6 +40,15 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
+security:
+  oauth2:
+    client:
+      client-id: service_id
+      client-secret: service_secret
+      grant-type: client_credentials
+      access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
+    resource:
+      token-info-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/check_token
 ---
 # profile singleton
 spring:
