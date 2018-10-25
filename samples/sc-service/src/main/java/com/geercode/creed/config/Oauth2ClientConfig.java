@@ -22,10 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.token.AccessTokenRequest;
-import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.util.Assert;
@@ -44,9 +42,9 @@ public class Oauth2ClientConfig {
     private OAuth2RestTemplate oAuth2RestTemplate;
 
     @Bean
-    public OAuth2RestTemplate restTemplate(ClientCredentialsResourceDetails clientDetails) {
-        AccessTokenRequest atr = new DefaultAccessTokenRequest();
-        return new OAuth2RestTemplate(clientDetails, new DefaultOAuth2ClientContext(atr));
+    public OAuth2RestTemplate restTemplate(ClientCredentialsResourceDetails clientDetails,
+            OAuth2ClientContext oAuth2ClientContext) {
+        return new OAuth2RestTemplate(clientDetails, oAuth2ClientContext);
     }
 
     /**

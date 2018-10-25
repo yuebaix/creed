@@ -65,10 +65,10 @@
     <Loggers>
         <!-- 去除日志 -->
         <AsyncLogger name="org.springframework" level="INFO" />
+        <AsyncLogger name="org.springframework.security" level="DEBUG" />
         <AsyncLogger name="com.netflix" level="INFO" />
         <AsyncLogger name="io.undertow" level="INFO" />
         <AsyncLogger name="org.apache" level="INFO" />
-        <AsyncLogger name="org.springframework.security" level="DEBUG" />
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author jerryniu
  * @since 1.0.0
  */
-@FeignClient(value = Constants.FOO_FEIGN_SERVICE)
+@FeignClient(name = Constants.FOO_FEIGN_SERVICE)
 public interface FooFeignService {
 
     /**

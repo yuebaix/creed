@@ -47,6 +47,38 @@ security:
       client-secret: app_secret
       grant-type: client_credentials
       access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
+#feign配置
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  compression:
+    request: true
+    response: true
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 90000
+        loggerLevel: basic
+#hystrix配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+#ribbon配置
+ribbon:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  eager-load:
+    enabled: true
 ---
 # profile singleton
 spring:

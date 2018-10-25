@@ -14,6 +14,16 @@
     <artifactId>sc-app</artifactId>
     <name>SC示例 应用层</name>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>sc-facade</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,8 +63,32 @@
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <exclusions>
+                <!--去除版本依赖冲突的模块-->
+                <exclusion>
+                    <artifactId>HdrHistogram</artifactId>
+                    <groupId>org.hdrhistogram</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--stub-->
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>sc-facade</artifactId>
         </dependency>
     </dependencies>
     <build>

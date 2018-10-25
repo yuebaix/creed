@@ -16,6 +16,7 @@
 
 package com.geercode.creed.controller;
 
+import com.geercode.creed.facade.service.FooFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
@@ -35,6 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Autowired
     private OAuth2RestTemplate oAuth2RestTemplate;
+    @Autowired
+    private FooFeignService fooFeignService;
 
     /**
      * <p>description : 测试资源是否正确访问</p>
@@ -44,9 +47,14 @@ public class TestController {
      * @version 1.0.0
      */
     @GetMapping("/check")
-    public String getToken() {
+    public String check() {
         ResponseEntity<String> responseEntity = oAuth2RestTemplate
                 .getForEntity("http://creeduaa.jufandev.com:10200/test/check", String.class);
         return responseEntity.getBody();
+    }
+
+    @GetMapping("/checkfeign")
+    public String checkfeign() {
+        return fooFeignService.testCheck();
     }
 }
