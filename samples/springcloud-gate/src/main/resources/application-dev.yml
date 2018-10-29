@@ -1,0 +1,7 @@
+#路由规则
+zuul:
+  routes:
+    b-service:
+      path: /service/**
+      serviceId: b-service
+      sensitiveHeaders: ''

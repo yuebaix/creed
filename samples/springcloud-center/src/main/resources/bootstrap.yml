@@ -1,5 +1,8 @@
 # 全局配置
 creed:
+  user:
+    name: admin
+    password: admin
   center0:
     domain: creedcenter0.jufandev.com
     port: 10100
@@ -17,14 +20,15 @@ spring:
     active: singleton
   security:
     user:
-      name: admin
-      password: admin
+      name: ${creed.user.name}
+      password: ${creed.user.password}
 eureka:
   environment : product
   datacenter : cloud
   client:
     register-with-eureka: true
-    fetch-registry: true
+    fetch-registry: false
+    registry-fetch-interval-seconds: 5
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     lease-renewal-interval-in-seconds: 5
@@ -36,6 +40,7 @@ eureka:
     eviction-interval-timer-in-ms: 5000
 # eureka server刷新readCacheMap的时间，注意，client读取的是readCacheMap，这个时间决定了多久会把readWriteCacheMap的缓存更新到readCacheMap上
     response-cache-update-interval-ms: 3000
+
 ---
 # profile singleton
 spring:

@@ -31,7 +31,7 @@ spring:
   application:
     name: e-gate
   profiles:
-    active: singleton
+    active: singleton,dev
   cloud:
     config:
       discovery:
@@ -58,6 +58,7 @@ security:
       access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
     resource:
       token-info-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/check_token
+
 ---
 # profile singleton
 spring:
@@ -66,6 +67,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/
+
 ---
 # profile multi
 spring:
