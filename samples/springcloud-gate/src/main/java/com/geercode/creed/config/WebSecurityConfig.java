@@ -16,12 +16,29 @@
 
 package com.geercode.creed.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import javax.servlet.http.HttpServletResponse;
+
 /**
- * <p>Description : 网站安全</p>
- * <p>Created on  : 2018-10-19 13:53</p>
+ * <p>Description : 网站安全配置</p>
+ * <p>Created on  : 2018-10-22 13:19</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class WebSecurityConfig {
+@Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    /** 配置websecurityfilter中的安全策略*/
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/**").authorizeRequests()
+                .anyRequest().permitAll()
+                .and().httpBasic().disable()
+                .exceptionHandling().authenticationEntryPoint((request, response, authException) -> {
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                });
+    }
 }

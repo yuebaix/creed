@@ -1,23 +1,7 @@
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: baidu
-          uri: https://baidu.com/
-          predicates:
-          - Path=/baidu/**
-          - RemoteAddr=192.168.80.0/24
-        - id: jufan
-          uri: http://www.juxiangfen.com/
-          predicates:
-          - Path=/jufan/**
-          - RemoteAddr=192.168.23.0/24
-        - id: general
-          uri: lb://a-uua
-          predicates:
-          - Path=/uua/**
-          filters:
-          - name: Retry
-            args:
-              retries: 3
-              statuses: BAD_GATEWAY
+#路由规则
+zuul:
+  routes:
+    b-service:
+      path: /service/**
+      serviceId: b-service
+      sensitiveHeaders: ''

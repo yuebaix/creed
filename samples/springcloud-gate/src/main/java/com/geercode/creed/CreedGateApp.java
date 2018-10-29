@@ -19,6 +19,8 @@ package com.geercode.creed;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 /**
  * <p>Description : 网关</p>
@@ -29,6 +31,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
+@EnableOAuth2Client
+@EnableZuulProxy
 public class CreedGateApp {
     public static void main(String[] args) {
         SpringApplication.run(CreedGateApp.class, args);
