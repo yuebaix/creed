@@ -36,8 +36,11 @@ spring:
     config:
       discovery:
         enabled: true
+#        service-id: a-mcenter
         service-id: a-config
       label: master
+      username: ${creed.user.name}
+      password: ${creed.user.password}
 eureka:
   client:
     registry-fetch-interval-seconds: 5

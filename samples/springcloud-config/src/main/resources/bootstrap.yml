@@ -28,6 +28,10 @@ spring:
   profiles:
 #配置文件存储路径配置git,svn.native,vault 不同配置服务器gitcom jufandev 实例配置singleton peer0 peer1 peer2
     active: singleton,jufandev
+  security:
+    user:
+      name: admin
+      password: admin
 eureka:
   client:
     registry-fetch-interval-seconds: 5

@@ -1,8 +1,5 @@
 # 全局配置
 creed:
-  user:
-    name: admin
-    password: admin
   center0:
     domain: creedcenter0.jufandev.com
     port: 10100
@@ -12,46 +9,128 @@ creed:
   center2:
     domain: creedcenter2.jufandev.com
     port: 10102
-  config0:
-    domain: creedconfig0.jufandev.com
-    port: 10199
-  config1:
-    domain: creedconfig1.jufandev.com
-    port: 10198
-  config2:
-    domain: creedconfig2.jufandev.com
-    port: 10197
 # 统一配置
-server:
-  port: 10202
 spring:
   application:
-    name: d-app
+    name: a-mcenter
   profiles:
-    active: singleton
+    active: singleton,jufandev
+  security:
+    user:
+      name: admin
+      password: admin
 eureka:
+  environment : product
+  datacenter : cloud
   client:
+    register-with-eureka: true
+    fetch-registry: true
     registry-fetch-interval-seconds: 5
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
+  server:
+# 关闭eureka的自我保护(开发配置)
+    enable-self-preservation: false
+# 驱逐下线的服务，间隔,5秒，默认是60，建议开发和测试环境配置
+    eviction-interval-timer-in-ms: 5000
+# eureka server刷新readCacheMap的时间，注意，client读取的是readCacheMap，这个时间决定了多久会把readWriteCacheMap的缓存更新到readCacheMap上
+    response-cache-update-interval-ms: 3000
+
+---
+# profile git.com
+spring:
+  profiles: gitcom
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/geercode/config-repo.git
+          searchPaths: '{application}/'
+          ignoreLocalSshSettings: false
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            #### to do (config ignoreLocalSshSettings to true & paste ssh private key here) ####
+            -----END RSA PRIVATE KEY-----
+          strictHostKeyChecking: true
+          cloneOnStart: true
+          deleteUntrackedBranches: true
+          force-pull: true
+        native:
+          searchLocations: classpath:/config-repo/{application}
+---
+# profile jufandev.com
+spring:
+  profiles: jufandev
+  cloud:
+    config:
+      server:
+        prefix: config
+        git:
+          uri: git@git.jufandev.com:config-repo/{application}.git
+          searchPaths: '/'
+          ignoreLocalSshSettings: false
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            #### to do (config ignoreLocalSshSettings to true & paste ssh private key here) ####
+            -----END RSA PRIVATE KEY-----
+          strictHostKeyChecking: true
+          deleteUntrackedBranches: true
+          force-pull: true
+        native:
+          searchLocations: classpath:/config-repo/{application}
 ---
 # profile singleton
 spring:
   profiles: singleton
+server:
+  port: ${creed.center0.port}
 eureka:
+  instance:
+    hostname: ${creed.center0.domain}
   client:
     service-url:
-      defaultZone: http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+
 ---
-# profile multi
+# profile peer0
 spring:
-  profiles: multi
+  profiles: peer0
+server:
+  port: ${creed.center0.port}
 eureka:
+  instance:
+    hostname: ${creed.center0.domain}
   client:
     service-url:
-      defaultZone: "http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
-        http://${creed.user.name}:${creed.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/,\
-        http://${creed.user.name}:${creed.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/"
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/"
+
+---
+# profile peer1
+spring:
+  profiles: peer1
+server:
+  port: ${creed.center1.port}
+eureka:
+  instance:
+    hostname: ${creed.center1.domain}
+  client:
+    service-url:
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center2.domain}:${creed.center2.port}/eureka/"
+
+---
+# profile peer2
+spring:
+  profiles: peer2
+server:
+  port: ${creed.center2.port}
+eureka:
+  instance:
+    hostname: ${creed.center2.domain}
+  client:
+    service-url:
+      defaultZone: "http://${spring.security.user.name}:${spring.security.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/,\
+        http://${spring.security.user.name}:${spring.security.user.password}@${creed.center1.domain}:${creed.center1.port}/eureka/"
