@@ -36,8 +36,8 @@ spring:
     config:
       discovery:
         enabled: true
-#        service-id: a-mcenter
-        service-id: a-config
+        service-id: a-mcenter
+#        service-id: a-config
       label: master
       username: ${creed.user.name}
       password: ${creed.user.password}

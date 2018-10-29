@@ -75,8 +75,12 @@ public class FilterConfig {
             HttpServletRequest request = ctx.getRequest();
             log.info(String.format("%s %s request to %s", "0:0:0:0:0:0:0:1".equals(request.getRemoteAddr())
                     ? "127.0.0.1" : request.getRemoteAddr(), request.getMethod(), request.getRequestURL().toString()));
-            ctx.addZuulRequestHeader("Authorization", "Bearer "
-                    + oAuth2RestTemplate.getAccessToken().getValue());
+            String accessToken = request.getHeader("Authorization");
+            log.debug("AccessToken is " + accessToken);
+            if (accessToken == null || "".equals(accessToken)) {
+                ctx.addZuulRequestHeader("Authorization", "Bearer "
+                        + oAuth2RestTemplate.getAccessToken().getValue());
+            }
             return null;
         }
     }

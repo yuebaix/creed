@@ -1,2 +1,7 @@
 zuul:
   ignored-services: '*'
+ribbon:
+  okhttp:
+    enabled: true
+  restclient:
+    enabled: false

@@ -16,12 +16,19 @@
 
 package com.geercode.creed.controller;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>Description : </p>
@@ -35,6 +42,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Autowired
     private OAuth2RestTemplate oAuth2RestTemplate;
+    @Autowired
+    private OAuth2ClientContext oauth2ClientContext;
 
     /**
      * <p>description : 测试资源是否正确访问</p>
@@ -48,5 +57,22 @@ public class TestController {
         ResponseEntity<String> responseEntity = oAuth2RestTemplate
                 .getForEntity("http://creeduaa.jufandev.com:10103/resource/me", String.class);
         return responseEntity.getBody();
+    }
+
+    /**
+     * <p>description : 测试resource保护</p>
+     * <p>create   on : 2018-10-23 16:30:50</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    @RequestMapping("/me")
+    @SneakyThrows
+    public Map<String, String> user(Principal principal) {
+        Map<String, String> map = new HashMap(1);
+        OAuth2AccessToken accessToken = oauth2ClientContext.getAccessToken();
+        map.put("name", principal.getName());
+        map.put("access_token", accessToken.getValue());
+        return map;
     }
 }

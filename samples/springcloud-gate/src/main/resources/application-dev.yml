@@ -5,3 +5,5 @@ zuul:
       path: /service/**
       serviceId: b-service
       sensitiveHeaders: ''
+#      sensitiveHeaders: Cookie,Set-Cookie
+#      ignoredHeaders: Authorization
