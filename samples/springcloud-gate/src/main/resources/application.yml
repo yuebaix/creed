@@ -1,7 +1,72 @@
+# eureka注册拉取配置
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+# oauth2安全配置
+security:
+  oauth2:
+    client:
+      client-id: gate_id
+      client-secret: gate_secret
+      grant-type: client_credentials
+      access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
+    resource:
+      token-info-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/check_token
+# zuul配置
 zuul:
   ignored-services: '*'
+  retryable: true
+  ribbon-isolation-strategy: semaphore
+  semaphore:
+    max-semaphores: 10000
+  host:
+    max-total-connections: 3000
+    max-per-route-connections: 300
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 120000
+# ribbon配置
 ribbon:
   okhttp:
     enabled: true
   restclient:
     enabled: false
+  httpclient:
+    enabled: false
+  eager-load:
+    enabled: true
+  ConnectTimeout: 3000
+  ReadTimeout: 70000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 5000
+# hystrix配置
+hystrix:
+  threadpool:
+    default:
+      allowMaximumSizeToDivergeFromCoreSize: true
+      coreSize: 10
+      maximumSize: 50
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 1000
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 150000
+          semaphore:
+            maxConcurrentRequests: 10000
+      fallback:
+        enabled: true
+        maxConcurrentRequests: 10000
+      circuitBreaker:
+        enabled: false

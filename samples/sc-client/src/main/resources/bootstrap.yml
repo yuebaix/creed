@@ -12,32 +12,16 @@ creed:
   center2:
     domain: creedcenter2.jufandev.com
     port: 10102
-  config0:
-    domain: creedconfig0.jufandev.com
-    port: 10199
-  config1:
-    domain: creedconfig1.jufandev.com
-    port: 10198
-  config2:
-    domain: creedconfig2.jufandev.com
-    port: 10197
+  uaa:
+    domain: creeduaa.jufandev.com
+    port: 10103
 # 统一配置
 spring:
   application:
     name: z-client
   profiles:
     active: singleton
-eureka:
-  client:
-    registry-fetch-interval-seconds: 5
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    instance-id: "<${spring.cloud.client.ip-address}>:${random.value}"
-    ip-address: 'javascript:void(0)'
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 15
+
 ---
 # profile singleton
 spring:

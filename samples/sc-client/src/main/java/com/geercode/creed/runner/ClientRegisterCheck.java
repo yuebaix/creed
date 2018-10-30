@@ -39,7 +39,7 @@ public class ClientRegisterCheck {
     private EurekaClient discoveryClient;
 
     public String serviceUrl() {
-        InstanceInfo instance = discoveryClient.getNextServerFromEureka("A-CENTER", false);
+        InstanceInfo instance = discoveryClient.getNextServerFromEureka("A-UAA", false);
         return instance.getHomePageUrl();
     }
 

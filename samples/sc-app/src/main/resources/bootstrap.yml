@@ -12,15 +12,6 @@ creed:
   center2:
     domain: creedcenter2.jufandev.com
     port: 10102
-  config0:
-    domain: creedconfig0.jufandev.com
-    port: 10199
-  config1:
-    domain: creedconfig1.jufandev.com
-    port: 10198
-  config2:
-    domain: creedconfig2.jufandev.com
-    port: 10197
   uaa:
     domain: creeduaa.jufandev.com
     port: 10103
@@ -32,53 +23,16 @@ spring:
     name: d-app
   profiles:
     active: singleton
-eureka:
-  client:
-    registry-fetch-interval-seconds: 5
-  instance:
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 15
-security:
-  oauth2:
-    client:
-      client-id: app_id
-      client-secret: app_secret
-      grant-type: client_credentials
-      access-token-uri: http://${creed.uaa.domain}:${creed.uaa.port}/oauth/token
-#feign配置
-feign:
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-  compression:
-    request: true
-    response: true
-  hystrix:
-    enabled: true
-  client:
+  cloud:
     config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 90000
-        loggerLevel: basic
-#hystrix配置
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: SEMAPHORE
-#ribbon配置
-ribbon:
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-  eager-load:
-    enabled: true
+      discovery:
+        enabled: true
+        service-id: a-mcenter
+#        service-id: a-config
+      label: master
+      username: ${creed.user.name}
+      password: ${creed.user.password}
+
 ---
 # profile singleton
 spring:
@@ -87,6 +41,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/
+
 ---
 # profile multi
 spring:

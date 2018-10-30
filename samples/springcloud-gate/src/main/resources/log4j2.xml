@@ -68,7 +68,7 @@
         <AsyncLogger name="com.netflix" level="INFO" />
         <AsyncLogger name="io.undertow" level="INFO" />
         <AsyncLogger name="org.apache" level="INFO" />
-        <AsyncLogger name="reactor.ipc.netty" level="INFO" />
+        <!--<AsyncLogger name="reactor.ipc.netty" level="INFO" />-->
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>

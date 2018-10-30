@@ -19,7 +19,6 @@ package com.geercode.creed.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -38,13 +37,11 @@ import org.springframework.util.Assert;
 @Configuration
 @Slf4j
 public class Oauth2ClientConfig {
-    @Autowired
-    private OAuth2RestTemplate oAuth2RestTemplate;
-
     @Bean
-    public OAuth2RestTemplate restTemplate(ClientCredentialsResourceDetails clientDetails,
+    public OAuth2RestTemplate oAuth2RestTemplate(ClientCredentialsResourceDetails clientDetails,
             OAuth2ClientContext oAuth2ClientContext) {
-        return new OAuth2RestTemplate(clientDetails, oAuth2ClientContext);
+        OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(clientDetails, oAuth2ClientContext);
+        return oAuth2RestTemplate;
     }
 
     /**
@@ -53,7 +50,7 @@ public class Oauth2ClientConfig {
      * @PostConstruct
      */
     @SneakyThrows
-    public String getAccessToken() {
+    public String getAccessToken(OAuth2RestTemplate oAuth2RestTemplate) {
         Assert.isTrue(oAuth2RestTemplate.getResource() != null,
                 "resource属性为空，请检查security.oauth.client&resource配置");
         OAuth2AccessToken oAuth2AccessToken = oAuth2RestTemplate.getAccessToken();

@@ -1,0 +1,18 @@
+# eureka注册拉取配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+# oauth2安全配置
+security:
+  oauth2:
+    client:
+      client-id: uaa_id
+      client-secret: uaa_secret
+      grant-type: client_credentials

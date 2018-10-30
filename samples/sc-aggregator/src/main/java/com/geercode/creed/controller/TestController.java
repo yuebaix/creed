@@ -16,18 +16,14 @@
 
 package com.geercode.creed.controller;
 
-import com.geercode.creed.facade.service.FooFeignService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description : </p>
- * <p>Created on  : 2018-10-23 18:31</p>
+ * <p>Description : 测试控制器</p>
+ * <p>Created on  : 2018-10-19 18:27</p>
  *
  * @author jerryniu
  * @since 1.0.0
@@ -35,34 +31,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-    @Autowired
-    private OAuth2RestTemplate oAuth2RestTemplate;
-    @Autowired
-    private FooFeignService fooFeignService;
     @Value("${noob}")
     private String noob;
 
     @GetMapping("/getConfig")
     public String getConfig(String key) {
         return noob;
-    }
-
-    /**
-     * <p>description : 测试资源是否正确访问</p>
-     * <p>create   on : 2018-10-23 20:50:08</p>
-     *
-     * @author jerryniu
-     * @version 1.0.0
-     */
-    @GetMapping("/check")
-    public String check() {
-        ResponseEntity<String> responseEntity = oAuth2RestTemplate
-                .getForEntity("http://creeduaa.jufandev.com:10200/test/check", String.class);
-        return responseEntity.getBody();
-    }
-
-    @GetMapping("/checkfeign")
-    public String checkfeign() {
-        return fooFeignService.testCheck();
     }
 }

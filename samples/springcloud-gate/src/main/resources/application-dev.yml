@@ -5,5 +5,11 @@ zuul:
       path: /service/**
       serviceId: b-service
       sensitiveHeaders: ''
-#      sensitiveHeaders: Cookie,Set-Cookie
-#      ignoredHeaders: Authorization
+    c-aggregator:
+      path: /aggregator/**
+      serviceId: c-aggregator
+      sensitiveHeaders: ''
+    d-app:
+      path: /app/**
+      serviceId: d-app
+      sensitiveHeaders: ''

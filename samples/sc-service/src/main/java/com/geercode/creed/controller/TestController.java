@@ -18,6 +18,7 @@ package com.geercode.creed.controller;
 
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
@@ -44,6 +45,13 @@ public class TestController {
     private OAuth2RestTemplate oAuth2RestTemplate;
     @Autowired
     private OAuth2ClientContext oauth2ClientContext;
+    @Value("${noob}")
+    private String noob;
+
+    @GetMapping("/getConfig")
+    public String getConfig(String key) {
+        return noob;
+    }
 
     /**
      * <p>description : 测试资源是否正确访问</p>

@@ -13,13 +13,13 @@ creed:
     domain: creedcenter2.jufandev.com
     port: 10102
   config0:
-    domain: creedconfig0.jufandev.com
+#    domain: creedconfig0.jufandev.com
     port: 10199
   config1:
-    domain: creedconfig1.jufandev.com
+#    domain: creedconfig1.jufandev.com
     port: 10198
   config2:
-    domain: creedconfig2.jufandev.com
+#    domain: creedconfig2.jufandev.com
     port: 10197
 # 统一配置
 spring:
@@ -32,8 +32,11 @@ spring:
     user:
       name: ${creed.user.name}
       password: ${creed.user.password}
+# eureka注册拉取配置
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: false
     registry-fetch-interval-seconds: 5
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -91,8 +94,8 @@ spring:
 server:
   port: ${creed.config0.port}
 eureka:
-  instance:
-    hostname: ${creed.config0.domain}
+#  instance:
+#    hostname: ${creed.config0.domain}
   client:
     service-url:
       defaultZone: http://${creed.user.name}:${creed.user.password}@${creed.center0.domain}:${creed.center0.port}/eureka/
