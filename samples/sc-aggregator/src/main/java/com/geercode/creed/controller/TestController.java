@@ -16,6 +16,8 @@
 
 package com.geercode.creed.controller;
 
+import com.geercode.creed.facade.service.FooFeignService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,9 +35,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Value("${noob}")
     private String noob;
+    @Autowired
+    private FooFeignService fooFeignService;
 
     @GetMapping("/getConfig")
     public String getConfig(String key) {
         return noob;
+    }
+
+    @GetMapping("/checkfeign")
+    public String checkfeign() {
+        return fooFeignService.testCheck();
     }
 }

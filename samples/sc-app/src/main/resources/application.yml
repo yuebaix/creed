@@ -34,16 +34,40 @@ feign:
         loggerLevel: basic
 # ribbon配置
 ribbon:
-  httpclient:
-    enabled: false
   okhttp:
     enabled: true
-  eager-load:
-    enabled: true
+  restclient:
+    enabled: false
+  httpclient:
+    enabled: false
+  ConnectTimeout: 3000
+  ReadTimeout: 70000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 5000
 # hystrix配置
 hystrix:
+  threadpool:
+    default:
+      allowMaximumSizeToDivergeFromCoreSize: true
+      coreSize: 10
+      maximumSize: 50
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 1000
   command:
     default:
       execution:
+        timeout:
+          enabled: true
         isolation:
           strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 150000
+          semaphore:
+            maxConcurrentRequests: 10000
+      fallback:
+        enabled: true
+        maxConcurrentRequests: 10000
+      circuitBreaker:
+        enabled: false

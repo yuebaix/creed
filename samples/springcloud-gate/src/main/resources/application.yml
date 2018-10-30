@@ -22,6 +22,9 @@ zuul:
   ignored-services: '*'
   retryable: true
   ribbon-isolation-strategy: semaphore
+  ribbon:
+    eager-load:
+      enabled: true
   semaphore:
     max-semaphores: 10000
   host:
@@ -37,8 +40,6 @@ ribbon:
     enabled: false
   httpclient:
     enabled: false
-  eager-load:
-    enabled: true
   ConnectTimeout: 3000
   ReadTimeout: 70000
   MaxAutoRetries: 0

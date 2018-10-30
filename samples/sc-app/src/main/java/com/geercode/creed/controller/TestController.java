@@ -35,12 +35,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+    @Value("${noob}")
+    private String noob;
     @Autowired
     private OAuth2RestTemplate oAuth2RestTemplate;
     @Autowired
     private FooFeignService fooFeignService;
-    @Value("${noob}")
-    private String noob;
 
     @GetMapping("/getConfig")
     public String getConfig(String key) {
