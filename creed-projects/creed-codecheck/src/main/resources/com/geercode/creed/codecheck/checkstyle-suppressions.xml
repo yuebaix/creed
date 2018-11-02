@@ -6,6 +6,9 @@
     <suppress files=".+Test\.java" checks="(RegexpHeader|JavadocMethod|MagicNumber|VisibilityModifier|RegexpSinglelineJava)"/>
     <!--关闭以App或Application结尾的文件HideUtilityClassConstructor的冲突-->
     <suppress files=".+(App|Application)\.java" checks="(HideUtilityClassConstructor)"/>
+    <!--creed-core-->
+    <suppress files="ClassUtil.java" checks="(EmptyBlock|EmptyCatchBlock)"/>
+    <suppress files="SysLogger.java" checks="(RegexpSinglelineJava)"/>
     <!--reconfig-spring-boot-starter-->
     <suppress files="EnhanceCachingAutoConfig.java" checks="(ParameterNumber)"/>
 </suppressions>

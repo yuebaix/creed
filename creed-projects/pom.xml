@@ -25,11 +25,11 @@
     <modules>
         <module>creed-bom</module>
         <module>creed-parent</module>
-        <module>creed-core</module>
-        <module>creed-starters</module>
         <module>creed-codecheck</module>
-        <module>creed-archetypes</module>
+        <module>creed-core</module>
         <module>creed-tools</module>
+        <module>creed-archetypes</module>
         <module>creed-autoconfigure</module>
+        <module>creed-starters</module>
     </modules>
 </project>
