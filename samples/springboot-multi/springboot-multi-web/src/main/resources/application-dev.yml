@@ -30,9 +30,23 @@ spring:
         max-idle: 8
         max-wait: -1ms
         min-idle: 0
-  cache:
-    redis:
-      time-to-live: 60s
-      cache-null-values: true
-      key-prefix: 'cache:creed:'
-      use-key-prefix: true
+jetcache:
+  statIntervalMinutes: 15
+  hidePackages: com.geercode.creed.samples
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+      limit: 100
+      expireAfterWriteInMillis: 30000
+  remote:
+    default:
+      type: redis.lettuce
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      expireAfterWriteInMillis: 100000
+      uri: redis://We-are-hero-2015@192.168.21.27?database=0
+      keyPrefix: 'springboot-multi-web:'
+
