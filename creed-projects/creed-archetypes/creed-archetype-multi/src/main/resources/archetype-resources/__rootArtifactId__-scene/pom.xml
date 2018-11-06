@@ -18,12 +18,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-domain</artifactId>
         </dependency>
         <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

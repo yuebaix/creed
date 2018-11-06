@@ -142,6 +142,11 @@
                 <artifactId>jetcache-starter-redis-lettuce</artifactId>
                 <version>${jetcache.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-anno</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
             <!--解决jetcache与springtest冲突-->
             <dependency>
                 <groupId>org.objenesis</groupId>

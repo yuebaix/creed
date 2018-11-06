@@ -54,17 +54,6 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
-        <!--for test-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.geercode.creed</groupId>
-            <artifactId>spring-supports-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!--for programing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,6 +117,17 @@
         <dependency>
             <groupId>com.geercode.creed</groupId>
             <artifactId>springboot-multi-scene</artifactId>
+        </dependency>
+        <!--for test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>spring-supports-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>

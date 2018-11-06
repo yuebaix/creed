@@ -18,6 +18,11 @@
     </properties>
 
     <dependencies>
+        <!--精简代码所需-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--MybatisPlus Model依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -29,11 +34,6 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <optional>true</optional>
-        </dependency>
-        <!--精简代码所需-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
         <!--junit-->
         <dependency>

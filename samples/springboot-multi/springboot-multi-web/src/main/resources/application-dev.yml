@@ -31,7 +31,7 @@ spring:
         max-wait: -1ms
         min-idle: 0
 jetcache:
-  statIntervalMinutes: 15
+  statIntervalMinutes: 1
   hidePackages: com.geercode.creed.samples
   areaInCacheName: false
   local:

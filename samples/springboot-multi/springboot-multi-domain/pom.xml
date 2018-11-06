@@ -20,13 +20,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>springboot-multi-repo</artifactId>
+        </dependency>
+        <!--simplify code-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.geercode.creed</groupId>
-            <artifactId>springboot-multi-repo</artifactId>
         </dependency>
     </dependencies>
 </project>

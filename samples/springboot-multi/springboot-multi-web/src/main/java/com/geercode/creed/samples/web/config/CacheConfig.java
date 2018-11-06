@@ -19,6 +19,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableCreateCacheAnnotation
-@EnableMethodCache(basePackages = "com.geercode.creed.samples.web")
+@EnableMethodCache(basePackages = {
+        "com.geercode.creed.samples.web",
+        "com.geercode.creed.samples.scene"
+})
 public class CacheConfig {
 }

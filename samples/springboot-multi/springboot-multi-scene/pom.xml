@@ -20,12 +20,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.geercode.creed</groupId>
             <artifactId>springboot-multi-domain</artifactId>
         </dependency>
         <dependency>
             <groupId>com.geercode.creed</groupId>
             <artifactId>springboot-multi-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
