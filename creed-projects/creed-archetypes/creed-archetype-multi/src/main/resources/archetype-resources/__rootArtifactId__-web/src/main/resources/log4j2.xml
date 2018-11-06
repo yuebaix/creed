@@ -74,13 +74,8 @@
         <Logger name="org.hibernate" level="INFO"/>
         <Logger name="springfox.documentation" level="INFO"/>
         <Logger name="io.swagger" level="INFO"/>
-        <!--阿里MQ-->
-        <Logger name="RocketmqClient" level="ERROR"/>
-        <Logger name="RocketmqCommon" level="WARN"/>
-        <Logger name="RocketmqRemoting" level="WARN"/>
-        <!--druid-->
-        <Logger name="druid.sql.Statement" level="WARN"/>
-        <Logger name="druid.sql.ResultSet" level="WARN"/>
+        <Logger name="io.lettuce" level="INFO"/>
+        <Logger name="com.alicp.jetcache" level="INFO"/>
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>

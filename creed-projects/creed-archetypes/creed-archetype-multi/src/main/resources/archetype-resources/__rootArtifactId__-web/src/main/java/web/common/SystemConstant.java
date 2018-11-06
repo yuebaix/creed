@@ -21,6 +21,10 @@ public final class SystemConstant {
     public static final String PROFILE_TEST = "test";
     public static final String PROFILE_PROD = "prod";
 
+    /** 指定缓存名前缀*/
+    public static final String CACHE_PREFIX = "system:";
+    public static final int CACHE_LOCK_SEC = 100;
+
     private SystemConstant() {
     }
 }

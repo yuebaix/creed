@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 spring:
   profiles:
     active: dev
@@ -8,25 +11,25 @@ spring:
   mvc:
     date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
     favicon:
-      # 关闭favicon.ico
+      $symbol_pound 关闭favicon.ico
       enabled: false
 
 mybatis-plus:
-  # 通配符映射,所有jar下的mapper文件夹下的Mapper.xml结尾的文件
+  $symbol_pound 通配符映射,所有jar下的mapper文件夹下的Mapper.xml结尾的文件
   mapper-locations: classpath*:mapper/*Mapper.xml
   global-config:
-    # 数据库相关配置
+    $symbol_pound 数据库相关配置
     db-config:
-      # 主键类型 AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID(数字类型唯一ID)", UUID:"全局唯一ID UUID"
+      $symbol_pound 主键类型 AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID(数字类型唯一ID)", UUID:"全局唯一ID UUID"
       id-type: AUTO
-      # 字段策略 IGNORED:"忽略判断", NOT_NULL:"非 NULL 判断"), NOT_EMPTY:"非空判断"
+      $symbol_pound 字段策略 IGNORED:"忽略判断", NOT_NULL:"非 NULL 判断"), NOT_EMPTY:"非空判断"
       field-strategy: NOT_EMPTY
-      # 驼峰下划线转换
+      $symbol_pound 驼峰下划线转换
       column-underline: true
-      # 数据库类型
+      $symbol_pound 数据库类型
       db-type: MYSQL
   configuration:
-    # 开启mybatis驼峰命名
+    $symbol_pound 开启mybatis驼峰命名
     map-underscore-to-camel-case: true
-    # 关闭缓存
+    $symbol_pound 关闭缓存
     cache-enabled: false

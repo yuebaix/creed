@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -16,5 +19,24 @@ spring:
       max-lifetime: 1800000
       connection-test-query: SELECT 1
   resources:
-    #关闭默认资源映射
+    $symbol_pound 关闭默认资源映射
     add-mappings: false
+jetcache:
+  statIntervalMinutes: 15
+  hidePackages: ${package}
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+      limit: 100
+      expireAfterWriteInMillis: 30000
+  remote:
+    default:
+      type: redis.lettuce
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      expireAfterWriteInMillis: 100000
+      uri: redis://We-are-hero-2015@192.168.21.27?database=0
+      keyPrefix: '${artifactId}:'

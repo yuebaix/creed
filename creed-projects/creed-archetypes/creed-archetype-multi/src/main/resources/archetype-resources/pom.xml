@@ -19,9 +19,11 @@
         <!--控制是否检测-->
         <disable.checks>false</disable.checks>
         <!--主要依赖版本-->
-        <mybatis-plus.version>3.0.3</mybatis-plus.version>
         <lombok.version>1.18.2</lombok.version>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
+        <mybatis-plus.version>3.0.3</mybatis-plus.version>
+        <jetcache.version>2.5.9</jetcache.version>
+        <objenesis.version>2.6</objenesis.version>
         <!--插件版本-->
         <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
@@ -113,11 +115,6 @@
             </dependency>
             <!--main materials-->
             <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <scope>provided</scope>
@@ -129,6 +126,22 @@
                 <version>${mysql-connector-java.version}</version>
                 <scope>runtime</scope>
                 <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis-lettuce</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+            <!--解决jetcache与springtest冲突-->
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>${objenesis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

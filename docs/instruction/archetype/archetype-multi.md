@@ -17,7 +17,7 @@ mvn archetype:generate                                   \
   -DinteractiveMode=false                                \
   -DarchetypeGroupId=com.geercode.creed                  \
   -DarchetypeArtifactId=creed-archetype-multi            \
-  -DarchetypeVersion=0.2-SNAPSHOT                        \
+  -DarchetypeVersion=0.3-SNAPSHOT                        \
   -DgroupId=com.yimei.architect                          \
   -DartifactId=creed-simple-app                          \
   -Dpackage=com.yimei.architect.simple                   \
