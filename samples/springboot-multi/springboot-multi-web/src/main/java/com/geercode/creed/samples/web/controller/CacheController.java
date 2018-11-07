@@ -39,7 +39,7 @@ public class CacheController {
     @Autowired
     private GlobalConfigPropService globalConfigPropService;
     /** 缓存变量 */
-    @CreateCache(cacheType = CacheType.BOTH, name = SceneConstant.CACHE_PREFIX + "fieldCache")
+    @CreateCache(cacheType = CacheType.BOTH, name = SceneConstant.CACHE_PREFIX + SceneConstant.CACHE_FOO)
     private Cache<Integer, String> feildCache;
 
     /**

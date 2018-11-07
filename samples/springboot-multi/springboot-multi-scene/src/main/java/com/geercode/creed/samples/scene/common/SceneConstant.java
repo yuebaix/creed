@@ -20,6 +20,7 @@ public final class SceneConstant {
     public static final int CACHE_REFRESH_SEC = 10;
     public static final String CACHE_USER = "user:";
     public static final String CACHE_PROP = "prop:";
+    public static final String CACHE_FOO = "foo:";
 
     public static final int FOO_INT = 10;
 
