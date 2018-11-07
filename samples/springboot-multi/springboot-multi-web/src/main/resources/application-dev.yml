@@ -18,7 +18,6 @@ spring:
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
-      connection-test-query: SELECT 1
   redis:
     host: 192.168.21.27
     port: 6379

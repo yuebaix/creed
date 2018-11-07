@@ -49,7 +49,7 @@ public class CacheServiceImpl implements CacheService {
     @Override
     @CacheUpdate(name = SceneConstant.CACHE_PREFIX + SceneConstant.CACHE_USER,
             key = "#user.id",
-            value = "#user"
+            value = "#result"
     )
     public UserDomain insertOrUpdate(UserDomain user) {
         log.debug("修改");

@@ -22,7 +22,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableCreateCacheAnnotation
-@EnableMethodCache(basePackages = "${package}.web")
 @EnableMethodCache(basePackages = {
         "${package}.web",
         "${package}.scene"
