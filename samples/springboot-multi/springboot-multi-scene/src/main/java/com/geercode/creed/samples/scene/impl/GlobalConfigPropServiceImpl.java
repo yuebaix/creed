@@ -7,7 +7,6 @@
 package com.geercode.creed.samples.scene.impl;
 
 import com.alicp.jetcache.anno.CachePenetrationProtect;
-import com.alicp.jetcache.anno.CacheRefresh;
 import com.alicp.jetcache.anno.CacheType;
 import com.alicp.jetcache.anno.Cached;
 import com.geercode.creed.samples.scene.GlobalConfigPropService;
@@ -32,7 +31,7 @@ public class GlobalConfigPropServiceImpl implements GlobalConfigPropService {
             name = SceneConstant.CACHE_PREFIX + SceneConstant.CACHE_PROP,
             key = "#key"
     )
-    @CacheRefresh(refresh = SceneConstant.CACHE_REFRESH_SEC)
+    /** @CacheRefresh(refresh = SceneConstant.CACHE_REFRESH_SEC)*/
     @CachePenetrationProtect
     public Map<String, String> getConfig(String key) {
         return loadProp().get(key);
