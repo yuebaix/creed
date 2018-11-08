@@ -3,3 +3,13 @@ jerryniu
 creed
 Mutt
 huifumanlove@hotmail.com
+
+gpg --version
+gpg --gen-key
+gpg --list-keys
+gpg --keyserver hkp://pool.sks-keyservers.net --send-keys [keyId]
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys [keyId]
+
+gpg -a -o gpg.private.export --export-secret-keys
+gpg -a -o gpg.public.export
+gpg --import
