@@ -15,18 +15,14 @@ spring框架一些功能的增强跟开启
 samples
 所有核心概念的示例
 
-
-
 个体工程多模块分层
 view -渲染层(模板引擎)
 
 api -外服提供接口
 controller -内部控制、校验、简单处理
-
 service -内部处理聚合
-manager -外部服务聚合
-
+scene -外部服务聚合
+stub -服务存根与sdk提供给其他服务使用
 domain -领域主体操作
-
-dao -数据库orm交互
+dao -数据库orm交互、各种其他数据源实体类
 ```
