@@ -14,7 +14,7 @@ script:
 - docker --version
 - docker ps -a
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker push huifumanlove/springboot-simple
+- echo 'docker push huifumanlove/springboot-simple'
 
 after_success:
 - mvn clean cobertura:cobertura coveralls:report -Pall
