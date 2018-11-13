@@ -28,6 +28,7 @@
         <mybatis-plus.version>3.0.3</mybatis-plus.version>
         <jetcache.version>2.5.9</jetcache.version>
         <objenesis.version>2.6</objenesis.version>
+        <spring.statemachine.version>2.0.3.RELEASE</spring.statemachine.version>
         <!--插件版本-->
         <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
@@ -86,6 +87,13 @@
                 <version>${creed.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.statemachine</groupId>
+                <artifactId>spring-statemachine-bom</artifactId>
+                <version>${spring.statemachine.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!--local bom-->
             <dependency>
