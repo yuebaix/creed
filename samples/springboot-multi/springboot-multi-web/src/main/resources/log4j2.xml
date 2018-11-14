@@ -66,6 +66,7 @@
     <Loggers>
         <!-- 去除日志 -->
         <Logger name="org.springframework" level="INFO"/>
+        <Logger name="org.springframework.statemachine" level="WARN"/>
         <Logger name="org.apache" level="INFO"/>
         <Logger name="com.netflix" level="INFO"/>
         <Logger name="org.hibernate" level="INFO"/>
