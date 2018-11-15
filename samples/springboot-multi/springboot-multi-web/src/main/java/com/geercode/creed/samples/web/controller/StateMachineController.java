@@ -9,6 +9,7 @@ package com.geercode.creed.samples.web.controller;
 import com.geercode.creed.samples.web.config.statemachine.OrderDomain;
 import com.geercode.creed.samples.web.config.statemachine.OrderEvent;
 import com.geercode.creed.samples.web.config.statemachine.OrderState;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/sm")
+@Slf4j
 public class StateMachineController {
 
     @Autowired
@@ -105,7 +107,9 @@ public class StateMachineController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        Message message = MessageBuilder.withPayload(OrderEvent.CALLOFF).setHeader("order", orderDomain).build();
+        Message message = MessageBuilder.withPayload(OrderEvent.REJECT).setHeader("order", orderDomain).build();
+        stateMachine.getExtendedState().getVariables().put("extendparam", "extendparam-123");
+        log.debug(stateMachine.getExtendedState().get("extendparam", String.class));
         //执行操作
         boolean isSuccess = stateMachine.sendEvent(message);
         return isSuccess ? "success" : "fail";

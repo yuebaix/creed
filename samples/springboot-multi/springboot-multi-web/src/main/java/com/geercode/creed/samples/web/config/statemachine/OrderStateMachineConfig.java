@@ -116,7 +116,7 @@ public class OrderStateMachineConfig extends EnumStateMachineConfigurerAdapter<O
                 })
                 .action(transitionAction(), errAction())
                 .and()
-                .withExternal().source(OrderState.APPROVED).target(OrderState.FOO_END).event(OrderEvent.CALLOFF);
+                .withExternal().source(OrderState.APPROVED).target(OrderState.FOO_END).event(OrderEvent.REJECT);
     }
 
     /**
