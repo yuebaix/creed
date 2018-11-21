@@ -216,7 +216,7 @@
                     <configuration>
                         <!--定义测试套件入口-->
                         <includes>
-                            <include>com.geercode.creed.samples.TestEntry.java</include>
+                            <include>${package}.TestEntry.java</include>
                         </includes>
                         <!--同一次测试最多尝试两次-->
                         <rerunFailingTestsCount>2</rerunFailingTestsCount>
