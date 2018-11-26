@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sc-consul-app
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        instance-group: dev
+        instance-zone: dev
+        health-check-interval: 15s
+        tags: env=DEV, profile=dev
+      config:
+        enabled: true
+        prefix: bootconfig
+        defaultContext: app
+        format: FILES
