@@ -11,8 +11,8 @@
     </parent>
 
     <groupId>com.geercode.creed</groupId>
-    <artifactId>sc-consul-app</artifactId>
-    <name>SC示例 Consul APP</name>
+    <artifactId>sc-consul-service</artifactId>
+    <name>SC示例 Consul SERVICE</name>
 
     <dependencies>
         <dependency>

@@ -37,6 +37,7 @@
         <module>datamining</module>
         <module>springboot-elasticsearch</module>
         <module>sc-consul-app</module>
+        <module>sc-consul-service</module>
         <!--<module>design-mode</module>-->
         <!--<module>jmeter-test</module>-->
     </modules>

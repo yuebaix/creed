@@ -1,14 +1,14 @@
 server:
-  port: 8080
+  port: 10203
 spring:
   profiles:
     active: dev
   application:
-    name: sc-consul-app
+    name: sc-consul-service
   cloud:
     consul:
       scheme: http
-      host: example.net
+      host: localhost
       port: 8500
       discovery:
         prefer-ip-address: true

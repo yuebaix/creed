@@ -29,8 +29,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class CreedApp {
+public class CreedConsulServiceApp {
     public static void main(String[] args) {
-        SpringApplication.run(CreedApp.class, args);
+        SpringApplication.run(CreedConsulServiceApp.class, args);
     }
 }
