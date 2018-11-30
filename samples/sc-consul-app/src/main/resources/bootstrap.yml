@@ -4,23 +4,27 @@ spring:
   profiles:
     active: dev
   application:
-    name: sc-consul-app
+    name: service-consul-app
   cloud:
     consul:
       scheme: http
-      host: example.net
-      port: 8500
+      host: localhost
+      port: 80
       discovery:
         prefer-ip-address: true
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-        instance-group: dev
-        instance-zone: dev
-        acl-token: 27f5ed83-3a3e-fd2e-baa0-d075ad5508fb
+        acl-token: 2b58ccde-7538-ffba-5e16-e5fa3a012cbb
         health-check-interval: 15s
         tags: env=DEV, profile=dev
       config:
         enabled: true
         prefix: bootconfig
-        defaultContext: app
+        defaultContext: service
         format: FILES
-        acl-token: 27f5ed83-3a3e-fd2e-baa0-d075ad5508fb
+        acl-token: 2b58ccde-7538-ffba-5e16-e5fa3a012cbb
+#      tls:
+#        key-store-instance-type: jks
+#        certificate-path: /opt/settings/client.jks
+#        certificate-password: 123456
+#        key-store-path: /opt/settings/server.jks
+#        key-store-password: 123456
