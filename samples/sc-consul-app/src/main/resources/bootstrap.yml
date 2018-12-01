@@ -13,15 +13,16 @@ spring:
       discovery:
         prefer-ip-address: true
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-        acl-token: 889ac314-1362-0240-1375-ba06db989b77
+        acl-token: 8dd1b133-43b0-6632-e223-742f970c49c0
         health-check-interval: 15s
+        health-check-critical-timeout: 1m
         tags: description=app-consul-app
       config:
         enabled: true
         prefix: bootconfig
         defaultContext: global
         format: FILES
-        acl-token: 889ac314-1362-0240-1375-ba06db989b77
+        acl-token: 8dd1b133-43b0-6632-e223-742f970c49c0
 #      tls:
 #        key-store-instance-type: jks
 #        certificate-path: /opt/settings/client.jks
