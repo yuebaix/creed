@@ -6,7 +6,7 @@
     <parent>
         <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../../creed-projects/creed-parent</relativePath>
     </parent>
 
@@ -65,6 +65,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -112,6 +118,7 @@
                         <ignoredClassPattern>^(org.aopalliance.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(net.jcip.annotations.*)$</ignoredClassPattern>
                     </ignoredClassPatterns>
                     <ignoredResourcePatterns>
                         <ignoredResourcePattern>about.html</ignoredResourcePattern>

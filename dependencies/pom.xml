@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
@@ -32,20 +32,17 @@
         <!--compile java version-->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <!--main materials version-->
-        <spring.version>5.0.9.RELEASE</spring.version>
-        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <spring.version>5.0.11.RELEASE</spring.version>
+        <spring-boot.version>2.0.7.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <disruptor.version>3.4.2</disruptor.version>
         <lombok.version>1.18.2</lombok.version>
         <swagger.version>2.9.2</swagger.version>
         <swagger-annotations.version>1.5.21</swagger-annotations.version>
         <swagger-models.version>1.5.21</swagger-models.version>
-
         <!--third party-->
         <guava.version>20.0</guava.version>
-
         <!--plugins version-->
         <!--default-->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>

@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
 
     <groupId>com.geercode.creed</groupId>

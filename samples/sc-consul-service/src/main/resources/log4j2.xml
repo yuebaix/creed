@@ -70,7 +70,7 @@
         <AsyncLogger name="io.undertow" level="INFO" />
         <AsyncLogger name="org.apache" level="INFO" />
         <!-- ROOT日志 -->
-        <Root level="ALL" includeLocation="true">
+        <Root level="DEBUG" includeLocation="true">
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="DEBUG-OUT"/>
             <appender-ref ref="ERROR-OUT"/>
