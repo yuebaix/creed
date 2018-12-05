@@ -1,0 +1,25 @@
+server:
+  port: 10203
+spring:
+  profiles:
+    active: dev
+  application:
+    name: svc-consul-service
+  cloud:
+    consul:
+      scheme: http
+      host: 192.168.21.28
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
+        health-check-interval: 15s
+        health-check-critical-timeout: 1m
+        tags: description=svc-consul-service
+      config:
+        enabled: true
+        prefix: bootconfig
+        defaultContext: global
+        format: FILES
+        acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073

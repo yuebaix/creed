@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 1.日志触发滚动策略(每天或日志体积达到128MB,压缩为zip格式)
@@ -15,51 +12,51 @@
 <Configuration status="WARN" monitorInterval="60">
     <Properties>
         <!-- 日志文件前缀 -->
-        <Property name="APP_NAME" value="${parentArtifactId}"/>
+        <Property name="APP_NAME" value="creed-consul-app"/>
         <!-- 日志目录 -->
         <Property name="LOG_DIR" value="../logs/"/>
         <!-- 日志格式 -->
-        <Property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{1.} : %L${symbol_pound}${symbol_escape}t%m%n"/>
+        <Property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{1.} : %L#\t%m%n"/>
         <!-- 彩色日志格式(控制台) -->
         <Property name="CONSOLE_LOG_PATTERN"
-                  value="%clr{%d{yyyy-MM-dd HH:mm:ss}}{magenta} %clr{${symbol_dollar}{LOG_LEVEL_PATTERN:-%5p}} %clr{[%-15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %clr{%L${symbol_pound}${symbol_escape}t}{green}%m%n${symbol_dollar}{LOG_EXCEPTION_CONVERSION_WORD:-%xwEx}"/>
+                  value="%clr{%d{yyyy-MM-dd HH:mm:ss}}{magenta} %clr{${LOG_LEVEL_PATTERN:-%5p}} %clr{[%-15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %clr{%L#\t}{green}%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%xwEx}"/>
     </Properties>
     <Appenders>
         <!-- 控制台日志 -->
         <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="${symbol_dollar}{CONSOLE_LOG_PATTERN}"/>
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/>
             <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
         <!-- DEBUG日志文件 -->
-        <RollingRandomAccessFile name="DEBUG-OUT" fileName="${symbol_dollar}{LOG_DIR}${symbol_dollar}{APP_NAME}_debug.log"
-                                 filePattern="${symbol_dollar}{LOG_DIR}${symbol_dollar}{APP_NAME}_debug.%d{yyyy-MM-dd}-%i.log.zip"
+        <RollingRandomAccessFile name="DEBUG-OUT" fileName="${LOG_DIR}${APP_NAME}_debug.log"
+                                 filePattern="${LOG_DIR}${APP_NAME}_debug.%d{yyyy-MM-dd}-%i.log.zip"
                                  immediateFlush="false" append="true">
-            <PatternLayout pattern="${symbol_dollar}{FILE_LOG_PATTERN}"/>
+            <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
             <DefaultRolloverStrategy max="40">
-                <Delete basePath="${symbol_dollar}{LOG_DIR}" maxDepth="1">
-                    <IfFileName glob="${symbol_dollar}{APP_NAME}_debug.*.log.zip"/>
+                <Delete basePath="${LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}_debug.*.log.zip"/>
                     <IfLastModified age="15d"/>
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingRandomAccessFile>
         <!-- ERROR日志文件 -->
-        <RollingRandomAccessFile name="ERROR-OUT" fileName="${symbol_dollar}{LOG_DIR}${symbol_dollar}{APP_NAME}_error.log"
-                                 filePattern="${symbol_dollar}{LOG_DIR}${symbol_dollar}{APP_NAME}_error.%d{yyyy-MM-dd}-%i.log.zip"
+        <RollingRandomAccessFile name="ERROR-OUT" fileName="${LOG_DIR}${APP_NAME}_error.log"
+                                 filePattern="${LOG_DIR}${APP_NAME}_error.%d{yyyy-MM-dd}-%i.log.zip"
                                  immediateFlush="false" append="true">
-            <PatternLayout pattern="${symbol_dollar}{FILE_LOG_PATTERN}"/>
+            <PatternLayout pattern="${FILE_LOG_PATTERN}"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="128 MB"/>
             </Policies>
             <DefaultRolloverStrategy max="40">
-                <Delete basePath="${symbol_dollar}{LOG_DIR}" maxDepth="1">
-                    <IfFileName glob="${symbol_dollar}{APP_NAME}_error.*.log.zip"/>
+                <Delete basePath="${LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}_error.*.log.zip"/>
                     <IfLastModified age="15d"/>
                 </Delete>
             </DefaultRolloverStrategy>
@@ -67,14 +64,11 @@
     </Appenders>
     <Loggers>
         <!-- 去除日志 -->
-        <Logger name="org.springframework" level="INFO"/>
-        <Logger name="org.apache" level="INFO"/>
-        <Logger name="com.netflix" level="INFO"/>
-        <Logger name="org.hibernate" level="INFO"/>
-        <Logger name="springfox.documentation" level="INFO"/>
-        <Logger name="io.swagger" level="INFO"/>
-        <Logger name="io.lettuce" level="INFO"/>
-        <Logger name="com.alicp.jetcache" level="INFO"/>
+        <AsyncLogger name="org.springframework" level="INFO" />
+        <AsyncLogger name="org.springframework.security" level="DEBUG" />
+        <AsyncLogger name="com.netflix" level="INFO" />
+        <AsyncLogger name="io.undertow" level="INFO" />
+        <AsyncLogger name="org.apache" level="INFO" />
         <!-- ROOT日志 -->
         <Root level="ALL" includeLocation="true">
             <appender-ref ref="STDOUT"/>
