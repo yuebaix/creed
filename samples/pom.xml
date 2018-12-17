@@ -38,6 +38,7 @@
         <module>springboot-elasticsearch</module>
         <module>sc-consul-app</module>
         <module>sc-consul-service</module>
+        <module>axon-demo</module>
         <!--<module>design-mode</module>-->
         <!--<module>jmeter-test</module>-->
     </modules>
