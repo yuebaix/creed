@@ -4,16 +4,16 @@ spring:
   profiles:
     active: dev
   application:
-    name: app-consul-app
+    name: sc-app-consul-app
   cloud:
     consul:
-      scheme: http
-      host: 192.168.21.28
+      scheme: https
+      host: localhost
       port: 8500
       discovery:
         prefer-ip-address: true
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-        acl-token: 8dd1b133-43b0-6632-e223-742f970c49c0
+        acl-token: 27f5ed83-3a3e-fd2e-baa0-d075ad5508fb
         health-check-interval: 15s
         health-check-critical-timeout: 1m
         tags: description=app-consul-app
@@ -22,10 +22,10 @@ spring:
         prefix: bootconfig
         defaultContext: global
         format: FILES
-        acl-token: 8dd1b133-43b0-6632-e223-742f970c49c0
-#      tls:
-#        key-store-instance-type: jks
-#        certificate-path: /opt/settings/client.jks
-#        certificate-password: 123456
-#        key-store-path: /opt/settings/server.jks
-#        key-store-password: 123456
+        acl-token: 27f5ed83-3a3e-fd2e-baa0-d075ad5508fb
+      tls:
+        key-store-instance-type: PKCS12
+        key-store-path: /opt/settings/root.truststore
+        key-store-password: MagicWand@exLayer
+        certificate-path: /opt/settings/uaa.p12
+        certificate-password: MagicWand@exLayer
