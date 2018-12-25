@@ -12,7 +12,12 @@
 
     <groupId>com.geercode.creed</groupId>
     <artifactId>sc-consul-service</artifactId>
+    <packaging>jar</packaging>
     <name>SC示例 Consul SERVICE</name>
+
+    <properties>
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -98,6 +103,12 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+            </plugin>
+
         </plugins>
     </build>
 </project>
