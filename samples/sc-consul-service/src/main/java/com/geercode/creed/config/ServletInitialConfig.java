@@ -37,8 +37,10 @@ import org.springframework.context.event.ContextRefreshedEvent;
  */
 
 @Configuration
-public class ServletInitialConfig extends SpringBootServletInitializer implements ApplicationListener<ContextRefreshedEvent> {
-    private static boolean isNeedToRegister = false;
+public class ServletInitialConfig extends SpringBootServletInitializer
+        implements ApplicationListener<ContextRefreshedEvent> {
+
+    private static boolean isNeedToRegister;
     @Autowired
     private ServerProperties serverProperties;
     @Autowired
@@ -46,7 +48,7 @@ public class ServletInitialConfig extends SpringBootServletInitializer implement
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        isNeedToRegister = true;
+        setToRegister();
         return builder.sources(CreedConsulServiceApp.class);
     }
 
@@ -54,10 +56,15 @@ public class ServletInitialConfig extends SpringBootServletInitializer implement
     public void onApplicationEvent(ContextRefreshedEvent event) {
         ApplicationContext context = event.getApplicationContext();
         if (isNeedToRegister) {
-            if (!(context instanceof ConfigurableWebServerApplicationContext) || !"management".equals(((ConfigurableWebServerApplicationContext)context).getServerNamespace())) {
+            if (!(context instanceof ConfigurableWebServerApplicationContext)
+                    || !"management".equals(((ConfigurableWebServerApplicationContext) context).getServerNamespace())) {
                 autoServiceRegistration.setPort(serverProperties.getPort());
                 autoServiceRegistration.start();
             }
         }
+    }
+
+    private static void setToRegister() {
+        ServletInitialConfig.isNeedToRegister = true;
     }
 }
