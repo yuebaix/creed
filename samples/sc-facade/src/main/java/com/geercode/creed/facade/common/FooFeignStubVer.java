@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.facade.dto;
+package com.geercode.creed.facade.common;
 
 /**
  * <p>Description : Dto基础抽象类</p>
@@ -23,7 +23,7 @@ package com.geercode.creed.facade.dto;
  * @author jerryniu
  * @since 1.0.0
  */
-public interface FeignStubVer {
+public interface FooFeignStubVer {
     String API_VERSION = "v1.0.0";
 
     /**

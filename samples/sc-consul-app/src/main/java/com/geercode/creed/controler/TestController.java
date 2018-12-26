@@ -16,6 +16,7 @@
 
 package com.geercode.creed.controler;
 
+import com.geercode.creed.facade.common.FooFeignResp;
 import com.geercode.creed.facade.dto.InnerDto;
 import com.geercode.creed.facade.dto.ShowMeDto;
 import com.geercode.creed.facade.service.ConsulServiceFeignService;
@@ -81,6 +82,7 @@ public class TestController {
         InnerDto inner = new InnerDto();
         inner.setWhat(2);
         showMeDto.setInner(inner);
-        return consulServiceFeignService.showMe(showMeDto);
+        FooFeignResp resp = consulServiceFeignService.showMe(showMeDto);
+        return resp.getCode();
     }
 }

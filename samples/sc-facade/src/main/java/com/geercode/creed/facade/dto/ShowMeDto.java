@@ -16,6 +16,7 @@
 
 package com.geercode.creed.facade.dto;
 
+import com.geercode.creed.facade.common.FooFeignStubVer;
 import lombok.Data;
 
 /**
@@ -26,7 +27,7 @@ import lombok.Data;
  * @since 1.0.0
  */
 @Data
-public class ShowMeDto implements FeignStubVer {
+public class ShowMeDto implements FooFeignStubVer {
     private long id;
     private String name;
     private InnerDto inner;

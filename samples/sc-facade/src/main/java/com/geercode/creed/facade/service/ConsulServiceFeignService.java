@@ -17,6 +17,7 @@
 package com.geercode.creed.facade.service;
 
 import com.geercode.creed.facade.common.Constants;
+import com.geercode.creed.facade.common.FooFeignResp;
 import com.geercode.creed.facade.dto.ShowMeDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,5 @@ public interface ConsulServiceFeignService {
      * @return java.lang.String 示例报文
      */
     @PostMapping("/test/showme")
-    String showMe(@RequestBody ShowMeDto dto);
+    FooFeignResp showMe(@RequestBody ShowMeDto dto);
 }
