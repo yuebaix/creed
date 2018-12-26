@@ -25,6 +25,7 @@ package com.geercode.creed.facade.common;
  */
 public final class Constants {
     public static final String FOO_FEIGN_SERVICE = "b-service";
+    public static final String CONSUL_SERVICE_FEIGN_SERVICE = "svc-consul-service";
 
     private Constants() {
     }

@@ -18,6 +18,8 @@ package com.geercode.creed.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,4 +45,10 @@ public class TestController {
         log.debug(noob);
         return noob;
     }*/
+
+    @PostMapping("/showme")
+    public String showMe(@RequestBody String dto) {
+        log.debug(dto);
+        return "success";
+    }
 }

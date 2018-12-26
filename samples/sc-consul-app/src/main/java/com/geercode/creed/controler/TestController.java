@@ -16,6 +16,9 @@
 
 package com.geercode.creed.controler;
 
+import com.geercode.creed.facade.dto.InnerDto;
+import com.geercode.creed.facade.dto.ShowMeDto;
+import com.geercode.creed.facade.service.ConsulServiceFeignService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -41,6 +44,8 @@ public class TestController {
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private ConsulServiceFeignService consulServiceFeignService;
 
     ///
     /*@GetMapping("/getConfig")
@@ -49,9 +54,33 @@ public class TestController {
         return noob;
     }*/
 
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-12-26 14:28:58</p>
+     *
+     * @author jerryniu
+     * @since 1.0.0
+     */
     @RequestMapping("test")
     public String test() {
         String url = "http://sc-consul-service:10203/test/getConfig?key=1";
         return restTemplate.getForObject(url, String.class);
+    }
+
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-12-26 14:29:02</p>
+     *
+     * @author jerryniu
+     * @since 1.0.0
+     */
+    @RequestMapping("showme")
+    public String showme() {
+        ShowMeDto showMeDto = new ShowMeDto();
+        log.debug(showMeDto.getVer());
+        InnerDto inner = new InnerDto();
+        inner.setWhat(2);
+        showMeDto.setInner(inner);
+        return consulServiceFeignService.showMe(showMeDto);
     }
 }

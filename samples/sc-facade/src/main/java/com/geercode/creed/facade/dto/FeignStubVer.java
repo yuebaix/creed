@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-package com.geercode.creed;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+package com.geercode.creed.facade.dto;
 
 /**
- * <p>Description : 应用节点</p>
- * <p>Created on  : 2018-10-18 16:28</p>
+ * <p>Description : Dto基础抽象类</p>
+ * <p>Created on  : 2018-12-25 20:32</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
-public class CreedConsulApp {
-    public static void main(String[] args) {
-        SpringApplication.run(CreedConsulApp.class, args);
+public interface FeignStubVer {
+    String API_VERSION = "v1.0.0";
+
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-12-26 13:47:57</p>
+     *
+     * @author jerryniu
+     * @return String 123
+     * @since 1.0.0
+     */
+    default String getVer() {
+        return API_VERSION;
     }
 }

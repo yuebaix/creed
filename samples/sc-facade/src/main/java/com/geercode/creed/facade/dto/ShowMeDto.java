@@ -14,25 +14,20 @@
  * limitations under the License.
  */
 
-package com.geercode.creed;
+package com.geercode.creed.facade.dto;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import lombok.Data;
 
 /**
- * <p>Description : 应用节点</p>
- * <p>Created on  : 2018-10-18 16:28</p>
+ * <p>Description : </p>
+ * <p>Created on  : 2018-12-25 20:36</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
-public class CreedConsulApp {
-    public static void main(String[] args) {
-        SpringApplication.run(CreedConsulApp.class, args);
-    }
+@Data
+public class ShowMeDto implements FeignStubVer {
+    private long id;
+    private String name;
+    private InnerDto inner;
 }
