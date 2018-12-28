@@ -84,6 +84,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--用ribbon替换默认的Retryer.Default-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+        <!--ribbon需要spring retry去实现重试-->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+        <!--okhttp-->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <!--stub(替换为你要使用的客户端存根包)-->
+        <dependency>
+            <groupId>com.geercode.creed</groupId>
+            <artifactId>sc-facade</artifactId>
+        </dependency>
         <!--stub-->
         <dependency>
             <groupId>com.geercode.creed</groupId>

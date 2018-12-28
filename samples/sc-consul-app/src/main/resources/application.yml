@@ -1,0 +1,58 @@
+# feign配置
+feign:
+  httpclient:
+    enabled: false
+    max-connections: 300
+    max-connections-per-route: 60
+  okhttp:
+    enabled: true
+  compression:
+    request: true
+    response: true
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 90000
+        loggerLevel: basic
+# ribbon配置
+ribbon:
+  okhttp:
+    enabled: true
+  restclient:
+    enabled: false
+  httpclient:
+    enabled: false
+  ConnectTimeout: 3000
+  ReadTimeout: 70000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 5000
+# hystrix配置
+hystrix:
+  threadpool:
+    default:
+      allowMaximumSizeToDivergeFromCoreSize: true
+      coreSize: 10
+      maximumSize: 50
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 1000
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 150000
+          semaphore:
+            maxConcurrentRequests: 10000
+      fallback:
+        enabled: true
+        maxConcurrentRequests: 10000
+      circuitBreaker:
+        enabled: false
