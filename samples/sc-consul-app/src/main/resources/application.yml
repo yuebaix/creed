@@ -56,3 +56,8 @@ hystrix:
         maxConcurrentRequests: 10000
       circuitBreaker:
         enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

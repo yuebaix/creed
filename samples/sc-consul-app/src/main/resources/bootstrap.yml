@@ -12,7 +12,8 @@ spring:
   cloud:
     consul:
       scheme: http
-      host: 192.168.21.28
+#      host: 192.168.21.28
+      host: localhost
       port: 8500
       discovery:
         prefer-ip-address: true
