@@ -18,11 +18,6 @@
         <message key="regexp.filepath.mismatch"
                  value="Only java files should be located in the ''src/*/java'' folders."/>
     </module>
-
-    <!--文件最大行数-->
-    <module name="FileLength">
-        <property name="max" value="2000"/>
-    </module>
     <!--文件中不允许含有tab符(\t)-->
     <module name="FileTabCharacter"/>
 
@@ -48,10 +43,6 @@
         <module name="ExecutableStatementCount">
             <property name="max" value="150"/>
             <property name="tokens" value="METHOD_DEF"/>
-        </module>
-        <!--最多方法数-->
-        <module name="MethodCount">
-            <property name="maxTotal" value="34"/>
         </module>
         <!--构造器、普通方法体行数-->
         <module name="MethodLength">
@@ -228,8 +219,6 @@
             <property name="checkFirstSentence" value="false"/>
             <property name="checkEmptyJavadoc" value="true"/>
         </module>
-        <!--javadoc标签换行时需要缩进4格-->
-        <module name="JavadocTagContinuationIndentation"/>
 
         <!--######### Imports #########-->
 
