@@ -232,11 +232,6 @@
         <module name="JavadocTagContinuationIndentation"/>
 
         <!--######### Imports #########-->
-        <!--对src/main/下的包进行导入管理,需要提供import-control.xml-->
-        <module name="ImportControl">
-            <property name="file" value="${com.geercode.importcontrol.file}"/>
-            <property name="path" value="^.*[\\/]src[\\/]main[\\/].*$"/>
-        </module>
 
         <!--######### Coding #########-->
         <!--禁止equals(Foo foo),如果非要写需要先覆写equals(Object obj)-->
