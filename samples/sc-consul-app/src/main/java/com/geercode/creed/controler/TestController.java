@@ -85,4 +85,16 @@ public class TestController {
         FooFeignResp resp = consulServiceFeignService.showMe(showMeDto);
         return resp.getCode();
     }
+
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2018-12-26 14:29:02</p>
+     *
+     * @author jerryniu
+     * @since 1.0.0
+     */
+    @RequestMapping("simple")
+    public String simple() {
+        return "simple";
+    }
 }

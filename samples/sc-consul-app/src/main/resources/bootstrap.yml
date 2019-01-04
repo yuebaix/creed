@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   profiles:
-    active: dev, http
+    active: dev, test
 
 ---
 spring:
@@ -12,8 +12,7 @@ spring:
   cloud:
     consul:
       scheme: http
-#      host: 192.168.21.28
-      host: localhost
+      host: 192.168.21.28
       port: 8500
       discovery:
         prefer-ip-address: true
@@ -58,3 +57,34 @@ spring:
         key-store-password: MagicWand@exLayer
         certificate-path: /opt/settings/uaa.p12
         certificate-password: MagicWand@exLayer
+
+---
+spring:
+  profiles: test
+  application:
+    name: svc-app-consul-app
+  cloud:
+    consul:
+      scheme: http
+      host: 192.168.21.28
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
+        health-check-path: /svc/actuator/health
+        health-check-interval: 15s
+        health-check-critical-timeout: 1m
+        tags:
+          - description=svc-app-consul-app
+          - management.context-path=/svc/actuator
+      config:
+        enabled: true
+        prefix: bootconfig
+        defaultContext: global
+        format: FILES
+        acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
+
+server:
+  servlet:
+    context-path: /svc
