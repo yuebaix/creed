@@ -78,7 +78,7 @@ spring:
         tags:
           - description=svc-app-consul-app
           - management.context-path=/svc/actuator
-          - "fabio-k8s-prefix=/${spring.application.name} strip=/${spring.application.name}"
+          - "fabio-prefix=/${spring.application.name} strip=/${spring.application.name}"
       config:
         enabled: true
         prefix: bootconfig
