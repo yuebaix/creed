@@ -74,10 +74,11 @@ spring:
         acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
         health-check-path: /svc/actuator/health
         health-check-interval: 15s
-        health-check-critical-timeout: 1m
+        health-check-critical-timeout: 900m
         tags:
           - description=svc-app-consul-app
           - management.context-path=/svc/actuator
+          - "fabio-k8s-prefix=/${spring.application.name} strip=/${spring.application.name}"
       config:
         enabled: true
         prefix: bootconfig
