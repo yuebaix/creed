@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 	<!-- 日志文件前缀 -->
-	<property name="APP_NAME" value="creedtrace"/>
+	<property name="APP_NAME" value="creed-consul-service"/>
 	<!-- 日志目录 -->
 	<property name="LOG_DIR" value="../logs/"/>
 	<!-- 彩色日志 -->

@@ -95,6 +95,7 @@ public class TestController {
      */
     @RequestMapping("simple")
     public String simple() {
+        log.info("simple!!!");
         return "simple";
     }
 }
