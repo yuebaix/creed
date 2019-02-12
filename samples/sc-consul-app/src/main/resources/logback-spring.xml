@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 	<!-- 日志文件前缀 -->
-	<property name="APP_NAME" value="creed-consul-app"/>
-	<!--<springProperty scope="context" name="APP_NAME_CP" source="spring.application.name"/>-->
+	<!--<property name="APP_NAME" value="creed-consul-app"/>-->
+	<springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+	<springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
 	<!-- 日志目录 -->
 	<property name="LOG_DIR" value="../logs/"/>
 	<!-- 彩色日志 -->
@@ -99,7 +100,7 @@
 					<pattern>
 						{
 						"severity": "%level",
-						"service": "${springAppName:-}",
+						"service": "${APP_NAME:-}",
 						"trace": "%X{X-B3-TraceId:-}",
 						"span": "%X{X-B3-SpanId:-}",
 						"parent": "%X{X-B3-ParentSpanId:-}",
@@ -131,7 +132,28 @@
 		</rollingPolicy>
 	</appender>
 
-	<!--GRAYLOG json日志文件-->
+	<!--GRAYLOG logstash-gelf日志文件-->
+	<appender name="GELF-OUT" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+		<host>redis://localhost:6379/0#logstash</host>
+		<!--<host>udp:localhost</host>-->
+		<!--<port>12201</port>-->
+		<version>1.1</version>
+		<facility>${ACTIVE_PROFILE:-}</facility>
+		<extractStackTrace>true</extractStackTrace>
+		<filterStackTrace>true</filterStackTrace>
+		<includeLocation>true</includeLocation>
+		<mdcProfiling>true</mdcProfiling>
+		<timestampPattern>yyyy-MM-dd HH:mm:ss,SSS</timestampPattern>
+		<maximumMessageSize>8192</maximumMessageSize>
+		<additionalFields>service=${APP_NAME:-}</additionalFields>
+		<!--<additionalFieldTypes>fieldName1=String,fieldName2=Double,fieldName3=Long</additionalFieldTypes>-->
+		<!--<mdcFields>mdcField1,mdcField2</mdcFields>-->
+		<!--<dynamicMdcFields>myMdc.*,[a-z]+Field</dynamicMdcFields>-->
+		<includeFullMdc>true</includeFullMdc>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
 
 	<!-- 去除日志 -->
 	<logger name="org.springframework" level="WARN" />
@@ -144,5 +166,6 @@
 		<appender-ref ref="DEBUG-OUT" />
 		<appender-ref ref="ERROR-OUT" />
 		<appender-ref ref="JSON-OUT" />
+		<appender-ref ref="GELF-OUT" />
 	</root>
 </configuration>

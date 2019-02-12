@@ -16,6 +16,7 @@
 
 package com.geercode.creed.controler;
 
+import ch.qos.logback.classic.helpers.MDCInsertingServletFilter;
 import com.geercode.creed.facade.common.FooFeignResp;
 import com.geercode.creed.facade.dto.InnerDto;
 import com.geercode.creed.facade.dto.ShowMeDto;
@@ -97,6 +98,9 @@ public class TestController {
     public String simple() {
         log.info("simple!!!");
         log.error("simple_error!!!");
+        if (true) {
+            throw new RuntimeException("Exception");
+        }
         return "simple";
     }
 }
