@@ -84,6 +84,7 @@
                         <ignoredClassPattern>^(org.aopalliance.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.aspectj.*)$</ignoredClassPattern>
                     </ignoredClassPatterns>
                     <ignoredResourcePatterns>
                         <ignoredResourcePattern>about.html</ignoredResourcePattern>

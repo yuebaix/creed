@@ -144,6 +144,7 @@
                         <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(net.jcip.annotations.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.aspectj.*)$</ignoredClassPattern>
                     </ignoredClassPatterns>
                     <ignoredResourcePatterns>
                         <ignoredResourcePattern>about.html</ignoredResourcePattern>
