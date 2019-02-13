@@ -47,28 +47,28 @@ public class MdcFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        this.insertIntoMDC(request);
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        this.insertIntoMdc(request);
 
         try {
             chain.doFilter(request, response);
         } finally {
-            this.clearMDC();
+            this.clearMdc();
         }
-
     }
 
     @Override
     public void destroy() {
     }
 
-    private void insertIntoMDC(ServletRequest request) {
+    private void insertIntoMdc(ServletRequest request) {
         //对应logstash-gelf,添加请求发起时间
         MDC.put("profiling.requestStart.millis", "" + System.currentTimeMillis());
         //添加请求详细
         MDC.put("req.remoteHost", request.getRemoteHost());
         if (request instanceof HttpServletRequest) {
-            HttpServletRequest httpServletRequest = (HttpServletRequest)request;
+            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             MDC.put("req.requestURI", httpServletRequest.getRequestURI());
             StringBuffer requestURL = httpServletRequest.getRequestURL();
             if (requestURL != null) {
@@ -82,7 +82,7 @@ public class MdcFilter implements Filter {
         }
     }
 
-    private void clearMDC() {
+    private void clearMdc() {
         //对应logstash-gelf,清除请求发起时间
         MDC.remove("profiling.requestStart.millis");
         //清除请求详细
