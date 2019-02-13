@@ -18,6 +18,8 @@
         <logstash-logback-encoder.version>5.3</logstash-logback-encoder.version>
         <logstash-gelf.version>1.13.0</logstash-gelf.version>
         <jedis.version>3.0.1</jedis.version>
+        <opentracing-spring-cloud-starter.version>0.2.2</opentracing-spring-cloud-starter.version>
+        <skywalking.version>6.0.0-GA</skywalking.version>
     </properties>
 
     <dependencyManagement>
@@ -35,11 +37,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <!--opentracing-->
+        <!--<dependency>-->
+            <!--<groupId>io.opentracing.contrib</groupId>-->
+            <!--<artifactId>opentracing-spring-cloud-starter</artifactId>-->
+            <!--<version>${opentracing-spring-cloud-starter.version}</version>-->
+        <!--</dependency>-->
         <!--zipkin输出trace信息-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-zipkin</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+        <!--</dependency>-->
         <!--logstash输出json日志-->
         <dependency>
             <groupId>net.logstash.logback</groupId>
@@ -63,6 +75,12 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
+        </dependency>
+        <!--skywalking 生成tid-->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>${skywalking.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
