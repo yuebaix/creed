@@ -19,6 +19,8 @@
         <logstash-gelf.version>1.13.0</logstash-gelf.version>
         <jedis.version>3.0.1</jedis.version>
         <opentracing-spring-cloud-starter.version>0.2.2</opentracing-spring-cloud-starter.version>
+        <opentracing-spring-zipkin-cloud-starter.version>0.2.0</opentracing-spring-zipkin-cloud-starter.version>
+        <opentracing-spring-jaeger-cloud-starter.version>1.0.1</opentracing-spring-jaeger-cloud-starter.version>
         <skywalking.version>6.0.0-GA</skywalking.version>
     </properties>
 
@@ -42,6 +44,16 @@
             <!--<groupId>io.opentracing.contrib</groupId>-->
             <!--<artifactId>opentracing-spring-cloud-starter</artifactId>-->
             <!--<version>${opentracing-spring-cloud-starter.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.opentracing.contrib</groupId>-->
+            <!--<artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>-->
+            <!--<version>${opentracing-spring-jaeger-cloud-starter.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.opentracing.contrib</groupId>-->
+            <!--<artifactId>opentracing-spring-zipkin-cloud-starter</artifactId>-->
+            <!--<version>${opentracing-spring-zipkin-cloud-starter.version}</version>-->
         <!--</dependency>-->
         <!--zipkin输出trace信息-->
         <!--<dependency>-->
