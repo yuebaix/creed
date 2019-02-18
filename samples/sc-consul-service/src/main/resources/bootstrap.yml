@@ -15,7 +15,7 @@ spring:
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
         acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
         health-check-interval: 15s
-        health-check-critical-timeout: 1m
+        health-check-critical-timeout: 5m
         tags: description=svc-consul-service
       config:
         enabled: true
