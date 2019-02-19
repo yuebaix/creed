@@ -89,11 +89,11 @@
             <version>${jedis.version}</version>
         </dependency>
         <!--skywalking 生成tid-->
-        <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-toolkit-logback-1.x</artifactId>
-            <version>${skywalking.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.skywalking</groupId>-->
+            <!--<artifactId>apm-toolkit-logback-1.x</artifactId>-->
+            <!--<version>${skywalking.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

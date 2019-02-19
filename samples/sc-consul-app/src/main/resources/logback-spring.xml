@@ -30,17 +30,17 @@
 	<!-- 控制台日志 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- 日志格式 -->
-		<!--<encoder>-->
-			<!--<pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
-			<!--<charset>utf8</charset>-->
-		<!--</encoder>-->
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
         <!-- skywalking日志包装格式(添加tid) -->
-        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">
-                <Pattern>${SW_CONSOLE_LOG_PATTERN}</Pattern>
-            </layout>
-            <charset>utf8</charset>
-        </encoder>
+        <!--<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">-->
+            <!--<layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">-->
+                <!--<Pattern>${SW_CONSOLE_LOG_PATTERN}</Pattern>-->
+            <!--</layout>-->
+            <!--<charset>utf8</charset>-->
+        <!--</encoder>-->
 		<!-- 日志级别过滤器 -->
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<!-- 过滤的级别 -->
@@ -173,7 +173,10 @@
 		</filter>
 	</appender>
 
-	<appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+    <!--以下为控制配置-->
+
+	<!--异步包装STDOUT-->
+	<appender name="ASYNC-STDOUT" class="ch.qos.logback.classic.AsyncAppender">
 		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
 		<discardingThreshold>0</discardingThreshold>
 		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
@@ -184,6 +187,30 @@
 		<appender-ref ref="STDOUT"/>
 	</appender>
 
+	<!--异步包装DEBUG-OUT-->
+	<appender name="ASYNC-DEBUG-OUT" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>${ASYNC_Q_SIZE}</queueSize>
+        <!--包含调用者信息(文件名与行号)-->
+		<includeCallerData>true</includeCallerData>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="DEBUG-OUT"/>
+	</appender>
+
+	<!--异步包装ERROR-OUT-->
+	<appender name="ASYNC-ERROR-OUT" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>${ASYNC_Q_SIZE}</queueSize>
+        <!--包含调用者信息(文件名与行号)-->
+		<includeCallerData>true</includeCallerData>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="ERROR-OUT"/>
+	</appender>
+
 	<!-- 去除日志 -->
 	<logger name="org.springframework" level="WARN" />
 	<logger name="org.apache" level="WARN" />
@@ -191,9 +218,9 @@
 	<logger name="org.hibernate" level="WARN" />
 	<!-- ROOT日志 -->
 	<root level="DEBUG">
-		<appender-ref ref="ASYNC_STDOUT" />
-		<appender-ref ref="DEBUG-OUT" />
-		<appender-ref ref="ERROR-OUT" />
+		<appender-ref ref="ASYNC-STDOUT" />
+		<appender-ref ref="ASYNC-DEBUG-OUT" />
+		<appender-ref ref="ASYNC-ERROR-OUT" />
 		<appender-ref ref="JSON-OUT" />
 		<appender-ref ref="GELF-OUT" />
 	</root>
