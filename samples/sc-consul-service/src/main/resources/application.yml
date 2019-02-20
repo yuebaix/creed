@@ -10,6 +10,8 @@ spring:
     sampler:
       probability: 1
 dubbo:
+  application:
+    name: svc-consul-service
   registry:
     address: 'zookeeper://t.jufandev.com:21823'
   protocol:

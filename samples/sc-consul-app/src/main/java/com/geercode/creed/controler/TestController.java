@@ -16,13 +16,13 @@
 
 package com.geercode.creed.controler;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.geercode.creed.facade.common.FooFeignResp;
 import com.geercode.creed.facade.dto.InnerDto;
 import com.geercode.creed.facade.dto.ShowMeDto;
 import com.geercode.creed.facade.service.ConsulServiceFeignService;
 import com.geercode.creed.stub.DemoDubboService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -22,8 +22,10 @@
         <opentracing-spring-zipkin-cloud-starter.version>0.2.0</opentracing-spring-zipkin-cloud-starter.version>
         <opentracing-spring-jaeger-cloud-starter.version>1.0.1</opentracing-spring-jaeger-cloud-starter.version>
         <skywalking.version>6.0.0-GA</skywalking.version>
-        <dubbo.version>2.7.0</dubbo.version>
+        <dubbo.version>2.6.4</dubbo.version>
         <brave.version>5.4.3</brave.version>
+        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <zookeeper.version>3.4.13</zookeeper.version>
     </properties>
 
     <dependencyManagement>
@@ -50,37 +52,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Aapche Dubbo  -->
+            <!--dubbo-->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-dependencies-bom</artifactId>
-                <version>${dubbo.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
+                <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.servlet</groupId>
-                        <artifactId>servlet-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
+                <groupId>com.alibaba.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${dubbo.version}</version>
+                <version>${dubbo-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.zipkin.brave</groupId>
@@ -121,13 +107,6 @@
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave-instrumentation-dubbo-rpc</artifactId>
-            <version>5.6.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>dubbo</artifactId>
-                    <groupId>com.alibaba</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.springframework.cloud</groupId>-->
@@ -188,24 +167,12 @@
         </dependency>
         <!--dubbo-->
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
+            <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -272,10 +239,12 @@
                         <ignoredClassPattern>^(net.jcip.annotations.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(org.aspectj.*)$</ignoredClassPattern>
                         <ignoredClassPattern>^(org.slf4j.impl.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.jboss.netty.*)$</ignoredClassPattern>
                     </ignoredClassPatterns>
                     <ignoredResourcePatterns>
                         <ignoredResourcePattern>about.html</ignoredResourcePattern>
                         <ignoredResourcePattern>plugin.properties</ignoredResourcePattern>
+                        <ignoredResourcePattern>org/jboss/netty/container/spring/beans.xml</ignoredResourcePattern>
                     </ignoredResourcePatterns>
                 </configuration>
             </plugin>
