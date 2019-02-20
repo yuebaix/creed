@@ -14,25 +14,26 @@
  * limitations under the License.
  */
 
-package com.geercode.creed;
-
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+package com.geercode.creed.stub;
 
 /**
- * <p>Description : 应用节点</p>
- * <p>Created on  : 2018-10-18 16:28</p>
+ * <p>Description : 测试dubbo服务</p>
+ * <p>Created on  : 2019-02-20 12:11</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableDubbo
-public class CreedConsulServiceApp {
-    public static void main(String[] args) {
-        SpringApplication.run(CreedConsulServiceApp.class, args);
-    }
+public interface DemoDubboService {
+    /**
+     * <p>description : </p>
+     * <p>create   on : 2019-02-20 19:49:36</p>
+     *
+     * @author jerryniu
+     *
+     * @param name 姓名
+     * @return String 欢迎
+     *
+     * @since 1.0.0
+     */
+    String sayHello(String name);
 }

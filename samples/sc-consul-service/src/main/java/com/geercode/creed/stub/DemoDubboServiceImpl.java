@@ -14,25 +14,29 @@
  * limitations under the License.
  */
 
-package com.geercode.creed;
+package com.geercode.creed.stub;
 
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
- * <p>Description : 应用节点</p>
- * <p>Created on  : 2018-10-18 16:28</p>
+ * <p>Description : dubbo测试服务实现</p>
+ * <p>Created on  : 2019-02-20 12:14</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableDubbo
-public class CreedConsulServiceApp {
-    public static void main(String[] args) {
-        SpringApplication.run(CreedConsulServiceApp.class, args);
+@Service(version = "1.0.0")
+@Slf4j
+public class DemoDubboServiceImpl implements DemoDubboService {
+
+    @Value("${dubbo.application.name}")
+    private String serviceName;
+
+    @Override
+    public String sayHello(String name) {
+        log.info("provider");
+        return String.format("[%s] : Hello, %s", serviceName, name);
     }
 }

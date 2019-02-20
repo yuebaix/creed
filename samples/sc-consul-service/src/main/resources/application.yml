@@ -9,3 +9,13 @@ spring:
   sleuth:
     sampler:
       probability: 1
+dubbo:
+  registry:
+    address: 'zookeeper://t.jufandev.com:21823'
+  protocol:
+    name: dubbo
+    port: 12345
+  provider:
+    filter: tracing
+  consumer:
+    filter: tracing

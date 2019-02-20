@@ -20,9 +20,12 @@ import com.geercode.creed.facade.common.FooFeignResp;
 import com.geercode.creed.facade.dto.InnerDto;
 import com.geercode.creed.facade.dto.ShowMeDto;
 import com.geercode.creed.facade.service.ConsulServiceFeignService;
+import com.geercode.creed.stub.DemoDubboService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -47,6 +50,8 @@ public class TestController {
     private RestTemplate restTemplate;
     @Autowired
     private ConsulServiceFeignService consulServiceFeignService;
+    @Reference(version = "1.0.0", url = "dubbo://127.0.0.1:12345", lazy = true)
+    private DemoDubboService demoDubboService;
 
     ///
     /*@GetMapping("/getConfig")
@@ -101,5 +106,11 @@ public class TestController {
             throw new RuntimeException("Exception");
         }
         return "simple";
+    }
+
+    @GetMapping("testDubbo")
+    public String testDubbo() {
+        log.info("consumer");
+        return demoDubboService.sayHello("hi");
     }
 }
