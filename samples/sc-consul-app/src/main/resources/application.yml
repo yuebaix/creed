@@ -83,9 +83,9 @@ spring:
 dubbo:
   application:
     name: svc-app-consul-app
-#  registry:
-#    address: 'zookeeper://t.jufandev.com:21823'
-#  provider:
-#    filter: tracing
-#  consumer:
-#    filter: tracing
+  registry:
+    address: 'zookeeper://t.jufandev.com:21823'
+  provider:
+    filter: tracing
+  consumer:
+    filter: tracing

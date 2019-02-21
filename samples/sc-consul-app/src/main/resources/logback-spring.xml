@@ -152,9 +152,9 @@
 
 	<!--GRAYLOG logstash-gelf日志文件-->
 	<appender name="GELF-OUT" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
-		<host>redis://localhost:6379/0#logstash</host>
-		<!--<host>udp:localhost</host>-->
-		<!--<port>12201</port>-->
+		<!--<host>redis://localhost:6379/0#logstash</host>-->
+		<host>udp:graylog.jufandev.com</host>
+		<port>5151</port>
 		<version>1.1</version>
 		<facility>${ACTIVE_PROFILE:-}</facility>
 		<extractStackTrace>true</extractStackTrace>

@@ -27,7 +27,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @author jerryniu
  * @since 1.0.0
  */
-@Service(version = "1.0.0")
+@Service
 @Slf4j
 public class DemoDubboServiceImpl implements DemoDubboService {
 
@@ -36,7 +36,7 @@ public class DemoDubboServiceImpl implements DemoDubboService {
 
     @Override
     public String sayHello(String name) {
-        log.info("provider");
+        log.info("provider生产者");
         return String.format("[%s] : Hello, %s", serviceName, name);
     }
 }
