@@ -67,6 +67,8 @@ spring:
   sleuth:
     sampler:
       probability: 1
+    web:
+      skip-pattern: ${server.servlet.context-path:}/actuator.*
 #opentracing:
 #  jaeger:
 #    udp-sender:
