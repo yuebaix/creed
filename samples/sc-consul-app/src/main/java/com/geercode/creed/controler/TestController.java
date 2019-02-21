@@ -52,6 +52,8 @@ public class TestController {
     private ConsulServiceFeignService consulServiceFeignService;
     @Reference(version = "1.0.0", url = "dubbo://127.0.0.1:12345", lazy = true)
     private DemoDubboService demoDubboService;
+    @Reference(version = "1.0.0", url = "dubbo://127.0.0.1:12345", lazy = true)
+    private com.yimei.architect.showcase.stub.DemoDubboService demoDubboService2;
 
     ///
     /*@GetMapping("/getConfig")

@@ -80,3 +80,12 @@ spring:
 #      rate: 1
 #    counting-sampler:
 #      rate: 1
+dubbo:
+  application:
+    name: svc-app-consul-app
+#  registry:
+#    address: 'zookeeper://t.jufandev.com:21823'
+#  provider:
+#    filter: tracing
+#  consumer:
+#    filter: tracing
