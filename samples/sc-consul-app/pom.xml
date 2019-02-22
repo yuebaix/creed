@@ -23,9 +23,9 @@
         <opentracing-spring-jaeger-cloud-starter.version>1.0.1</opentracing-spring-jaeger-cloud-starter.version>
         <skywalking.version>6.0.0-GA</skywalking.version>
         <dubbo.version>2.6.4</dubbo.version>
-        <brave.version>5.4.3</brave.version>
-        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
         <zookeeper.version>3.4.13</zookeeper.version>
+        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <brave.version>5.4.3</brave.version>
     </properties>
 
     <dependencyManagement>

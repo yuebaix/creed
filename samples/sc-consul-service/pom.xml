@@ -18,9 +18,9 @@
     <properties>
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <dubbo.version>2.6.4</dubbo.version>
-        <brave.version>5.4.3</brave.version>
-        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
         <zookeeper.version>3.4.13</zookeeper.version>
+        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <brave.version>5.4.3</brave.version>
         <logstash-gelf.version>1.13.0</logstash-gelf.version>
     </properties>
 
