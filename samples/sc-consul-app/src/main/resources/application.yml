@@ -60,7 +60,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health,prometheus
 spring:
   zipkin:
     base-url: http://192.168.21.28:9411/
