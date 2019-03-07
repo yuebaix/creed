@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
-
 /**
- * <p>Description : 总线</p>
- * <p>Created on  : 2019-02-26 15:18</p>
+ * <p>Description : 祖类</p>
+ * <p>Created on  : 2018-11-01 16:59</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Bus {
-}
+package com.geercode.creed.core.modular.event.ancester;

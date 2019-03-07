@@ -9,6 +9,7 @@
     <!--creed-core-->
     <suppress files="ClassUtil.java" checks="(EmptyBlock|EmptyCatchBlock)"/>
     <suppress files="SysLogger.java" checks="(RegexpSinglelineJava)"/>
+    <suppress files="BoostException.java" checks="(VisibilityModifier|MutableException)"/>
     <!--reconfig-spring-boot-starter-->
     <suppress files="EnhanceCachingAutoConfig.java" checks="(ParameterNumber)"/>
 </suppressions>

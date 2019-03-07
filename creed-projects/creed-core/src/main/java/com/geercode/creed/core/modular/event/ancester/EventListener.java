@@ -14,11 +14,24 @@
  * limitations under the License.
  */
 
+package com.geercode.creed.core.modular.event.ancester;
+
 /**
- * <p>Description : 设计概念的祖类</p>
- * <p>Created on  : 2018-11-01 16:59</p>
+ * <p>Description : 监听器</p>
+ * <p>Created on  : 2018-11-01 16:52</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-package com.geercode.creed.core.conception.ancester;
+public interface EventListener<E extends Event> {
+
+    /**
+     * <p>description : 监听</p>
+     * <p>create   on : 2019-03-06 17:01:23</p>
+     *
+     * @author jerryniu
+     * @param event 事件
+     * @since 1.0.0
+     */
+    void listen(E event);
+}

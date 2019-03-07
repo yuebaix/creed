@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
-
 /**
- * <p>Description : 监听器</p>
- * <p>Created on  : 2018-11-01 16:52</p>
+ * <p>description : 模块组件</p>
+ * <p>create   on : 2019-03-06 17:12:31</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Listener {
-}
+package com.geercode.creed.core.modular;

@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.modular.event.ancester;
 
 /**
- * <p>Description : 事件</p>
- * <p>Created on  : 2018-11-01 16:46</p>
+ * <p>Description : 可透传信息</p>
+ * <p>Created on  : 2019-03-07 11:17</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Event {
+public interface Carriable {
+    /**
+     * <p>description : 获取透传信息</p>
+     * <p>create   on : 2019-03-07 11:22:25</p>
+     *
+     * @author jerryniu
+     * @return 透传数据
+     * @since 1.0.0
+     */
+    <B> B getBaggage();
 }
