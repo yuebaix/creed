@@ -14,24 +14,23 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.modular.event;
-
-import com.geercode.creed.core.modular.event.ancester.EventListener;
-import com.geercode.creed.core.system.log.Logger;
-import com.geercode.creed.core.system.log.LoggerFactory;
+package com.geercode.creed.core.modular.monitor.ancestor;
 
 /**
- * <p>Description : 简易事件监听器</p>
- * <p>Created on  : 2019-03-06 17:16</p>
+ * <p>Description : 表盘</p>
+ * <p>Created on  : 2019-03-07 16:57</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class PlainEventListener implements EventListener<PlainEvent> {
-    private static Logger logger = LoggerFactory.getLogger(PlainEventListener.class);
-
-    @Override
-    public void listen(PlainEvent event) {
-        logger.debug(event.toString());
-    }
+public interface Dashboard {
+    /**
+     * <p>description : 采样</p>
+     * <p>create   on : 2019-03-08 10:10:16</p>
+     *
+     * @author jerryniu
+     * @return 采样结果字符串
+     * @since 1.0.0
+     */
+    String getSample();
 }

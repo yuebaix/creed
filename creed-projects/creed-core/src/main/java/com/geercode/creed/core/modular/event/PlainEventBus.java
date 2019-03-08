@@ -19,6 +19,7 @@ package com.geercode.creed.core.modular.event;
 import com.geercode.creed.core.modular.event.ancester.Event;
 import com.geercode.creed.core.modular.event.ancester.EventBus;
 import com.geercode.creed.core.modular.event.ancester.EventListener;
+import com.geercode.creed.core.modular.exception.FrameworkException;
 import com.geercode.creed.core.system.log.Logger;
 import com.geercode.creed.core.system.log.LoggerFactory;
 
@@ -51,6 +52,9 @@ public class PlainEventBus implements EventBus {
                 topic = parameterTypes[0];
                 logger.debug("The topic registered on eventBus is [%s]", topic);
             }
+        }
+        if (topic == null) {
+            throw new FrameworkException("事件注册异常");
         }
         List listenerList = catalog.get(topic);
         if (listenerList == null) {

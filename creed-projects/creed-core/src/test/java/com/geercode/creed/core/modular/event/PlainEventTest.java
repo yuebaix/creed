@@ -38,5 +38,15 @@ public class PlainEventTest {
         EventBus bus = new PlainEventBus();
         bus.register(new PlainEventListener());
         bus.post(new PlainEvent(Collections.singletonMap("msg,", "what I'm saying?")));
+
+        PlainEvent stepEvt = PlainEvent.StepBuilder.newBuilder()
+                .payload(Collections.singletonMap("payload,", "what I'm saying?"))
+                .baggage(Collections.singletonMap("baggage,", "what I'm saying?"))
+                .report(Collections.singletonMap("report,", "what I'm saying?"))
+                .build();
+        bus.post(stepEvt);
+        PlainEvent stepEvt2 = PlainEvent.StepBuilder.newBuilder()
+                .justPayload(Collections.singletonMap("payload,", "what I'm saying?")).build();
+        bus.post(stepEvt2);
     }
 }
