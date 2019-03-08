@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
-
 /**
- * <p>Description : 状态</p>
- * <p>Created on  : 2019-03-06 16:44</p>
+ * <p>Description : 扩展点祖类</p>
+ * <p>Created on  : 2019-03-08 10:50</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface State {
-}
+package com.geercode.creed.core.modular.extpoint.ancestor;

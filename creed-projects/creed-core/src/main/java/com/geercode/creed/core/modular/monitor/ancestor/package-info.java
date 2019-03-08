@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
-
 /**
- * <p>Description : 过滤器</p>
- * <p>Created on  : 2018-11-01 16:44</p>
+ * <p>Description : 监控器祖类</p>
+ * <p>Created on  : 2019-03-08 10:48</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Filter {
-}
+package com.geercode.creed.core.modular.monitor.ancestor;

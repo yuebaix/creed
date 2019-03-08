@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
-
 /**
- * <p>Description : 规则</p>
- * <p>Created on  : 2018-11-01 16:52</p>
+ * <p>Description : 扩展点</p>
+ * <p>Created on  : 2019-03-08 10:49</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Rule {
-}
+package com.geercode.creed.core.modular.extpoint;

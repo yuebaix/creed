@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.modular.config.ancestor;
 
 /**
  * <p>Description : 配置</p>
@@ -24,4 +24,33 @@ package com.geercode.creed.core.conception;
  * @since 1.0.0
  */
 public interface Configuration {
+    /**
+     * <p>description : 获取profile</p>
+     * <p>create   on : 2019-03-08 12:48:01</p>
+     *
+     * @author jerryniu
+     * @return profile值
+     * @since 1.0.0
+     */
+    String getProfile();
+
+    /**
+     * <p>description : 获取映射值</p>
+     * <p>create   on : 2019-03-08 12:48:01</p>
+     *
+     * @author jerryniu
+     * @param key 配置键值
+     * @return 配置值
+     * @since 1.0.0
+     */
+    String getValue(String key);
+
+    /**
+     * <p>description : 刷新配置</p>
+     * <p>create   on : 2019-03-08 12:48:01</p>
+     *
+     * @author jerryniu
+     * @since 1.0.0
+     */
+    void refresh();
 }

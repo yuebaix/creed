@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.modular.config.ancestor;
 
 /**
- * <p>description : 监视器</p>
+ * <p>Description : 定义</p>
+ * <p>Created on  : 2018-11-01 16:45</p>
  *
  * @author jerryniu
- * @since 2019-02-28
+ * @since 1.0.0
  */
-public interface Monitor {
+public interface Definition {
 }

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.modular.state.ancestor;
 
 /**
- * <p>Description : 策略</p>
- * <p>Created on  : 2018-11-01 16:52</p>
+ * <p>Description : 有状态</p>
+ * <p>Created on  : 2019-03-07 12:25</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Strategy {
+public interface Stateful {
 }

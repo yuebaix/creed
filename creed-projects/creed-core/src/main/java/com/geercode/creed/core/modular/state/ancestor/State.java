@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.modular.state.ancestor;
 
 /**
- * <p>Description : 上下文</p>
- * <p>Created on  : 2018-11-01 17:43</p>
+ * <p>Description : 状态</p>
+ * <p>Created on  : 2019-03-06 16:44</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Context {
+public interface State {
 }
