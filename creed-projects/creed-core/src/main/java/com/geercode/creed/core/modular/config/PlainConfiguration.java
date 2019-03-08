@@ -16,6 +16,11 @@
 
 package com.geercode.creed.core.modular.config;
 
+import com.geercode.creed.core.modular.config.ancestor.AbstractConfiguration;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <p>Description : 简易配置类</p>
  * <p>Created on  : 2019-03-08 12:45</p>
@@ -23,5 +28,28 @@ package com.geercode.creed.core.modular.config;
  * @author jerryniu
  * @since 1.0.0
  */
-public class PlainConfiguration {
+public class PlainConfiguration extends AbstractConfiguration {
+    private static Map<String, String> configHolder = new HashMap();
+
+    @Override
+    public String getProfile() {
+        String activeProfile = configHolder.get(PROFILE_KEY);
+        if (activeProfile == null) {
+            activeProfile = DEFAUL_PROFILE;
+        }
+        return activeProfile;
+    }
+
+    @Override
+    public String getValue(String key) {
+        return configHolder.get(key);
+    }
+
+    @Override
+    public void refresh() {
+    }
+
+    public void put(String key, String value) {
+        configHolder.put(key, value);
+    }
 }

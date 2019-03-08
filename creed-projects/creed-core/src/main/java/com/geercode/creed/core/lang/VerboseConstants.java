@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.modular.config;
+package com.geercode.creed.core.lang;
 
 /**
- * <p>Description : 组合配置类</p>
- * <p>Created on  : 2019-03-08 12:51</p>
+ * <p>Description : 常量</p>
+ * <p>Created on  : 2019-03-08 17:42</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class CompositeConfiguration {
+public final class VerboseConstants {
+    public static final int DEFAULT_HASHMAP_SIZE = 16;
+
+    private VerboseConstants() {
+    }
 }

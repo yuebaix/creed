@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.modular.config.ancestor;
+package com.geercode.creed.core.modular.config;
 
 /**
- * <p>Description : 抽象配置类</p>
- * <p>Created on  : 2019-03-08 12:53</p>
+ * <p>Description : 多配置类</p>
+ * <p>Created on  : 2019-03-08 12:51</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public abstract class AbstractConfiguration implements Configuration {
-
-    protected static final String DEFAUL_PROFILE = "default";
-    protected static final String PROFILE_KEY = "creed.profiles.active";
+public class MultipleConfiguration {
 }
