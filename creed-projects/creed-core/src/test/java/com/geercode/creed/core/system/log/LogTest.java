@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core;
+package com.geercode.creed.core.system.log;
 
-import com.geercode.creed.core.system.log.Logger;
-import com.geercode.creed.core.system.log.LoggerFactory;
 import org.junit.Test;
 
 /**

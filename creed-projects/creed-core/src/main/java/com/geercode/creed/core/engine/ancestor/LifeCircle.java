@@ -24,4 +24,18 @@ package com.geercode.creed.core.engine.ancestor;
  * @since 1.0.0
  */
 public interface LifeCircle {
+    /**
+     * <p>description : 设为启动状态</p>
+     */
+    void start();
+
+    /**
+     * <p>description : 设为关闭状态</p>
+     */
+    void stop();
+
+    /**
+     * <p>description : 设为启动中</p>
+     */
+    void starting();
 }

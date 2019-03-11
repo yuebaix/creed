@@ -16,18 +16,24 @@
 
 package com.geercode.creed.core;
 
+import com.geercode.creed.core.modular.config.PlainConfigurationTest;
+import com.geercode.creed.core.modular.event.PlainEventTest;
+import com.geercode.creed.core.system.log.LogTest;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * <p>Description : 测试套件入口</p>
- * <p>Created on  : 2018-09-11 17:24</p>
+ * <p>Description : jerry的测试集</p>
+ * <p>Created on  : 2019-03-11 15:26</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
 @RunWith(Categories.class)
-@SuiteClasses(JerrySuiteTest.class)
-public class TestEntry {
+@SuiteClasses({LogTest.class,
+        PlainEventTest.class,
+        PlainConfigurationTest.class
+})
+public class JerrySuiteTest {
 }

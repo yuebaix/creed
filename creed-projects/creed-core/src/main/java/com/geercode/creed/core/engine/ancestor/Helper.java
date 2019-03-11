@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.core.conception;
+package com.geercode.creed.core.engine.ancestor;
 
 /**
  * <p>Description : 助手</p>
