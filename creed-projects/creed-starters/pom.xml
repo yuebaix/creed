@@ -25,5 +25,6 @@
     <modules>
         <module>creed-spring-boot-starter</module>
         <module>reconfig-spring-boot-starter</module>
+        <module>scout-spring-boot-starter</module>
     </modules>
 </project>
