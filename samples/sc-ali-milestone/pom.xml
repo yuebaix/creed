@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>creed-parent</artifactId>
+        <groupId>com.geercode.creed</groupId>
+        <version>0.4-SNAPSHOT</version>
+        <relativePath>../../creed-projects/creed-parent</relativePath>
+    </parent>
+
+    <groupId>com.geercode.creed</groupId>
+    <artifactId>sc-ali-milestone</artifactId>
+    <name>SC示例 Alibaba</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.basepom.maven</groupId>
+                <artifactId>duplicate-finder-maven-plugin</artifactId>
+                <configuration>
+                    <ignoredClassPatterns>
+                        <ignoredClassPattern>^(org.xmlpull.v1.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(com.ctc.wstx.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.xml.stream.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.aopalliance.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(org.springframework.security.crypto.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(net.jcip.annotations.*)$</ignoredClassPattern>
+                    </ignoredClassPatterns>
+                    <ignoredResourcePatterns>
+                        <ignoredResourcePattern>about.html</ignoredResourcePattern>
+                        <ignoredResourcePattern>plugin.properties</ignoredResourcePattern>
+                    </ignoredResourcePatterns>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

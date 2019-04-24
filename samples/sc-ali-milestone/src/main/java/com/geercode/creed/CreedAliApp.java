@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.samples.designmode.creator.factory;
+package com.geercode.creed;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * <p>Description : 简单工厂类</p>
- * <p>Created on  : 2018-11-02 14:16</p>
+ * <p>Description : 应用节点</p>
+ * <p>Created on  : 2018-10-18 16:28</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class SimpleFactory extends AbstractFactory {
-    @Override
-    public Object create(Object param) {
-        System.err.println(param);
-        return param;
+@SpringBootApplication
+public class CreedAliApp {
+    public static void main(String[] args) {
+        SpringApplication.run(CreedAliApp.class, args);
     }
 }
