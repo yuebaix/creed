@@ -15,6 +15,7 @@ spring:
     sentinel:
       transport:
         dashboard: 192.168.1.119:8080
+        port: 8719
 management:
   endpoints:
     web:
