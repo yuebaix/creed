@@ -18,15 +18,17 @@ package com.geercode.creed;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * <p>Description : 应用节点</p>
+ * <p>Description : SpringCloudAlibaba示例入口</p>
  * <p>Created on  : 2018-10-18 16:28</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 public class CreedAliApp {
     public static void main(String[] args) {
         SpringApplication.run(CreedAliApp.class, args);

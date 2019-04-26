@@ -14,17 +14,23 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.samples.designmode.behavior.chain;
+package com.geercode.creed.config;
+
+import com.geercode.creed.springsupports.utils.SpringContextHolder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description : 责任链接口</p>
- * <p>Created on  : 2018-11-01 17:50</p>
+ * <p>Description : 配置</p>
+ * <p>Created on  : 2019-04-26 15:54</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public interface Chain {
-    Object process(Object input);
-    Chain next(Chain chain);
-    Object handle(Object input);
+@Configuration
+public class Config {
+    @Bean
+    public SpringContextHolder initHolder() {
+        return new SpringContextHolder();
+    }
 }

@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: SpringCloudAlibaba
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.119:8848
+      config:
+        server-addr: 192.168.1.119:8848
+        file-extension: yaml
+        shared-dataids: common-config.yaml
+        refreshable-dataids: common-config.yaml
+    sentinel:
+      transport:
+        dashboard: 192.168.1.119:8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
