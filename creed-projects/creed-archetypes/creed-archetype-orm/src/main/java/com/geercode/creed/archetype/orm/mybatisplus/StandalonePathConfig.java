@@ -25,13 +25,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 
 /**
- * <p>Description : 多模块项目配置类</p>
- * <p>Created on  : 2018-09-12 16:36</p>
+ * <p>Description : </p>
+ * <p>Created on  : 2019-05-07 17:21</p>
  *
  * @author jerryniu
  * @since 1.0.0
  */
-public class MultiModulePathConfig implements MpgPathConfig {
+public class StandalonePathConfig implements MpgPathConfig {
     private static final String CONFIG_FILE_PATH = "creed-mybatis-plus";
 
     private static final String GROUPID_KEY = "groupId";
@@ -124,18 +124,6 @@ public class MultiModulePathConfig implements MpgPathConfig {
         return rootArtifactDir;
     }
 
-    private String getRepoRoot() {
-        return rootArtifactDir + artifactId + "-repo";
-    }
-
-    private String getServiceRoot() {
-        return rootArtifactDir + artifactId + "-service";
-    }
-
-    private String getWebRoot() {
-        return rootArtifactDir + artifactId + "-web";
-    }
-
     /**
      * <p>description : 获取entity目录</p>
      * <p>create   on : 2018-09-12 19:36:42</p>
@@ -145,7 +133,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getEntityDir() {
-        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "entity";
     }
@@ -159,14 +147,14 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getDaoDir() {
-        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "mapper";
     }
 
     @Override
     public String getRespDir() {
-        return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "web" + File.separator + "common";
     }
 
@@ -179,7 +167,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getBaseDaoDir() {
-        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao";
     }
@@ -193,7 +181,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getXmlDir() {
-        return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "resources"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "resources"
                 + File.separator + "mapper";
     }
 
@@ -206,7 +194,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getServiceDir() {
-        return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "service";
     }
 
@@ -219,7 +207,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getServiceImplDir() {
-        return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "service" + File.separator + "impl";
     }
 
@@ -232,7 +220,7 @@ public class MultiModulePathConfig implements MpgPathConfig {
      */
     @Override
     public String getControllerDir() {
-        return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
+        return rootArtifactDir + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "web" + File.separator + "controller";
     }
 

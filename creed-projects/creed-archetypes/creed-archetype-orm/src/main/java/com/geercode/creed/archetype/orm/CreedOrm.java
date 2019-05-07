@@ -28,7 +28,7 @@ import com.geercode.creed.archetype.orm.mybatisplus.Mpg;
  */
 public interface CreedOrm {
     /**
-     * <p>description : MybatisPlus Generator获取</p>
+     * <p>description : MybatisPlus Generator获取(多模块)</p>
      * <p>create   on : 2018-09-11 16:18:22</p>
      *
      * @author jerryniu
@@ -37,6 +37,32 @@ public interface CreedOrm {
      * @return Mpg CreedMybatisPlusGenerator
      */
     static Mpg mpg() {
-        return MpgImpl.getHolder();
+        return mpgMultiModule();
+    }
+
+    /**
+     * <p>description : MybatisPlus Generator获取(多模块)</p>
+     * <p>create   on : 2018-09-11 16:18:22</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     *
+     * @return Mpg CreedMybatisPlusGenerator
+     */
+    static Mpg mpgStandalone() {
+        return MpgImpl.getStandaloneModuleHolder();
+    }
+
+    /**
+     * <p>description : MybatisPlus Generator获取(单模块)</p>
+     * <p>create   on : 2018-09-11 16:18:22</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     *
+     * @return Mpg CreedMybatisPlusGenerator
+     */
+    static Mpg mpgMultiModule() {
+        return MpgImpl.getStandaloneModuleHolder();
     }
 }
