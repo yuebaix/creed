@@ -1,8 +1,13 @@
 <FindBugsFilter>
-    <!--取消引用暴露的检测-->
-    <Match>
-        <Class name="~.*" />
-        <Method name="~(get.*|set.*)" />
-        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
-    </Match>
+<!--取消引用暴露的检测-->
+<Match>
+    <Class name="~.*" />
+    <Method name="~(get.*|set.*)" />
+    <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+</Match>
+<!--取消序列化的检测-->
+<Match>
+    <Class name="~.*" />
+    <Bug pattern="SE_NO_SERIALVERSIONID" />
+</Match>
 </FindBugsFilter>

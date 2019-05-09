@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.geercode.creed.controller;
+package com.geercode.creed.web.controller;
 
 import com.geercode.creed.springsupports.utils.SpringContextHolder;
 import lombok.extern.slf4j.Slf4j;

@@ -15,7 +15,8 @@ dubbo:
   application:
     name: svc-consul-service
   registry:
-    address: 'zookeeper://t.jufandev.com:21823'
+#    address: 'zookeeper://t.jufandev.com:21823'
+    address: 'zookeeper://192.168.1.119:2181'
   protocol:
     name: dubbo
     port: 12345
