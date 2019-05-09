@@ -1,4 +1,4 @@
-package com.geercode.creed;
+package com.geercode.creed.repo;
 
 import com.geercode.creed.archetype.orm.CreedOrm;
 import org.junit.Test;
