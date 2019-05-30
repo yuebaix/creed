@@ -1,0 +1,31 @@
+kubectl cluster-info
+kubectl get ns,pv,pvc --all-namespaces
+kubectl get po,svc,ing,deploy --all-namespaces
+kubectl top
+kubectl apply
+
+kubectl get po -l
+kubectl get po -w -l
+
+kubectl describe
+kubectl logs
+kubectl exec
+kubectl cp
+
+kubectl rollout
+kubectl scale
+kubectl autoscale
+
+kubectl cordon
+kubectl uncordon
+kubectl drain
+
+kubectl delete
+kubectl run
+kubectl set
+kubectl edit
+kubectl create
+kubectl expose
+kubectl port-forward
+
+kubectl config view
