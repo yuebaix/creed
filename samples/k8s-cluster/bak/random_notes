@@ -62,7 +62,7 @@ istioctl kube-inject -f <your-app-spec>.yaml | kubectl apply -f -
 4.测试apollo配置中心的支持
 
 
-kubectl run -it busybox --image=busybox --restart=Never
+kubectl run -it --rm busybox --image=busybox --restart=Never
 
 # consul
 helm install --name consul --namespace consul ./
@@ -72,5 +72,7 @@ kubectl port-forward consul-server-0 8501:8500
 telepresence --new-deployment hello-world --expose 8080
 
 
-harbor monocular
-
+# 开发基础设施
+harbor monocular telepresence
+# 发布工具
+helm kustomize

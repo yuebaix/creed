@@ -29,3 +29,17 @@ kubectl expose
 kubectl port-forward
 
 kubectl config view
+
+
+# deploy
+kubectl run hostnames --image=k8s.gcr.io/serve_hostname \
+                        --labels=app=hostnames \
+                        --port=9376 \
+                        --replicas=3
+
+# svc
+kubectl expose deployment hostnames --port=80 --target-port=9376
+
+# debug
+kubectl run -it --rm busybox --image=busybox --restart=Never
+
