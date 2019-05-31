@@ -7,6 +7,5 @@ spec:
     app: hostnames
   ports:
     - name: default
-      protocol: TCP
       port: 80
       targetPort: 9376
