@@ -63,6 +63,6 @@ public interface CreedOrm {
      * @return Mpg CreedMybatisPlusGenerator
      */
     static Mpg mpgMultiModule() {
-        return MpgImpl.getStandaloneModuleHolder();
+        return MpgImpl.getMultiModuleHolder();
     }
 }
