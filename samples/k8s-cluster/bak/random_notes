@@ -1,0 +1,78 @@
+https://www.jianshu.com/p/4a62c38bec7e
+https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
+
+kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+kubectl expose deployment hello-node --port=8080
+
+kubectl label namespace default istio-injection=enabled
+
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+
+kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}') -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
+
+export INGRESS_HOST='192.168.1.119'
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+
+http://192.168.1.119:31380/productpage
+
+curl -s http://${GATEWAY_URL}/productpage | grep -o "<title>.*</title>"
+
+kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+
+kubectl get virtualservices -o yaml
+kubectl get destinationrules -o yaml
+
+
+
+samples/bookinfo/platform/kube/cleanup.sh
+
+# naftis
+
+wget -O - https://raw.githubusercontent.com/XiaoMi/naftis/master/tool/getlatest.sh | bash
+
+kubectl create namespace naftis && kubectl apply -n naftis -f mysql.yaml && kubectl apply -n naftis -f naftis.yaml
+
+sudo kubectl -n naftis port-forward --address 0.0.0.0 $(kubectl -n naftis get pod -l app=naftis-ui -o jsonpath='{.items[0].metadata.name}') 81:80 &
+
+# kiali
+
+sudo kubectl port-forward --address 0.0.0.0 svc/kiali 82:20001 -n istio-system &
+
+kubectl delete kiali kiali -n kiali-operator
+kubectl delete namespace -n kiali-operator
+
+kubectl patch kiali kiali -n kiali-operator -p '{"metadata":{"finalizers": []}}' --type=merge
+
+
+# 遥测
+sudo kubectl -n istio-system port-forward --address 0.0.0.0 $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9091:9090 &
+sudo kubectl -n istio-system port-forward --address 0.0.0.0 $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
+sudo kubectl -n istio-system port-forward --address 0.0.0.0 $(kubectl -n istio-system get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}') 8088:8088 &
+sudo kubectl -n istio-system port-forward --address 0.0.0.0 $(kubectl -n istio-system get pod -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686 &
+
+istioctl kube-inject -f <your-app-spec>.yaml | kubectl apply -f -
+
+
+1.测试对dubbo的影响(TCP)
+2.测试外部服务注册
+3.测试springcloud与dubbo服务注册调用的支持
+4.测试apollo配置中心的支持
+
+
+kubectl run -it --rm busybox --image=busybox --restart=Never
+
+# consul
+helm install --name consul --namespace consul ./
+
+kubectl port-forward consul-server-0 8501:8500
+
+telepresence --new-deployment hello-world --expose 8080
+
+
+# 开发基础设施
+harbor monocular telepresence
+# 发布工具
+helm kustomize

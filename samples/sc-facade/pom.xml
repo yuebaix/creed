@@ -6,7 +6,7 @@
     <parent>
         <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../../creed-projects/creed-parent</relativePath>
     </parent>
 
@@ -23,5 +23,24 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-openfeign-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.basepom.maven</groupId>
+                <artifactId>duplicate-finder-maven-plugin</artifactId>
+                <configuration>
+                    <ignoredClassPatterns>
+                        <ignoredClassPattern>^(net.jcip.annotations.*)$</ignoredClassPattern>
+                        <ignoredClassPattern>^(javax.annotation.*)$</ignoredClassPattern>
+                    </ignoredClassPatterns>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

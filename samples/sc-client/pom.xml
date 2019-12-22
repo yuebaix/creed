@@ -6,7 +6,7 @@
     <parent>
         <artifactId>creed-parent</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../../creed-projects/creed-parent</relativePath>
     </parent>
 

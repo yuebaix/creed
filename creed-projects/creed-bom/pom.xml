@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build-neat</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../../build-neat</relativePath>
     </parent>
 
@@ -63,6 +63,11 @@
             <dependency>
                 <groupId>com.geercode.creed</groupId>
                 <artifactId>reconfig-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.geercode.creed</groupId>
+                <artifactId>scout-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

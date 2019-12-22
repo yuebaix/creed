@@ -1,0 +1,2 @@
+docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 middleware-network
+docker network create -d bridge --subnet=172.19.0.0/16 --gateway 172.19.0.1 cloudera-network

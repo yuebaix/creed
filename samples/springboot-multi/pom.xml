@@ -7,7 +7,7 @@
     <groupId>com.geercode.creed</groupId>
     <artifactId>springboot-multi</artifactId>
     <packaging>pom</packaging>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
     <name>SpringBoot示例 多模块网站</name>
     <description>SpringBoot示例 多模块网站</description>
 
@@ -26,7 +26,7 @@
         <lombok.version>1.18.2</lombok.version>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
         <mybatis-plus.version>3.0.3</mybatis-plus.version>
-        <jetcache.version>2.5.9</jetcache.version>
+        <jetcache.version>2.5.10.1</jetcache.version>
         <objenesis.version>2.6</objenesis.version>
         <spring.statemachine.version>2.0.3.RELEASE</spring.statemachine.version>
         <!--插件版本-->

@@ -13,7 +13,7 @@
         <!--编码-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--creed版本-->
-        <creed.version>0.3-SNAPSHOT</creed.version>
+        <creed.version>0.4-SNAPSHOT</creed.version>
         <!--配置文件目录-->
         <config.basedir>${basedir}</config.basedir>
         <!--控制是否检测-->
@@ -22,7 +22,7 @@
         <lombok.version>1.18.2</lombok.version>
         <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
         <mybatis-plus.version>3.0.3</mybatis-plus.version>
-        <jetcache.version>2.5.9</jetcache.version>
+        <jetcache.version>2.5.10.1</jetcache.version>
         <objenesis.version>2.6</objenesis.version>
         <!--插件版本-->
         <flatten-maven-plugin.version>1.0.1</flatten-maven-plugin.version>

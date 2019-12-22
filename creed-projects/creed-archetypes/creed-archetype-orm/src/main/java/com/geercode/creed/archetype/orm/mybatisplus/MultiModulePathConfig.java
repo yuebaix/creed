@@ -31,7 +31,7 @@ import java.util.regex.Matcher;
  * @author jerryniu
  * @since 1.0.0
  */
-public class MultiModulePathConfig {
+public class MultiModulePathConfig implements MpgPathConfig {
     private static final String CONFIG_FILE_PATH = "creed-mybatis-plus";
 
     private static final String GROUPID_KEY = "groupId";
@@ -74,7 +74,8 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
-    public MultiModulePathConfig init() {
+    @Override
+    public MpgPathConfig init() {
         Map<String, String> properties = ResourceUtil.readPropertiesFromResources(CONFIG_FILE_PATH);
         groupId = properties.get(GROUPID_KEY);
         artifactId = properties.get(ARTIFACTID_KEY);
@@ -118,6 +119,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getRootArtifactDir() {
         return rootArtifactDir;
     }
@@ -141,6 +143,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getEntityDir() {
         return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
@@ -154,12 +157,14 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getDaoDir() {
         return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
                 + "repo" + File.separator + "dao" + File.separator + "mapper";
     }
 
+    @Override
     public String getRespDir() {
         return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "web" + File.separator + "common";
@@ -172,6 +177,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getBaseDaoDir() {
         return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator
@@ -185,6 +191,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getXmlDir() {
         return getRepoRoot() + File.separator + "src" + File.separator + "main" + File.separator + "resources"
                 + File.separator + "mapper";
@@ -197,6 +204,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getServiceDir() {
         return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "service";
@@ -209,6 +217,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getServiceImplDir() {
         return getServiceRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "service" + File.separator + "impl";
@@ -221,6 +230,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getControllerDir() {
         return getWebRoot() + File.separator + "src" + File.separator + "main" + File.separator + "java"
                 + File.separator + getPkgDir() + File.separator + "web" + File.separator + "controller";
@@ -238,6 +248,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getPkg() {
         return pkg;
     }
@@ -249,6 +260,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getAuthor() {
         return author;
     }
@@ -260,6 +272,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getHeader() {
         return header;
     }
@@ -271,6 +284,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getDatabaseDriver() {
         return databaseDriver;
     }
@@ -282,6 +296,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getDatabaseUrl() {
         return databaseUrl;
     }
@@ -293,6 +308,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getDatabaseUser() {
         return databaseUser;
     }
@@ -304,6 +320,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String getDatabasePassword() {
         return databasePassword;
     }
@@ -315,6 +332,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public boolean isOverride() {
         return override;
     }
@@ -326,6 +344,7 @@ public class MultiModulePathConfig {
      * @author jerryniu
      * @version 1.0.0
      */
+    @Override
     public String[] getIncludeTables() {
         return includeTables;
     }

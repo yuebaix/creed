@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
 
     <groupId>com.geercode.creed</groupId>
@@ -38,7 +38,8 @@
         <module>springboot-elasticsearch</module>
         <module>sc-consul-app</module>
         <module>sc-consul-service</module>
-        <!--<module>design-mode</module>-->
+        <module>axon-demo</module>
+        <module>sc-ali-milestone</module>
         <!--<module>jmeter-test</module>-->
     </modules>
 </project>

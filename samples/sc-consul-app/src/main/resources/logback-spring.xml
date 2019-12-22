@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<!-- 日志文件前缀 -->
+	<!--<property name="APP_NAME" value="creed-consul-app"/>-->
+	<springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+	<springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
+	<springProperty scope="context" name="PORT" source="server.port"/>
+	<!-- 日志目录 -->
+	<property name="LOG_DIR" value="../logs/"/>
+	<property name="ASYNC_Q_SIZE" value="256"/>
+	<!-- 彩色日志 -->
+	<!-- 彩色日志依赖的渲染类 -->
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+	<conversionRule conversionWord="wEx"
+					converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+	<!-- 彩色日志格式(控制台) -->
+	<property name="CONSOLE_LOG_PATTERN"
+			  value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss}){magenta} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%-15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr(%L#\t){green}%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+	<!-- 文件日志格式 -->
+	<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%-15.15t] %-40.40logger{39} %-16.16X{traceId:-} : %L#\t%m%n"/>
+
+    <!-- skywalking彩色日志格式(控制台) -->
+    <property name="SW_CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss}){magenta} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%X{tid}]){blue} %clr([%-15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr(%L#\t){green}%m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}" />
+    <!-- skywalking文件日志格式 -->
+	<property name="SW_FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%X{tid}] [%-15.15t] %-40.40logger{39} %-16.16X{traceId:-} : %L#\t%m%n"/>
+
+	<!-- 控制台日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 日志格式 -->
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+        <!-- skywalking日志包装格式(添加tid) -->
+        <!--<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">-->
+            <!--<layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">-->
+                <!--<Pattern>${SW_CONSOLE_LOG_PATTERN}</Pattern>-->
+            <!--</layout>-->
+            <!--<charset>utf8</charset>-->
+        <!--</encoder>-->
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤的级别 -->
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+
+	<!-- DEBUG日志文件 -->
+	<appender name="DEBUG-OUT"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>${LOG_DIR}${APP_NAME}_debug.log</file>
+		<!-- 日志格式 -->
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤的级别 -->
+			<level>DEBUG</level>
+		</filter>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件名格式 -->
+            <fileNamePattern>${LOG_DIR}${APP_NAME}_debug.%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <!-- 最大保存时间：15天 -->
+            <maxHistory>15</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!--文件达到 最大128MB时会被压缩和切割 -->
+                <maxFileSize>128MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+	</appender>
+
+	<!-- ERROR日志文件 -->
+	<appender name="ERROR-OUT"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>${LOG_DIR}${APP_NAME}_error.log</file>
+		<!-- 日志格式 -->
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤的级别 -->
+			<level>ERROR</level>
+		</filter>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件名格式 -->
+            <fileNamePattern>${LOG_DIR}${APP_NAME}_error.%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <!-- 最大保存时间：15天 -->
+            <maxHistory>15</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!--文件达到 最大128MB时会被压缩和切割 -->
+                <maxFileSize>128MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+	</appender>
+
+	<!--LOGSTASH json日志文件-->
+	<appender name="JSON-OUT"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>${LOG_DIR}${APP_NAME}.json</file>
+		<!-- 日志格式 -->
+		<encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<timestamp>
+					<timeZone>UTC</timeZone>
+				</timestamp>
+				<pattern>
+					<pattern>
+						{
+                        "sw_tid": "%X{tid}",
+                        "trace": "%X{X-B3-TraceId:-}",
+                        "span": "%X{X-B3-SpanId:-}",
+                        "parent": "%X{X-B3-ParentSpanId:-}",
+                        "exportable": "%X{X-Span-Export:-}",
+                        "service": "${APP_NAME:-}",
+                        "severity": "%level",
+						"pid": "${PID:-}",
+						"thread": "%thread",
+						"class": "%logger{40}",
+						"rest": "%message"
+						}
+					</pattern>
+				</pattern>
+			</providers>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤的级别 -->
+			<level>INFO</level>
+		</filter>
+		<!-- 循环政策：基于时间创建日志文件 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志文件名格式 -->
+			<fileNamePattern>${LOG_DIR}${APP_NAME}.%d{yyyy-MM-dd}-%i.json.zip</fileNamePattern>
+			<!-- 最大保存时间：15天 -->
+			<maxHistory>15</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!--文件达到 最大128MB时会被压缩和切割 -->
+				<maxFileSize>128MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<!--GRAYLOG logstash-gelf日志文件-->
+	<appender name="GELF-OUT" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+		<!--<host>redis://localhost:6379/0#logstash</host>-->
+		<host>udp:graylog.jufandev.com</host>
+		<port>5151</port>
+		<version>1.1</version>
+		<facility>${ACTIVE_PROFILE:-}</facility>
+		<extractStackTrace>true</extractStackTrace>
+		<filterStackTrace>true</filterStackTrace>
+		<includeLocation>true</includeLocation>
+		<mdcProfiling>true</mdcProfiling>
+		<timestampPattern>yyyy-MM-dd HH:mm:ss,SSS</timestampPattern>
+		<maximumMessageSize>8192</maximumMessageSize>
+		<additionalFields>service=${APP_NAME:-}</additionalFields>
+		<!--<additionalFieldTypes>fieldName1=String,fieldName2=Double,fieldName3=Long</additionalFieldTypes>-->
+		<!--<mdcFields>mdcField1,mdcField2</mdcFields>-->
+		<!--<dynamicMdcFields>myMdc.*,[a-z]+Field</dynamicMdcFields>-->
+		<includeFullMdc>true</includeFullMdc>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+    <!--以下为控制配置-->
+
+	<!--异步包装STDOUT-->
+	<appender name="ASYNC-STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>${ASYNC_Q_SIZE}</queueSize>
+        <!--包含调用者信息(文件名与行号)-->
+		<includeCallerData>true</includeCallerData>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="STDOUT"/>
+	</appender>
+
+	<!--异步包装DEBUG-OUT-->
+	<appender name="ASYNC-DEBUG-OUT" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>${ASYNC_Q_SIZE}</queueSize>
+        <!--包含调用者信息(文件名与行号)-->
+		<includeCallerData>true</includeCallerData>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="DEBUG-OUT"/>
+	</appender>
+
+	<!--异步包装ERROR-OUT-->
+	<appender name="ASYNC-ERROR-OUT" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>${ASYNC_Q_SIZE}</queueSize>
+        <!--包含调用者信息(文件名与行号)-->
+		<includeCallerData>true</includeCallerData>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="ERROR-OUT"/>
+	</appender>
+
+	<!-- 去除日志 -->
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.apache" level="WARN" />
+	<logger name="com.netflix" level="WARN" />
+	<logger name="org.hibernate" level="WARN" />
+	<!-- ROOT日志 -->
+	<root level="DEBUG">
+		<appender-ref ref="ASYNC-STDOUT" />
+		<appender-ref ref="ASYNC-DEBUG-OUT" />
+		<appender-ref ref="ASYNC-ERROR-OUT" />
+		<appender-ref ref="JSON-OUT" />
+		<appender-ref ref="GELF-OUT" />
+	</root>
+</configuration>

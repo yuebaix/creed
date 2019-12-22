@@ -76,7 +76,7 @@
         <Logger name="io.lettuce" level="INFO"/>
         <Logger name="com.alicp.jetcache" level="INFO"/>
         <!-- ROOT日志 -->
-        <Root level="ALL" includeLocation="true">
+        <Root level="DEBUG" includeLocation="true">
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="DEBUG-OUT"/>
             <appender-ref ref="ERROR-OUT"/>

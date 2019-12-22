@@ -7,7 +7,7 @@
     <parent>
         <artifactId>build-neat</artifactId>
         <groupId>com.geercode.creed</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../../build-neat</relativePath>
     </parent>
 
@@ -25,5 +25,6 @@
     <modules>
         <module>creed-spring-boot-starter</module>
         <module>reconfig-spring-boot-starter</module>
+        <module>scout-spring-boot-starter</module>
     </modules>
 </project>

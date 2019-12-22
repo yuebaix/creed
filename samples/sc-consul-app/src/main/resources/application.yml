@@ -1,0 +1,93 @@
+# feign配置
+feign:
+  httpclient:
+    enabled: false
+    max-connections: 300
+    max-connections-per-route: 60
+  okhttp:
+    enabled: true
+  compression:
+    request: true
+    response: true
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 90000
+        loggerLevel: basic
+# ribbon配置
+ribbon:
+  okhttp:
+    enabled: true
+  restclient:
+    enabled: false
+  httpclient:
+    enabled: false
+  ConnectTimeout: 3000
+  ReadTimeout: 70000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 5000
+# hystrix配置
+hystrix:
+  threadpool:
+    default:
+      allowMaximumSizeToDivergeFromCoreSize: true
+      coreSize: 10
+      maximumSize: 50
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 1000
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 150000
+          semaphore:
+            maxConcurrentRequests: 10000
+      fallback:
+        enabled: true
+        maxConcurrentRequests: 10000
+      circuitBreaker:
+        enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+spring:
+  zipkin:
+    base-url: http://192.168.21.28:9411/
+  sleuth:
+    sampler:
+      probability: 1
+    web:
+      skip-pattern: ${server.servlet.context-path:}/actuator.*
+#opentracing:
+#  jaeger:
+#    udp-sender:
+#      host: localhost
+#      port: 6831
+#    log-spans: true
+#  zipkin:
+#    http-sender:
+#      base-url: http://localhost:9411/
+#    boundary-sampler:
+#      rate: 1
+#    counting-sampler:
+#      rate: 1
+dubbo:
+  application:
+    name: svc-app-consul-app
+  registry:
+    address: 'zookeeper://t.jufandev.com:21823'
+  provider:
+    filter: tracing
+  consumer:
+    filter: tracing

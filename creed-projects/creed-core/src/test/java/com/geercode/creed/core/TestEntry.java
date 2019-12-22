@@ -28,6 +28,6 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 1.0.0
  */
 @RunWith(Categories.class)
-@SuiteClasses(LogTest.class)
+@SuiteClasses(JerrySuiteTest.class)
 public class TestEntry {
 }

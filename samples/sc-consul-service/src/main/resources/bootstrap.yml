@@ -8,14 +8,14 @@ spring:
   cloud:
     consul:
       scheme: http
-      host: 192.168.21.28
+      host: 192.168.1.119
       port: 8500
       discovery:
         prefer-ip-address: true
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
         acl-token: c1918ed6-4c73-f8be-12a3-647217a5d073
         health-check-interval: 15s
-        health-check-critical-timeout: 1m
+        health-check-critical-timeout: 5m
         tags: description=svc-consul-service
       config:
         enabled: true

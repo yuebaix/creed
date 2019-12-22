@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    dns:
+      - 119.29.29.29
+      - 114.114.114.114
+    networks:
+      default:
+        ipv4_address: 172.18.0.4
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=WeAreSuperman
+    volumes:
+      - /opt/mysql/conf:/etc/mysql/conf.d
+      - /opt/mysql/data:/var/lib/mysql
+networks:
+  default:
+    external:
+      name: middleware-network

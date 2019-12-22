@@ -29,7 +29,13 @@ import org.junit.Test;
 public class CreedMpgTest {
     @Test
     public void getSrcPath() {
-        MultiModulePathConfig mpc = new MultiModulePathConfig().init();
+        MpgPathConfig mpc = new MultiModulePathConfig().init();
+        System.out.println(mpc.getEntityDir());
+    }
+
+    @Test
+    public void getSrcPathStandalone() {
+        MpgPathConfig mpc = new StandalonePathConfig().init();
         System.out.println(mpc.getEntityDir());
     }
 
@@ -37,6 +43,8 @@ public class CreedMpgTest {
     public void genAllTest() {
         //CreedOrm.mpg().genAll();
         //CreedOrm.mpg().genXml();
-        CreedOrm.mpg().genBase();
+        //CreedOrm.mpg().genBase();
+        CreedOrm.mpgStandalone().genAll();
+        CreedOrm.mpg().genXml();
     }
 }

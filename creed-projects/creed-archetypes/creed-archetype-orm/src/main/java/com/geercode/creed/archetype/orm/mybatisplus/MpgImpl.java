@@ -55,24 +55,43 @@ public final class MpgImpl implements Mpg {
 
     private AutoGenerator mpg = new AutoGenerator();
 
-    private MultiModulePathConfig pathConfig = new MultiModulePathConfig();
+    private MpgPathConfig pathConfig;
 
-    private MpgImpl() {
+    private MpgImpl(MpgPathConfig mpgPathConfig) {
+        this.pathConfig = mpgPathConfig;
         configMpg();
     }
 
     /**
-     * <p>description : </p>
+     * <p>description : 获取单模块代码生成器</p>
      * <p>create   on : 2018-09-11 16:14:53</p>
      *
      * @author jerryniu
      * @version 1.0.0
      */
-    public static Mpg getHolder() {
+    public static Mpg getStandaloneModuleHolder() {
         if (holder == null) {
             synchronized (HOLDER_MONITOR) {
                 if (holder == null) {
-                    holder = new MpgImpl();
+                    holder = new MpgImpl(new StandalonePathConfig());
+                }
+            }
+        }
+        return holder;
+    }
+
+    /**
+     * <p>description : 获取多模块代码生成器</p>
+     * <p>create   on : 2018-09-11 16:14:53</p>
+     *
+     * @author jerryniu
+     * @version 1.0.0
+     */
+    public static Mpg getMultiModuleHolder() {
+        if (holder == null) {
+            synchronized (HOLDER_MONITOR) {
+                if (holder == null) {
+                    holder = new MpgImpl(new MultiModulePathConfig());
                 }
             }
         }

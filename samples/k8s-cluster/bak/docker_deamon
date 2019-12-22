@@ -1,0 +1,84 @@
+# portainer
+docker run -d --name portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+# elasticsearch
+docker run -d --name elasticsearch --net middleware-network --ip 172.18.0.2 -p 9200:9200 -p 9300:9300 \
+ -v /opt/elasticsearch/config:/usr/share/elasticsearch/config \
+ -v /opt/elasticsearch/data:/usr/share/elasticsearch/data \
+ -e "discovery.type=single-node" elasticsearch:6.7.0
+
+# kibana
+docker run -d --name kibana --net middleware-network --ip 172.18.0.3 -p 5601:5601 \
+ -v /opt/kibana/config:/usr/share/kibana/config \
+ kibana:6.7.0
+ 
+# mysql
+docker run -d --name mysql --net middleware-network --ip 172.18.0.4 -p 3306:3306 \
+ -v /opt/mysql/conf:/etc/mysql/conf.d \
+ -v /opt/mysql/data:/var/lib/mysql \
+ -e MYSQL_ROOT_PASSWORD=WeAreSuperman mysql:5.7
+
+use mysql;
+select user, host from user;
+grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
+flush privileges;
+mysql -h 127.0.0.1 -P 3306 -u root -p
+root/123456
+
+# nginx openresty
+docker run -d --name openresty --net middleware-network --ip 172.18.0.5 -p 80:80 \
+ -v /opt/openresty/conf.d:/etc/nginx/conf.d \
+ openresty/openresty:1.13.6.2-alpine
+
+openresty/openresty:1.13.6.2-alpine
+
+# zookeeper
+docker run -d --name zookeeper --net middleware-network --ip 172.18.0.6 -p 2181:2181 \
+ -v /opt/zookeeper/conf:/conf \
+ -v /opt/zookeeper/data:/data \
+ -v /opt/zookeeper/datalog:/datalog \
+ zookeeper:3.5
+
+# nacos
+docker run -d --name nacos --net middleware-network --ip 172.18.0.7 -p 8848:8848 \
+ -v /opt/nacos/init.d:/home/nacos/init.d \
+ -v /opt/nacos/conf:/home/nacos/conf \
+ -v /opt/nacos/data:/home/nacos/data \
+ -v /opt/nacos/logs:/home/nacos/logs \
+ -e PREFER_HOST_MODE=hostname \
+ -e MODE=standalone \
+ nacos/nacos-server:1.0.0
+ 
+账号密码:nacos/nacos
+
+# consul
+docker run -d --name=consul-dev --net middleware-network --ip 172.18.0.8 -p 8500:8500 \
+ -e CONSUL_BIND_INTERFACE=eth0 consul:1.4.4
+
+############################################################
+
+# cloudera
+docker run -itd --name cloudera --net cloudera-network --ip 172.19.0.2 -p 8888:8888 -p 7180:7180 \
+ --hostname=quickstart.cloudera --privileged=true \
+ cloudera/quickstart:latest /usr/bin/docker-quickstart
+ 
+# kafka
+/opt/kafka/pkg/bin/kafka-server-start.sh /opt/kafka/pkg/config/server.properties &
+
+# sentinel
+java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.6.0.jar &
+
+############################################################
+
+docker run -d --name seafile -v seafile:/shared -p 9080:80 seafileltd/seafile
+
+sudo sslocal -c /etc/shadowsocks/config.json -d start
+
+docker run -d --name seafile \
+  -e SEAFILE_SERVER_HOSTNAME=seafile.example.com \
+  -v /opt/seafile-data:/shared \
+  -p 80:80 \
+  seafileltd/seafile:latest
+sss
+
+docker run -d --name elasticsearch --net middleware-network -p 9200:9200 -p 9300:9300 -v /opt/elasticsearch/config:/usr/share/elasticsearch/config -v /opt/elasticsearch/data:/usr/share/elasticsearch/data -e "discovery.type=single-node" elasticsearch:6.7.0

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--<parent>-->
+        <!--<artifactId>dependencies</artifactId>-->
+        <!--<groupId>com.geercode.creed</groupId>-->
+        <!--<version>0.4-SNAPSHOT</version>-->
+        <!--<relativePath>../../dependencies</relativePath>-->
+    <!--</parent>-->
+
+    <groupId>com.geercode.creed</groupId>
+    <artifactId>axon-demo</artifactId>
+    <name>AXON示例</name>
+    <version>0.4-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-spring-boot-starter</artifactId>
+            <version>4.0.3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>axon-server-connector</artifactId>
+                    <groupId>org.axonframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>
